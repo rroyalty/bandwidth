@@ -1,0 +1,11 @@
+.landing button {
+    width: 300px;
+}
+
+.landing .showImg {
+    display: inline;
+}
+
+.landing .hideImg {
+    display: none;
+}
