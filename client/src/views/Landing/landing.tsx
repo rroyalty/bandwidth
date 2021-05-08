@@ -1,7 +1,4 @@
 import React from 'react';
-import reactDOM from 'react-dom';
-// import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-// import { StylesProvider } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
