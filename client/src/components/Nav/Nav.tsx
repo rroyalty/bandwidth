@@ -2,14 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './style.css'
 
-import NavSideDrawer from './MobileNav';
-import MobileNav from './MobileNav'
+
 import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+
 
 import { AppBar, Toolbar } from "@material-ui/core";
 
@@ -53,7 +51,7 @@ const Navbar = () => {
                             <Home fontSize="large" />
 
                         </IconButton>
-                        {/* className={classes.navDisplayFlex} */}
+                        
                         <List  component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex} id="mobileFlex" >
                             {navLinks.map(({ title, path }) => (
                                 <Link to={path} key={title} className={classes.linkText}>
@@ -63,7 +61,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                         </List>
-                       {/* <MobileNav /> */}
+                     
                     </Container>
                 </Toolbar>
             </Router>
