@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+import Landing from './views/Landing/landing'
 import './App.css';
 
 
@@ -7,12 +7,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="">
-        <p>
-          WELCOME TO BANDWIDTH
-        </p>
-       <p>HOMEPAGE WOOOOO</p>
-    
+      <header className="App-header">
+        <Landing />
       </header>
     </div>
   );
