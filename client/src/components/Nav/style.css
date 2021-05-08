@@ -2,3 +2,12 @@
     background-color: crimson;
     color: white;
 }
+
+@media (max-width: 768px) {  
+  
+   #mobileFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+}

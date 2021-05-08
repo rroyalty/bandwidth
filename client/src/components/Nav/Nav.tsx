@@ -2,11 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './style.css'
 
-// import NavSideDrawer from './NavSideDrawer';
+import NavSideDrawer from './MobileNav';
+import MobileNav from './MobileNav'
 import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 import { AppBar, Toolbar } from "@material-ui/core";
 
@@ -23,6 +26,11 @@ const useStyles = makeStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`
+    },
+    mobileNav: {
+     display: 'flex',
+     flexDirection: 'column',
+     color: 'black'
     }
 });
 
@@ -33,26 +41,29 @@ const navLinks = [
 ]
 
 const Navbar = () => {
+  
     const classes = useStyles();
+ 
     return (
         <AppBar position="static">
             <Router>
-                <Toolbar className="nav-style">
+                <Toolbar  className="nav-style">
                     <Container className={classes.navbarDisplayFlex}>
                         <IconButton edge="start" color="inherit" aria-label="home">
                             <Home fontSize="large" />
 
                         </IconButton>
-                        <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
+                        {/* className={classes.navDisplayFlex} */}
+                        <List  component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex} id="mobileFlex" >
                             {navLinks.map(({ title, path }) => (
-                                <Link to={path} key={title} className={classes.linkText}> 
+                                <Link to={path} key={title} className={classes.linkText}>
                                     <ListItem button>
                                         <ListItemText primary={title} />
                                     </ListItem>
                                 </Link>
                             ))}
                         </List>
-                        {/* <NavSideDrawer /> */}
+                       {/* <MobileNav /> */}
                     </Container>
                 </Toolbar>
             </Router>
