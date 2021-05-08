@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './style.css'
 
-import NavSideDrawer from './NavSideDrawer';
+// import NavSideDrawer from './NavSideDrawer';
 import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
@@ -52,7 +52,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                         </List>
-                        <NavSideDrawer />
+                        {/* <NavSideDrawer /> */}
                     </Container>
                 </Toolbar>
             </Router>
