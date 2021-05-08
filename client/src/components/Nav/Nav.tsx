@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './style.css'
 
-import { IconButton, Container } from "@material-ui/core"
-import { Home } from "@material-ui/icons"
-import { List, ListItem, ListItemText } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core"
+import NavSideDrawer from './NavSideDrawer';
+import { IconButton, Container } from "@material-ui/core";
+import { Home } from "@material-ui/icons";
+import { List, ListItem, ListItemText } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
-import { AppBar, Toolbar } from "@material-ui/core"
+import { AppBar, Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles({
     navbarDisplayFlex: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 const navLinks = [
-    { title: `about`, path: `/abou` },
+    { title: `about`, path: `/about` },
     { title: `browse band members`, path: `/bandmembers` },
     { title: `faq`, path: `/faq` },
 ]
@@ -51,6 +52,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                         </List>
+                        <NavSideDrawer />
                     </Container>
                 </Toolbar>
             </Router>
