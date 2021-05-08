@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 const navLinks = [
     { title: `about`, path: `/about` },
-    { title: `browse band members`, path: `/bandmembers` },
+    { title: `browse`, path: `/browse` },
     { title: `faq`, path: `/faq` },
 ]
 
@@ -43,7 +43,7 @@ const Navbar = () => {
     const classes = useStyles();
  
     return (
-        <AppBar position="static">
+        <AppBar id="menuToggle" position="static">
             <Router>
                 <Toolbar  className="nav-style">
                     <Container className={classes.navbarDisplayFlex}>
