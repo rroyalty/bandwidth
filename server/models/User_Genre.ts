@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 import * as sequelize from '../config/connection';
 class User_Genre extends Model {}
 
@@ -11,7 +11,7 @@ User_Genre.init(
         autoIncrement: true,
       },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         references: {
             model: 'user',
             key: 'id'

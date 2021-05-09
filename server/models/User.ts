@@ -9,7 +9,8 @@ class User extends Model { }
 User.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
+            defaultValue: Sequelize.UUIDV4,
             required: false,
             primaryKey: false,
             autoIncrement: true
@@ -49,6 +50,22 @@ User.init(
             defaultValue: Sequelize.STRING,
             required: true,
             primaryKey: true,
+        },
+        // after showing Contact model to Ryan, opted to just keep on User model for now.
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: false,
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: false,
+        },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: false,
         }
     },
     {
