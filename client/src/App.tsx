@@ -4,6 +4,7 @@ import Landing from './views/Landing/landing'
 import Browse from './views/Browse/Browse'
 import FAQ from './views/faq/Faq'
 import About from './views/About/About'
+import Footer from './components/Footer/Footer'
 import './App.css';
 
 
@@ -66,7 +67,7 @@ function App(props: any) {
         <Route path="/faq" exact render={() => <FAQ />} />
         <Route path="/about" exact render={() => <About />} />
       </Router>
-
+      <Footer />
     </div>
   );
 }
