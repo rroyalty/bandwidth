@@ -49,8 +49,8 @@ function App(props: any) {
               </Link>
               <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex} id="mobileFlex" >
                 <Link to="/" className="linkText"><ListItemText>Home </ListItemText> </Link>
-                <Link to="/browse" className="linkText"><ListItemText> Browse </ListItemText> </Link>
                 <Link to="/about" className="linkText"><ListItemText> About </ListItemText> </Link>
+                <Link to="/browse" className="linkText"><ListItemText> Browse </ListItemText> </Link>
                 <Link to="/faq" className="linkText"><ListItemText> FAQ </ListItemText> </Link>
                 <ListItem button>
 
