@@ -15,12 +15,12 @@ code {
  /* NAV */
 
  .nav-style {
-  background-color: crimson;
+  background-color:#212c40;
   color: white;
   /* margin: 5px; */
 }
 .nav-button{
-  color: white !important;
+  color: #e70031 !important;
 }
 .linkText {
   text-decoration: none;
