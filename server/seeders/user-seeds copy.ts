@@ -1,6 +1,6 @@
 import { User } from '../models';
 
-const userData = [{
+const userData: {displayName: string, firstName: string, lastName: string, image: string, intentionStatus: string, bandName: string, oidc: string, email: string, phone: string, location: string}[] = [{
         displayName: 'Jonnifer Hammilton',
         firstName: 'Jonnifer',
         lastName: 'Hammilton',
