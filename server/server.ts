@@ -1,11 +1,16 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+// const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("./models");
+import db from "./models";
 const router = require('./routes/router');
 
-db.sequelize.sync({force: false});
+// db.sequelize.sync({force: false});
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`)
+  })
+})
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));

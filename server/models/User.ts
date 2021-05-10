@@ -1,5 +1,6 @@
+'use strict';
 const { Model, DataTypes, Sequelize } = require('sequelize');
-import * as sequelize from '../config/connection';
+import * as sequelize from '../connection/connection';
 // import sequelize from '../config/connection';
 // const sequelize = require('../config/connection')
 // const bcrypt = require('bcrypt')

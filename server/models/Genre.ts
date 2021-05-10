@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-import * as sequelize from '../config/connection';
+import * as sequelize from '../connection/connection';
 
 class Genre extends Model {}
 

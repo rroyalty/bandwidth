@@ -1,5 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
-import * as sequelize from '../config/connection';
+import * as sequelize from '../connection/connection';
 class User_Instrument extends Model {}
 
 User_Instrument.init(
