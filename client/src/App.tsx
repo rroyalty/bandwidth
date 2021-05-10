@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Landing from './views/Landing/landing'
 import Browse from './views/Browse/Browse'
 import FAQ from './views/faq/Faq'
@@ -42,20 +42,16 @@ function App(props: any) {
         <AppBar id="menuToggle" position="static">
           <Toolbar className="nav-style">
             <Container className={classes.navbarDisplayFlex}>
-              <Link to='/'> <IconButton className="nav-button" edge="start" color="inherit" aria-label="home">
+              <NavLink to='/'> <IconButton className="nav-button" edge="start" color="inherit" aria-label="home">
                 <Home fontSize="large" />
 
               </IconButton>
-              </Link>
+              </NavLink>
               <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex} id="mobileFlex" >
-                <Link to="/" className="linkText"><ListItemText>Home </ListItemText> </Link>
-                <Link to="/about" className="linkText"><ListItemText> About </ListItemText> </Link>
-                <Link to="/browse" className="linkText"><ListItemText> Browse </ListItemText> </Link>
-                <Link to="/faq" className="linkText"><ListItemText> FAQ </ListItemText> </Link>
-                <ListItem button>
-
-                </ListItem>
-
+                <NavLink to="/" className="linkText"><ListItemText>Home</ListItemText> </NavLink>
+                <NavLink to="/about" className="linkText"><ListItemText>About</ListItemText> </NavLink>
+                <NavLink to="/browse" className="linkText"><ListItemText>Browse</ListItemText> </NavLink>
+                <NavLink to="/faq" className="linkText"><ListItemText>FAQ</ListItemText> </NavLink>
 
               </List>
             </Container>
