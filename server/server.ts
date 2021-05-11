@@ -32,7 +32,7 @@ const app = express();
 //   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 // });
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+// app.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
 
 app.listen(PORT, function() {
