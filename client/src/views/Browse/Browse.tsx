@@ -1,6 +1,6 @@
-import React from 'react';
+import { withRouter } from 'react-router';
 
-const Browse = () => {
+const Browse: React.FC = (): JSX.Element => {
     return (
         <p>
             Browse page working!
@@ -8,4 +8,4 @@ const Browse = () => {
     )
 }
 
-export default Browse
+export default withRouter(Browse)

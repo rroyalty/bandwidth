@@ -14,6 +14,8 @@ const sequelize = () => {
           decimalNumbers: true,
         },
       });
+
+  return sequelize;
 }
 
 export default sequelize;
