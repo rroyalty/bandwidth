@@ -5,6 +5,7 @@ import Browse from './views/Browse/Browse'
 import FAQ from './views/faq/Faq'
 import About from './views/About/About'
 import Footer from './components/Footer/Footer'
+import AuthNav from "./components/Login/Auth-nav";
 import './App.css';
 
 
@@ -52,7 +53,7 @@ function App(props: any) {
                 <NavLink to="/about" className="linkText"><ListItemText>About</ListItemText> </NavLink>
                 <NavLink to="/browse" className="linkText"><ListItemText>Browse</ListItemText> </NavLink>
                 <NavLink to="/faq" className="linkText"><ListItemText>FAQ</ListItemText> </NavLink>
-
+                <AuthNav />
               </List>
             </Container>
           </Toolbar>
