@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import Landing from './views/Landing/landing'
 import Browse from './views/Browse/Browse'
-import About from './views/About/About'
+import About from './views/faq/FAQ'
 import Footer from './components/Footer/Footer'
 
 import AuthNav from "./components/Login/Auth-nav";
 
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
-import FAQ from './views/FAQ/FAQ'
+import FAQ from './views/faq/FAQ'
 import './App.css';
 
 
