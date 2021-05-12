@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Faq = () => {
+import { withRouter } from 'react-router';
+
+const FAQ: React.FC = (): JSX.Element => {
     return (
         <p>
             FAQ page working!
@@ -8,4 +10,4 @@ const Faq = () => {
     )
 }
 
-export default Faq;
+export default withRouter(FAQ);
