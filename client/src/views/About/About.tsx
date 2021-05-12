@@ -1,6 +1,6 @@
-import React from 'react';
+import { withRouter } from 'react-router';
 
-const About = () => {
+const About: React.FC = (): JSX.Element => {
     return (
         <p>
             About page working!
@@ -8,4 +8,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default withRouter(About);
