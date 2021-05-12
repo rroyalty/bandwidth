@@ -1,16 +1,14 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const User = require('./models/User');
+// const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("./models");
-const router = require('./routes/router');
-require('dotenv').config();
-
-db.sequelize.sync({force: false});
+// const router = require('./routes/router');
+const sequelize = require('./config/connection')
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // app.use(function(req:any, res:any, next:any) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -22,14 +20,22 @@ app.use(express.json());
 //   app.use(express.static(path.join(__dirname, "../client/dist/bench-strength")));
 // }
 
-app.use(router(db));
+// app.use(router(db));
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../client/dist/bench-strength/index.html"));
 // });
 
+// GET all books
+app.get('/', (req, res) => {
+  // Get all books from the book table
+  User.findAll().then((userData) => {
+    res.json(userData);
+  });
+});
 
 
-app.listen(PORT, function() {
-    console.log(`App listening on Port ${PORT}`);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on PORT: ${PORT}!`));
 });

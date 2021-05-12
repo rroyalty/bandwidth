@@ -9,7 +9,9 @@ import AuthNav from "./components/Login/Auth-nav";
 
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
-import FAQ from './views/FAQ/FAQ'
+
+import FAQ from '../src/views/FAQ/FAQ'
+
 import './App.css';
 
 
