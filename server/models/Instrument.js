@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-import * as sequelize from '../connection/connection';
+const sequelize = require('../config/connection');
 class Instrument extends Model { }
 
 Instrument.init(
@@ -10,7 +10,6 @@ Instrument.init(
             primaryKey: true,
             autoIncrement: true
         },
-        // instrument name ie - name: guitar 
         name: {
             type: DataTypes.STRING,
         }
@@ -24,4 +23,4 @@ Instrument.init(
       }
 );
 
-module.exports = { Instrument }
+module.exports = Instrument;
