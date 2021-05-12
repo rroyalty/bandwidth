@@ -4,9 +4,13 @@ import Landing from './views/Landing/landing'
 import Browse from './views/Browse/Browse'
 import About from './views/About/About'
 import Footer from './components/Footer/Footer'
+
+import AuthNav from "./components/Login/Auth-nav";
+
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 import FAQ from '../src/views/FAQ/FAQ'
+
 import './App.css';
 
 
@@ -14,7 +18,6 @@ import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-
 
 // const useStyles = makeStyles({
 //   navbarDisplayFlex: {
@@ -59,10 +62,11 @@ const App: React.FC = (props: any): JSX.Element => {
           <Route exact path="/about" component={About}/>
           <Route exact path="/" component={Landing} />
         </Switch>
-
         </Container>
       </>
+       <AuthNav />
     </Router>
+  
   );
 }
 
