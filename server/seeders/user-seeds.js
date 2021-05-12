@@ -1,4 +1,4 @@
-import { User } from '../models';
+const { User } = require('../models');
 
 const userData = [{
         displayName: 'Jonnifer Hammilton',

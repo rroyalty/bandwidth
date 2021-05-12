@@ -1,5 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
-import * as sequelize from '../config/connection';
+const sequelize = require('../config/connection');
 class User_Instrument extends Model {}
 
 User_Instrument.init(
@@ -11,7 +11,7 @@ User_Instrument.init(
         autoIncrement: true,
       },
       user_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         references: {
             model: 'user',
             key: 'id'
@@ -34,4 +34,4 @@ User_Instrument.init(
     }
   );
 
-  module.exports = { User_Instrument }
+  module.exports = User_Instrument;
