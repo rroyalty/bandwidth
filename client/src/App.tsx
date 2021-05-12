@@ -6,7 +6,7 @@ import About from './views/About/About'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
-import FAQ from '../src/views/FAQ/FAQ'
+import FAQ from '../src/views/faq/FAQ'
 import './App.css';
 
 
