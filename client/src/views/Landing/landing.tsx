@@ -12,7 +12,7 @@ const Landing: React.FC = (): JSX.Element => {
     const theme = useTheme();
     const matches: boolean = useMediaQuery(theme.breakpoints.up('sm'));
     return(
-        <Box className='landing' display='flex' flexDirection='column' alignItems='center' margin={5}>
+        <Box className='landing bg' display='flex' flexDirection='column' alignItems='center' margin={5}>
             <img src={matches ? fullLogo : smallLogo } className="App-logo" alt="logo"/>
             <Button variant="contained">
                 Sign In
