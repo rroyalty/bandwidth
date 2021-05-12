@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router';
-import UserGrid from '../../components/Users/UserCard'
+import UserGrid from '../../components/Users/UserGrid'
 const Browse: React.FC = (): JSX.Element => {
     return (
         <div>
