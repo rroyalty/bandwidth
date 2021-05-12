@@ -38,6 +38,16 @@ const navbarStyles = makeStyles({
         display: `flex`,
         // flexDirection: `column`,
         justifyContent: `center`
+    },
+    mobileNav: {
+        // backgroundColor: `#181D27`,
+        display: `flex`,
+        flexDirection: `column`,
+        textDecoration: `none`,
+        textTransform: `uppercase`,
+        // color: `#fff !important`,
+        justifyContent: `flex-end`,
+        // justifyContent: `center`
     }
 });
 

@@ -41,20 +41,7 @@ const Navbar: React.FC = (): JSX.Element => {
             setState((prevState) => ({ ...prevState, drawerOpen: true }));
         const handleDrawerClose = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
-        const getDrawerChoices = () => {
-            return (
-                <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
-                {navLinks.map(({ title, path }) => (
-                    <Link to={path} key={title} className={classes.linkText}>
-                        <ListItem button>
-                            <ListItemText primary={title} />
-                        </ListItem>
-                        <MenuItem>{navLinks}</MenuItem>
-                    </Link>
-                ))}
-            </List>
-            )
-        }
+    
         return (
             <AppBar position="static" className={classes.navbar}>
                 <IconButton
@@ -64,37 +51,76 @@ const Navbar: React.FC = (): JSX.Element => {
                         'aria-label': 'menu',
                         'aria-haspopup': 'true',
                         onClick: handleDrawerOpen,
+                        
                     }}
+                    className={classes.mobileNav}
                 >
                     <MenuIcon />
                 </IconButton>
                 <Drawer
-                {...{
-                    anchor: 'right',
-                    open: drawerOpen,
-                    onClose: handleDrawerClose,
-                }}>
-                    <div>{getDrawerChoices()}</div>
+                    {...{
+                        anchor: 'right',
+                        open: drawerOpen,
+                        onClose: handleDrawerClose,
+                        // className: classes.mobileNav
+                    }}>
+                    <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
+                        <MenuItem className={classes.mobileNav}>
+                        <Link to="/">Home</Link>
+                        <Link to="/about">about</Link>
+                        <Link to="/browse">browse</Link>
+                        <Link to="/faq">FAQ</Link>
+                        </MenuItem>
+                       
+                    </List>
+                
                 </Drawer>
             </AppBar>
         )
     }
-    return (
-        <AppBar position="static" className={classes.navbar}>
-            {mobileView ? displayMobile() : Navbar }
-            <section className={classes.rightAppBar}>
-                <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
-                    {navLinks.map(({ title, path }) => (
-                        <Link to={path} key={title} className={classes.linkText}>
-                            <ListItem button>
-                                <ListItemText primary={title} />
-                            </ListItem>
-                        </Link>
-                    ))}
-                </List>
+    const displayDesktop = () => {
+        return (
+            <AppBar position="static" className={classes.navbar}>
+                <section className={classes.rightAppBar}>
+                    <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
+                        {navLinks.map(({ title, path }) => (
+                            <Link to={path} key={title} className={classes.linkText}>
+                                <ListItem button>
+                                    <ListItemText primary={title} />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
 
-            </section>
-        </AppBar>
+                </section>
+            </AppBar>
+        )
+    }
+
+
+    return (
+        <div>
+            {mobileView ? displayMobile() : displayDesktop()}
+
+        </div>
+
+        // <div>
+
+        //     <AppBar position="static" className={classes.navbar}>
+        //      <section className={classes.rightAppBar}>
+        //         <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
+        //             {navLinks.map(({ title, path }) => (
+        //                 <Link to={path} key={title} className={classes.linkText}>
+        //                     <ListItem button>
+        //                         <ListItemText primary={title} />
+        //                     </ListItem>
+        //                 </Link>
+        //             ))}
+        //         </List>
+
+        //     </section>
+        // </AppBar> 
+        //             </div>
     )
 }
 
