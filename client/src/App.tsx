@@ -61,9 +61,9 @@ const App: React.FC = (props: any): JSX.Element => {
           <Route exact path="/about" component={About}/>
           <Route exact path="/" component={Landing} />
         </Switch>
+         {/* <AuthNav /> */}
         </Container>
       </>
-       <AuthNav />
     </Router>
   
   );

@@ -5,36 +5,24 @@ import './style.css';
 
 
         const columns: GridColDef[] = [
-            { field: 'id', headerName: 'ID', width: 70 },
-            { field: 'firstName', headerName: 'First name', width: 130 },
-            { field: 'lastName', headerName: 'Last name', width: 130 },
-            {
-              field: 'age',
-              headerName: 'Age',
-              type: 'number',
-              width: 90,
-            },
-            {
-              field: 'fullName',
-              headerName: 'Full name',
-              description: 'This column has a value getter and is not sortable.',
-              sortable: false,
-              width: 160,
-              valueGetter: (params: GridValueGetterParams) =>
-                `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
-            },
-          ];
+          // { field: 'id', headerName: 'ID', width: 70 },
+          { field: 'photo', headerName: 'Photo', width: 130 },
+          { field: 'name', headerName: 'Name', width: 130 },
+          { field: 'status', headerName: 'Status', width: 160, },
+          { field: 'email', headerName: 'Email', width: 170 },
+          { field: 'city', headerName: 'City', width: 130 },
+          { field: 'state', headerName: 'State', width: 130 },
+          { field: 'genre', headerName: 'Genre', type: 'date', width: 150 }
+        ];
           
           const rows = [
-            { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-            { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-            { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-            { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-            { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-            { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-            { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-            { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-            { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+            { id: 1, photo: 'photo goes here', name: 'Toni Powell', status: 'Available', email: 'snow@gmail.com', city: 'Boston', state: 'Massachusetts', genre: 'metal' },
+            { id: 2, photo: 'photo goes here', name: 'Jon Hammond', status: 'Not Available', email: 'lanniser@gmail.com', city: 'Long Island', state: 'New York',genre: 'Pop Funk' },
+            { id: 3, photo: 'photo goes here', name: 'Ryan Royalty', status: 'Not Available', email: 'lanniser@gmail.com', city: 'Buffalo', state: 'New York', genre: 'Elvis Covers only' },
+            { id: 4, photo: 'photo goes here', name: 'Bjorn Yourey', status: 'Available', email: 'snow@gmail.com', city: 'Sacramento', state: 'California', genre: 'Rock and Roll' },
+            { id: 5, photo: 'photo goes here', name: 'Cathy Marchese', status: 'Its complicated', email: 'lanniser@gmail.com', city: 'Des Moines', state: 'Iowa', genre: 'Techno' },
+            { id: 6, photo: 'photo goes here', name: 'Cersei Lannister', status: 'Looking for bands with benefits', email: 'lanniser@gmail.com', city: 'Chicago', state: 'Illinois', genre: 'metal' },
+            
           ];
           
           export default function UserGrid() {
