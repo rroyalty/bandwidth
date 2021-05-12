@@ -43,47 +43,5 @@ import './style.css';
               </div>
             );
           }
-        // <div>
-
-        //     <Container className="test" maxWidth='xs'>
-        //         <h1>Name</h1>
-        //         <p>BandName</p>
-        //         <p>Status(unavailable / available)</p>
-        //         <p>Instrument(s)</p>
-        //         <p>Genre</p>
-        //         <p>Location</p>
-        //         <p>Get in Touch</p>
-
-        //     </Container>
-        //     <Container className="test" maxWidth='lg'>
-        //         <h1>Name</h1>
-        //         <p>BandName</p>
-        //         <p>Status(unavailable / available)</p>
-        //         <p>Instrument(s)</p>
-        //         <p>Genre</p>
-        //         <p>Location</p>
-        //         <p>Get in Touch</p>
-
-        //     </Container>
-        //     <Container className="test" maxWidth='md'>
-        //         <h1>Name</h1>
-        //         <p>BandName</p>
-        //         <p>Status(unavailable / available)</p>
-        //         <p>Instrument(s)</p>
-        //         <p>Genre</p>
-        //         <p>Location</p>
-        //         <p>Get in Touch</p>
-
-        //     </Container>
-        //     <Container className="test" maxWidth='sm'>
-        //         <h1>Name</h1>
-        //         <p>BandName</p>
-        //         <p>Status(unavailable / available)</p>
-        //         <p>Instrument(s)</p>
-        //         <p>Genre</p>
-        //         <p>Location</p>
-        //         <p>Get in Touch</p>
-
-        //     </Container>
-        // </div>
+    
 
