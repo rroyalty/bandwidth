@@ -1,30 +1,30 @@
 
-import { Sequelize, Table, Column, Model, HasMany, DataType, IsUUID, PrimaryKey, BelongsToMany } from 'sequelize-typescript';
-import { Optional } from 'sequelize';
-import { Genre } from './Genre';
-import { User_Genre } from './User_Genre'
+// import { Sequelize, Table, Column, Model, HasMany, DataType, IsUUID, PrimaryKey, BelongsToMany } from 'sequelize-typescript';
+// import { Optional } from 'sequelize';
+// import { Genre } from './Genre';
+// import { User_Genre } from './User_Genre'
 
-import sequelize from '../config/connection'
+// import sequelize from '../config/connection'
 
-@Table({
-    timestamps: true,
-    paranoid: true,
-    modelName: 'User',
-    underscored: true,
-    tableName: 'user',
-})
-export class User extends Model<User> {
-    @IsUUID(4)
-    @PrimaryKey
-    @Column
-    id!: string;
+// @Table({
+//     timestamps: true,
+//     paranoid: true,
+//     modelName: 'User',
+//     underscored: true,
+//     tableName: 'user',
+// })
+// export class User extends Model<User> {
+//     @IsUUID(4)
+//     @PrimaryKey
+//     @Column
+//     id!: string;
 
-    @Column
-    name!: string;
+//     @Column
+//     name!: string;
 
-    @BelongsToMany(() => Genre, () => User_Genre)
-    genres?: Genre[];
-}
+//     @BelongsToMany(() => Genre, () => User_Genre)
+//     genres?: Genre[];
+// }
 
 
 

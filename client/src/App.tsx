@@ -6,7 +6,7 @@ import About from './views/About/About'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
-import FAQ from '../src/views/faq/Faq'
+import FAQ from './views/FAQ/FAQ'
 import './App.css';
 
 
@@ -62,6 +62,7 @@ const App: React.FC = (props: any): JSX.Element => {
 
         </Container>
       </>
+     
     </Router>
   );
 }
