@@ -14,7 +14,7 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `/` },
     { title: `About`, path: `/about` },
     { title: `Browse`, path: `/browse` },
-    { title: `faq`, path: `/faq` }
+
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -43,7 +43,7 @@ const Navbar: React.FC = (): JSX.Element => {
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
     
         return (
-            <AppBar position="static" className={classes.navbar}>
+            <AppBar position="fixed" className={classes.navbar}>
                 <IconButton
                     {...{
                         edge: 'start',
@@ -69,7 +69,6 @@ const Navbar: React.FC = (): JSX.Element => {
                         <Link to="/">Home</Link>
                         <Link to="/about">about</Link>
                         <Link to="/browse">browse</Link>
-                        <Link to="/faq">FAQ</Link>
                         </MenuItem>
                        
                     </List>
@@ -80,7 +79,7 @@ const Navbar: React.FC = (): JSX.Element => {
     }
     const displayDesktop = () => {
         return (
-            <AppBar position="static" className={classes.navbar}>
+            <AppBar position="fixed" className={classes.navbar}>
                 <section className={classes.rightAppBar}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                         {navLinks.map(({ title, path }) => (

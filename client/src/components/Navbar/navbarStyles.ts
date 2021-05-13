@@ -20,7 +20,7 @@ const navbarStyles = makeStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
-        // width: '100vw',
+        // maxWidth: '95vw',
         // marginLeft: -24
     },
     iconLinks: {

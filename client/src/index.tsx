@@ -7,10 +7,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 import appTheme from './AppTheme'
 import { ThemeProvider } from '@material-ui/core';
-
+import store from './store'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <ThemeProvider theme={appTheme}>
       <Auth0ProviderWithHistory>
         <Router>
@@ -18,6 +20,7 @@ ReactDOM.render(
         </Router>
       </Auth0ProviderWithHistory>
     </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
