@@ -28,7 +28,7 @@ import './style.css';
           export default function UserGrid() {
             return (
               <div style={{ height: 600, width: '100%' }}>
-                <DataGrid className="bg" rowHeight={150} rows={rows} columns={columns} pageSize={3} checkboxSelection />
+                <DataGrid className="bg" rowHeight={150} rows={rows} columns={columns} pageSize={3}  />
               </div>
             );
           }

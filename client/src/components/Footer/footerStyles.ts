@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const footerStyles = makeStyles({
     navDisplayFlex: {
         display: `inline-flex`,
-        justifyContent: `space-between`
+        justifyContent: `flex-end`
     },
     linkText: {
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`,
-        justifyContent: `center`
+        justifyContent: `flex-end`
     },
     navbar: {
         backgroundColor: `#181D27`,
@@ -32,12 +32,11 @@ const footerStyles = makeStyles({
     rightAppBar: {
         marginLeft: `auto`,
         marginRight: 10
-
     },
     justifyContent: {
         display: `flex`,
         // flexDirection: `column`,
-        justifyContent: `center`
+        justifyContent: `flex-end`
     },
     mobileNav: {
         // backgroundColor: `#181D27`,
