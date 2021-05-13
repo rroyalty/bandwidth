@@ -43,7 +43,7 @@ const Navbar: React.FC = (): JSX.Element => {
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
     
         return (
-            <AppBar position="static" className={classes.navbar}>
+            <AppBar position="fixed" className={classes.navbar}>
                 <IconButton
                     {...{
                         edge: 'start',
