@@ -37,7 +37,6 @@ const App: React.FC = (props: any): JSX.Element => {
         <Switch>
           <Route exact path="/index" component={Landing} />
           <Route exact path="/browse" component={Browse} />
-          <Route exact path="/FAQ" component={FAQ}/>
           <Route exact path="/about" component={About}/>
           <Route exact path="/" component={Landing} />
         </Switch>
