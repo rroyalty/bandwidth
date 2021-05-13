@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
+import AuthNav from "../../components/Login/Auth-nav";
 
 import { List, ListItem, ListItemText } from "@material-ui/core"
 
@@ -12,7 +13,8 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `/` },
     { title: `About`, path: `/about` },
     { title: `Browse`, path: `/browse` },
-    { title: `faq`, path: `/faq` }
+    { title: `faq`, path: `/faq` },
+    { title: `Profile`, path: `/profile`}
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -30,7 +32,7 @@ const Navbar: React.FC = (): JSX.Element => {
                             </Link>
                         ))}
                     </List>
-
+                    <AuthNav />
                 </section>
         </AppBar>
     )
