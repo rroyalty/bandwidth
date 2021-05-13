@@ -12,11 +12,11 @@ import { ThemeProvider } from '@material-ui/core';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={appTheme}>
-      <Router>
-        <Auth0ProviderWithHistory>
+      <Auth0ProviderWithHistory>
+        <Router>
           <App />
-        </Auth0ProviderWithHistory>
-      </Router>
+        </Router>
+      </Auth0ProviderWithHistory>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
