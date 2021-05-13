@@ -1,23 +1,33 @@
 import React from 'react';
-import { BottomNavigation, AppBar, makeStyles }from '@material-ui/core'
+import { Link } from "react-router-dom";
+import {  List, ListItem, ListItemText, BottomNavigation, AppBar, makeStyles }from '@material-ui/core'
+import footerStyles from './footerStyles'
+
 import './style.css';
 
 const Footer = () => {
+  
+  const navLinks: { title: string, path: string }[] = [
+    // { title: `Home`, path: `/` },
+    { title: `About`, path: `/about` },
+    { title: `Browse`, path: `/browse` },
+    { title: `faq`, path: `/faq` }
+  ]
 
-    const useStyles = makeStyles({
-        stickToBottom: {
-          width: '100%',
-          position: 'fixed',
-          bottom: 0,
-        //   might have to play with this later on to make sure this doesn't cover anything
-          marginBottom: '3px',
-        },
-      })
-      const classes = useStyles()
+   
+      const classes = footerStyles()
     return (
        <BottomNavigation className={classes.stickToBottom}>
             <AppBar className="footer" id="menuToggle" position="sticky">
-           <p>hi i'm a footer</p>
+            <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
+                        {navLinks.map(({ title, path }) => (
+                            <Link to={path} key={title} className={classes.linkText}>
+                                <ListItem button>
+                                    <ListItemText primary={title} />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
            </AppBar>
        </BottomNavigation>
     )

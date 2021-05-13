@@ -20,26 +20,6 @@ import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-// const useStyles = makeStyles({
-//   navbarDisplayFlex: {
-//     display: `flex`,
-//     justifyContent: `space-between`
-//   },
-//   navDisplayFlex: {
-//     display: `flex`,
-//     justifyContent: `space-between`
-//   },
-//   linkText: {
-//     textDecoration: `none`,
-//     textTransform: `uppercase`,
-//     color: `white`
-//   },
-//   mobileNav: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     color: 'black'
-//   }
-// });
 
 
 const App: React.FC = (props: any): JSX.Element => {
@@ -65,6 +45,7 @@ const App: React.FC = (props: any): JSX.Element => {
         </Switch>
          {/* <AuthNav /> */}
         </Container>
+        <Footer />
       </>
     </Router>
   
