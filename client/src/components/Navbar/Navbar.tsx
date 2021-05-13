@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
+import AuthNav from "../../components/Login/Auth-nav";
 
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
 
@@ -14,7 +15,7 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `/` },
     { title: `About`, path: `/about` },
     { title: `Browse`, path: `/browse` },
-
+    { title: `Profile`, path: `/profile`}
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -90,7 +91,7 @@ const Navbar: React.FC = (): JSX.Element => {
                             </Link>
                         ))}
                     </List>
-
+                    <AuthNav />
                 </section>
             </AppBar>
         )
