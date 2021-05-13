@@ -10,9 +10,6 @@ import AuthNav from "./components/Login/Auth-nav";
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 
-import './App.css';
-
-
 import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
@@ -25,7 +22,7 @@ const App: React.FC = (props: any): JSX.Element => {
   return (
     <Router>
       <>
-        <Container maxWidth='xl' className="App bg" style={{
+        <Container maxWidth='xl' style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: 'no-repeat',
@@ -33,19 +30,18 @@ const App: React.FC = (props: any): JSX.Element => {
           height: "100vh",
         }}>
 
-        <Navbar />
-        <Switch>
-          <Route exact path="/index" component={Landing} />
-          <Route exact path="/browse" component={Browse} />
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/" component={Landing} />
-        </Switch>
-         {/* <AuthNav /> */}
+          <Navbar />
+          <Switch>
+            <Route exact path="/index" component={Landing} />
+            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/" component={Landing} />
+          </Switch>
         </Container>
-        <Footer />
+        {/* <Footer /> */}
       </>
     </Router>
-  
+
   );
 }
 
