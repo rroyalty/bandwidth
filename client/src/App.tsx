@@ -40,14 +40,6 @@ const App: React.FC = (props: any): JSX.Element => {
           backgroundPosition: 'center',
           height: "100vh",
         }}>
-          <Navbar />
-          <Switch>
-            <Route exact path="/index" component={Landing} />
-            <Route exact path="/browse" component={Browse} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/" component={Landing} />
-          </Switch>
-
         <Navbar />
         <Switch>
           <Route exact path="/index" component={Landing} />
