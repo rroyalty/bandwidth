@@ -10,11 +10,11 @@ User_Genre.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
+      user_oidc: {
         type: DataTypes.INTEGER,
         references: {
             model: 'user',
-            key: 'id'
+            key: 'oidc'
         },
       },
       genre_id: {

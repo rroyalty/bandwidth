@@ -8,6 +8,9 @@ const instrumentData = [{
     },
     {
         name: 'Vocals'
+    },
+    {
+        name: 'Piano'
     }
 ];
 

@@ -1,7 +1,7 @@
 const { User } = require('../models');
 
 const userData = [{
-        displayName: 'Jonnifer Hammilton',
+        nickName: 'FOREVER LOST',
         firstName: 'Jonnifer',
         lastName: 'Hammilton',
         image: '',
@@ -13,7 +13,7 @@ const userData = [{
         location: 'Salem, MA',
     },
     {
-        displayName: 'Jessica Arials',
+        nickName: '',
         firstName: 'Jessica',
         lastName: 'Arials',
         image: '',
@@ -25,7 +25,7 @@ const userData = [{
         location: 'Derry, NH',
     },
     {
-        displayName: 'Lunessa Hydrix',
+        nickName: 'Hydrexia',
         firstName: 'Lunessa',
         lastName: 'Hydrix',
         image: '',
@@ -35,6 +35,18 @@ const userData = [{
         email: 'lunessahydrix@hydrix.com',
         phone: '6174039127',
         location: 'New Haven, CT',
+    },
+    {
+        nickName: 'Raunchy',
+        firstName: 'Randy',
+        lastName: 'Rhodes',
+        image: '',
+        intentionStatus: 'Looking to Network',
+        bandName: 'Black Sabbath',
+        oidc: '9tj1x27qvkckubn5xjhofuvl',
+        email: 'rrhodes@aol.com',
+        phone: '6664200024',
+        location: 'Dallas, TX',
     }
 ];
 
