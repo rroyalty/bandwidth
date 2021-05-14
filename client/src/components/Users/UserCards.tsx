@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 
 const UserCard = () => {
     return(
-        <Container className="bg">
+        <Container maxWidth="xs"className="bg">
             <h1>Name</h1>
             <p>photohere</p>
             <p>Status</p>

@@ -70,6 +70,7 @@ const Navbar: React.FC = (): JSX.Element => {
                         <Link to="/">Home</Link>
                         <Link to="/about">about</Link>
                         <Link to="/browse">browse</Link>
+                        <Link to="/profile">profile</Link>
                         </MenuItem>
                        
                     </List>
