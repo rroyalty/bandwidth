@@ -12,6 +12,7 @@ Instrument.init(
         },
         name: {
             type: DataTypes.STRING,
+            allowNull: false,
         }
     },
     {

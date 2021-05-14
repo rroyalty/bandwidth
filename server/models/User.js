@@ -7,17 +7,21 @@ const bcrypt = require('bcrypt');
 
 class User extends Model { }
 
+// Need to make oidc Primary Key and test delete
+// Need to re-seed as well
 User.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            required: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        displayName: {
+        // Manually define the primary key
+        // This might not be necessary with oidc
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     required: false,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
+        nickName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             defaultValue: "New User"
         },
         firstName: {
@@ -45,11 +49,12 @@ User.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
+        // technically this is the sub key
         oidc: {
             type: DataTypes.STRING,
-            defaultValue: Sequelize.STRING
-            // required: true,
-            // primaryKey: true,
+            defaultValue: Sequelize.STRING,
+            required: true,
+            primaryKey: true,
         },
         // after showing Contact model to Ryan, opted to just keep on User model for now.
         email: {
@@ -76,7 +81,7 @@ User.init(
         modelName: 'user'
     }
 );
-module.exports =  User;
+module.exports = User;
 
 
 

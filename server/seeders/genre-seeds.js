@@ -8,6 +8,9 @@ const genreData = [{
     },
     {
         name: 'Synth Pop'
+    },
+    {
+        name: 'Blues'
     }
 ];
 
