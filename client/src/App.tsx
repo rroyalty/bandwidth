@@ -14,7 +14,7 @@ import ProtectedRoute from './auth/protected-route';
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 
-import './App.css';
+// import './App.css';
 
 import { Container } from "@material-ui/core";
 
