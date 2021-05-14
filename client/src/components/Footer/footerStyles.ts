@@ -1,15 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const navbarStyles = makeStyles({
+const footerStyles = makeStyles({
     navDisplayFlex: {
         display: `inline-flex`,
-        justifyContent: `space-between`
+        justifyContent: `flex-end`
     },
     linkText: {
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`,
-        justifyContent: `center`
+        justifyContent: `flex-end`
     },
     navbar: {
         backgroundColor: `#181D27`,
@@ -32,12 +32,11 @@ const navbarStyles = makeStyles({
     rightAppBar: {
         marginLeft: `auto`,
         marginRight: 10
-
     },
     justifyContent: {
         display: `flex`,
         // flexDirection: `column`,
-        justifyContent: `center`
+        justifyContent: `flex-end`
     },
     mobileNav: {
         // backgroundColor: `#181D27`,
@@ -48,7 +47,14 @@ const navbarStyles = makeStyles({
         // color: `#fff !important`,
         justifyContent: `flex-end`,
         // justifyContent: `center`
-    }
+    },
+    stickToBottom: {
+        width: '100%',
+        position: 'fixed',
+        bottom: 0,
+      //   might have to play with this later on to make sure this doesn't cover anything
+        marginBottom: '3px',
+      },
 });
 
-export default navbarStyles
+export default footerStyles;
