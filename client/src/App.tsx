@@ -14,10 +14,7 @@ import ProtectedRoute from './auth/protected-route';
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 
-
-
 import './App.css';
-
 
 import { Container } from "@material-ui/core";
 
@@ -33,7 +30,7 @@ const App: React.FC = (props: any): JSX.Element => {
   return (
     <Router>
       <>
-        <Container maxWidth='xl' className="App bg" style={{
+        <Container maxWidth='xl' style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: 'no-repeat',
