@@ -18,7 +18,7 @@ const User_Genre = require('./User_Genre');
     // Determine through which model as well as the foreign key
     User.belongsToMany(Instrument, {
         through: User_Instrument,
-        foreignKey: 'user_id',
+        foreignKey: 'user_oidc',
     });
     
     // Determine through which model as well as the foreign key
@@ -30,7 +30,7 @@ const User_Genre = require('./User_Genre');
     // Determine through which model as well as the foreign key
     User.belongsToMany(Genre, {
         through: User_Genre,
-        foreignKey: 'user_id',
+        foreignKey: 'user_oidc',
     });
 
 

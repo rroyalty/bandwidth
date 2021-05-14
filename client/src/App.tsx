@@ -14,35 +14,11 @@ import ProtectedRoute from './auth/protected-route';
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 
-
-import './App.css';
-
-
 import { IconButton, Container } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-// const useStyles = makeStyles({
-//   navbarDisplayFlex: {
-//     display: `flex`,
-//     justifyContent: `space-between`
-//   },
-//   navDisplayFlex: {
-//     display: `flex`,
-//     justifyContent: `space-between`
-//   },
-//   linkText: {
-//     textDecoration: `none`,
-//     textTransform: `uppercase`,
-//     color: `white`
-//   },
-//   mobileNav: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     color: 'black'
-//   }
-// });
 
 
 const App: React.FC = (props: any): JSX.Element => {
@@ -56,7 +32,7 @@ const App: React.FC = (props: any): JSX.Element => {
   return (
     <Router>
       <>
-        <Container maxWidth='xl' className="App bg" style={{
+        <Container maxWidth='xl' style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: 'no-repeat',
@@ -73,10 +49,11 @@ const App: React.FC = (props: any): JSX.Element => {
           <ProtectedRoute exact path="/profile" component={Profile} />
         </Switch>
         </Container>
+        {/* <Footer /> */}
       </>
       
     </Router>
-  
+
   );
 }
 

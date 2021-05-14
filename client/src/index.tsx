@@ -5,17 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
+import appTheme from './AppTheme'
+import { ThemeProvider } from '@material-ui/core';
 
 
 ReactDOM.render(
   <React.StrictMode>
-   
-   <Router>
+    <ThemeProvider theme={appTheme}>
       <Auth0ProviderWithHistory>
+        <Router>
           <App />
+        </Router>
       </Auth0ProviderWithHistory>
-    </Router>
-   
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
