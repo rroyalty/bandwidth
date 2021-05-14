@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 const Profile: React.FC = (): JSX.Element => {
-  const  user:any  = useAuth0();
+  const user:any  = useAuth0();
   const { name, picture, email } = user;
 
   return (
