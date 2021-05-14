@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+<h1 align="center">Bandwidth</h1> 
+<p align="center">The Network for Musicians</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployment
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">View Our Deployed application here</a>
 
-## Available Scripts
+## Description
+ Are you a Band looking for a Musician? A Musician looking for a Band? Which Instruments do you play? Are you looking to network with other bands based on Genre? Enter Bandwidth, a networking platform for musicians nationwide to find new members in their area, as well as for bands looking to work with other bands to tour or create shows of their own. We supply the network. You supply the music. It's that easdy.
 
-In the project directory, you can run:
+## Table of Contents
+   [User Story](#user-story) | [Technologies](#technologies) | [How it Works](#how-it-works) | [License](#license) | [Collaborators](#collaborators)    
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Story
+```
+As a Musician, I want to visit a website and see other Bands and Musicians to network with.
+I want a website that I can access on my phone, tablet, or desktop.
+When I want to contact one or more musicians,
+Then I want to be directed to login.
+When I signup for the first time,
+Then I want to create a profile that contains my own Musical profile, including User and Contact info, as well as Instruments, Genres, etc.
+When I create a profile or login again,
+Then I want to be redirected to my dashboard.
+When I contact a User,
+Then I want to send them an email, call, or direct message.
+When I am logged in,
+Then I want to be able to search for others in my area, or by instruments played, genre, etc.
+```
+## Technologies
+[NPM](https://www.npmjs.com/) | [Express](https://www.npmjs.com/package/express) | [React JS](https://reactjs.org/) | [MySQL2](https://www.npmjs.com/package/mysql2) | [Sequelize](https://www.npmjs.com/package/sequelize) | [Dotenv](https://www.npmjs.com/package/dotenv) | [Auth0](https://auth0.com/#!) | [TypeScript](https://www.typescriptlang.org/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How It Works
+* Clone the repo
+* Run the command line npm install for all the dependencies to be installed (in both server and client folders)
+* Create a database with db schema.sql name before running
+* Create a .env file to connect to your database for Model seeding (we used TablePlus on Mac and Windows).
+* Type npm run seed from the server file to populate the database with data.
+* Type npm run start from the client file to start the React application.
 
-### `npm test`
+## Questions
+Please contact the builders of this application if you have any quesitons, concerns or issues running the app on your local machine (contact info below).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Future Development
+* Add different color modes for users. This could include the nowadays standard dark mode (toggle), perhaps a more creative toggle color such as Pride mode, or maybe even a color picker associated with CSS variables that would change certain sets of colors based off User preference.
+* Expanded functionality for other User profile types. Right now there is one generic type, with different field values (such as Status: looking for Band or Musician). This could simply be expanded to include statuses such as "Looking for Manager" or "Tour Manager looking for Bands", but the macro sense would be to expand beyond relating musicians to bands and bands to other bands, by also connecting music professionals to management, venues, and other desired roles within various musical environments.
+* Integrate Spotify API into User Profiles. 
+* Include additional options for YouTube, maybe even mp3 or mp4 uploads to a certain extend.
+* Re-design User models to perhaps be separated her role: Musician, Band, etc. This could possibly result in a different layout, but may not be a good idea all things considered.
+* Enhance and Expand search functionality. The idea would be more like a Craigslist for Musicians. Multiple search features (location, genre, instrument, status, etc.), however there exists the question how this would be marketable. After a certain extent, this passion project would have to be used for a purpose beyond Project 3. Donation based? - How does Craigslist make money?
+* Ability to Upload photos for backgrounds. Ditto for A/V (audio/video).
+* Expanded Login options (Social Media, Gmail, custom signup (non-Gmail accounts), GitHub, etc.)
+* Fast Average Color npm package for photos to determine the background of a band page algorithmically.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built with 🤘 by
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Cathy Marchese on GitHub](https://github.com/crrmarchese)<br/>
+[Toni Powell on GitHub](https://github.com/tonipow3ll)<br/>
+[Ryan Royalty on GitHub](https://github.com/rroyalty)<br/>
+[Bjorn Yourey on GitHub](https://github.com/byourey)<br/>
+[Jonathan Hammond on GitHub](https://github.com/Pythonidaer)<br/>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
