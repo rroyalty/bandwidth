@@ -6,6 +6,7 @@ import fullLogo from '../../fullLogo.png';
 import smallLogo from '../../logo512.png';
 import './style.css';
 import AuthNav from "../../components/Login/Auth-nav";
+import SignupButton from "../../components/Login/Signup-button"
 
 import { Button, Box, Container } from "@material-ui/core"
 
@@ -17,9 +18,7 @@ const Landing: React.FC = (): JSX.Element => {
             <Container >
                 <img className='logoText' src={matches ? fullLogo : smallLogo} alt="logo" />
             </Container>
-            <Button variant="contained">
-                Sign Up
-            </Button>
+            <SignupButton />
             <AuthNav />
 
         </Box>
