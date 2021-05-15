@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from '@material-ui/core';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 import './style.css';
 
 
@@ -35,6 +36,7 @@ const Profile: React.FC = (): JSX.Element => {
       
         </pre>
       </div>
+      <Link to="/profile" >Edit Profile</Link>
     </Container>
     </div>
   );

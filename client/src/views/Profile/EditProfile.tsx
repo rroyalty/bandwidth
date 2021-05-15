@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { profileUpdated } from './profileSlice'
+// import { profileUpdated } from './profileSlice'
 export const EditProfile = () => {
     // intention status (available / unavailable)
     // band name
@@ -27,13 +27,13 @@ export const EditProfile = () => {
     const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     
-    const onUpdateProfileClicked = () => {
-        if (status || bandName || phone || email || location) {
-            dispatch(profileUpdated({displayName, status, phone, email, location}))
-            // what am I pushing to history?
-            // history.push(``)
-        }
-    }
+    // const onUpdateProfileClicked = () => {
+    //     if (status || bandName || phone || email || location) {
+    //         dispatch(profileUpdated({displayName, status, phone, email, location}))
+    //         // what am I pushing to history?
+    //         // history.push(``)
+    //     }
+    // }
     return (
         <section>
             <h2>Edit Profile</h2>
@@ -82,7 +82,8 @@ export const EditProfile = () => {
                 onChange={onLocationChanged}
                 />
             </form>
-            <button type="button" onClick={onUpdateProfileClicked}>Save</button>
+            {/* add this to below onClick={onUpdateProfileClicked} */}
+            <button type="button" >Save</button>
             <button type="button">Discard</button>
         </section>
     )
