@@ -74,7 +74,7 @@ const Navbar: React.FC = (): JSX.Element => {
                         </MenuItem>
                        
                     </List>
-                
+                    <AuthNav />
                 </Drawer>
             </AppBar>
         )
