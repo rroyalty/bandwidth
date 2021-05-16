@@ -34,7 +34,7 @@ export const EditProfile = () => {
         }
     }
     return (
-        <section>
+        <section className="bg">
             <h2>Edit Profile</h2>
             <form>
                 <label htmlFor="editProfile">Edit Profile</label>
@@ -47,7 +47,7 @@ export const EditProfile = () => {
                 />
                  <input 
                 type='text'
-                id='displayName'
+                id='status'
                 placeholder='Available, or Unavailable?'
                 value={status}
                 onChange={onStatusChanged}
@@ -62,21 +62,21 @@ export const EditProfile = () => {
                 <input 
                 type='text'
                 id='phone'
-                placeholder='Display Name'
+                placeholder='Phone'
                 value={phone}
                 onChange={onPhoneChanged}
                 />
                 <input 
                 type='text'
                 id='email'
-                placeholder='Display Name'
+                placeholder='Email'
                 value={email}
                 onChange={onEmailChanged}
                 />
                 <input 
                 type='text'
                 id='location'
-                placeholder='Display Name'
+                placeholder='Location'
                 value={location}
                 onChange={onLocationChanged}
                 />
