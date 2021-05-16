@@ -35,26 +35,22 @@ export const profileSlice = createSlice({
             },
             // payload here (mini-model)
             //  interface goes after prepare, before args prepare<INTERFACE IN HERE>(args)
-            prepare(payload) {
-                return {
-                    payload
-                }
-            }
-        },
+            // prepare(payload) {
+            //     return {
+            //         payload
+            //     }
+            // }
         profileUpdated: (state: IProfileStateArray, action: PayloadAction<IPrepare>) => {
             const payload = action.payload
-            const existingProfile = state.find(profile => profile.id === payload.id)
+            let existingProfile = state.find(profile => profile.id === payload.id)
             if (existingProfile) {
-                existingProfile.displayName = payload.displayName,
-                    existingProfile.status = payload.status,
-                    existingProfile.bandName = payload.bandName,
-                    existingProfile.phone = payload.phone,
-                    existingProfile.email = payload.email,
-                    existingProfile.location = payload.location
+                existingProfile = payload
             }
+
         }
-    })
+    }
 })
+
 
 export const { profileAdded, profileUpdated } = profileSlice.actions
 export const selectProfile = (state: RootState) => state.profile
