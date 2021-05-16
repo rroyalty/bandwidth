@@ -41,7 +41,7 @@ export const profileSlice = createSlice({
                 }
             }
         }
-        profileUpdated(state: IProfileStateArray, action: PayloadAction<IPrepare>) {
+        profileUpdated: (state: IProfileStateArray, action: PayloadAction<IPrepare>) => {
             const payload = action.payload
             const existingProfile = state.find(profile => profile.id === payload.id)
             if (existingProfile) {
