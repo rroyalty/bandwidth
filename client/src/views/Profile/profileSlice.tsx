@@ -40,7 +40,7 @@ export const profileSlice = createSlice({
                     payload
                 }
             }
-        }
+        },
         profileUpdated: (state: IProfileStateArray, action: PayloadAction<IPrepare>) => {
             const payload = action.payload
             const existingProfile = state.find(profile => profile.id === payload.id)
@@ -53,7 +53,7 @@ export const profileSlice = createSlice({
                     existingProfile.location = payload.location
             }
         }
-    }
+    })
 })
 
 export const { profileAdded, profileUpdated } = profileSlice.actions
