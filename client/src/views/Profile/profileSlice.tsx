@@ -1,4 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '../../redux/store'
 import Profile from './Profile'
 
 // update intial state to match 'intial profile'
@@ -6,72 +7,51 @@ import Profile from './Profile'
 // phone # 888-888-8888
 // email = email from auth0
 
-interface IInitialState { id:any, displayName:string, status:string, bandName:any, phone:any, email:any, location:any};
-interface IInitialStateArray extends Array<IInitialState>{}
+interface IProfileState { id: any, displayName: string, status: string, bandName: any, phone: any, email: any, location: any };
+interface IProfileStateArray extends Array<IProfileState> { }
 
-const initialState : IInitialStateArray = [
-    { id: '1', displayName: 'Toni Powell', status: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA'}
+const initialState: IProfileStateArray = [
+    { id: '1', displayName: 'Toni Powell', status: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA' }
 ]
-interface IPrepare {
-        payload: {
-            id: string;
-            displayName: string;
-            status: string;
-            bandName: string;
-            phone: string;
-            email: string;
-            location: string;
-        }
-}
 
-  const profileSlice = createSlice({
-//   profileUpdated get's called here 
-name: 'profile',
-initialState,
-reducers: {
-    profileAdded: {
-        reducer(
-            state,
-            action,
-            // action: PayloadAction<typeof Profile[], string, {currentProfile: string}>
-            )
-            // {
-            //     state.all = action.payload
-            // },
-            {
-            state.push(action.payload)
-        }, 
-        // payload here (mini-model)
-        //  interface goes after prepare, before args prepare<INTERFACE IN HERE>(args)
-        prepare<IPrepare>({displayName, status, bandName, phone, email, location}:any)
-         {
-            return {
-                payload: {
-                    id: nanoid(),
-                    displayName, 
-                    status,
-                    bandName,
-                    phone,
-                    email, 
-                    location
-                }
+interface IPrepare {
+        id: string;
+        displayName: string;
+        status: string;
+        bandName: string;
+        phone: string;
+        email: string;
+        location: string;
+    }
+
+
+export const profileSlice = createSlice({
+    //   profileUpdated get's called here 
+    name: 'profile',
+    initialState,
+    reducers: {
+        profileAdded: (state, action: PayloadAction<IPrepare>) => {
+                state.push(action.payload)
+            },
+            // payload here (mini-model)
+            //  interface goes after prepare, before args prepare<INTERFACE IN HERE>(args)
+            // prepare(payload) {
+            //     return {
+            //         payload
+            //     }
+            // }
+        profileUpdated: (state, action: PayloadAction<IPrepare>) => {
+            const payload = action.payload
+            let existingProfile = state.find(profile => profile.id === payload.id)
+            if (existingProfile) {
+                existingProfile = payload
             }
-        }
-    },
-    profileUpdated(state, action){
-        const {id, displayName, bandName, phone, email, location} = action.payload
-        const existingProfile = state.find(profile => profile.id === id)
-        if (existingProfile) {
-            existingProfile.displayName = displayName,
-            existingProfile.status = status,
-            existingProfile.bandName = bandName,
-            existingProfile.phone = phone,
-            existingProfile.email = email,
-            existingProfile.location = location
+
         }
     }
-}
 })
 
+
 export const { profileAdded, profileUpdated } = profileSlice.actions
+export const selectProfile = (state: RootState) => state.profile
 export default profileSlice.reducer

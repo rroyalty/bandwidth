@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 import appTheme from './AppTheme'
 import { ThemeProvider } from '@material-ui/core';
-import store from './store'
+import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
