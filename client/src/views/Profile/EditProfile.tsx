@@ -16,7 +16,7 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch();
     // not sure if i need the below quite yet
-    // const history = useHistory();
+    const history = useHistory();
 
     const onDisplayNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setDisplayName(e.target.value)
     const onStatusChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setStatus(e.target.value)
@@ -25,12 +25,12 @@ export const EditProfile = () => {
     const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     
-    
+    // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
     const onUpdateProfileClicked = () => {
-        if (status || bandName || phone || email || location) {
+        if (displayName || status || bandName || phone || email || location) {
             dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
-            // what am I pushing to history?
-            // history.push(``)
+          console.log("PROFILE UPDATED ")
+          console.log(history)
         }
     }
     return (
