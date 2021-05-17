@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { profileUpdated } from './profileSlice';
 
 
-export const EditProfile = () => {
+const EditProfile = () => {
   
     const [displayName, setDisplayName] = useState('')
     const [status, setStatus] = useState('')
