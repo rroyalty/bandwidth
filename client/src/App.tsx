@@ -6,11 +6,8 @@ import About from './views/About/About'
 import Profile from './views/Profile/Profile'
 import Footer from './components/Footer/Footer'
 import Loading from './components/Loading/Loading'
-
 import { useAuth0 } from '@auth0/auth0-react';
 import ProtectedRoute from './auth/protected-route';
-
-
 import Navbar from './components/Navbar/Navbar'
 import background from './detroit-punk-2.jpg'
 
