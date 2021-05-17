@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   font: {
     fontSize: `24px`,
-    color: `#181D27`
+    color: 'red'
   }
 }));
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import TeamBio from '../../components/TeamBio/TeamBio'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -24,6 +25,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     avatar: {
         height: "150px",
         width: "150px"
+    },
+    font: {
+        fontSize: "24px",
+        color: '#181D27'
     }
 }));
 
@@ -33,46 +38,10 @@ const TheTeam: React.FC = (): JSX.Element => {
     const classes = useStyles();
     return (
         <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
-            <Container className={classes.container}>
-                <Typography>THE TEAM!</Typography>
-                <Grid className={classes.grid} container spacing={1}>
-                    <Grid container item xs={12} spacing={3}>
-                        <Grid item xs={4}>
-                            <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                        </Grid>
-                        <Grid item xs={8}>
-                        </Grid>
-                    </Grid>
-                    <Grid container item xs={12} spacing={3}>
-                        <Grid item xs={8}>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                        </Grid>
-                    </Grid>
-                    <Grid container item xs={12} spacing={3}>
-                        <Grid item xs={4}>
-                            <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                        </Grid>
-                        <Grid item xs={8}>
-                        </Grid>
-                    </Grid>
-                    <Grid container item xs={12} spacing={3}>
-                        <Grid item xs={8}>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                        </Grid>
-                    </Grid>
-                    <Grid container item xs={12} spacing={3}>
-                        <Grid item xs={4}>
-                            <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                        </Grid>
-                        <Grid item xs={8}>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Container>
+            <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
+            <Grid className={classes.grid} container spacing={1}>
+                <TeamBio />
+            </Grid>
         </Box>
     )
 }

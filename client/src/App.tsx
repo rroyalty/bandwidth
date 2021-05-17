@@ -46,7 +46,6 @@ const App: React.FC = (props: any): JSX.Element => {
   }
 
   const shufArray: Array<number> = arrayShuf(bgArray);
-  console.log(shufArray)
   const classes = useStyles();
   const { isLoading } = useAuth0();
 
