@@ -19,23 +19,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   }
 }));
 
-// interface IProps {
-//   toggleTheme: () => void;
-//   useDefaultTheme: boolean;
-//   children: React.ReactNode;
-// }
-
-const loadingImg =
-  "https://res.cloudinary.com/wnotw/images/c_limit,w_1536,q_auto:eco,f_auto/v1556554491/iq743aytrbnkny0wxozf/giphy-stickers-for-instagram-stories";
-
 const Loading: React.FC = (): JSX.Element => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
-        <img src={loadingImg} alt="Loading..." />
-        <Typography>
-          <h5 className={classes.font}>LOADING</h5>
+        <img src='/giphy-stickers-for-instagram-stories.gif' alt="Loading..." />
+        <Typography className={classes.font}>
+          LOADING
         </Typography>
     </Box>)
 };

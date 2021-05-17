@@ -1,9 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-import fullLogo from '../../fullLogo.png';
-import smallLogo from '../../logo512.png';
 import AuthNav from "../../components/Login/Auth-nav";
 import SignupButton from "../../components/Login/Signup-button"
 
@@ -40,7 +37,7 @@ const Landing: React.FC = (): JSX.Element => {
     return (
         <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
             <Container >
-                <img className={classes.logo} src={matches ? fullLogo : smallLogo} alt="logo" />
+                <img className={classes.logo} src={matches ? "/fullLogo.png" : "/logo512.png"} alt="logo" />
             </Container>
             <SignupButton />
             <AuthNav />

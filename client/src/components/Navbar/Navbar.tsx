@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link"
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
@@ -8,7 +9,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
 
-import { AppBar, Toolbar, MenuItem } from "@material-ui/core"
+import { AppBar, MenuItem } from "@material-ui/core"
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     navDisplayFlex: {
@@ -59,14 +60,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         justifyContent: `flex-end`,
         // justifyContent: `center`
     }
-  }));
-  
+}));
+
 
 const navLinks: { title: string, path: string }[] = [
-    { title: `Home`, path: `/` },
-    { title: `About`, path: `/about` },
-    { title: `Browse`, path: `/browse` },
-    { title: `Profile`, path: `/profile`}
+    { title: `Home`, path: `landing` },
+    { title: `About`, path: `about` },
+    { title: `The Team`, path: `theteam` },
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -93,7 +93,7 @@ const Navbar: React.FC = (): JSX.Element => {
             setState((prevState) => ({ ...prevState, drawerOpen: true }));
         const handleDrawerClose = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
-    
+
         return (
             <AppBar position="fixed" className={classes.navbar}>
                 <IconButton
@@ -103,7 +103,7 @@ const Navbar: React.FC = (): JSX.Element => {
                         'aria-label': 'menu',
                         'aria-haspopup': 'true',
                         onClick: handleDrawerOpen,
-                        
+
                     }}
                     className={classes.mobileNav}
                 >
@@ -118,12 +118,11 @@ const Navbar: React.FC = (): JSX.Element => {
                     }}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
                         <MenuItem className={classes.mobileNav}>
-                        <Link to="/">Home</Link>
-                        <Link to="/about">about</Link>
-                        <Link to="/browse">browse</Link>
-                        <Link to="/profile">profile</Link>
+                            <HashLink to="landing">Home</HashLink>
+                            <HashLink to="about">about</HashLink>
+                            <HashLink to="theteam">browse</HashLink>
                         </MenuItem>
-                       
+
                     </List>
                     <AuthNav />
                 </Drawer>
@@ -137,11 +136,11 @@ const Navbar: React.FC = (): JSX.Element => {
                 <section className={classes.rightAppBar}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                         {navLinks.map(({ title, path }) => (
-                            <Link to={path} key={title} className={classes.linkText}>
+                            <HashLink to={{ hash: path }} key={title} className={classes.linkText}>
                                 <ListItem button>
                                     <ListItemText primary={title} />
                                 </ListItem>
-                            </Link>
+                            </HashLink>
                         ))}
                     </List>
                     <AuthNav />
