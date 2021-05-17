@@ -5,15 +5,39 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
-import appTheme from './AppTheme'
 import { ThemeProvider } from '@material-ui/core';
 import store from './redux/store'
 import { Provider } from 'react-redux'
 
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue';
+import red from '@material-ui/core/colors/red';
+
+let Theme = createMuiTheme({
+  palette: {
+      primary: {
+          main: blue[500]
+      },
+      secondary: {
+          main: red[500]
+      },
+  },
+  typography: {
+      fontFamily: [
+          'RocknRoll One',
+          'sans-serif',
+      ].join(','),
+      fontSize: 12
+  },
+  spacing: 4,
+});
+Theme = responsiveFontSizes(Theme);
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={appTheme}>
+    <ThemeProvider theme={Theme}>
       <Auth0ProviderWithHistory>
         <Router>
           <App />

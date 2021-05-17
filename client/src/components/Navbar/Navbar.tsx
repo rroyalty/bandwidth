@@ -4,12 +4,63 @@ import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
 import AuthNav from "../../components/Login/Auth-nav";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
 
 import { AppBar, Toolbar, MenuItem } from "@material-ui/core"
 
-import navbarStyles from './navbarStyles'
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    navDisplayFlex: {
+        display: `inline-flex`,
+        justifyContent: `space-between`
+    },
+    linkText: {
+        textDecoration: `none`,
+        textTransform: `uppercase`,
+        color: `white`,
+        justifyContent: `center`
+    },
+    navbar: {
+        backgroundColor: `#181D27`,
+        borderBottomWidth: `2px`,
+        borderLeftWidth: `2px`,
+        borderRightWidth: `2px`,
+        borderColor: `#181D27`,
+        borderBottomLeftRadius: 16,
+        borderBottomRightRadius: 16,
+        border: `solid`,
+        // maxWidth: '95vw',
+        // marginLeft: -24
+    },
+    iconLinks: {
+        display: `inline-flex`,
+        height: `48px`,
+        width: `48px`,
+
+    },
+    rightAppBar: {
+        marginLeft: `auto`,
+        marginRight: 10
+
+    },
+    justifyContent: {
+        display: `flex`,
+        // flexDirection: `column`,
+        justifyContent: `center`
+    },
+    mobileNav: {
+        // backgroundColor: `#181D27`,
+        display: `flex`,
+        flexDirection: `column`,
+        textDecoration: `none`,
+        textTransform: `uppercase`,
+        // color: `#fff !important`,
+        justifyContent: `flex-end`,
+        // justifyContent: `center`
+    }
+  }));
+  
 
 const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `/` },
@@ -35,7 +86,7 @@ const Navbar: React.FC = (): JSX.Element => {
         window.addEventListener('resize', () => setResponsiveness())
     }, [])
 
-    const classes = navbarStyles();
+    const classes = useStyles();
 
     const displayMobile = () => {
         const handleDrawerOpen = () =>
@@ -79,6 +130,7 @@ const Navbar: React.FC = (): JSX.Element => {
             </AppBar>
         )
     }
+
     const displayDesktop = () => {
         return (
             <AppBar position="fixed" className={classes.navbar}>
