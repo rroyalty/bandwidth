@@ -1,11 +1,10 @@
-import { stringify } from 'querystring';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { profileUpdated } from './profileSlice';
 
 
-const EditProfile = () => {
+
+export const EditProfile = () => {
   
     const [displayName, setDisplayName] = useState('')
     const [status, setStatus] = useState('')
@@ -14,7 +13,7 @@ const EditProfile = () => {
     const [email, setEmail] = useState('')
     const [location, setLocation] = useState('')
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // not sure if i need the below quite yet
     const history = useHistory();
 
@@ -27,12 +26,13 @@ const EditProfile = () => {
     
     // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
     const onUpdateProfileClicked = () => {
-        if (displayName || status || bandName || phone || email || location) {
-            dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
-          console.log("PROFILE UPDATED ")
-          console.log(history)
-        }
+    //    console.log('button clicked')
+    if (displayName || status || bandName || phone || email || location) {
+        console.log("display name:", displayName, "status:", status, "band name:", bandName, "phone:", phone, "email:", email, "location:", location)
     }
+      
+        }
+  
     return (
         <section className="bg">
             <h2>Edit Profile</h2>
@@ -82,14 +82,10 @@ const EditProfile = () => {
                 />
             </form>
             {/* add this to below onClick={onUpdateProfileClicked} */}
-            <button type="button" onClick={onUpdateProfileClicked}  >Save</button>
+            <button type="button" onClick={onUpdateProfileClicked} >Save</button>
             <button type="button">Discard</button>
         </section>
-    )
-}
-
-function payload(payload: any): { payload: any; type: string; } {
-    throw new Error('Function not implemented.');
-}
+        )
+    }
 
 export default EditProfile
