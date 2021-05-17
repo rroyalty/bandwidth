@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from '@material-ui/core';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
+import editProfile from './EditProfile'
 import './style.css';
 
 
@@ -14,14 +15,13 @@ const Profile: React.FC = (): JSX.Element => {
   return (
     <div>
       <Container className="bg">
-        {/* className="row align-items-center profile-header" */}
+  
       <div >
-        {/* className="col-md-2 mb-3" */}
+
         <div >
           <img
             src={user.user.picture}
             alt="Profile"
-            // className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
           />
         </div>
         <div className="col-md text-center text-md-left">
@@ -32,11 +32,10 @@ const Profile: React.FC = (): JSX.Element => {
       </div>
       <div className="row">
         <pre className="col-12 text-light bg-dark p-4">
-          {/* {JSON.stringify(user, null, 2)} */}
       
         </pre>
       </div>
-      <Link to="/profile" >Edit Profile</Link>
+      <Link to="/editprofile">Edit Profile</Link>
     </Container>
     </div>
   );

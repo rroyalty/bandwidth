@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 import { ThemeProvider } from '@material-ui/core';
-import store from './redux/store'
+import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';

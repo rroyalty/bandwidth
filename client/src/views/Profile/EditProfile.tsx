@@ -1,14 +1,12 @@
+import { stringify } from 'querystring';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { profileUpdated } from './profileSlice';
 
-// import { profileUpdated } from './profileSlice'
+
 export const EditProfile = () => {
-    // intention status (available / unavailable)
-    // band name
-    // phone
-    // email
-    // location
+  
     const [displayName, setDisplayName] = useState('')
     const [status, setStatus] = useState('')
     const [bandName, setBandName] = useState('')
@@ -18,7 +16,7 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch();
     // not sure if i need the below quite yet
-    // const history = useHistory();
+    const history = useHistory();
 
     const onDisplayNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setDisplayName(e.target.value)
     const onStatusChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setStatus(e.target.value)
@@ -27,15 +25,16 @@ export const EditProfile = () => {
     const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     
-    // const onUpdateProfileClicked = () => {
-    //     if (status || bandName || phone || email || location) {
-    //         dispatch(profileUpdated({displayName, status, phone, email, location}))
-    //         // what am I pushing to history?
-    //         // history.push(``)
-    //     }
-    // }
+    // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
+    const onUpdateProfileClicked = () => {
+        if (displayName || status || bandName || phone || email || location) {
+            dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
+          console.log("PROFILE UPDATED ")
+          console.log(history)
+        }
+    }
     return (
-        <section>
+        <section className="bg">
             <h2>Edit Profile</h2>
             <form>
                 <label htmlFor="editProfile">Edit Profile</label>
@@ -48,7 +47,7 @@ export const EditProfile = () => {
                 />
                  <input 
                 type='text'
-                id='displayName'
+                id='status'
                 placeholder='Available, or Unavailable?'
                 value={status}
                 onChange={onStatusChanged}
@@ -63,28 +62,34 @@ export const EditProfile = () => {
                 <input 
                 type='text'
                 id='phone'
-                placeholder='Display Name'
+                placeholder='Phone'
                 value={phone}
                 onChange={onPhoneChanged}
                 />
                 <input 
                 type='text'
                 id='email'
-                placeholder='Display Name'
+                placeholder='Email'
                 value={email}
                 onChange={onEmailChanged}
                 />
                 <input 
                 type='text'
                 id='location'
-                placeholder='Display Name'
+                placeholder='Location'
                 value={location}
                 onChange={onLocationChanged}
                 />
             </form>
             {/* add this to below onClick={onUpdateProfileClicked} */}
-            <button type="button" >Save</button>
+            <button type="button" onClick={onUpdateProfileClicked}  >Save</button>
             <button type="button">Discard</button>
         </section>
     )
 }
+
+function payload(payload: any): { payload: any; type: string; } {
+    throw new Error('Function not implemented.');
+}
+
+export default EditProfile

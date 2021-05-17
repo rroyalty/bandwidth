@@ -4,6 +4,7 @@ import Landing from './views/Landing/landing'
 import Browse from './views/Browse/Browse'
 import About from './views/About/About'
 import Profile from './views/Profile/Profile'
+import editProfile from './views/Profile/EditProfile'
 import Footer from './components/Footer/Footer'
 import Loading from './components/Loading/Loading'
 import { useAuth0 } from '@auth0/auth0-react';
@@ -41,6 +42,7 @@ const App: React.FC = (props: any): JSX.Element => {
           <Route exact path="/about" component={About}/>
           <Route exact path="/" component={Landing} />
           <ProtectedRoute exact path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/editprofile" component={editProfile} />
         </Switch>
         </Container>
         {/* <Footer /> */}
