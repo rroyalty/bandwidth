@@ -4,7 +4,6 @@ import { Box, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
-    position: 'absolute',
     display: `flex`,
     flexDirection: `column`,
     height: `75vh`,
@@ -12,7 +11,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     alignItems: `center`,
     justifyContent: `center`,
     margin: 'auto',
-    backgroundColor: `white`
+    backgroundColor: `rgba(255,255,255,0)`,
+  },
+  font: {
+    fontSize: `24px`,
+    color: `#181D27`
   }
 }));
 
@@ -32,22 +35,9 @@ const Loading: React.FC = (): JSX.Element => {
     <Box className={classes.root}>
         <img src={loadingImg} alt="Loading..." />
         <Typography>
-          <h5>LOADING</h5>
+          <h5 className={classes.font}>LOADING</h5>
         </Typography>
     </Box>)
 };
 
 export default Loading;
-
-// .spinner {
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   height: 100vh;
-//   width: 100vw;
-//   background-color: white;
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-// }

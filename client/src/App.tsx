@@ -22,32 +22,35 @@ const App: React.FC = (props: any): JSX.Element => {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
-      return <Loading />;
+    return <Loading />;
   }
 
   return (
     <Router>
       <>
         <Container maxWidth='xl' style={{
+          display: `flex`,
+          position: `absolute`,
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           height: "100vh",
+          justifyContent: `center`
         }}>
-        <Navbar />
-        <Switch>
-          <Route exact path="/index" component={Landing} />
-          <Route exact path="/browse" component={Browse} />
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/" component={Landing} />
-          <ProtectedRoute exact path="/profile" component={Profile} />
-          <ProtectedRoute exact path="/editprofile" component={editProfile} />
-        </Switch>
+          <Navbar />
+          <Switch>
+            <Route exact path="/index" component={Landing} />
+            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/" component={Landing} />
+            <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/editprofile" component={editProfile} />
+          </Switch>
         </Container>
         {/* <Footer /> */}
       </>
-      
+
     </Router>
 
   );

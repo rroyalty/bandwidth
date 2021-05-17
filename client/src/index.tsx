@@ -10,13 +10,12 @@ import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
 let Theme = createMuiTheme({
   palette: {
       primary: {
-          main: blue[500]
+          main: `#181D27`
       },
       secondary: {
           main: red[500]
