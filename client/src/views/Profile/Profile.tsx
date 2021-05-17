@@ -21,7 +21,12 @@ const Profile: React.FC = (): JSX.Element => {
         </div>
         <div>
           <h2>{user.user.name}</h2>
+          <p>Status: </p>
+          <p>Band Name: </p>
+          <h2>Contact</h2>
           <p>{user.user.email}</p>
+          <p>Phone: </p>
+          <p>Location: </p>
         </div>
         <Link to="/editprofile">Edit Profile</Link>
       </Container>
