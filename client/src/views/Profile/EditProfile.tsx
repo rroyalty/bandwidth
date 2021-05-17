@@ -31,6 +31,13 @@ export const EditProfile = () => {
             dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
           console.log("PROFILE UPDATED ")
           console.log(history)
+          setDisplayName('')
+          setStatus('')
+          setBandName('')
+          setPhone('')
+          setEmail('')
+          setLocation('')
+          history.push('/profile')
         }
     }
     return (
@@ -88,8 +95,8 @@ export const EditProfile = () => {
     )
 }
 
-function payload(payload: any): { payload: any; type: string; } {
-    throw new Error('Function not implemented.');
-}
+// function payload(payload: any): { payload: any; type: string; } {
+//     throw new Error('Function not implemented.');
+// }
 
 export default EditProfile
