@@ -9,13 +9,6 @@ import { useSelector } from "react-redux";
 import { profile } from "console";
 // import { profile } from "console";
 
-
-const Profile: React.FC = (): JSX.Element => {
-  const  user:any  = useAuth0();
-  console.log()
-  // const userInfo = useSelector(state => state.profile.find(profile => profile.id === id))
-
-
 const Profile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
   // const { name, picture, email } = user;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { HashRouter } from 'react-router-dom'
 import Landing from './views/Landing/landing';
 import Browse from './views/Browse/Browse';
 import About from './views/About/About';
