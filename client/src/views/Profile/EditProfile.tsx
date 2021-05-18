@@ -28,7 +28,7 @@ export const EditProfile = () => {
     // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
     const onUpdateProfileClicked = () => {
         if (displayName || status || bandName || phone || email || location) {
-            dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
+            // dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
           console.log("PROFILE UPDATED ")
           console.log(history)
           setDisplayName('')

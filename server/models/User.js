@@ -55,12 +55,16 @@ User.init(
             defaultValue: Sequelize.STRING,
             required: true,
             primaryKey: true,
+            unique: true
         },
         // after showing Contact model to Ryan, opted to just keep on User model for now.
         email: {
             type: DataTypes.STRING,
             allowNull: true,
             unique: false,
+            validate: {
+                isEmail: true,
+              },
         },
         phone: {
             type: DataTypes.STRING,
