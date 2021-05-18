@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { profileUpdated } from './profileSlice';
 
 
 
@@ -13,7 +14,7 @@ export const EditProfile = () => {
     const [email, setEmail] = useState('')
     const [location, setLocation] = useState('')
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     // not sure if i need the below quite yet
     const history = useHistory();
 
@@ -27,7 +28,7 @@ export const EditProfile = () => {
     // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
     const onUpdateProfileClicked = () => {
         if (displayName || status || bandName || phone || email || location) {
-            // dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
+            dispatch(profileUpdated({id: '1', displayName, status, bandName, phone, email, location }))
           console.log("PROFILE UPDATED ")
           console.log(history)
           setDisplayName('')
@@ -36,7 +37,8 @@ export const EditProfile = () => {
           setPhone('')
           setEmail('')
           setLocation('')
-          history.push('/profile')
+          // whatever argument is in .push is what the page redirects to, state does NOT update 
+          history.push('/editprofile')
         }
     }
       

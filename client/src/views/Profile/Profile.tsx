@@ -40,7 +40,7 @@ const Profile: React.FC = (): JSX.Element => {
       <div>
 
       </div>
-      <Link to="/editprofile">Edit Profile</Link>
+  
       </Container>
     </div>
   );
