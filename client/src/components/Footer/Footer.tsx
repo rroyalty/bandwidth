@@ -10,7 +10,7 @@ const Footer = () => {
   const footerLinks: { title: string, path: string }[] = [
     // { title: `Home`, path: `/` },
     { title: `About`, path: `/about` },
-    { title: `Browse`, path: `/browse` },
+    // { title: `Browse`, path: `/browse` },
     { title: `faq`, path: `/faq` }
   ]
 
@@ -18,7 +18,7 @@ const Footer = () => {
       const classes = footerStyles()
     return (
        <BottomNavigation className={classes.stickToBottom}>
-            <AppBar className="footer" id="menuToggle" position="sticky">
+            <AppBar className="footer" id="menuToggle" position="static">
             <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                         {footerLinks.map(({ title, path }) => (
                             <Link to={path} key={title} className={classes.linkText}>

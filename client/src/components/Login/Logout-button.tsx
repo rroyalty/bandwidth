@@ -1,11 +1,21 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import { useAuth0 } from "@auth0/auth0-react";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: {
+    backgroundColor: `#181D27`,
+    width: `300px`,
+    margin: `.05rem`
+  }
+}));
 
 const LogoutButton = () => {
+  const classes = useStyles();
   const { logout } = useAuth0();
   return (
-    <Button
+    <Button className={classes.root}
       variant="contained" color="secondary"
       onClick={() =>
         logout({
