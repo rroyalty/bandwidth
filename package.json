@@ -9,7 +9,8 @@
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "install": "cd server && npm install && cd ../client && npm install",
-    "heroku-postbuild":"cd client && npm run build"
+    "heroku-postbuild":"cd client && npm run build",
+    "seed": "cd server && npm run seed"
   },
   "repository": {
     "type": "git",
