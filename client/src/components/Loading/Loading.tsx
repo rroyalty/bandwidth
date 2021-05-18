@@ -1,13 +1,34 @@
-import React from "react";
-import "./styles.css"
+import React from 'react';
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Box, Typography } from '@material-ui/core'
 
-const loadingImg =
-  "https://cdn.auth0.com/blog/auth0-react-sample/assets/loading.svg";
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: {
+    display: `flex`,
+    flexDirection: `column`,
+    height: `75vh`,
+    width: `auto`,
+    alignItems: `center`,
+    justifyContent: `center`,
+    margin: 'auto',
+    backgroundColor: `rgba(255,255,255,0)`,
+  },
+  font: {
+    fontSize: `24px`,
+    color: 'red'
+  }
+}));
 
-const Loading = () => (
-  <div className="spinner">
-    <img src={loadingImg} alt="Loading..." />
-  </div>
-);
+const Loading: React.FC = (): JSX.Element => {
+  const classes = useStyles();
+
+  return (
+    <Box className={classes.root}>
+        <img src='/giphy-stickers-for-instagram-stories.gif' alt="Loading..." />
+        <Typography className={classes.font}>
+          LOADING
+        </Typography>
+    </Box>)
+};
 
 export default Loading;
