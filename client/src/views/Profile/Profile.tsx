@@ -32,11 +32,12 @@ const Profile: React.FC = (): JSX.Element => {
         <div className="col-md text-center text-md-left">
           <h2>{user.user.name}</h2>
           {console.log(user)}
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
+          <p className="lead text-muted">Display Name: {user.user.nickname}</p>
+          <p className="lead text-muted">Status:</p>
+          <p className="lead text-muted">Band Name:</p>
+          <p className="lead text-muted">Email: {user.user.email}</p>
+          <p className="lead text-muted">Phone</p>
+          <p className="lead text-muted">Location</p>
         </div>
       </div>
       <div className="row">

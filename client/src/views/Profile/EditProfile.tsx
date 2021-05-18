@@ -95,8 +95,4 @@ export const EditProfile = () => {
     )
 }
 
-// function payload(payload: any): { payload: any; type: string; } {
-//     throw new Error('Function not implemented.');
-// }
-
 export default EditProfile
