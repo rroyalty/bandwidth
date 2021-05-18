@@ -36,11 +36,9 @@ const Profile: React.FC = (): JSX.Element => {
           <p className="lead text-muted">Location</p>
         </div>
         <Link to="/editprofile">Edit Profile</Link>
-      {/* </Container> */}
+
       <div>
-        {/* <pre>
-          {JSON.stringify(user, null, 2)}
-        </pre> */}
+
       </div>
       <Link to="/editprofile">Edit Profile</Link>
       </Container>
