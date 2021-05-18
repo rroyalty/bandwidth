@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { HashRouter } from 'react-router-dom'
 import Landing from './views/Landing/landing';
 import Browse from './views/Browse/Browse';
 import About from './views/About/About';
@@ -27,22 +26,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import FAQ from '../src/views/faq/Faq'
-
-import './App.css';
-
-
-=======
->>>>>>> a30336a8ae4e5f05acf9c71b9bf0a138e2244e2e
-import { IconButton, Container } from "@material-ui/core";
-import { Home } from "@material-ui/icons";
-import { List, ListItem, ListItemText } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-=======
 const App: React.FC = (props: any): JSX.Element => {
->>>>>>> a233c97664e4f02e7213ef0753e70c8dd8b569ef
 
   let bgArray: Array<number> = [1, 2, 3, 4]
 
