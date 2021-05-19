@@ -67,6 +67,7 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
     { title: `The Team`, path: `theteam` },
+    { title: `Find`, path: `find` }
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -121,8 +122,8 @@ const Navbar: React.FC = (): JSX.Element => {
                             <ScrollLink to="landing">Home</ScrollLink>
                             <ScrollLink to="about">about</ScrollLink>
                             <ScrollLink to="theteam">browse</ScrollLink>
+                            <ScrollLink to="find">Find</ScrollLink>
                         </MenuItem>
-
                     </List>
                     <AuthNav />
                 </Drawer>
