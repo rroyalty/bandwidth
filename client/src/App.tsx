@@ -53,46 +53,52 @@ const App: React.FC = (props: any): JSX.Element => {
   }
 
   return (
-    <>
-      <Navbar />
-      <Switch>
-        <ProtectedRoute exact path="/profile" component={Profile} />
-        <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
-        <ProtectedRoute exact path="/find" component={Find} />
-      </Switch>
-      <Container id="landing" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[0]}.jpg)` }} >
-        <Landing />
-      </Container>
-      <Container id="about" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[1]}.jpg)` }} >
-        <About />
-      </Container>
-      <Container id="theteam" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
-        <TheTeam />
-      </Container>
-    </>
+    <Router>
+        <>
+          <Navbar />
+          <Switch>
+            <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
+            <ProtectedRoute exact path="/find" component={Find} />
+          </Switch>
+          <Container id="landing" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[0]}.jpg)` }} >
+            <Landing />
+          </Container>
+          <Container id="find" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
+            <Find />
+          </Container>
+          <Container id="about" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[1]}.jpg)` }} >
+            <About />
+          </Container>
+          <Container id="theteam" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
+            <TheTeam />
+          </Container>
+          {/* <Footer /> */}
+        </>
+    </Router>
 
-    // return (
-    // <Router>
-    //   <>
-    //     <Container className={classes.root} maxWidth='xl' style={{backgroundImage: `url(${backgroundList[0]})`}} >
-    //       <Navbar />
-    //       <Switch>
-    //         <Route exact path="/index" component={Landing} />
-    //         <Route exact path="/browse" component={Browse} />
-    //         <Route exact path="/about" component={About} />
-    //         <Route exact path="/" component={Landing} />
-    //         <ProtectedRoute exact path="/profile" component={Profile} />
-    //         <ProtectedRoute exact path="/editprofile" component={editProfile} />
-    //       </Switch>
-    //     </Container>
-    //     {/* <Footer /> */}
-    //   </>
+  );
 
-    // </Router>
+  // return (
+  // <Router>
+  //   <>
+  //     <Container className={classes.root} maxWidth='xl' style={{backgroundImage: `url(${backgroundList[0]})`}} >
+  //       <Navbar />
+  //       <Switch>
+  //         <Route exact path="/index" component={Landing} />
+  //         <Route exact path="/browse" component={Browse} />
+  //         <Route exact path="/about" component={About} />
+  //         <Route exact path="/" component={Landing} />
+  //         <ProtectedRoute exact path="/profile" component={Profile} />
+  //         <ProtectedRoute exact path="/editprofile" component={editProfile} />
+  //       </Switch>
+  //     </Container>
+  //     {/* <Footer /> */}
+  //   </>
 
-    // );
+  // </Router>
 
-  )
-};
+  // );
+}
 
 export default App;

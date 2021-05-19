@@ -67,7 +67,6 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
     { title: `The Team`, path: `theteam` },
-    { title: `Find`, path: `find` }
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
