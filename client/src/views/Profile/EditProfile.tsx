@@ -6,11 +6,14 @@ import { userProfileThunk } from './profileSlice';
 
 
 
-export const EditProfile = ({ match }: { match: any }) => {
 
+export const EditProfile = ({ match }: { match: any }) => {
+// update this to have firstname / lastname fields in form / state
     const { profileID } = match.params
 
     const [nickName, setNickName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [intentionStatus, setIntentionStatus] = useState('')
     const [bandName, setBandName] = useState('')
     const [phone, setPhone] = useState('')
@@ -21,20 +24,23 @@ export const EditProfile = ({ match }: { match: any }) => {
     const history = useHistory();
 
     const onNickNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setNickName(e.target.value)
+    const onFirstNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setFirstName(e.target.value)
+    const onLastNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLastName(e.target.value)
     const onIntentionStatusChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setIntentionStatus(e.target.value)
     const onBandNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBandName(e.target.value)
     const onPhoneChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setPhone(e.target.value)
     const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
 
-    // button click is working, will need to 'push' to the state, then to DB? Push to state first, worry about DB later
+    
    const onUpdateProfileClicked = () => {
-        if (nickName || intentionStatus || bandName || phone || email || location) {
+        if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location) {
             dispatch(userProfileThunk({ id: profileID, nickName, intentionStatus, bandName, phone, email, location }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setNickName(nickName)
-            //   console.log(displayName)
+            setFirstName(firstName)
+            setLastName(lastName)
             setIntentionStatus(intentionStatus)
             setBandName(bandName)
             setPhone(phone)
@@ -54,9 +60,23 @@ export const EditProfile = ({ match }: { match: any }) => {
                 <input
                     type='text'
                     id='displayName'
-                    placeholder='Display Name'
+                    placeholder='Display Name / Nick Name'
                     value={nickName}
                     onChange={onNickNameChanged}
+                />
+                 <input
+                    type='text'
+                    id='firstName'
+                    placeholder='First Name'
+                    value={firstName}
+                    onChange={onFirstNameChanged}
+                />
+                 <input
+                    type='text'
+                    id='lastName'
+                    placeholder='Last Name'
+                    value={lastName}
+                    onChange={onLastNameChanged}
                 />
                 {/* <select onChange={onIntentionStatusChanged}>
                     <option value={intentionStatus}>Available</option>
