@@ -6,8 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 import { ThemeProvider } from '@material-ui/core';
-import { Provider } from 'react-redux'
-
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 
@@ -36,11 +34,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
       <Router>
-      <Auth0ProviderWithHistory>
-        <App />
+        <Auth0ProviderWithHistory>
+          <App />
         </Auth0ProviderWithHistory>
       </Router>
-      </ThemeProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

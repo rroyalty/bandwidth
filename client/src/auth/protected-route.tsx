@@ -3,10 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from "../components/Loading/Loading";
 
-// interface IProtectedRoute {
-//   component: FunctionComponent; 
-// }
-
 interface IRouteProps {
   location?: any;
   component?: any;
