@@ -3,15 +3,43 @@ import { Container } from '@material-ui/core';
 import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-import editProfile from './EditProfile'
+// import editProfile from './EditProfile'
 import './style.css';
+// import IProfileStateArray from './profileSlice'
 import { useSelector } from "react-redux";
-import { profile } from "console";
-// import { profile } from "console";
+import selectProfile from './profileSlice';
+import axios from 'axios'
+import { RootState } from "../../redux/store";
+
 
 const Profile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
-  // const { name, picture, email } = user;
+
+ 
+  // return response.data
+  // const userInfo = useSelector(state => selectProfile)
+
+  let userInfo:any;
+const fetchItem = async() => {
+  try{
+   const response = await axios('/api/users');
+    console.log(response.data);
+    userInfo = response.data
+    return userInfo
+  } catch{
+    if (!userInfo)
+    return
+  }
+}
+// fetchItem();
+// console.log(userInfo)
+ 
+
+
+  const profile = useSelector((state: RootState) => state.profile)
+  console.log(profile.profile)
+
+
 
   return (
     <div>
@@ -23,24 +51,21 @@ const Profile: React.FC = (): JSX.Element => {
           />
         </div>
         <div>
-          <h2>{user.user.name}</h2>
+          <h2>{profile.profile.displayName}</h2>
+          <p>{userInfo}</p>
+          {/* <p>{profile.profile.displayName}</p> */}
+          <p>Status: {profile.profile.intentionStatus}</p>
+          <p>Band Name: {profile.profile.bandName}</p>
+          <p>Email: {profile.profile.email}</p>
+          <p>Phone: {profile.profile.phone}</p>
+          <p>Location {profile.profile.location}</p>
+        </div>
+        {/* <Link to="/createProfile">Edit Profile</Link> */}
 
-          {console.log(user)}
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
-          <p className="lead text-muted">{user.user.email}</p>
+        <div>
 
         </div>
-        <Link to="/editprofile">Edit Profile</Link>
-      {/* </Container> */}
-      <div>
-        {/* <pre>
-          {JSON.stringify(user, null, 2)}
-        </pre> */}
-      </div>
-      <Link to="/editprofile">Edit Profile</Link>
+
       </Container>
     </div>
   );

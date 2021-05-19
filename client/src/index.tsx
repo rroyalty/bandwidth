@@ -37,11 +37,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <ThemeProvider theme={Theme}>
-      <Auth0ProviderWithHistory>
         <Router>
+      <Auth0ProviderWithHistory>
           <App />
-        </Router>
       </Auth0ProviderWithHistory>
+        </Router>
     </ThemeProvider>
     </Provider>
   </React.StrictMode>,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from './views/Landing/landing';
-import Browse from './views/Browse/Browse';
+import Find from './views/Find/Find';
 import About from './views/About/About';
 import TheTeam from './views/TheTeam/TheTeam';
 import Profile from './views/Profile/Profile';
-import EditProfile from './views/Profile/EditProfile';
+import CreateProfile from './views/Profile/CreateProfile';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -58,10 +58,14 @@ const App: React.FC = (props: any): JSX.Element => {
           <Navbar />
           <Switch>
             <ProtectedRoute exact path="/profile" component={Profile} />
-            <ProtectedRoute exact path="/editprofile" component={EditProfile} />
+            <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
+            <ProtectedRoute exact path="/find" component={Find} />
           </Switch>
           <Container id="landing" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[0]}.jpg)` }} >
             <Landing />
+          </Container>
+          <Container id="find" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
+            <Find />
           </Container>
           <Container id="about" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[1]}.jpg)` }} >
             <About />

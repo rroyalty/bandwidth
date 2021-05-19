@@ -42,7 +42,8 @@ User.init(
         // status was too general -- future dev may add, say, tourStatus
         intentionStatus: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: "Available"
         },
         // might need to be its own table - many play in 1+ bands
         bandName: {
