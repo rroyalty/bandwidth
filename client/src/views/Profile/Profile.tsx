@@ -60,7 +60,7 @@ const fetchItem = async() => {
           <p>Phone: {profile.profile.phone}</p>
           <p>Location {profile.profile.location}</p>
         </div>
-        <Link to="/editprofile">Edit Profile</Link>
+        {/* <Link to="/createProfile">Edit Profile</Link> */}
 
         <div>
 

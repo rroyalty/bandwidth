@@ -7,7 +7,7 @@ import { userProfileThunk } from './profileSlice';
 
 
 
-export const EditProfile = ({ match }: { match: any }) => {
+export const CreateProfile = ({ match }: { match: any }) => {
 // update this to have firstname / lastname fields in form / state
     const { profileID } = match.params
 
@@ -127,4 +127,4 @@ export const EditProfile = ({ match }: { match: any }) => {
 
 }
 
-export default EditProfile
+export default CreateProfile
