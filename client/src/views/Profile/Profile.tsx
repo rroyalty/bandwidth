@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 // import editProfile from './EditProfile'
 import './style.css';
 import IProfileStateArray from './profileSlice'
-
-
+import { useSelector } from "react-redux";
+import selectProfile from './profileSlice'
+import editProfile from './EditProfile'
 
 const Profile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
 
-  // const userInfo = useSelector(state => state.profile.find(profile => profile.id === id))
+  // const userInfo = useSelector(selectProfile => state.profile.find(profile => profile.id === id))
   // const { name, picture, email } = user;
 
   return (

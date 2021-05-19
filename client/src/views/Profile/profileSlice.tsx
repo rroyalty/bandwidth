@@ -3,11 +3,8 @@ import type { RootState } from '../../redux/store'
 import Profile from './Profile'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
-// update intial state to match 'intial profile'
-// status: available
-// phone # 888-888-8888
-// email = email from auth0
 
+// might need an axios.put(/api/users, profilePayload)
 
 export const userProfileThunk = createAsyncThunk('profile/userProfileUpate',
     async (profilePayload:any, thunkAPI) => {
