@@ -9,7 +9,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 
-let Theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     primary: {
       main: `#181D27`
@@ -27,12 +27,12 @@ let Theme = createMuiTheme({
   },
   spacing: 4,
 });
-Theme = responsiveFontSizes(Theme);
+theme = responsiveFontSizes(theme);
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <Router>
         <Auth0ProviderWithHistory>
           <App />
