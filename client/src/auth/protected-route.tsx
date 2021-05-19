@@ -23,4 +23,4 @@ const ProtectedRoute: React.FC<IRouteProps> = ({ component, ...args }) => (
   />
 );
 
-export default withRouter(ProtectedRoute);
+export default ProtectedRoute;

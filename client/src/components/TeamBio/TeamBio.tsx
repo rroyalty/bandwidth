@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     avatar: {
         height: "150px",
         width: "150px"
+    },    
+    font: {
+        fontSize: "24px",
+        color: '#181D27'
     }
 }));
 
@@ -29,6 +33,9 @@ const TeamBio: React.FC = (): JSX.Element => {
 
     return (
         <Box className={classes.root}>
+            <Grid container item xs={12} spacing={3}>
+                <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
+            </Grid>
             <Grid container item xs={12} spacing={3}>
                 <Grid item xs={4}>
                     <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
