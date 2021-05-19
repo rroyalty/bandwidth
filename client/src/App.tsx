@@ -46,7 +46,7 @@ const App: React.FC = (props: any): JSX.Element => {
 
   const shufArray: Array<number> = arrayShuf(bgArray);
   const classes = useStyles();
-  const { isLoading } = useAuth0();
+  const { isLoading }= useAuth0();
 
   if (isLoading) {
     return <Loading />;
@@ -56,10 +56,10 @@ const App: React.FC = (props: any): JSX.Element => {
     <Router>
         <>
           <Navbar />
-          <Switch>
+          {/* <Switch>
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/editprofile" component={EditProfile} />
-          </Switch>
+          </Switch> */}
           <Container id="landing" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[0]}.jpg)` }} >
             <Landing />
           </Container>

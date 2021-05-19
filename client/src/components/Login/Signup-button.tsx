@@ -1,3 +1,4 @@
+import React from "react";
 import Button from '@material-ui/core/Button';
 import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   }
 }));
 
-const SignupButton = () => {
+const SignupButton:React.FC = ():JSX.Element => {
   const classes = useStyles();
   const { loginWithRedirect } = useAuth0();
   return (

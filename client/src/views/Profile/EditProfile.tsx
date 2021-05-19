@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-export const EditProfile = () => {
+export const EditProfile: React.FC = (): JSX.Element => {
   
     const [displayName, setDisplayName] = useState('')
     const [status, setStatus] = useState('')

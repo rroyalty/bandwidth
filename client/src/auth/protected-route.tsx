@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from "../components/Loading/Loading";
 
@@ -27,4 +27,4 @@ const ProtectedRoute: React.FC<IRouteProps> = ({ component, ...args }) => (
   />
 );
 
-export default ProtectedRoute;
+export default withRouter(ProtectedRoute);

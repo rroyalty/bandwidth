@@ -1,14 +1,18 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { RouteProps, useHistory } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { History } from 'history';
 
-const Auth0ProviderWithHistory:React.FC = ({ children }):JSX.Element => {
+const Auth0ProviderWithHistory:React.FC<RouteProps> = ({ children }):JSX.Element => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN || "WRONG";
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID || "WRONG";
 
-  const history = useHistory();
+  const history: History = useHistory<History>();
 
-  const onRedirectCallback = (appState:any) => {
+  console.log(history)
+
+
+  const onRedirectCallback: any = (appState:any) => {
     history.push(appState?.returnTo || window.location.pathname);
   };
 
