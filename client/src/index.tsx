@@ -13,19 +13,19 @@ import red from "@material-ui/core/colors/red";
 
 let Theme = createMuiTheme({
   palette: {
-      primary: {
-          main: `#181D27`
-      },
-      secondary: {
-          main: red[500]
-      },
+    primary: {
+      main: `#181D27`
+    },
+    secondary: {
+      main: red[500]
+    },
   },
   typography: {
-      fontFamily: [
-          "RocknRoll One",
-          "sans-serif",
-      ].join(","),
-      fontSize: 12
+    fontFamily: [
+      "RocknRoll One",
+      "sans-serif",
+    ].join(","),
+    fontSize: 12
   },
   spacing: 4,
 });
@@ -34,13 +34,13 @@ Theme = responsiveFontSizes(Theme);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={Theme}>
         <Router>
-      <Auth0ProviderWithHistory>
-          <App />
-      </Auth0ProviderWithHistory>
+          <Auth0ProviderWithHistory>
+            <App />
+          </Auth0ProviderWithHistory>
         </Router>
-    </ThemeProvider>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
