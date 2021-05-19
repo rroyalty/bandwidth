@@ -75,7 +75,7 @@ export const profileSlice = createSlice({
         })
         // if failed,send message to user
         builder.addCase(userProfileThunk.rejected, (state, action:any) => {
-            // state.profile = action.payload, state.errorMessage = action.error.message ERROR MESSAGE HERE
+        //  state.errorMessage = action.error.message 
             state.isSubmitting = false
         })
     }
