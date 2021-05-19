@@ -1,15 +1,15 @@
-import React from ‘react’;
-import ReactDOM from ‘react-dom’;
-import ‘./index.css’;
-import App from ‘./App’;
-import reportWebVitals from ‘./reportWebVitals’;
-import { BrowserRouter as Router } from “react-router-dom”;
-import Auth0ProviderWithHistory from “./auth/auth0-provider-with-history”;
-import { ThemeProvider } from ‘@material-ui/core’;
-import { store } from ‘./redux/store’
-import { Provider } from ‘react-redux’
-import { createMuiTheme, responsiveFontSizes } from ‘@material-ui/core/styles’;
-import red from ‘@material-ui/core/colors/red’;
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router } from "react-router-dom";
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history"
+import { ThemeProvider } from "@material-ui/core";
+import { store } from "./redux/store"
+import { Provider } from "react-redux"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
 
 let Theme = createMuiTheme({
   palette: {
@@ -43,7 +43,7 @@ ReactDOM.render(
     </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById(‘root’)
+  document.getElementById("root")
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
