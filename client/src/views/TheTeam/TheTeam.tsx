@@ -38,9 +38,7 @@ const TheTeam: React.FC = (): JSX.Element => {
     const classes = useStyles();
     return (
         <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
-            {/* <Grid className={classes.grid} container spacing={1}> */}
-                <TeamBio />
-            {/* </Grid> */}
+            <TeamBio />
         </Box>
     )
 }

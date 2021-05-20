@@ -17,11 +17,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     grid: {
         justifyContent: `center`,
         alignItems: `center`,
+        '& container': {
+
+        }
     },
     avatar: {
         height: "150px",
         width: "150px"
-    },    
+    },
     font: {
         fontSize: "24px",
         color: '#181D27'
@@ -32,33 +35,29 @@ const TeamBio: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <Box className={classes.root}>
-            <Grid container item xs={12} spacing={3}>
+        <Container className={classes.root}>
+            <Grid className={classes.grid} container item xs={12} spacing={3}>
                 <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
             </Grid>
-            <Grid container item xs={12} spacing={3}>
-                <Grid item xs={4}>
+            <Grid className={classes.grid} container item xs={12} spacing={3}>
+                <Grid className={classes.grid} item xs={4}>
                     <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
                 </Grid>
                 <Grid item xs={8}>
+                    <Paper>
+                        <Typography>
+                            Ryan is an awesome dude!
+                        </Typography>
+                    </Paper>
                 </Grid>
             </Grid>
             <Grid container item xs={12} spacing={3}>
                 <Grid item xs={8}>
-                </Grid>
-                <Grid item xs={4}>
-                    <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                </Grid>
-            </Grid>
-            <Grid container item xs={12} spacing={3}>
-                <Grid item xs={4}>
-                    <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
-                </Grid>
-                <Grid item xs={8}>
-                </Grid>
-            </Grid>
-            <Grid container item xs={12} spacing={3}>
-                <Grid item xs={8}>
+                    <Paper>
+                        <Typography>
+                            Ryan is an awesome dude!
+                        </Typography>
+                    </Paper>
                 </Grid>
                 <Grid item xs={4}>
                     <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
@@ -69,9 +68,38 @@ const TeamBio: React.FC = (): JSX.Element => {
                     <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
                 </Grid>
                 <Grid item xs={8}>
+                    <Paper>
+                        <Typography>
+                            Ryan is an awesome dude!
+                        </Typography>
+                    </Paper>
                 </Grid>
             </Grid>
-        </Box>)
+            <Grid container item xs={12} spacing={3}>
+                <Grid item xs={8}>
+                    <Paper>
+                        <Typography>
+                            Ryan is an awesome dude!
+                        </Typography>
+                    </Paper>
+                </Grid>
+                <Grid item xs={4}>
+                    <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
+                </Grid>
+            </Grid>
+            <Grid container item xs={12} spacing={3}>
+                <Grid item xs={4}>
+                    <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
+                </Grid>
+                <Grid item xs={8}>
+                    <Paper>
+                        <Typography>
+                            Ryan is an awesome dude!
+                        </Typography>
+                    </Paper>
+                </Grid>
+            </Grid>
+        </Container>)
 };
 
 export default TeamBio;
