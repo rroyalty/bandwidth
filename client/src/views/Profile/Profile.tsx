@@ -59,6 +59,7 @@ const fetchItem = async() => {
           <p>Email: {profile.profile.email}</p>
           <p>Phone: {profile.profile.phone}</p>
           <p>Location {profile.profile.location}</p>
+          <p>About: {profile.profile.blurb}</p>
         </div>
         {/* <Link to="/createProfile">Edit Profile</Link> */}
 

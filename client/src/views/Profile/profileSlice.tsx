@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../redux/store'
-import Profile from './Profile'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 
@@ -12,7 +11,7 @@ export const userProfileThunk = createAsyncThunk('profile/userProfileUpate',
         return response.data
     })
 
-interface IProfileState { id: any, displayName: string, firstName: string, lastName: string, intentionStatus: string, bandName: any, phone: any, email: any, location: any };
+interface IProfileState { id: any, displayName: string, firstName: string, lastName: string, intentionStatus: string, bandName: any, phone: any, email: any, location: any, blurb: any};
 interface IProfileSliceState {
     profile: IProfileState;
     isSubmitting: boolean
@@ -21,7 +20,7 @@ interface IProfileSliceState {
 
 
 export const initialState: IProfileSliceState = {
-    profile: { id: '1', displayName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA'},
+    profile: { id: '1', displayName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA', blurb: 'I play a mean double bass... and like 3 chords on guitar.'},
     isSubmitting: false,
 }
 
@@ -35,6 +34,7 @@ interface IPrepare {
         phone: string;
         email: string;
         location: string;
+        blurb: string;
     }
 
 

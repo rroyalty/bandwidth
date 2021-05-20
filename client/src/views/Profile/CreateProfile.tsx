@@ -19,6 +19,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [location, setLocation] = useState('')
+    const [blurb, setBlurb] = useState('')
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -31,10 +32,11 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const onPhoneChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setPhone(e.target.value)
     const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
+    const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
 
     
    const onUpdateProfileClicked = () => {
-        if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location) {
+        if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
             dispatch(userProfileThunk({ id: profileID, nickName, intentionStatus, bandName, phone, email, location }))
             console.log("PROFILE UPDATED ")
             console.log(history)
@@ -46,6 +48,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
             setPhone(phone)
             setEmail(email)
             setLocation(location)
+            setBlurb(blurb)
             // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
             history.push(`/profile/`)
         }
@@ -118,6 +121,13 @@ export const CreateProfile = ({ match }: { match: any }) => {
                     value={location}
                     onChange={onLocationChanged}
                 />
+                 <textarea
+                    id='blurb'
+                    placeholder='Blurb'
+                    value={blurb}
+                    onChange={onBlurbChanged}
+                >
+                </textarea>
             </form>
             {/* add this to below onClick={onUpdateProfileClicked} */}
             <button type="button" onClick={onUpdateProfileClicked} >Save</button>
