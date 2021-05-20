@@ -1,40 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from '@material-ui/core';
-import axios from 'axios'
+import API from '../../utils/API'
+import { useState } from 'react';
+export interface UserI {
+    nickName: string,
+    firstName: string,
+    lastName: string,
+    intentionStatus: string,
+    location: string,
+    email: string,
+    phone: string
+}
 
 const UserCard = () => {
 
-    let userInfo;
-    const fetchItem = async() => {
-        const response = await axios('/api/users');
-        console.log(response.data);
-        userInfo = response.data
-        return userInfo
-        console.log(userInfo)
-    };
-    fetchItem();
+    const [users, setUsers] = useState<UserI[]>([])
 
-    // const renderedPosts = posts.map(post => (
-    //     <article className="post-excerpt" key={post.id}>
-    //       <h3>{post.title}</h3>
-    //       <p className="post-content">{post.content.substring(0, 100)}</p>
-    //       <PostAuthor userId={post.user} />
-    //       <Link to={`/posts/${post.id}`} className="button muted-button">
-    //         View Post
-    //       </Link>
-    //     </article>
-    return(
-        <Container maxWidth="xs"className="bg">
-            {/* {userInfo.map(info => {
-                <h1>{userInfo.}</h1>
-            })} */}
-            <h1>Name</h1>
+
+    const dbUsers = (data: any[]) => {
+        const userUser: UserI[] = data.map((dbUser) => {
+            return {
+                nickName: dbUser.nickName,
+                firstName: dbUser.firstName,
+                lastName: dbUser.lastName,
+                intentionStatus: dbUser.intentionStatus,
+                location: dbUser.location,
+                email: dbUser.email,
+                phone: dbUser.phone,
+            }
+        })
+        setUsers(userUser)
+    }
+
+
+
+    useEffect(() => {
+        API.getUsers().then(res => {
+            console.log(res.data)
+            dbUsers(res.data);
+        })
+    }, [])
+
+
+    return (
+        <Container maxWidth="xs" className="bg">
+            {/* {onLoad()} */}
+            {users.map((user) => {
+                return (
+                    <div>
+                        <p key={user.nickName}>{user.nickName}</p>
+                        <p>{user.firstName} {user.lastName}</p>
+                        <p>{user.intentionStatus}</p>
+                        <p>{user.location}</p>
+                        <p>{user.email}</p>
+                        <p>{user.phone}</p>
+                        <p>---------------------</p>
+                    </div>
+                )
+            })}
             <p>photohere</p>
             <p>Status</p>
             <p>City </p>
             <p>State</p>
             <p>Instrument</p>
-            <p>Genre</p>
+            {/* <p>{users}</p> */}
         </Container>
     )
 }
