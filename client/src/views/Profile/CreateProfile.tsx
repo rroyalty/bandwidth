@@ -37,7 +37,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
     
    const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ id: profileID, nickName, intentionStatus, bandName, phone, email, location }))
+            dispatch(userProfileThunk({ id: profileID, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setNickName(nickName)

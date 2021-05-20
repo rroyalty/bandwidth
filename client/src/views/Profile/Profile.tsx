@@ -40,7 +40,6 @@ const fetchItem = async() => {
   console.log(profile.profile)
 
 
-
   return (
     <div>
       <Container className="bg">
