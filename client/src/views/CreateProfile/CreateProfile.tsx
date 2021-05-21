@@ -56,7 +56,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
             setLocation(location)
             setBlurb(blurb)
             // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
-            history.push(`/profile/`)
+            history.push(`/tempprofile/`)
         }
     }
     const onClearClicked = () => {

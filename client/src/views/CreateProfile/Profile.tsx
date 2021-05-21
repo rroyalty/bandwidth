@@ -9,7 +9,7 @@ import axios from 'axios'
 import { RootState } from "../../redux/store";
 
 
-const Profile: React.FC = (): JSX.Element => {
+const TempProfile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
 
  
@@ -66,5 +66,5 @@ const fetchItem = async() => {
   );
 };
 
-export default Profile;
+export default TempProfile;
 
