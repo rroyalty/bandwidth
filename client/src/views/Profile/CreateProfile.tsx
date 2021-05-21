@@ -14,6 +14,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
 
     const user: any = useAuth0();
 
+    const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -40,9 +41,11 @@ export const CreateProfile = ({ match }: { match: any }) => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ id: profileID, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
+            setOIDC(oidc)
+            console.log(oidc)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)
@@ -63,7 +66,6 @@ export const CreateProfile = ({ match }: { match: any }) => {
             setIntentionStatus("")
             setBandName("")
             setPhone("")
-            setEmail("")
             setLocation("")
             setBlurb("")
     }
@@ -95,7 +97,6 @@ export const CreateProfile = ({ match }: { match: any }) => {
             },
         }),
     );
-
     const classes = useStyles();
 
     return (
@@ -138,76 +139,10 @@ export const CreateProfile = ({ match }: { match: any }) => {
                 />
             </form>
 
-            {/* <form>
-                <input
-                    type='text'
-                    id='displayName'
-                    placeholder='Display Name / Nick Name'
-                    value={nickName}
-                    onChange={onNickNameChanged}
-                />
-                <input
-                    type='text'
-                    id='firstName'
-                    placeholder='First Name'
-                    value={firstName}
-                    onChange={onFirstNameChanged}
-                />
-                <input
-                    type='text'
-                    id='lastName'
-                    placeholder='Last Name'
-                    value={lastName}
-                    onChange={onLastNameChanged}
-                />
-                <input
-                    type='text'
-                    id='Status'
-                    placeholder='Available, Unavailable, Looking to network?'
-                    value={intentionStatus}
-                    onChange={onIntentionStatusChanged}
-                />
-                <input
-                    type='text'
-                    id='bandName'
-                    placeholder='Band Name'
-                    value={bandName}
-                    onChange={onBandNameChanged}
-                />
-                <input
-                    type='text'
-                    id='phone'
-                    placeholder='Phone'
-                    value={phone}
-                    onChange={onPhoneChanged}
-                />
-                <input
-                    type='text'
-                    id='email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={onEmailChanged}
-                />
-                <input
-                    type='text'
-                    id='location'
-                    placeholder='Location'
-                    value={location}
-                    onChange={onLocationChanged}
-                />
-                <textarea
-                    id='blurb'
-                    placeholder='Blurb'
-                    value={blurb}
-                    onChange={onBlurbChanged}
-                >
-                </textarea>
-            </form> */}
 
             <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
             <Button color="secondary" onClick={onClearClicked}>Clear</Button>
-            {/* <button type="button" onClick={onUpdateProfileClicked} >Save</button> */}
-            {/* <button type="button">Discard</button> */}
+
         </Container>
     )
 
