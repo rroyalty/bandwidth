@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { userProfileThunk } from './profileSlice';
+import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button } from '@material-ui/core';

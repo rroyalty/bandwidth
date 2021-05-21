@@ -105,27 +105,6 @@ const UserCard = () => {
                         </Grid>
                         </Grid>
                     </Container>
-                    // <Grid container spacing={3} className={classes.grid}>
-                    
-                    //   <Paper className={classes.paper}>{user.nickName}</Paper>
-                    
-                    
-                    //   <Paper className={classes.paper}>{user.firstName} {user.lastName}</Paper>
-                      
-                      
-                    //   <Paper key={user.intentionStatus}>{user.intentionStatus}</Paper>
-                    
-                       
-                    //   <Paper key={user.location}>{user.location}</Paper>
-                      
-                      
-                    //   <Paper key={user.email}>{user.email}</Paper>
-                      
-                      
-                    //   <Paper key={user.phone}>{user.phone}</Paper>
-                      
-                    //   <Paper key={user.blurb}>{user.blurb}</Paper>
-                    // </Grid>
                 )
             })}
             </div>
@@ -133,30 +112,5 @@ const UserCard = () => {
     )
 }
 
-{/* <div className={classes.root}>
-<Grid container spacing={3}>
-  <Grid item xs={12}>
-    <Paper className={classes.paper}>xs=12</Paper>
-  </Grid>
-  <Grid item xs={6}>
-    <Paper className={classes.paper}>xs=6</Paper>
-  </Grid>
-  <Grid item xs={6}>
-    <Paper className={classes.paper}>xs=6</Paper>
-  </Grid>
-  <Grid item xs={3}>
-    <Paper className={classes.paper}>xs=3</Paper>
-  </Grid>
-  <Grid item xs={3}>
-    <Paper className={classes.paper}>xs=3</Paper>
-  </Grid>
-  <Grid item xs={3}>
-    <Paper className={classes.paper}>xs=3</Paper>
-  </Grid>
-  <Grid item xs={3}>
-    <Paper className={classes.paper}>xs=3</Paper>
-  </Grid>
-</Grid>
-</div> */}
 
 export default UserCard

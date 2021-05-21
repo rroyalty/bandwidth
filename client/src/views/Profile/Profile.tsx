@@ -61,9 +61,6 @@ const fetchItem = async() => {
         <Link to="/find">Find other users!</Link>
 
         </Button>
-
-        
-
       </Container>
     </div>
   );

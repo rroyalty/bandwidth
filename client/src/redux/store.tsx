@@ -1,6 +1,6 @@
 
 import { configureStore } from '@reduxjs/toolkit'
-import profileReducer from '../views/Profile/profileSlice'
+import profileReducer from '../views/Profile/createProfileSlice'
 
 export const store = configureStore({
   // switch statements will go in reducer file 
