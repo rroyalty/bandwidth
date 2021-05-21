@@ -72,16 +72,16 @@ export const CreateProfile = ({ match }: { match: any }) => {
 
     const statuses = [
         {
-            value: 'Available',
-            label: 'Available',
+            value: 'Looking to join a band',
+            label: 'Looking to join a band',
         },
         {
-            value: 'Unavailable',
-            label: 'Unavailable',
+            value: 'Looking to fill a spot in a band',
+            label: 'Looking to fill a spot in a band',
         },
         {
-            value: 'Looking to network',
-            label: 'Looking to network',
+            value: 'Looking to network with other musicians',
+            label: 'Looking to network with other musicians',
         },
     ];
 
@@ -132,7 +132,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
                     label="Bio"
                     multiline
                     rows={4}
-                    defaultValue="Write a little bit about yoruself here"
+                    defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}

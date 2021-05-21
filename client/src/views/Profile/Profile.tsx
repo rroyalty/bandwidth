@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Container } from '@material-ui/core';
+import { Container, Button } from '@material-ui/core';
 import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-// import editProfile from './EditProfile'
 import './style.css';
-// import IProfileStateArray from './profileSlice'
 import { useSelector } from "react-redux";
-import selectProfile from './profileSlice';
 import axios from 'axios'
 import { RootState } from "../../redux/store";
 
@@ -50,7 +47,7 @@ const fetchItem = async() => {
           />
         </div>
         <div>
-          <h2>{profile.profile.displayName}</h2>
+          <h2>{profile.profile.nickName}</h2>
           <p>{userInfo}</p>
           {/* <p>{profile.profile.displayName}</p> */}
           <p>Status: {profile.profile.intentionStatus}</p>
@@ -60,11 +57,12 @@ const fetchItem = async() => {
           <p>Location {profile.profile.location}</p>
           <p>About: {profile.profile.blurb}</p>
         </div>
-        {/* <Link to="/createProfile">Edit Profile</Link> */}
+        <Button>
+        <Link to="/find">Find other users!</Link>
 
-        <div>
+        </Button>
 
-        </div>
+        
 
       </Container>
     </div>
