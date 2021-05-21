@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { userProfileThunk } from './profileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { MenuItem, Container } from '@material-ui/core';
+import { MenuItem, Container, Button } from '@material-ui/core';
 import './style.css'
 import { useAuth0, User } from "@auth0/auth0-react";
 
@@ -35,7 +35,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const onPhoneChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setPhone(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
-    
+
     // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
@@ -56,6 +56,18 @@ export const CreateProfile = ({ match }: { match: any }) => {
             history.push(`/profile/`)
         }
     }
+    const onClearClicked = () => {
+        setNickName("")
+            setFirstName("")
+            setLastName("")
+            setIntentionStatus("")
+            setBandName("")
+            setPhone("")
+            setEmail("")
+            setLocation("")
+            setBlurb("")
+    }
+
     const statuses = [
         {
             value: 'Available',
@@ -72,61 +84,61 @@ export const CreateProfile = ({ match }: { match: any }) => {
     ];
 
     const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-        paddingTop: 100,
-        margin: theme.spacing(1),
-        width: '25ch',
-        textAlign: `center`,
-        justifyContent: `center`
-    
-    },
-  }),
-);
+        createStyles({
+            root: {
+                paddingTop: 100,
+                margin: theme.spacing(1),
+                width: '25ch',
+                textAlign: `center`,
+                justifyContent: `center`
 
-const classes = useStyles();
+            },
+        }),
+    );
+
+    const classes = useStyles();
 
     return (
 
         <Container className={classes.root}>
             <h2>Finish Profile</h2>
-          
-                <form noValidate autoComplete="off">
-                    <TextField id="standard-basic" label="display name" value={nickName} onChange={onNickNameChanged}/>
-                    <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
-                    <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged}/>
-                    <TextField
-                        id="status"
-                        select
-                        label="Select"
-                        value={intentionStatus}
-                        onChange={onIntentionStatusChanged}
-                        helperText="Please select your status"
-                        variant="filled"
-                    >
-                        {statuses.map((status) => (
-                            <MenuItem key={status.value} value={status.value}>
-                                {status.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <TextField id="standard-basic" label="Band Name" value={bandName} onChange={onBandNameChanged}/>
-                    <TextField id="standard-basic" label="Phone" value={phone} onChange={onPhoneChanged}/>
-                    <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
-                    <TextField id="standard-basic" label="City, State"  value={location} onChange={onLocationChanged}/>
-                    <TextField
-                        id="outlined-multiline-static"
-                        label="Bio"
-                        multiline
-                        rows={4}
-                        defaultValue="Write a little bit about yoruself here"
-                        variant="outlined"
-                        value={blurb}
-                        onChange={onBlurbChanged}
-                    />
-                </form>
 
-                {/* <form>
+            <form noValidate autoComplete="off">
+                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
+                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
+                <TextField
+                    id="status"
+                    select
+                    label="Select Status"
+                    value={intentionStatus}
+                    onChange={onIntentionStatusChanged}
+                    helperText="Please select your status"
+                    variant="filled"
+                >
+                    {statuses.map((status) => (
+                        <MenuItem key={status.value} value={status.value}>
+                            {status.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                <TextField id="standard-basic" label="Band Name" value={bandName} onChange={onBandNameChanged} />
+                <TextField id="standard-basic" label="Phone" value={phone} onChange={onPhoneChanged} />
+                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                <TextField id="standard-basic" label="City, State" value={location} onChange={onLocationChanged} />
+                <TextField
+                    id="outlined-multiline-static"
+                    label="Bio"
+                    multiline
+                    rows={4}
+                    defaultValue="Write a little bit about yoruself here"
+                    variant="outlined"
+                    value={blurb}
+                    onChange={onBlurbChanged}
+                />
+            </form>
+
+            {/* <form>
                 <input
                     type='text'
                     id='displayName'
@@ -191,9 +203,11 @@ const classes = useStyles();
                 >
                 </textarea>
             </form> */}
-            
-            <button type="button" onClick={onUpdateProfileClicked} >Save</button>
-            <button type="button">Discard</button>
+
+            <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
+            <Button color="secondary" onClick={onClearClicked}>Clear</Button>
+            {/* <button type="button" onClick={onUpdateProfileClicked} >Save</button> */}
+            {/* <button type="button">Discard</button> */}
         </Container>
     )
 
