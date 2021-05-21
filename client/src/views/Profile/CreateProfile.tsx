@@ -1,15 +1,18 @@
-
 import React, { useState } from 'react';
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { userProfileThunk } from './profileSlice';
-
-
-
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { MenuItem, Container } from '@material-ui/core';
+import './style.css'
+import { useAuth0, User } from "@auth0/auth0-react";
 
 export const CreateProfile = ({ match }: { match: any }) => {
-// update this to have firstname / lastname fields in form / state
+    // update this to have firstname / lastname fields in form / state
     const { profileID } = match.params
+
+    const user: any = useAuth0();
 
     const [nickName, setNickName] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -17,7 +20,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const [intentionStatus, setIntentionStatus] = useState('')
     const [bandName, setBandName] = useState('')
     const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState(user.user.email)
     const [location, setLocation] = useState('')
     const [blurb, setBlurb] = useState('')
 
@@ -30,12 +33,12 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const onIntentionStatusChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setIntentionStatus(e.target.value)
     const onBandNameChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBandName(e.target.value)
     const onPhoneChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setPhone(e.target.value)
-    const onEmailChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
-
     
-   const onUpdateProfileClicked = () => {
+    // const onEmailChanged = () => setEmail(user.user.email)
+
+    const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
             dispatch(userProfileThunk({ id: profileID, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
@@ -53,13 +56,77 @@ export const CreateProfile = ({ match }: { match: any }) => {
             history.push(`/profile/`)
         }
     }
+    const statuses = [
+        {
+            value: 'Available',
+            label: 'Available',
+        },
+        {
+            value: 'Unavailable',
+            label: 'Unavailable',
+        },
+        {
+            value: 'Looking to network',
+            label: 'Looking to network',
+        },
+    ];
 
+    const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+        paddingTop: 100,
+        margin: theme.spacing(1),
+        width: '25ch',
+        textAlign: `center`,
+        justifyContent: `center`
+    
+    },
+  }),
+);
+
+const classes = useStyles();
 
     return (
-        <section className="bg">
-            <h2>Edit Profile</h2>
-            <form>
-                <label htmlFor="editProfile">Edit Profile</label>
+
+        <Container className={classes.root}>
+            <h2>Finish Profile</h2>
+          
+                <form noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="display name" value={nickName} onChange={onNickNameChanged}/>
+                    <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                    <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged}/>
+                    <TextField
+                        id="status"
+                        select
+                        label="Select"
+                        value={intentionStatus}
+                        onChange={onIntentionStatusChanged}
+                        helperText="Please select your status"
+                        variant="filled"
+                    >
+                        {statuses.map((status) => (
+                            <MenuItem key={status.value} value={status.value}>
+                                {status.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField id="standard-basic" label="Band Name" value={bandName} onChange={onBandNameChanged}/>
+                    <TextField id="standard-basic" label="Phone" value={phone} onChange={onPhoneChanged}/>
+                    <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                    <TextField id="standard-basic" label="City, State"  value={location} onChange={onLocationChanged}/>
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Bio"
+                        multiline
+                        rows={4}
+                        defaultValue="Write a little bit about yoruself here"
+                        variant="outlined"
+                        value={blurb}
+                        onChange={onBlurbChanged}
+                    />
+                </form>
+
+                {/* <form>
                 <input
                     type='text'
                     id='displayName'
@@ -67,25 +134,20 @@ export const CreateProfile = ({ match }: { match: any }) => {
                     value={nickName}
                     onChange={onNickNameChanged}
                 />
-                 <input
+                <input
                     type='text'
                     id='firstName'
                     placeholder='First Name'
                     value={firstName}
                     onChange={onFirstNameChanged}
                 />
-                 <input
+                <input
                     type='text'
                     id='lastName'
                     placeholder='Last Name'
                     value={lastName}
                     onChange={onLastNameChanged}
                 />
-                {/* <select onChange={onIntentionStatusChanged}>
-                    <option value={intentionStatus}>Available</option>
-                    <option value={intentionStatus}>Unavailable</option>
-                    <option selected defaultValue={intentionStatus}>Looking to Network</option>
-                </select> */}
                 <input
                     type='text'
                     id='Status'
@@ -121,18 +183,18 @@ export const CreateProfile = ({ match }: { match: any }) => {
                     value={location}
                     onChange={onLocationChanged}
                 />
-                 <textarea
+                <textarea
                     id='blurb'
                     placeholder='Blurb'
                     value={blurb}
                     onChange={onBlurbChanged}
                 >
                 </textarea>
-            </form>
-            {/* add this to below onClick={onUpdateProfileClicked} */}
+            </form> */}
+            
             <button type="button" onClick={onUpdateProfileClicked} >Save</button>
             <button type="button">Discard</button>
-        </section>
+        </Container>
     )
 
 }
