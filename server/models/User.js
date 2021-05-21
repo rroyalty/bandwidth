@@ -42,7 +42,8 @@ User.init(
         // status was too general -- future dev may add, say, tourStatus
         intentionStatus: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: "Available"
         },
         // might need to be its own table - many play in 1+ bands
         bandName: {
@@ -55,12 +56,16 @@ User.init(
             defaultValue: Sequelize.STRING,
             required: true,
             primaryKey: true,
+            unique: true
         },
         // after showing Contact model to Ryan, opted to just keep on User model for now.
         email: {
             type: DataTypes.STRING,
             allowNull: true,
             unique: false,
+            validate: {
+                isEmail: true,
+              },
         },
         phone: {
             type: DataTypes.STRING,

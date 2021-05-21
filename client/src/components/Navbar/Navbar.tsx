@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link"
+import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
@@ -67,6 +67,7 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
     { title: `The Team`, path: `theteam` },
+    { title: `Find`, path: `find` }
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -118,11 +119,11 @@ const Navbar: React.FC = (): JSX.Element => {
                     }}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
                         <MenuItem className={classes.mobileNav}>
-                            <HashLink to="landing">Home</HashLink>
-                            <HashLink to="about">about</HashLink>
-                            <HashLink to="theteam">browse</HashLink>
+                            <ScrollLink to="landing">Home</ScrollLink>
+                            <ScrollLink to="about">about</ScrollLink>
+                            <ScrollLink to="theteam">browse</ScrollLink>
+                            <ScrollLink to="find">Find</ScrollLink>
                         </MenuItem>
-
                     </List>
                     <AuthNav />
                 </Drawer>
@@ -136,11 +137,11 @@ const Navbar: React.FC = (): JSX.Element => {
                 <section className={classes.rightAppBar}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                         {navLinks.map(({ title, path }) => (
-                            <HashLink to={{ hash: path }} key={title} className={classes.linkText}>
+                            <ScrollLink smooth={true} duration={500} to={path} key={title} className={classes.linkText}>
                                 <ListItem button>
                                     <ListItemText primary={title} />
                                 </ListItem>
-                            </HashLink>
+                            </ScrollLink>
                         ))}
                     </List>
                     <AuthNav />
