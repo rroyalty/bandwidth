@@ -20,6 +20,13 @@
 
 
 /server/backend_sadness
+/server/zzconfig
+/server/zzdb
+/server/zzmigrations
+/server/zzroutes
+/server/zzseeders
+/server/zzmodels
+/server/zzserver.js
 
 
 .env.local
