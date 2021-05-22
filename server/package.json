@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev:server": "nodemon --watch './**/*.ts' --exec ts-node server.ts",
-    "seed": "node seeders/index.js"
+    "seed": "cd server && sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",

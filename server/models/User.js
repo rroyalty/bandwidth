@@ -75,6 +75,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       unique: false,
+    }, 
+    blurb: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false,
     }
   }, {
     sequelize,
