@@ -27,8 +27,6 @@ export interface IUser {
 const UserProfile = () => {
   const userProfile: any = useAuth0();
 
-  //  console.log(userProfile.user)
-
   const [user, setUser] = useState<IUser[]>([])
 
   const writeProfile = (res: any[]) => {
@@ -54,10 +52,7 @@ const UserProfile = () => {
     API.getUsers().then(res => {
       const findUser = res.data;
       const thisUser = findUser.filter((findUser: any) => userProfile.user.email === findUser.email)
-      // console.log(thisUser[0])
-      //  !thisUser ? noUserExists() : writeProfile(thisUser)
       writeProfile(thisUser)
-    //  userExists()
     })
   }, [])
 
@@ -99,9 +94,7 @@ const UserProfile = () => {
    }
   return (
     <div className="paddingfix">
-      {console.log(user)}
       {!user || user.length == 0 ? noUserExists() : userExists() }
-      {/* {findUser.filter((findUser: any) => userProfile.user.email === findUser.email) ? userExists() : <Link to="createprofile">Testtesttest</Link> } */}
     </div>
   );
 };
