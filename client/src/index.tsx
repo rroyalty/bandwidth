@@ -1,53 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
-import { ThemeProvider } from '@material-ui/core';
-import { store } from './redux/store'
-import { Provider } from 'react-redux'
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history"
+import { ThemeProvider } from "@material-ui/core";
+import { store } from "./redux/store"
+import { Provider } from "react-redux"
+import { createMuiTheme, responsiveFontSizes, Theme } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
 
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
+// declare module "@material-ui/core/styles/createMuiTheme" {
+//   interface Theme {
+//     palette?: any;
+//   }
 
-let Theme = createMuiTheme({
+//   interface ThemeOptions {
+//     paeltte?: any;
+//   }
+// }
+
+let theme: Theme = createMuiTheme({
   palette: {
-      primary: {
-          main: `#181D27`
-      },
-      secondary: {
-          main: red[500]
-      },
+    primary: {
+      main: `#181D27`
+    },
+    secondary: {
+      main: red[500]
+    },
   },
   typography: {
-      fontFamily: [
-          'RocknRoll One',
-          'sans-serif',
-      ].join(','),
-      fontSize: 12
+    fontFamily: [
+      "RocknRoll One",
+      "sans-serif",
+    ].join(","),
+    fontSize: 12
   },
   spacing: 4,
 });
-Theme = responsiveFontSizes(Theme);
 
-
+theme = responsiveFontSizes(theme);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={theme}>
         <Router>
-      <Auth0ProviderWithHistory>
-          <App />
-      </Auth0ProviderWithHistory>
+          <Auth0ProviderWithHistory>
+            <App />
+          </Auth0ProviderWithHistory>
         </Router>
-    </ThemeProvider>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
