@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import TeamBio from './TeamBio'
 
