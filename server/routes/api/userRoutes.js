@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET user by email (Toni needs this)
 router.get('/:email', (req, res) => {
-    // Get all books from the book table
     const { email } = req.params; 
     User.findOne({where:{email}}).then((userData) => {
         res.json(userData);
