@@ -67,6 +67,9 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
     { title: `The Team`, path: `theteam` },
+    { title: `Find`, path: `find` },
+    // added path to 'userprofile' doesn't go anywhere now, have to manually add /userprofile to the link 
+    { title: `Profile`, path: `userprofile` }
 ]
 
 const Navbar: React.FC = (): JSX.Element => {
@@ -122,6 +125,7 @@ const Navbar: React.FC = (): JSX.Element => {
                             <ScrollLink to="about">about</ScrollLink>
                             <ScrollLink to="theteam">browse</ScrollLink>
                             <ScrollLink to="find">Find</ScrollLink>
+                            <ScrollLink to="userprofile">Profile</ScrollLink>
                         </MenuItem>
                     </List>
                     <AuthNav />

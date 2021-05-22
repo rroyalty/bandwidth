@@ -4,8 +4,9 @@ import Landing from './views/Landing/landing';
 import Find from './views/Find/Find';
 import About from './views/About/About';
 import TheTeam from './views/TheTeam/TheTeam';
-import Profile from './views/Profile/Profile';
-import CreateProfile from './views/Profile/CreateProfile';
+import TempProfile from './views/CreateProfile/Profile';
+import UserProfile from './views/UserProfile/UserProfile'
+import CreateProfile from './views/CreateProfile/CreateProfile';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -58,8 +59,9 @@ const App: React.FC = (props: any): JSX.Element => {
         <>
           <Navbar />
           <Switch>
-            <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/tempprofile" component={TempProfile} />
             <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
+            <ProtectedRoute exact path="/userProfile" component={UserProfile} />
             <ProtectedRoute exact path="/find" component={Find} />
           </Switch>
           <Container id="landing" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[0]}.jpg)` }} >
