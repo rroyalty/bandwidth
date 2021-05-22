@@ -26,7 +26,7 @@
     {
         "id": 5,
         "name": "Jon Hammond",
-        "img": "/theteam/ryan-pic.jpg",
-        "bio": "Jon Bio Here."
+        "img": "/theteam/jon-pic.png",
+        "bio": "Jonathan is a full-stack Web Application Developer, currently living in Salem, MA. He has an interest in user experience, responsive web design, and data analysis. His primary tech goal is to influence national policy with concrete data that overcomes partisan thinking. He believes that data, good or bad, generates insights that drive public and personal opinion, and would like to contribute to educating and highlighting malicious data. When he isn't coding, Jonathan is often boxing, doing yoga, reading a book, or binging on a 700-episode anime."
     }
 ]
