@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Landing from '../../components/Landing/landing';
-import About from '../../components/About/About';
-import TheTeam from '../../components/TheTeam/TheTeam';
+import Landing from '../../components/Landing/Landing';
+import About from '../../components/Landing/About';
+import TheTeam from '../../components/Landing/TheTeam';
 import { Container } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
