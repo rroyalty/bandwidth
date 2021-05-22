@@ -23,4 +23,10 @@ router.post('/', async (req, res) => {
     }
 });
 
+// /profile
+// front end receives callback
+// front end calls backend
+// post payload
+// route
+
 module.exports = router;

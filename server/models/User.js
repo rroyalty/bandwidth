@@ -5,7 +5,14 @@ const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
 
-class User extends Model { }
+class User extends Model {
+
+
+    // static associate({ Genre }) {
+    //     // define association here
+    //     this.belongsToMany(Genre, { foreignKey: 'oidc' })
+    //   }
+ }
 
 // Need to make oidc Primary Key and test delete
 // Need to re-seed as well

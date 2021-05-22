@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // const Book = require('../../models/Book');
-const { User } = require('../../models');
+const { User, Genre } = require('../../models');
 // const { Genre } = require('../../models');
 
 // GET all users
@@ -99,6 +99,11 @@ router.get('/:oidc', async (req, res) => {
     const oidc = req.params.oidc;
     try {
         const userData = await User.findByPk( oidc );
+        // Doesn't work
+        // const userData = await User.findOne({
+        //     where:  oidc ,
+        //     include: 'genre',
+        //   })
         if (!userData) {
             res.status(404).json({ message: 'No user with this id!' });
             return;
@@ -190,18 +195,20 @@ router.post('/', async (req, res) => {
 // UPDATE a user
 // How would I turn this into something destructured
 router.put('/:oidc', async (req, res) => {
+
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
     try {
         const updatedUser = await User.update(
             {
-                nickName: req.body.nickName,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                image: req.body.image,
-                intentionStatus: req.body.intentionStatus,
-                bandname: req.body.bandname,
-                email: req.body.email,
-                phone: req.body.phone,
-                location: req.body.location
+                nickName, 
+                firstName, 
+                lastName,
+                image,
+                intentionStatus,
+                bandName,
+                email,
+                phone,
+                location
             },
             {
                 where: {

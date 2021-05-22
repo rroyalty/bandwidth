@@ -1,7 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Genre extends Model {}
+class Genre extends Model {
+
+
+    // static associate({ User }) {
+    //     // define association here
+    //     // userId
+    //     this.belongsToMany(User, { foreignKey: 'oidc' })
+    //   }
+}
 
 Genre.init(
     {
@@ -14,7 +22,11 @@ Genre.init(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-        }, 
+        },
+        oidc: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          }, 
     },
     {
         sequelize,

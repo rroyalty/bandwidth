@@ -1,16 +1,20 @@
 const { Genre } = require('../models');
 
 const genreData = [{
-        name: 'Power Metal'
+        name: 'Power Metal',
+        // oidc: 1
     },
     {
-        name: 'Black Metal'
+        name: 'Black Metal',
+        // oidc: 2
     },
     {
-        name: 'Synth Pop'
+        name: 'Synth Pop',
+        // oidc: 3
     },
     {
-        name: 'Blues'
+        name: 'Blues',
+        // oidc: 4
     }
 ];
 
