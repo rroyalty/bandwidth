@@ -29,13 +29,11 @@ const TeamBio: React.FC = (): JSX.Element => {
     const shufArray: Array<any> = arrayShuf(teamJSON);
 
     return (
-        <Container>
             <Carousel>
                 {
                     shufArray.map ((item) => <CarouselItem key={item.id} props={item} /> )
                 }
-            </Carousel>
-        </Container>)
+            </Carousel>)
 };
 
 export default TeamBio;

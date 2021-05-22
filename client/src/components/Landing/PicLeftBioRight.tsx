@@ -25,19 +25,40 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         height: `100vh`,
     },
     grid: {
+        position: `relative`,
         justifyContent: `center`,
         alignItems: `center`,
-        '& container': {
-
-        }
+        height: `16vh`,
+        margin: `10px`,
+        display: `flex`
     },
     avatar: {
-        height: "150px",
-        width: "150px"
+        height: "14vh",
+        width: "14vh",
+        border: `3px`,
+        borderStyle: `solid`,
+        borderColor: theme.palette.primary.main
     },
     font: {
         fontSize: "24px",
         color: '#181D27'
+    },
+    paper: {
+        height: "14vh",
+        backgroundColor: theme.palette.primary.main,
+        border: `3px`,
+        borderStyle: `solid`,
+        borderColor: `white`,
+        width: `100%`
+    },
+    typography: {
+        padding: `15px`,
+        color: `white`
+    },
+    gridBits: {
+        justifyContent: `center`,
+        alignItems: `center`,
+        display: `flex`
     }
 }));
 
@@ -46,12 +67,12 @@ const PicLeftBioRight: React.FC<IProps> = (props): JSX.Element => {
 
     return (
         <Grid className={classes.grid} container item xs={12} spacing={3}>
-            <Grid item xs={4}>
+            <Grid className={classes.gridBits} item xs={3}>
                 <Avatar className={classes.avatar} alt={props.props.name} src={props.props.img} />
             </Grid>
-            <Grid item xs={8}>
-                <Paper>
-                    <Typography>
+            <Grid className={classes.gridBits} item xs={9}>
+                <Paper className={classes.paper}>
+                    <Typography className={classes.typography}>
                         {props.props.bio}
                     </Typography>
                 </Paper>
