@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Ryan Royalty",
+        "img": "/theteam/ryan-pic.jpg",
+        "bio": "Ryan is a 36 year old aspiring web developer."
+    },
+    {
+        "id": 2,
+        "name": "Toni Powell",
+        "img": "/theteam/ryan-pic.jpg",
+        "bio": "Toni Bio Here"
+    },
+    {
+        "id": 3,
+        "name": "Cathy Marchese",
+        "img": "/theteam/ryan-pic.jpg",
+        "bio": "Cathy Bio Here"
+    },
+    {
+        "id": 4,
+        "name": "Bjorn Yourney",
+        "img": "/theteam/ryan-pic.jpg",
+        "bio": "Bjorn Bio Here"
+    },
+    {
+        "id": 5,
+        "name": "Jon Hammond",
+        "img": "/theteam/ryan-pic.jpg",
+        "bio": "Jon Bio Here."
+    }
+]
