@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
@@ -64,9 +63,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 
 const navLinks: { title: string, path: string }[] = [
-    { title: `Home`, path: `landing` },
-    { title: `Profile`, path: `userprofile` },
-    { title: `Find`, path: `find` }
+    { title: `Home`, path: `/landing` },
+    { title: `Profile`, path: `/userprofile` },
+    { title: `Find`, path: `/find` }
 ]
 
 const NavbarLoggedIn: React.FC = (): JSX.Element => {
@@ -118,9 +117,9 @@ const NavbarLoggedIn: React.FC = (): JSX.Element => {
                     }}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
                         <MenuItem className={classes.mobileNav}>
-                            <Link to="landing">Home</Link>
-                            <Link to="userprofile">Profile</Link>
-                            <Link to="find">Find</Link>
+                            <Link to="/landing">Home</Link>
+                            <Link to="/userprofile">Profile</Link>
+                            <Link to="/find">Find</Link>
                         </MenuItem>
                     </List>
                     <AuthNav />
