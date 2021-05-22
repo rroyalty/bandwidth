@@ -1,11 +1,14 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
+import { Box, Container } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import TeamBio from '../TeamBio/TeamBio'
+import TeamBioDesktop from './TeamBioDesktop'
+import TeamBioMobile from './TeamBioMobile'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
+        display: `flex`,
         backgroundColor: `rgba(255, 255, 255, 0.4)`,
         justifyContent: `center`,
         alignItems: `center`,
@@ -23,8 +26,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: `center`,
     },
     avatar: {
-        height: "150px",
-        width: "150px"
+        height: "auto",
+        width: "auto"
     },
     font: {
         fontSize: "24px",
@@ -36,10 +39,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const TheTeam: React.FC = (): JSX.Element => {
     const theme = useTheme();
     const classes = useStyles();
+    const matches: boolean = useMediaQuery(theme.breakpoints.up('md'));
+
     return (
-        <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
-            <TeamBio />
-        </Box>
+        <Container className={classes.root}>
+            { matches ? <TeamBioDesktop /> : <TeamBioMobile /> }
+        </Container>
     )
 }
 
