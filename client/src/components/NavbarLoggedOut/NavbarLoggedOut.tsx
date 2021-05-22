@@ -120,7 +120,7 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                         <MenuItem className={classes.mobileNav}>
                             <ScrollLink to="landing">Home</ScrollLink>
                             <ScrollLink to="about">about</ScrollLink>
-                            <ScrollLink to="theteam">browse</ScrollLink>
+                            <ScrollLink to="theteam">The Team</ScrollLink>
                         </MenuItem>
                     </List>
                     <AuthNav />
