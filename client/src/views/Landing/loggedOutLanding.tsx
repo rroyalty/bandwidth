@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Landing from '../../components/Landing/Landing';
+import Landing from '../../components/Landing/landing';
 import About from '../../components/Landing/About';
 import TheTeam from '../../components/Landing/TheTeam';
 import { Container } from "@material-ui/core";

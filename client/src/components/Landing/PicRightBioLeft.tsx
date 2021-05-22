@@ -4,6 +4,15 @@ import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
+interface IProps {
+    props: {
+        id: number,
+        name: string,
+        img: string,
+        bio: string
+    }
+}
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         justifyContent: `center`,
@@ -32,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-const PicRightBioLeft: React.FC = (): JSX.Element => {
+const PicRightBioLeft: React.FC<IProps> = (props): JSX.Element => {
     const classes = useStyles();
 
     return (
@@ -40,12 +49,12 @@ const PicRightBioLeft: React.FC = (): JSX.Element => {
             <Grid item xs={8}>
                 <Paper>
                     <Typography>
-                        Ryan is an awesome dude!
-                        </Typography>
+                        {props.props.bio}
+                    </Typography>
                 </Paper>
             </Grid>
             <Grid item xs={4}>
-                <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
+                <Avatar className={classes.avatar} alt={props.props.name} src={props.props.img} />
             </Grid>
         </Grid>
     )

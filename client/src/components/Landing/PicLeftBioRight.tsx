@@ -4,6 +4,15 @@ import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
+interface IProps {
+    props: {
+        id: number,
+        name: string,
+        img: string,
+        bio: string
+    }
+}
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         justifyContent: `center`,
@@ -32,18 +41,18 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-const PicLeftBioRight: React.FC = (): JSX.Element => {
+const PicLeftBioRight: React.FC<IProps> = (props): JSX.Element => {
     const classes = useStyles();
 
     return (
         <Grid className={classes.grid} container item xs={12} spacing={3}>
-            <Grid className={classes.grid} item xs={4}>
-                <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
+            <Grid item xs={4}>
+                <Avatar className={classes.avatar} alt={props.props.name} src={props.props.img} />
             </Grid>
             <Grid item xs={8}>
                 <Paper>
                     <Typography>
-                        Ryan is an awesome dude!
+                        {props.props.bio}
                     </Typography>
                 </Paper>
             </Grid>
@@ -52,3 +61,6 @@ const PicLeftBioRight: React.FC = (): JSX.Element => {
 };
 
 export default PicLeftBioRight;
+
+
+

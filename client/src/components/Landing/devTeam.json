@@ -3,30 +3,30 @@
         "id": 1,
         "name": "Ryan Royalty",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan's an awesome dude."
+        "bio": "Ryan is a 36 year old aspiring web developer."
     },
     {
         "id": 2,
-        "name": "Ryan Royalty",
+        "name": "Toni Powell",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan's an awesome dude."
+        "bio": "Toni Bio Here"
     },
     {
         "id": 3,
-        "name": "Ryan Royalty",
+        "name": "Cathy Marchese",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan's an awesome dude."
+        "bio": "Cathy Bio Here"
     },
     {
         "id": 4,
-        "name": "Ryan Royalty",
+        "name": "Bjorn Yourney",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan's an awesome dude."
+        "bio": "Bjorn Bio Here"
     },
     {
         "id": 5,
-        "name": "Ryan Royalty",
+        "name": "Jon Hammond",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan's an awesome dude."
+        "bio": "Jon Bio Here."
     }
 ]

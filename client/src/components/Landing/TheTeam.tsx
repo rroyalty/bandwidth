@@ -2,7 +2,9 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import TeamBio from './TeamBio'
+import TeamBioDesktop from './TeamBioDesktop'
+import TeamBioMobile from './TeamBioMobile'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -36,9 +38,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const TheTeam: React.FC = (): JSX.Element => {
     const theme = useTheme();
     const classes = useStyles();
+    const matches: boolean = useMediaQuery(theme.breakpoints.up('sm'));
+
     return (
         <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
-            <TeamBio />
+            {matches ? <TeamBioDesktop /> : <TeamBioMobile />  }
         </Box>
     )
 }
