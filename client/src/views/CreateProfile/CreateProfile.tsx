@@ -11,9 +11,9 @@ import { useAuth0, User } from "@auth0/auth0-react";
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
-export const CreateProfile = ({ match }: { match: any }) => {
+export const CreateProfile = () => {
     // update this to have firstname / lastname fields in form / state
-    const { profileID } = match.params
+    // const { profileID } = match.params
 
     const user: any = useAuth0();
 
@@ -91,7 +91,7 @@ export const CreateProfile = ({ match }: { match: any }) => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 100,
+                paddingTop: 1000,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
