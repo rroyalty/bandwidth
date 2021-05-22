@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Container } from '@material-ui/core';
+import { Container, Button } from '@material-ui/core';
 import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-// import editProfile from './EditProfile'
 import './style.css';
-// import IProfileStateArray from './profileSlice'
 import { useSelector } from "react-redux";
-import selectProfile from './profileSlice';
 import axios from 'axios'
 import { RootState } from "../../redux/store";
 
 
-const Profile: React.FC = (): JSX.Element => {
+const TempProfile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
 
  
@@ -40,11 +37,14 @@ const fetchItem = async() => {
   console.log(profile.profile)
 
 
+<<<<<<< HEAD:client/src/views/Profile/Profile.tsx
 <<<<<<< HEAD
 
 =======
 >>>>>>> ea748df42dbe0d383ee63d5f6736a16cf2a5ee06
 
+=======
+>>>>>>> ff8c8d5ebf3e1c975273319d3fd55e597090d046:client/src/views/CreateProfile/Profile.tsx
   return (
     <div>
       <Container className="bg">
@@ -55,7 +55,7 @@ const fetchItem = async() => {
           />
         </div>
         <div>
-          <h2>{profile.profile.displayName}</h2>
+          <h2>{profile.profile.nickName}</h2>
           <p>{userInfo}</p>
           {/* <p>{profile.profile.displayName}</p> */}
           <p>Status: {profile.profile.intentionStatus}</p>
@@ -63,17 +63,16 @@ const fetchItem = async() => {
           <p>Email: {profile.profile.email}</p>
           <p>Phone: {profile.profile.phone}</p>
           <p>Location {profile.profile.location}</p>
+          <p>About: {profile.profile.blurb}</p>
         </div>
-        {/* <Link to="/createProfile">Edit Profile</Link> */}
+        <Button>
+        <Link to="/find">Find other users!</Link>
 
-        <div>
-
-        </div>
-
+        </Button>
       </Container>
     </div>
   );
 };
 
-export default Profile;
+export default TempProfile;
 

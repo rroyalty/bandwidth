@@ -1,36 +1,149 @@
-import React from 'react';
-import { DataGrid, GridColDef, GridValueFormatterParams, GridValueGetterParams } from '@material-ui/data-grid'
+import * as React from 'react';
+import { DataGrid, GridColDef, GridValueGetterParams, GridValueFormatterParams } from '@material-ui/data-grid';
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import './style.css';
+import { useEffect, useState } from 'react';
+import API from '../../utils/API';
+
+const columns: GridColDef[] = [
+  // { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'nickName', headerName: 'Preferred Name', width: 130 },
+  { field: 'Name', headerName: 'Name', width: 130 },
+  {field: 'Status', headerName: 'Age', width: 90, },
+  {field: 'location', headerName: 'Location', width: 160},
+  {field: 'email', headerName: 'email', width: 160},
+  {field: 'phone', headerName: 'phone', width: 160},
+];
+
+const rows = [
+  { id: 1, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 2, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 3, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 4, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 5, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 6, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+  { id: 7, nickName: 'Snow', Name: 'Jon', Status: 35, location: 'Boston', email:"imakemusic@gmail.com", phone:"728-9302-6281"},
+];
+
+export interface UserI {
+  nickName: string,
+  firstName: string,
+  lastName: string,
+  intentionStatus: string,
+  location: string,
+  email: string,
+  phone: string,
+  blurb: string,
+}
 
 
-        const columns: GridColDef[] = [
-          // { field: 'id', headerName: 'ID', width: 70 },
-          { field: 'photo', headerName: 'Photo', width: 130 },
-          { field: 'name', headerName: 'Name', width: 130 },
-          { field: 'status', headerName: 'Status', width: 160, },
-          { field: 'email', headerName: 'Email', width: 170 },
-          { field: 'city', headerName: 'City', width: 130 },
-          { field: 'state', headerName: 'State', width: 130 },
-          { field: 'instrument', headerName: 'Instrument', width: 150 },
-          { field: 'genre', headerName: 'Genre',  width: 150 },
-        ];
-          
-          const rows = [
-            { id: 1, photo: 'photo goes here', name: 'Toni Powell', status: 'Available', email: 'snow@gmail.com', city: 'Boston', state: 'Massachusetts', instrument: 'ukelele', genre: 'metal' },
-            { id: 2, photo: 'photo goes here', name: 'Jon Hammond', status: 'Not Available', email: 'lanniser@gmail.com', city: 'Long Island', state: 'New York', instrument: 'insane vocals',genre: 'Pop Funk' },
-            { id: 3, photo: 'photo goes here', name: 'Ryan Royalty', status: 'Not Available', email: 'lanniser@gmail.com', city: 'Buffalo', state: 'New York', instrument: 'bass', genre: 'Elvis Covers only' },
-            { id: 4, photo: 'photo goes here', name: 'Bjorn Yourey', status: 'Available', email: 'snow@gmail.com', city: 'Sacramento', state: 'California',  instrument: 'violin',genre: 'Rock and Roll' },
-            { id: 5, photo: 'photo goes here', name: 'Cathy Marchese', status: 'Its complicated', email: 'lanniser@gmail.com', city: 'Des Moines', state: 'Iowa',  instrument: 'banjo',genre: 'Techno' },
-            { id: 6, photo: 'photo goes here', name: 'Cersei Lannister', status: 'Looking for bands with benefits', email: 'lanniser@gmail.com', city: 'Chicago', state: 'Illinois', instrument: 'drums', genre: 'metal' },
-            
-          ];
-          
-          export default function UserGrid() {
-            return (
-              <div style={{ height: 600, width: '100%' }}>
-                <DataGrid className="bg" rowHeight={150} rows={rows} columns={columns} pageSize={3}  />
-              </div>
-            );
-          }
-    
+export default function UserGrid() {
+  const [users, setUsers] = useState<UserI[]>([])
+  let columns: GridColDef[] = [
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+       const id = params.value
+       return id
+      },
+      field: 'Nick Name', 
+      headerName: 'nick name',
+      width: 130 
+    },
+    { 
+      // valueFormatter: (params: GridValueFormatterParams) => { 
+      //   console.log(params)
+      //   const name = params.value as NameI
+      //   // "as InterfaceName" casts the above
+        
+      //   return name.first + " " + name.last
+      // },
+      field: 'Name', 
+      headerName: 'Name',
+      width: 150 
+    },
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+        const cell = params.value 
+        return cell
+      },
+      field: 'Cell', 
+      headerName: 'Cell',
+      width: 150 
+    },
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+        const email = params.value 
+        return email
+      },
+      field: 'Email', 
+      headerName: 'Email',
+      width: 250
+    },
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+        const city = params.value 
+        return city
+      },
+      field: 'City', 
+      headerName: 'City',
+      width: 200 
+    },
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+        const location = params.value 
+        return location
+      },
+      field: 'State', 
+      headerName: 'State',
+      width: 200 
+    },
+    // { 
+    //   valueFormatter: (params: GridValueFormatterParams) => { 
+    //     const dob = params.value 
+    //     return dob
+    //   },
+    //   field: 'dob', 
+    //   headerName: 'dob',
+    //   width: 200 
+    // },
+    { 
+      valueFormatter: (params: GridValueFormatterParams) => { 
+        const picture = params.value 
+        return picture
+      },
+      field: 'picture', 
+      headerName: 'picture',
+      width: 120
+    },
+  ]
+  const dbUsers = (data: any[]) => {
+    const userUser: UserI[] = data.map((dbUser) => {
+        return {
+            nickName: dbUser.nickName,
+            firstName: dbUser.firstName,
+            lastName: dbUser.lastName,
+            intentionStatus: dbUser.intentionStatus,
+            location: dbUser.location,
+            email: dbUser.email,
+            phone: dbUser.phone,
+            blurb: dbUser.blurb
+        }
+    })
+    setUsers(userUser)
+}
+
+useEffect(() => {
+    API.getUsers().then(res => {
+        console.log(res.data)
+        dbUsers(res.data);
+    })
+}, [])
+  // const classes = useStyles
+  return (
+    // style={{ height: 600, width: '100%' }}
+    <div style={{ paddingTop: 100, height: 600, width: '100%' }}>
+      <DataGrid rowHeight={600}rows={rows} columns={columns} pageSize={1}  />
+    </div>
+  );
+}
 
