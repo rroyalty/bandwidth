@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 
 const App: React.FC = (props: any): JSX.Element => {
-
+  
+  const { isAuthenticated } = useAuth0();
   let bgArray: Array<number> = [1, 2, 3, 4]
 
   const arrayShuf = (array: Array<number>): Array<number> => {
