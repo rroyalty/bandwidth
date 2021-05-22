@@ -9,6 +9,9 @@ import axios from 'axios'
 import { RootState } from "../../redux/store";
 import API from "../../utils/API";
 
+// ========================================================================================================
+// User Profile page - this pulls info from the DB, and compares a users logged in email, with info we have stored
+// ===============================================================================================================
 export interface IUser {
     nickName: string,
     firstName: string,

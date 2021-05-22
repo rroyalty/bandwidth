@@ -4,6 +4,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 
 // might need an axios.put(/api/users, profilePayload)
+// ===================================================================================
+// Redux black magic. 
+// This updates the state with the information that the user has put in the 'create profile' form, 
+// and sends that info to the DB
+// ===================================================================================
 
 export const userProfileThunk = createAsyncThunk('profile/userProfileUpate',
     async (profilePayload:any, thunkAPI) => {

@@ -4,7 +4,7 @@ import Landing from './views/Landing/landing';
 import Find from './views/Find/Find';
 import About from './views/About/About';
 import TheTeam from './views/TheTeam/TheTeam';
-import TempProfile from './views/CreateProfile/Profile';
+import TempProfile from './views/CreateProfile/TempProfile';
 import UserProfile from './views/UserProfile/UserProfile'
 import CreateProfile from './views/CreateProfile/CreateProfile';
 import Footer from './components/Footer/Footer';
@@ -75,6 +75,7 @@ const App: React.FC = (props: any): JSX.Element => {
           <Container id="theteam" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
             <TheTeam />
           </Container>
+          {/* Add UserProfile in here somewhere? */}
           {/* <Footer /> */}
         </>
     </Router>

@@ -8,6 +8,9 @@ import { MenuItem, Container, Button } from '@material-ui/core';
 import './style.css'
 import { useAuth0, User } from "@auth0/auth0-react";
 
+// ================================================
+// Form for CREATING a new profile 
+// ================================================
 export const CreateProfile = ({ match }: { match: any }) => {
     // update this to have firstname / lastname fields in form / state
     const { profileID } = match.params
