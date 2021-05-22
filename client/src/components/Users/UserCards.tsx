@@ -1,42 +1,116 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
-import axios from 'axios'
+import React, { useEffect } from 'react';
+import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
+import API from '../../utils/API'
+import { useState } from 'react';
+import { useTheme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles';
+import { Paper } from '@material-ui/core';
+
+export interface UserI {
+    nickName: string,
+    firstName: string,
+    lastName: string,
+    intentionStatus: string,
+    location: string,
+    email: string,
+    phone: string,
+    blurb: string,
+}
 
 const UserCard = () => {
 
-    let userInfo;
-    const fetchItem = async() => {
-        const response = await axios('/api/users');
-        console.log(response.data);
-        userInfo = response.data
-        return userInfo
-        console.log(userInfo)
-    };
-    fetchItem();
+    const [users, setUsers] = useState<UserI[]>([])
 
-    // const renderedPosts = posts.map(post => (
-    //     <article className="post-excerpt" key={post.id}>
-    //       <h3>{post.title}</h3>
-    //       <p className="post-content">{post.content.substring(0, 100)}</p>
-    //       <PostAuthor userId={post.user} />
-    //       <Link to={`/posts/${post.id}`} className="button muted-button">
-    //         View Post
-    //       </Link>
-    //     </article>
-    return(
-        <Container maxWidth="xs"className="bg">
-            {/* {userInfo.map(info => {
-                <h1>{userInfo.}</h1>
-            })} */}
-            <h1>Name</h1>
-            <p>photohere</p>
-            <p>Status</p>
-            <p>City </p>
-            <p>State</p>
-            <p>Instrument</p>
-            <p>Genre</p>
-        </Container>
+
+    const dbUsers = (data: any[]) => {
+        const userUser: UserI[] = data.map((dbUser) => {
+            return {
+                nickName: dbUser.nickName,
+                firstName: dbUser.firstName,
+                lastName: dbUser.lastName,
+                intentionStatus: dbUser.intentionStatus,
+                location: dbUser.location,
+                email: dbUser.email,
+                phone: dbUser.phone,
+                blurb: dbUser.blurb
+            }
+        })
+        setUsers(userUser)
+    }
+
+    useEffect(() => {
+        API.getUsers().then(res => {
+            console.log(res.data)
+            dbUsers(res.data);
+        })
+    }, [])
+
+    const useStyles = makeStyles((theme: Theme) =>
+        createStyles({
+            root: {
+                backgroundColor: `rgba(255, 255, 255, 0.4)`,
+                // backgroundColor: `#fff`,
+                flexGrow: 1,
+                // justifyContent: `center`,
+                // alignItems: `center`,
+                // maxHeight: `100vh`,
+                // overflow: `auto`,
+                // width: `80%`,
+                // margin: `0`,
+            },
+            paper: {
+                padding: theme.spacing(2),
+                textAlign: 'center',
+                color: theme.palette.text.secondary,
+            },
+            grid: {
+                backgroundColor: `rgba(255, 255, 255, 0.4)`,
+                justifyContent: `center`,
+                alignItems: `center`,
+            },
+            header: {
+                backgroundColor: `rgba(255, 255, 255, 0.4)`,
+                paddingTop: 100,
+                paddingLeft: 50,
+                justifyContent: `center`,
+                alignItems: `center`,
+            },
+        }),
+    );
+    const classes = useStyles();
+    return (
+        <Grid
+            container
+            spacing={3}
+            // direction="row"
+            justify="center"
+            alignItems="center"
+        >
+
+        <div className={classes.root}>
+                    <h1 className={classes.header}>Find Other Musicians</h1>
+            {users.map((user) => {
+                return (
+                    <Container className={classes.root} maxWidth="lg" >
+                          <Grid container spacing={3}>
+                        <Grid className={classes.root} item xs={12}>
+                            <h1 key={user.nickName}>{user.nickName}</h1>
+                            <p key={user.firstName}>{user.firstName} {user.lastName}</p>
+                            <p key={user.intentionStatus}>{user.intentionStatus}</p>
+                            <p key={user.location}>{user.location}</p>
+                            <p key={user.email}>{user.email}</p>
+                            <p key={user.phone}>{user.phone}</p>
+                            <p key={user.blurb}>{user.blurb}</p>
+                            <p>---------------------</p>
+                        </Grid>
+                        </Grid>
+                    </Container>
+                )
+            })}
+            </div>
+         </Grid>
     )
 }
+
 
 export default UserCard

@@ -54,7 +54,7 @@ User.init(
         oidc: {
             type: DataTypes.STRING,
             defaultValue: Sequelize.STRING,
-            required: true,
+            // required: true,
             primaryKey: true,
             unique: true
         },
@@ -76,6 +76,11 @@ User.init(
             type: DataTypes.STRING,
             allowNull: true,
             unique: false,
+        },
+        blurb: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: false
         }
     },
     {
