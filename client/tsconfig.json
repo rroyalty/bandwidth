@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "lib": [
       "es6",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,15 +20,25 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "target": "es5",
-    "types": [
-      "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-  ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
   "include": [
     "src"
   ]
 }
+
+/*
+ Do not take out these 
+
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+  }
+}
+
+*/

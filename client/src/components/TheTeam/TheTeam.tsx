@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import TeamBio from '../../components/TeamBio/TeamBio'
+import TeamBio from '../TeamBio/TeamBio'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -38,10 +38,7 @@ const TheTeam: React.FC = (): JSX.Element => {
     const classes = useStyles();
     return (
         <Box className={classes.root} display='flex' flexDirection='column' alignItems='center' margin={0} padding={0}>
-            <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
-            <Grid className={classes.grid} container spacing={1}>
-                <TeamBio />
-            </Grid>
+            <TeamBio />
         </Box>
     )
 }
