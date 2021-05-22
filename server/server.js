@@ -1,18 +1,18 @@
-const express = require('express');
-// const path = require("path");
+const express = require('express')
 const routes = require('./routes/');
-const sequelize = require('./config/connection')
+const { sequelize } = require('./models')
 
-const app = express();
-const PORT = process.env.PORT || 3020;
+const app = express()
+// const PORT = process.env.PORT || 3020;
+const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(express.json());
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-// Connect to the database before starting the Express.js server
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on PORT: ${PORT}!`));
-});
+app.listen(`${PORT}`, async () => {
+    console.log('Server up on http://localhost:5000')
+    await sequelize.authenticate()
+    console.log('Database Connected!')
+})
