@@ -94,6 +94,7 @@ const UserProfile = () => {
    }
   return (
     <div className="paddingfix">
+      {console.log(user)}
       {!user || user.length == 0 ? noUserExists() : userExists() }
     </div>
   );
