@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Loading from './components/Loading/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './components/Navbar/Navbar';
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import LoggedInLanding from "./views/Landing/loggedInLanding"
 import LoggedOutLanding from "./views/Landing/loggedOutLanding"
 
@@ -11,7 +10,7 @@ const App: React.FC = (): JSX.Element => {
   
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) {
+  if ( isLoading ) {
     return <Loading />;
   }
 
