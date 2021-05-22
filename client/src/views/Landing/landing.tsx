@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     button: {
         width: `300px`,
-        backgroundColor: `#181D27`,
+        backgroundColor: theme.palette.primary.main,
         color: `#fff`,
         margin: `.05rem`
     },
