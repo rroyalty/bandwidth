@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 // import { RootState } from "../../redux/store";
 import API from "../../utils/API";
 import CreateProfile from '../CreateProfile/CreateProfile'
+import { Button } from "@material-ui/core";
 
 // ========================================================================================================
 // User Profile page - this pulls info from the DB, and compares a users logged in email, with info we have stored
@@ -54,14 +55,15 @@ const UserProfile = () => {
       const findUser = res.data;
       const thisUser = findUser.filter((findUser: any) => userProfile.user.email === findUser.email)
       // console.log(thisUser[0])
+      //  !thisUser ? noUserExists() : writeProfile(thisUser)
       writeProfile(thisUser)
-     userExists()
+    //  userExists()
     })
   }, [])
 
    const userExists = () => {
      return (
-   <div className="paddingfix">
+   <div className="">
       {user.map((user) => {
         return (
           <Container maxWidth="lg" >
@@ -82,20 +84,24 @@ const UserProfile = () => {
 
    const noUserExists = () => {
      return(
-       <>
        <Container>
-       <div className="paddingfix test">
-       <h1>hello</h1>
-       <Link className="paddingfix test" to="createprofile">TESTING LINK</Link>
-       <p>yoyoyo</p>
+       <div className="">
+       <h1>Welcome to BandWidth!</h1>
+       <p>Thanks for joining BandWidth.</p>
+       <p>Please click the button below to finish creating your profile. </p>
+       <Button>
+       <Link to="createprofile">Create Profile Now</Link>
+       </Button>
        </div>
        </Container>
-       </>
+       
      )
    }
   return (
-    <div className="paddingfix ">
-      {!user ? noUserExists() : userExists() }
+    <div className="paddingfix">
+      {console.log(user)}
+      {!user || user.length == 0 ? noUserExists() : userExists() }
+      {/* {findUser.filter((findUser: any) => userProfile.user.email === findUser.email) ? userExists() : <Link to="createprofile">Testtesttest</Link> } */}
     </div>
   );
 };
