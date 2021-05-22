@@ -1,8 +1,8 @@
+
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Paper, Container, Avatar, Typography } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import theTeam from "/devTeam"
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -32,18 +32,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-const TeamBio: React.FC = (): JSX.Element => {
+const PicLeftBioRight: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <Container className={classes.root}>
-            <Grid className={classes.grid} container item xs={12} spacing={3}>
-                <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
+        <Grid className={classes.grid} container item xs={12} spacing={3}>
+            <Grid className={classes.grid} item xs={4}>
+                <Avatar className={classes.avatar} alt="Ryan Royalty" src="/theteam/ryan-pic.jpg" />
             </Grid>
-            <Grid className={classes.grid} container item xs={12} spacing={3}>
-
+            <Grid item xs={8}>
+                <Paper>
+                    <Typography>
+                        Ryan is an awesome dude!
+                    </Typography>
+                </Paper>
             </Grid>
-        </Container>)
+        </Grid>
+    )
 };
 
-export default TeamBio;
+export default PicLeftBioRight;
