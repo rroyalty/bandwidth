@@ -4,6 +4,7 @@ import NavbarMenu from "../../components/NavbarMenu/NavbarMenu"
 
 const Navbar: React.FC = (): JSX.Element => {
 
+
     return (
         <>
          <NavbarMenu />   
