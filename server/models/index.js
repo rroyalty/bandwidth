@@ -1,38 +1,36 @@
-const User = require('./User');
-const Instrument  = require('./Instrument')
-const Genre = require('./Genre');
-const User_Instrument = require('./User_Instrument');
-const User_Genre = require('./User_Genre');
+'use strict';
 
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+const db = {};
 
-// TO DO:
-// 1 - Understand how to seed some sample data into mysql
-// 2 - Understand how to test seeded data for expectations
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
-    // Determine through which model as well as the foreign key
-    Instrument.belongsToMany(User, {
-        through: User_Instrument,
-        foreignKey: 'instrument_id',
-    });
-    
-    // Determine through which model as well as the foreign key
-    User.belongsToMany(Instrument, {
-        through: User_Instrument,
-        foreignKey: 'user_oidc',
-    });
-    
-    // Determine through which model as well as the foreign key
-    Genre.belongsToMany(User, {
-        through: User_Genre,
-        foreignKey: 'genre_id',
-    });
-    
-    // Determine through which model as well as the foreign key
-    User.belongsToMany(Genre, {
-        through: User_Genre,
-        foreignKey: 'user_oidc',
-    });
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
+db.sequelize = sequelize;
 
-module.exports = { User, Instrument, Genre, User_Instrument, User_Genre };
+module.exports = db;
