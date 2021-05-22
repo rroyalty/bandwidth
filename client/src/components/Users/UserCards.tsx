@@ -39,8 +39,8 @@ const UserCard = () => {
     }
 
     useEffect(() => {
-        API.getUsers().then(res => {
-            console.log(res.data)
+        API.getAllUsers().then(res => {
+            // console.log(res.data)
             dbUsers(res.data);
         })
     }, [])

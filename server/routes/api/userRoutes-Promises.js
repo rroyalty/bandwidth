@@ -4,9 +4,16 @@ const { User } = require('../../models');
 const { Genre } = require('../../models');
 
 // GET all users
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
+//     // Get all books from the book table
+//     User.findAll().then((userData) => {
+//         res.json(userData);
+//     });
+// });
+router.get('/:email', (req, res) => {
     // Get all books from the book table
-    User.findAll().then((userData) => {
+    const { email } = req.params; 
+    User.findOne({where:{email}}).then((userData) => {
         res.json(userData);
     });
 });

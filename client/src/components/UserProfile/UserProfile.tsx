@@ -10,7 +10,7 @@ import API from "../../utils/API";
 // import CreateProfile from '../CreateProfile/CreateProfile'
 import { Button } from "@material-ui/core";
 
-// ========================================================================================================
+// ==============================================================================================================
 // User Profile page - this pulls info from the DB, and compares a users logged in email, with info we have stored
 // ===============================================================================================================
 export interface IUser {
@@ -30,7 +30,7 @@ const UserProfile = () => {
   const [user, setUser] = useState<IUser[]>([])
 
   const writeProfile = (res: any[]) => {
-    const users: IUser[] = res.map((user) => {
+    const users: IUser[] = user.map((user) => {
       return {
         nickName: user.nickName,
         firstName: user.firstName,
@@ -44,21 +44,23 @@ const UserProfile = () => {
     })
     console.log(users)
     setUser(users)
-
+    // userExists()
   }
 
 
   useEffect(() => {
-    API.getUsers().then(res => {
+    API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      const thisUser = findUser.filter((findUser: any) => userProfile.user.email === findUser.email)
-      writeProfile(thisUser)
+      // const thisUser = findUser.filter((findUser: any) => userProfile.user.email === findUser.email)
+      console.log(findUser)
+      writeProfile(findUser)
+      // console.log(email)
     })
   }, [])
 
    const userExists = () => {
      return (
-   <div className="">
+   <div className="userexists">
       {user.map((user) => {
         return (
           <Container maxWidth="lg" >
@@ -80,10 +82,11 @@ const UserProfile = () => {
    const noUserExists = () => {
      return(
        <Container>
-       <div className="">
+       <div className="no user exists">
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
-       <p>Please click the button below to finish creating your profile. </p>
+       <p>Please click the button below to finish creating your profile.</p>
+       <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
        <Button>
        <Link to="createprofile">Create Profile Now</Link>
        </Button>
@@ -93,9 +96,9 @@ const UserProfile = () => {
      )
    }
   return (
-    <div className="paddingfix">
-      {console.log(user)}
-      {!user || user.length == 0 ? noUserExists() : userExists() }
+    <div className="paddingfix test test">
+      {/* {userExists()} */}
+      {!user || user == null ? noUserExists() : userExists() }
     </div>
   );
 };

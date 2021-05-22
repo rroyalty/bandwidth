@@ -20,6 +20,13 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:email', (req, res) => {
+    // Get all books from the book table
+    const { email } = req.params; 
+    User.findOne({where:{email}}).then((userData) => {
+        res.json(userData);
+    });
+});
 
 // GET all users 'Looking for Musicians'
 router.get('/bands-seeking', async (req, res) => {
@@ -95,22 +102,21 @@ router.get('/networking', async (req, res) => {
 
 // GET a single user by their unique id given by Auth0
 // Need to change User model and re-test
-router.get('/:oidc', async (req, res) => {
-    const oidc = req.params.oidc;
-    try {
-        const userData = await User.findByPk( oidc );
-        if (!userData) {
-            res.status(404).json({ message: 'No user with this id!' });
-            return;
-        }
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-    // Find a single book by their primary key (book_id)
-    // Find a single user by their  (book_id)
-
-});
+// router.get('/:oidc', async (req, res) => {
+//     const oidc = req.params.oidc;
+//     try {
+//         const userData = await User.findByPk( oidc );
+//         if (!userData) {
+//             res.status(404).json({ message: 'No user with this id!' });
+//             return;
+//         }
+//         res.status(200).json(userData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+//     // Find a single book by their primary key (book_id)
+//     // Find a single user by their  (book_id)
+// });
 
 // CREATE a new user
 router.post('/', async (req, res) => {
