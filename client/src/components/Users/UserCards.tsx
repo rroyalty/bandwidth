@@ -49,14 +49,7 @@ const UserCard = () => {
         createStyles({
             root: {
                 backgroundColor: `rgba(255, 255, 255, 0.4)`,
-                // backgroundColor: `#fff`,
                 flexGrow: 1,
-                // justifyContent: `center`,
-                // alignItems: `center`,
-                // maxHeight: `100vh`,
-                // overflow: `auto`,
-                // width: `80%`,
-                // margin: `0`,
             },
             paper: {
                 padding: theme.spacing(2),
@@ -82,7 +75,6 @@ const UserCard = () => {
         <Grid
             container
             spacing={3}
-            // direction="row"
             justify="center"
             alignItems="center"
         >

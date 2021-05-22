@@ -5,7 +5,7 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
-            include: ['genres', 'instruments'],
+            // include: ['genres', 'instruments'],
         });
         if (!users) {
             res.status(404).json({ message: 'No users found!' });
@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 // GET user by email (Toni needs this)
 router.get('/:email', (req, res) => {

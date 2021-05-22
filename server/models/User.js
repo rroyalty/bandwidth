@@ -83,7 +83,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    // freezeTableName: true,
+    freezeTableName: true,
     // underscored: true,
     tableName: 'users',
     modelName: 'User',
