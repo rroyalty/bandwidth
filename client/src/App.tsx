@@ -10,7 +10,7 @@ const App: React.FC = (): JSX.Element => {
   
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) {
+  if ( isLoading ) {
     return <Loading />;
   }
 
