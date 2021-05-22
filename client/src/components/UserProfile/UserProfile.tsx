@@ -44,7 +44,7 @@ const UserProfile = () => {
     })
     console.log(users)
     setUser(users)
-    // userExists()
+    userExists()
   }
 
 
@@ -60,6 +60,7 @@ const UserProfile = () => {
 
    const userExists = () => {
      return (
+      
    <div className="userexists">
       {user.map((user) => {
         return (
@@ -98,7 +99,9 @@ const UserProfile = () => {
   return (
     <div className="paddingfix test test">
       {/* {userExists()} */}
-      {!user || user == null ? noUserExists() : userExists() }
+      {/* {user === null ?  userExists() : noUserExists()  } */}
+      {/* was working the below way originally, until I messed with routes */}
+      {!userProfile || userProfile == null ?  noUserExists() : userExists()}
     </div>
   );
 };
