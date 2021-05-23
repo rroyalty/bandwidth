@@ -27,6 +27,7 @@ router.get('/:email', (req, res) => {
     });
 });
 
+
 // GET all users 'Looking for Musicians'
 router.get('/bands-seeking', async (req, res) => {
     try {
@@ -123,6 +124,22 @@ router.get('/:oidc', async (req, res) => {
 
 // CREATE a new user
 router.post('/', async(req, res) => {
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
+
+    try {
+        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
+        if (!user) {
+            res.status(404).json({ message: 'Something went wrong!' });
+            return;
+        }
+        return res.json(user)
+    } catch(err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
+//EDIT a current user
+router.put('/', async(req, res) => {
     const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
 
     try {

@@ -6,5 +6,8 @@ export default {
     },
     getAllUsers: function () {
         return axios.get('/api/users/')
+    },
+    getNetworkingUsers: function () {
+        return axios.get('/api/users/networking')
     }
 }

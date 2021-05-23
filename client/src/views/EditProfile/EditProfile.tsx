@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { userProfileThunk } from './createProfileSlice';
+// import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
@@ -9,9 +9,9 @@ import './style.css'
 import { useAuth0, User } from "@auth0/auth0-react";
 
 // ================================================
-// Form for CREATING a new profile 
+// Form for EDITING a current profile 
 // ================================================
-export const CreateProfile = () => {
+export const EditProfile = () => {
     // update this to have firstname / lastname fields in form / state
     // const { profileID } = match.params
 
@@ -44,7 +44,7 @@ export const CreateProfile = () => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            // dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
@@ -151,4 +151,4 @@ export const CreateProfile = () => {
 
 }
 
-export default CreateProfile
+export default EditProfile
