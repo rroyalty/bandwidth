@@ -40,8 +40,7 @@ const TeamBio: React.FC = (): JSX.Element => {
     const shufArray: Array<any> = arrayShuf(teamJSON);
 
     return (
-        <>
-            <Grid container item xs={12} spacing={3}>
+            <Grid className={classes.grid} container item xs={12} spacing={3}>
                 <Grid className={classes.grid} item xs={12} spacing={3}>
                     <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
                 </Grid>
@@ -51,7 +50,6 @@ const TeamBio: React.FC = (): JSX.Element => {
                     ))
                 }
             </Grid>
-        </>
     )
 };
 
