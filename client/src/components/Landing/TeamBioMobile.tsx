@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-const TeamBio: React.FC = (): JSX.Element => {
+const TeamBioMobile: React.FC = (): JSX.Element => {
     const theme = useTheme();
     const classes = useStyles();
 
@@ -35,13 +35,13 @@ const TeamBio: React.FC = (): JSX.Element => {
     const shufArray: Array<any> = arrayShuf(teamJSON);
 
     return (
-        <Carousel>
+        <Carousel animation={"slide"}>
             { shufArray.map((item) =>
-                <Box className={classes.root}>
-                    <CarouselItem key={item.id} props={item} />
+                <Box className={classes.root} key={item.id}>
+                    <CarouselItem props={item} />
                 </Box>)}
         </Carousel>
     )
 };
 
-export default TeamBio;
+export default TeamBioMobile;

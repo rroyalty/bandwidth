@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 
-const TeamBio: React.FC = (): JSX.Element => {
+const TeamBioDesktop: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     const arrayShuf = (array: Array<any>): Array<any> => {
@@ -41,7 +41,7 @@ const TeamBio: React.FC = (): JSX.Element => {
 
     return (
             <Grid className={classes.grid} container item xs={12} spacing={3}>
-                <Grid className={classes.grid} item xs={12} spacing={3}>
+                <Grid className={classes.grid} item xs={12}>
                     <Typography className={classes.font}>Bandwidth brought to you by...</Typography>
                 </Grid>
                 {
@@ -53,4 +53,4 @@ const TeamBio: React.FC = (): JSX.Element => {
     )
 };
 
-export default TeamBio;
+export default TeamBioDesktop;

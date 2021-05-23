@@ -50,8 +50,10 @@ const CarouselItem: React.FC<IProps> = (props): JSX.Element => {
         <Paper className={classes.root}>
             <Avatar className={classes.avatar} alt={props.props.name} src={props.props.img} />
             <Typography className={classes.typography}>
-                <h2>{props.props.name}</h2>
-                <p>{props.props.bio}</p>
+                {props.props.name}
+            </Typography>
+            <Typography className={classes.typography}>
+                {props.props.bio}
             </Typography>
         </Paper>
     )
