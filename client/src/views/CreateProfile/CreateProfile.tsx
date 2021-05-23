@@ -105,7 +105,7 @@ export const CreateProfile = () => {
     return (
 
         <Container className={classes.root}>
-            <h2>Finish Profile</h2>
+            <h2>Finish Your BandWidth Profile</h2>
 
             <form noValidate autoComplete="off">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />

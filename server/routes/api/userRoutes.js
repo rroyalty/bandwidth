@@ -139,24 +139,9 @@ router.post('/', async(req, res) => {
     }
 })
 
-//EDIT a current user
-// router.put('/', async(req, res) => {
-//     const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
 
-//     try {
-//         const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
-//         if (!user) {
-//             res.status(404).json({ message: 'Something went wrong!' });
-//             return;
-//         }
-//         return res.json(user)
-//     } catch(err) {
-//         console.log(err)
-//         return res.status(500).json(err)
-//     }
-// })
 
-// needs work
+// needs work, EDIT a current user - Toni will work on this tomorrow 
 router.put('/:oidc', async (req, res) => {
         const oidc = req.params.oidc
         const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
@@ -171,7 +156,8 @@ router.put('/:oidc', async (req, res) => {
                 bandname: req.body.bandname,
                 email: req.body.email,
                 phone: req.body.phone,
-                location: req.body.location
+                location: req.body.location,
+                blurb: req.body.blurb
             },
             {
                 where: {

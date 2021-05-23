@@ -2,15 +2,23 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../redux/store'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
+import { useAuth0, User } from "@auth0/auth0-react";
 
 // might need an axios.put(/api/users, profilePayload)
 // ===================================================================================
 // Redux black magic
 // ===================================================================================
 
-export const userProfileThunk = createAsyncThunk('profile/userProfileUpate',
+const user = useAuth0();
+
+// const oidc = user.user.sub
+
+
+export const editProfileThunk = createAsyncThunk('profile/userProfileUpate',
+
     async (profilePayload:any, thunkAPI) => {
-        const response = await axios.put('/api/users', profilePayload)
+        // add ${oidc} to below on axios.put
+        const response = await axios.put(`/api/users/`, profilePayload)
         return response.data
     })
 
@@ -52,17 +60,17 @@ export const profileSlice = createSlice({
             },
     },
     extraReducers: (builder) =>{
-        builder.addCase(userProfileThunk.fulfilled, (state, action: PayloadAction<IPrepare>) => {
+        builder.addCase(editProfileThunk.fulfilled, (state, action: PayloadAction<IPrepare>) => {
             state.profile = action.payload
             state.isSubmitting = false
    
         });
         // change this one to .pending, no overload matches error
-        builder.addCase(userProfileThunk.pending, (state) => {
+        builder.addCase(editProfileThunk.pending, (state) => {
            state.isSubmitting = true; 
         })
         // if failed,send message to user
-        builder.addCase(userProfileThunk.rejected, (state, action:any) => {
+        builder.addCase(editProfileThunk.rejected, (state, action:any) => {
         //  state.errorMessage = action.error.message 
             state.isSubmitting = false
         })

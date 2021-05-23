@@ -68,7 +68,7 @@ const UserProfile = () => {
             <p >{user.phone}</p>
             <p >{user.blurb}</p>
           </Container>
-        <Link to="/editprofile">Edit Profile</Link>
+        <Link to="editprofile">Edit Profile</Link>
    
     </div>
      )
@@ -91,11 +91,9 @@ const UserProfile = () => {
    }
   return (
     <div className="paddingfix test test">
-     {console.log({userProfile})}
-     {console.log({user})}
-      {/* {user.length == 0 || !user || !userProfile || userProfile.length == 0 ?  noUserExists() : userExists()} */}
-      {/* user.length == 0 || !user || !userProfile || */}
-      {/* was working the below way originally, until I messed with routes */}
+     {/* {console.log({userProfile})}
+     {console.log({user})} */}
+
       {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
     </div>
   );
@@ -103,6 +101,4 @@ const UserProfile = () => {
 
 export default UserProfile;
 
-        // <Button>
-        // {/* Link to 'edit profile' here */}
-        // </Button>
+     
