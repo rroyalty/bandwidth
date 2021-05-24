@@ -47,7 +47,7 @@ export const EditProfile = () => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
-            // dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
