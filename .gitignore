@@ -27,6 +27,7 @@
 /server/zzseeders
 /server/zzmodels
 /server/zzserver.js
+/server/config/configjson.js
 
 
 .env.local
