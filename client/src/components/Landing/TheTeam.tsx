@@ -15,24 +15,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         height: `100vh`,
         width: `80%`,
         margin: `0`,
+        maxWidth: `80%`,
+        [theme.breakpoints.down('xs')]: {
+            width: `100%`,
+            maxWidth: `100%`,
+        }
     },
-    container: {
-        justifyContent: `center`,
-        alignItems: `center`,
-        height: `100vh`,
-    },
-    grid: {
-        justifyContent: `center`,
-        alignItems: `center`,
-    },
-    avatar: {
-        height: "auto",
-        width: "auto"
-    },
-    font: {
-        fontSize: "24px",
-        color: '#181D27'
-    }
 }));
 
 

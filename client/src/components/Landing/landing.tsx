@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         height: `100vh`,
         width: `80%`,
         margin: `0`,
+        [theme.breakpoints.down('xs')]: {
+            width: `100%`,
+            maxWidth: `100%`,
+        }
     },
     button: {
         width: `300px`,

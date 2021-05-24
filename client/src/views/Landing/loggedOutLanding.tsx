@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Landing from '../../components/Landing/landing';
 import About from '../../components/Landing/About';
 import TheTeam from '../../components/Landing/TheTeam';
+import Footer from '../../components/Footer/Footer';
 import { Container } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
@@ -13,7 +14,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     height: "100vh",
-    justifyContent: `center`
+    justifyContent: `center`,
+
+  },
+  footer: {
+    backgroundColor: theme.palette.primary.main,
+    display: `flex`,
   }
 }));
 
@@ -50,6 +56,9 @@ const LoggedOutLanding: React.FC = (props: any): JSX.Element => {
           </Container>
           <Container id="theteam" className={classes.root} maxWidth='xl' style={{ backgroundImage: `url(/backgrounds/background${shufArray[2]}.jpg)` }} >
             <TheTeam />
+          </Container>
+          <Container id="support" className={classes.footer} maxWidth='xl' >
+            <Footer />
           </Container>
         </>
     </Router>

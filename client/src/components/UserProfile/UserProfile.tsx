@@ -46,7 +46,7 @@ const UserProfile = () => {
   }
 
   useEffect(() => {
-    API.getUsers().then(res => {
+    API.getUser(user[0].email).then(res => {
       const findUser = res.data;
       const thisUser = findUser.filter((findUser: any) => userProfile.user.email === findUser.email)
 

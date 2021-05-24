@@ -19,6 +19,16 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+// GET user by email (Toni needs this)
+router.get('/:email', (req, res) => {
+    const { email } = req.params; 
+    User.findOne({where:{email}}).then((userData) => {
+        res.json(userData);
+    });
+});
+
+
 // GET all users 'Looking for Musicians'
 router.get('/bands-seeking', async (req, res) => {
     try {
@@ -146,10 +156,10 @@ router.post('/test', async(req, res) => {
 
 // CREATE a new user
 router.post('/', async(req, res) => {
-    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, blurb } = req.body
 
     try {
-        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
+        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, blurb })
         if (!user) {
             res.status(404).json({ message: 'Something went wrong!' });
             return;
@@ -163,6 +173,8 @@ router.post('/', async(req, res) => {
 
 // probably needs a safety net for if a put request is made but no updates are actually made
 // currently I believe if you save changes but nothing is changed it will return the error message.
+
+// needs work, EDIT a current user - Toni will work on this tomorrow 
 router.put('/:oidc', async (req, res) => {
         const oidc = req.params.oidc
         console.log(oidc);

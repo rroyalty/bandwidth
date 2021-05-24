@@ -3,25 +3,25 @@
         "id": 1,
         "name": "Ryan Royalty",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Ryan is a 36 year old aspiring web developer."
+        "bio": "Ryan is an aspiring Full Stack web developer living in Nottingham, NH with his wife, Samantha, and two dogs, Franconia and Tuckerman. While Ryan does not play any musical instruments himself, he loves listening to others play and was very excited to work on a social media application geared towards musicians. When Ryan isn't working on web projects, he enjoys spending time in nature, reading, visiting local breweries, and practicing Uechi Ryu karate."
     },
     {
         "id": 2,
         "name": "Toni Powell",
-        "img": "/theteam/ryan-pic.jpg",
-        "bio": "Toni Bio Here"
+        "img": "/theteam/toni-pic.jpg",
+        "bio": "In hac habitasse platea dictumst. Sed posuere lobortis purus. Ut condimentum odio eget mauris ullamcorper, ut posuere nibh aliquam. Integer ut tortor vel libero tincidunt imperdiet at at nunc. Integer vitae ante at ante molestie tincidunt. Cras blandit magna sit amet tempor auctor. Curabitur finibus metus sed lorem maximus facilisis. Aenean maximus est nec malesuada pulvinar. Donec in ullamcorper odio. Nullam non augue vitae dui egestas finibus et et velit. Nunc suscipit velit in diam dapibus interdum."
     },
     {
         "id": 3,
         "name": "Cathy Marchese",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Cathy Bio Here"
+        "bio": "Quisque scelerisque fermentum lorem, sit amet semper nisi interdum at. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent consectetur ut sem in aliquam. Quisque venenatis felis consectetur placerat facilisis. Duis pellentesque metus vitae viverra ultricies. Integer molestie eu nulla eu pulvinar. Sed dignissim lacinia metus. In quis tortor vitae ante porta fringilla viverra ac mi."
     },
     {
         "id": 4,
         "name": "Bjorn Yourney",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Bjorn Bio Here"
+        "bio": "Phasellus sit amet fermentum lectus. Suspendisse varius dui eget dui fermentum gravida. Maecenas nec pulvinar urna. Curabitur mi est, mattis eget hendrerit vitae, consectetur in nisi. Sed eleifend dui sed est faucibus accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus quis suscipit orci. Cras quis accumsan libero, sit amet vestibulum lectus. Ut tortor tortor, venenatis sed nulla commodo, fermentum ullamcorper dui. Sed fringilla ex libero, et condimentum dolor mollis ut. Cras dignissim at tellus eget tincidunt. Proin rutrum congue dui, at tempus lectus venenatis vitae. Nunc vehicula vitae diam a vestibulum."
     },
     {
         "id": 5,
