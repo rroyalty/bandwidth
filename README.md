@@ -50,6 +50,8 @@ Please contact the builders of this application if you have any quesitons, conce
 * Ability to Upload photos for backgrounds. Ditto for A/V (audio/video).
 * Expanded Login options (Social Media, Gmail, custom signup (non-Gmail accounts), GitHub, etc.)
 * Fast Average Color npm package for photos to determine the background of a band page algorithmically.
+* Update/Delete routes for instrument and genres
+* Array filtering on model queries to eliminate duplicate returns
 
 
 ## License
