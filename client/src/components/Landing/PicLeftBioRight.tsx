@@ -53,7 +53,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     typography: {
         padding: `15px`,
-        color: `white`
+        color: `white`,
+        [theme.breakpoints.down('md')]: {
+            fontSize: `.6rem`
+        },
+        [theme.breakpoints.down('lg')]: {
+            fontSize: `.8rem`
+        }
     },
     gridBits: {
         justifyContent: `center`,

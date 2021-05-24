@@ -35,7 +35,8 @@ let theme: Theme = createMuiTheme({
       "RocknRoll One",
       "sans-serif",
     ].join(","),
-    fontSize: 12
+    fontSize: 10,
+    htmlFontSize: 10 
   },
   spacing: 4,
 });
