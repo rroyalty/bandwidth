@@ -5,7 +5,7 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
-            include: ['genres', 'instruments'],
+            // include: ['genres', 'instruments'],
         });
         if (!users) {
             res.status(404).json({ message: 'No users found!' });
@@ -16,6 +16,15 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+
+// GET user by email (Toni needs this)
+router.get('/:email', (req, res) => {
+    const { email } = req.params; 
+    User.findOne({where:{email}}).then((userData) => {
+        res.json(userData);
+    });
 });
 
 
@@ -115,10 +124,10 @@ router.get('/:oidc', async (req, res) => {
 
 // CREATE a new user
 router.post('/', async(req, res) => {
-    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, blurb } = req.body
 
     try {
-        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
+        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, blurb })
         if (!user) {
             res.status(404).json({ message: 'Something went wrong!' });
             return;
@@ -130,7 +139,9 @@ router.post('/', async(req, res) => {
     }
 })
 
-// needs work
+
+
+// needs work, EDIT a current user - Toni will work on this tomorrow 
 router.put('/:oidc', async (req, res) => {
         const oidc = req.params.oidc
         const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
@@ -145,7 +156,8 @@ router.put('/:oidc', async (req, res) => {
                 bandname: req.body.bandname,
                 email: req.body.email,
                 phone: req.body.phone,
-                location: req.body.location
+                location: req.body.location,
+                blurb: req.body.blurb
             },
             {
                 where: {

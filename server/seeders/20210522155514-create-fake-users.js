@@ -22,7 +22,8 @@ module.exports = {
       oidc: '0sk1x27qvkckubn5xjhofuvl',
       email: 'jack@gmail.com',
       phone: '9786664201',
-      location: 'Hollywood CA'
+      location: 'Hollywood CA',
+      blurb: 'Im Jack Black. I play guitar and stuff.'
     }, {
       uuid: '0sk2x36qvkckubn5xjhofuvl',
       nickName: 'Crunch Cone',
@@ -34,7 +35,8 @@ module.exports = {
       oidc: '0sk2x36qvkckubn5xjhofuvl',
       email: 'kyle@gmail.com',
       phone: '9786664201',
-      location: 'Hollywood CA'
+      location: 'Hollywood CA',
+      blurb: 'Jack Blacks bestest buddy'
     }], {});
   },
 

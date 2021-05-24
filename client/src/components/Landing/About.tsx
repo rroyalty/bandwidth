@@ -88,7 +88,7 @@ const About: React.FC = (): JSX.Element => {
                                     <MusicNoteIcon />
                                 </ListItemIcon>
                                 <ListItemText
-                                    primary="Filter musicians by preferred genres and instruments!"
+                                    primary="Filter musicians by preferred genres and instruments! <Future Dev>"
                                 />
                             </ListItem>
                             <ListItem>
