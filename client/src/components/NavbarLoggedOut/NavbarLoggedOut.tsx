@@ -66,7 +66,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
-    { title: `The Team`, path: `theteam` }
+    { title: `The Team`, path: `theteam` },
+    { title: `Support`, path: `support`}
 ]
 
 const NavbarLoggedOut: React.FC = (): JSX.Element => {
@@ -121,6 +122,7 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                             <ScrollLink to="landing">Home</ScrollLink>
                             <ScrollLink to="about">about</ScrollLink>
                             <ScrollLink to="theteam">The Team</ScrollLink>
+                            <ScrollLink to="support">Support</ScrollLink>
                         </MenuItem>
                     </List>
                     <AuthNav />
