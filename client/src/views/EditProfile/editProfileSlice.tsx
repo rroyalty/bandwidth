@@ -25,11 +25,9 @@ import API from '../../utils/API';
     // }, [])
 
 
-export const editProfileThunk = createAsyncThunk('profile/userProfileUpate',
+export const editProfileThunk = createAsyncThunk('profile/userProfileUpate', 
 async (profilePayload:any, thunkAPI) => {
-        // invalid hook call here
-        const userProfile: any = useAuth0();
-        const email = userProfile.email
+        const email = profilePayload.email
         
         const response = await axios.put(`/api/users/${email}`, profilePayload)
         return response.data
