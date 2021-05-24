@@ -14,8 +14,8 @@
     {
         "id": 3,
         "name": "Cathy Marchese",
-        "img": "/theteam/ryan-pic.jpg",
-        "bio": "Quisque scelerisque fermentum lorem, sit amet semper nisi interdum at. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent consectetur ut sem in aliquam. Quisque venenatis felis consectetur placerat facilisis. Duis pellentesque metus vitae viverra ultricies. Integer molestie eu nulla eu pulvinar. Sed dignissim lacinia metus. In quis tortor vitae ante porta fringilla viverra ac mi."
+        "img": "/theteam/cathy-pic.jpg",
+        "bio": "Front-end developer working towards becoming a full-stack developer."
     },
     {
         "id": 4,
