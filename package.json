@@ -8,6 +8,7 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
+    "heroku-postinstall": "cd client && npm run build",
     "seed": "cd server && sequelize db:seed:all"
   },
   "repository": {
