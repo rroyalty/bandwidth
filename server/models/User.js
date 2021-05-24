@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     toJSON() {
-      return { ...this.get(), uuid: undefined }
+      // return { ...this.get(), uuid: undefined }
+      return { ...this.get() }
     }
   };
   User.init({
@@ -78,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    // freezeTableName: true,
+    freezeTableName: true,
     // underscored: true,
     tableName: 'users',
     modelName: 'User',

@@ -5,6 +5,7 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
+            // Do these work?
             include: ['genres', 'instruments'],
         });
         if (!users) {
@@ -17,7 +18,6 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 // GET all users 'Looking for Musicians'
 router.get('/bands-seeking', async (req, res) => {
@@ -113,6 +113,37 @@ router.get('/:oidc', async (req, res) => {
     }
 });
 
+// attempt to CREATE a new user with different route, followed by adding more to it.
+router.post('/test', async(req, res) => {
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres } = req.body
+    console.log(req.body)
+    console.log("=============")
+    console.log(req.body.genres)
+
+    try {
+        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
+        if (!user) {
+            res.status(404).json({ message: 'Something went wrong!' });
+            return;
+        }
+        const userFind = await User.findOne({
+            where: { oidc },
+            include: ['genres', 'instruments'],
+        })
+        console.log(userFind.genres);
+
+        // const genre = await Genre.create({
+        //     name: userFind.genres, userOidc: userFind.oidc
+        // })
+        console.log(userFind);
+        // console.log(userFind.genres);
+        return res.json(userFind)
+    } catch(err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
+
 // CREATE a new user
 router.post('/', async(req, res) => {
     const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location } = req.body
@@ -130,26 +161,30 @@ router.post('/', async(req, res) => {
     }
 })
 
-// needs work
+// probably needs a safety net for if a put request is made but no updates are actually made
+// currently I believe if you save changes but nothing is changed it will return the error message.
 router.put('/:oidc', async (req, res) => {
         const oidc = req.params.oidc
+        console.log(oidc);
         const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
-    try {
+        // currently if no changes are made, this will error.
+        try {
         const updatedUser = await User.update(
             {
-                nickName: req.body.nickName,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                image: req.body.image,
-                intentionStatus: req.body.intentionStatus,
-                bandname: req.body.bandname,
-                email: req.body.email,
-                phone: req.body.phone,
-                location: req.body.location
+                nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location 
+                // nickName: req.body.nickName,
+                // firstName: req.body.firstName,
+                // lastName: req.body.lastName,
+                // image: req.body.image,
+                // intentionStatus: req.body.intentionStatus,
+                // bandname: req.body.bandname,
+                // email: req.body.email,
+                // phone: req.body.phone,
+                // location: req.body.location
             },
             {
                 where: {
-                    oidc: req.params.oidc,
+                    oidc,
                 },
             }
         );
@@ -182,77 +217,5 @@ router.delete('/:oidc', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// GENRES
-router.post('/genres', async (req, res) => {
-    const { userOidc, name } = req.body
-    try {
-        const user = await User.findOne({
-            where: { oidc: userOidc }
-        })
-
-        const genre = await Genre.create({
-            name, userOidc: user.oidc
-        })
-
-        return res.json(genre)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// doesn't work
-router.get('/genres', async (req, res) => {
-    // const { userOidc, name } = req.body
-    try {
-        const genres = await Genre.findAll({
-            // if you need multiple associations
-            // you pass an array and then you pass user and the other ones
-            include: ['user']
-        })
-
-        return res.json(genres)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// INSTRUMENTS
-router.post('/instruments', async (req, res) => {
-    const { userOidc, name } = req.body
-    try {
-        const user = await User.findOne({
-            where: { oidc: userOidc }
-        })
-
-        const instruments = await Instrument.create({
-            name, userOidc: user.oidc
-        })
-
-        return res.json(instruments)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// doesn't work
-router.get('/instruments', async (req, res) => {
-    // const { userOidc, name } = req.body
-    try {
-        const instruments = await Instrument.findAll({
-            // if you need multiple associations
-            // you pass an array and then you pass user and the other ones
-            include: ['user']
-        })
-
-        return res.json(instruments)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
 
 module.exports = router;
