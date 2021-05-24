@@ -15,24 +15,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         height: `100vh`,
         width: `80%`,
         margin: `0`,
+        maxWidth: `80%`
     },
-    container: {
-        justifyContent: `center`,
-        alignItems: `center`,
-        height: `100vh`,
-    },
-    grid: {
-        justifyContent: `center`,
-        alignItems: `center`,
-    },
-    avatar: {
-        height: "auto",
-        width: "auto"
-    },
-    font: {
-        fontSize: "24px",
-        color: '#181D27'
-    }
 }));
 
 

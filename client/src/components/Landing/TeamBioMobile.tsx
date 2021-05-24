@@ -1,39 +1,47 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { Container } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import teamJSON from './devTeam.json'
 import Carousel from 'react-material-ui-carousel'
 import CarouselItem from './CarouselItem'
 
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    root: {
+        display: `flex`,
+        justifyContent: `center`,
+        alignItems: `center`,
+    }
+}));
 
-
-const TeamBio: React.FC = (): JSX.Element => {
-    // const classes = useStyles();
+const TeamBioMobile: React.FC = (): JSX.Element => {
     const theme = useTheme();
+    const classes = useStyles();
 
     const arrayShuf = (array: Array<any>): Array<any> => {
-      let j: number = 0;
-      let temp: number;
-  
-      for (let i = 0; i < 5 ; i++) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-  
-      return array;
+        let j: number = 0;
+        let temp: number;
+
+        for (let i = 0; i < 5; i++) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        return array;
     }
-  
+
     const shufArray: Array<any> = arrayShuf(teamJSON);
 
     return (
-            <Carousel>
-                {
-                    shufArray.map ((item) => <CarouselItem key={item.id} props={item} /> )
-                }
-            </Carousel>)
+        <Carousel animation={"slide"}>
+            { shufArray.map((item) =>
+                <Box className={classes.root} key={item.id}>
+                    <CarouselItem props={item} />
+                </Box>)}
+        </Carousel>
+    )
 };
 
-export default TeamBio;
+export default TeamBioMobile;
