@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { userProfileThunk } from './createProfileSlice';
+// import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-import './style.css'
+// import './style.css'
 import { useAuth0, User } from "@auth0/auth0-react";
 
 // ================================================
-// Form for CREATING a new profile 
+// Form for EDITING a current profile 
 // ================================================
-export const CreateProfile = () => {
+export const EditProfile = () => {
     // update this to have firstname / lastname fields in form / state
     // const { profileID } = match.params
 
     const user: any = useAuth0();
+
+    console.log(user.user.sub)
 
     const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
@@ -44,7 +46,7 @@ export const CreateProfile = () => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            // dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
@@ -105,7 +107,7 @@ export const CreateProfile = () => {
     return (
 
         <Container className={classes.root}>
-            <h2>Finish Your BandWidth Profile</h2>
+            <h2>Edit Profile</h2>
 
             <form noValidate autoComplete="off">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
@@ -151,4 +153,4 @@ export const CreateProfile = () => {
 
 }
 
-export default CreateProfile
+export default EditProfile
