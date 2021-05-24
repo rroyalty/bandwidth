@@ -11,13 +11,14 @@ import { useAuth0, User } from "@auth0/auth0-react";
 // ================================================
 // Form for EDITING a current profile 
 // ================================================
+
 export const EditProfile = () => {
     // update this to have firstname / lastname fields in form / state
     // const { profileID } = match.params
+    
+    const user: any = useAuth0();
 
-   const user: any = useAuth0();
-
-    console.log(user.user.email)
+    // console.log(user.user.email)
 
     const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
@@ -46,7 +47,7 @@ export const EditProfile = () => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
-            dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            // dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
@@ -94,7 +95,7 @@ export const EditProfile = () => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 1000,
+                paddingTop: 100,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,

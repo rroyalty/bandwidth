@@ -3,6 +3,9 @@ import type { RootState } from '../../redux/store'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 import { useAuth0, User } from "@auth0/auth0-react";
+import { useEffect, useState } from 'react';
+import API from '../../utils/API';
+
 
 // might need an axios.put(/api/users, profilePayload)
 // ===================================================================================
@@ -10,18 +13,24 @@ import { useAuth0, User } from "@auth0/auth0-react";
 // ===================================================================================
 
 
-// const oidc = user.user.sub
-
-
-    // const user = useAuth0();
-    // const email = user.user?.email
-    // console.log(email)
+    // const [user, setUser] = useState()
+    // const userProfile: any = useAuth0();
+    
+    // useEffect(() => {
+    //     API.getUser(userProfile.user.email).then(res => {
+    //         const findUser = res.data;
+    //         console.log(findUser)
+    //         setUser(findUser)
+    //     })
+    // }, [])
 
 
 export const editProfileThunk = createAsyncThunk('profile/userProfileUpate',
-
-
-    async (profilePayload:any, thunkAPI) => {
+async (profilePayload:any, thunkAPI) => {
+        // invalid hook call here
+        // const userProfile: any = useAuth0();
+        // const email = userProfile.email
+        
         const response = await axios.put(`/api/users/`, profilePayload)
         return response.data
     })
@@ -75,7 +84,7 @@ export const profileSlice = createSlice({
         })
         // if failed,send message to user
         builder.addCase(editProfileThunk.rejected, (state, action:any) => {
-        //  state.errorMessage = action.error.message 
+            // state.errorMessage = action.error.message 
             state.isSubmitting = false
         })
     }

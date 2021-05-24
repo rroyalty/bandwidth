@@ -9,19 +9,16 @@ const SearchStatus = () => {
 
     const handleChange = (event: { target: { value: any; }; }) => {
         let statusSearch = event.target.value;
-        // setSearchStatus(statusSearch);
-        const filteredResults = statusSearch.filter((result: { intentionStatus: string; }) => result.intentionStatus === status)
-        console.log(filteredResults)
-        // console.log(search)
+        setSearchStatus(statusSearch);
     }
 
     useEffect(() => {
         API.getAllUsers().then(res => {
             const results = res.data;
-            // const filteredResults = results.filter((result: { intentionStatus: string; }) => result.intentionStatus === status)
-            // console.log(filteredResults)
-            // if (!results) return <> </>
-        //    setFilteredResults (filteredResults)
+            const filteredResults = results.filter((result: { intentionStatus: string; }) => result.intentionStatus === status)
+            console.log(filteredResults)
+            if (!results) return <> </>
+           setFilteredResults (filteredResults)
         })
     },[])
     console.log(results)
@@ -32,8 +29,8 @@ const SearchStatus = () => {
             label: 'Looking to join a band',
         },
         {
-            value: 'Looking for a Musician',
-            label: 'Looking for a Musician',
+            value: 'Looking to fill a spot in a band',
+            label: 'Looking to fill a spot in a band',
         },
         {
             value: 'Looking to Network',
