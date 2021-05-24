@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { sequelize, User } = require('../../models');
 
 // Added comments describing the functionality of this `login` route
 // this is if we can get Auth0 to auto-submit
+// Expects oidc JSON - if found, will return user
+// If not found, will re-direct to google.com
 router.post('/', async (req, res) => {
     const oidc = req.body.oidc;
     try {
