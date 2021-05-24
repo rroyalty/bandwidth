@@ -23,13 +23,22 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         display: `flex`,
         flexDirection: `column`,
         alignItems: `center`,
-        justifyContent: `center`
+        justifyContent: `center`,
+        [theme.breakpoints.down('xs')]: {
+            width: `100%`,
+            maxWidth: `100%`,
+        }
 
     },
     typography: {
         marginLeft: `15px`,
         marginRight: `15px`,
+        marginTop: `10px`,
+        marginBottom: `5px`,
         color: `white`,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: `.75rem`
+        }
     },
     avatar: {
         height: "14vh",
