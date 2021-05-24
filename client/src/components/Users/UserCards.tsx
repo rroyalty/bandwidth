@@ -11,6 +11,7 @@ export interface UserI {
     firstName: string,
     lastName: string,
     intentionStatus: string,
+    bandName: string,
     location: string,
     email: string,
     phone: string,
@@ -29,6 +30,7 @@ const UserCard = () => {
                 firstName: dbUser.firstName,
                 lastName: dbUser.lastName,
                 intentionStatus: dbUser.intentionStatus,
+                bandName: dbUser.bandName,
                 location: dbUser.location,
                 email: dbUser.email,
                 phone: dbUser.phone,
@@ -87,6 +89,7 @@ const UserCard = () => {
                           <Grid container spacing={3}>
                         <Grid className={classes.root} item xs={12}>
                             <h1 key={user.nickName}>{user.nickName}</h1>
+                            <h2 key={user.bandName}>{user.bandName}</h2>
                             <p key={user.firstName}>{user.firstName} {user.lastName}</p>
                             <p key={user.intentionStatus}>{user.intentionStatus}</p>
                             <p key={user.location}>{user.location}</p>
