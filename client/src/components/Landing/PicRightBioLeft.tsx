@@ -71,7 +71,7 @@ const PicRightBioLeft: React.FC<IProps> = (props): JSX.Element => {
             <Grid className={classes.gridBits} item xs={9}>
                 <Paper className={classes.paper}>
                     <Typography className={classes.typography}>
-                        {props.props.bio}
+                        {`${props.props.name}: ${props.props.bio}`}
                     </Typography>
                 </Paper>
             </Grid>
