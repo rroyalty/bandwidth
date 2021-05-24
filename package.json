@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm install --only=dev && npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "heroku-postbuild": "cd client && npm run build",
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/rroyalty/bandwidth#readme",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react-scripts": "4.0.3"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"

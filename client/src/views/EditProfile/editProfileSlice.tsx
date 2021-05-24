@@ -9,7 +9,7 @@ import { useAuth0, User } from "@auth0/auth0-react";
 // Redux black magic
 // ===================================================================================
 
-const user = useAuth0();
+
 
 // const oidc = user.user.sub
 
