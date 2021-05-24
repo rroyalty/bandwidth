@@ -62,7 +62,7 @@ export const EditProfile = () => {
             setLocation(location)
             setBlurb(blurb)
             // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
-            history.push(`/tempprofile/`)
+            history.push(`/prevprofile/`)
             // axios.put(`/api/users/${user.user.email}`)
         }
     }

@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
             // Do these work?
-            include: ['genres', 'instruments'],
+            // include: ['genres', 'instruments'],
         });
         if (!users) {
             res.status(404).json({ message: 'No users found!' });

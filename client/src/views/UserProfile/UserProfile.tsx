@@ -15,6 +15,7 @@ export interface IUser {
   firstName: string,
   lastName: string,
   intentionStatus: string,
+  bandName: string,
   location: string,
   email: string,
   phone: string,
@@ -43,6 +44,7 @@ const UserProfile = () => {
           <Container maxWidth="lg" >
             <h1>User Profile Page</h1>
             <h1 >{user.nickName}</h1>
+            <h2>{user.bandName}</h2>
             <p >{user.firstName} {user.lastName}</p>
             <p >{user.intentionStatus}</p>
             <p >{user.location}</p>

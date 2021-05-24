@@ -42,7 +42,7 @@ interface IProfileSliceState {
 
 
 export const initialState: IProfileSliceState = {
-    profile: { oidc: '1', nickName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA', blurb: 'I play a mean double bass... and like 3 chords on guitar.'},
+    profile: { oidc: '1', nickName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'Breakdowns, Breakdown', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA', blurb: 'If you are seeing this, something went wrong :( Please reach out to the dev team and we would be happy to take a looksey for you!'},
     isSubmitting: false,
 }
 
