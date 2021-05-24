@@ -142,37 +142,69 @@ router.post('/', async(req, res) => {
 
 
 // needs work, EDIT a current user - Toni will work on this tomorrow 
-router.put('/:oidc', async (req, res) => {
-        const oidc = req.params.oidc
-        const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
-    try {
-        const updatedUser = await User.update(
-            {
-                nickName: req.body.nickName,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                image: req.body.image,
-                intentionStatus: req.body.intentionStatus,
-                bandname: req.body.bandname,
-                email: req.body.email,
-                phone: req.body.phone,
-                location: req.body.location,
-                blurb: req.body.blurb
+// router.put('/:oidc', async (req, res) => {
+//         const oidc = req.params.oidc
+//         const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
+//     try {
+//         const updatedUser = await User.update(
+//             {
+//                 nickName: req.body.nickName,
+//                 firstName: req.body.firstName,
+//                 lastName: req.body.lastName,
+//                 image: req.body.image,
+//                 intentionStatus: req.body.intentionStatus,
+//                 bandname: req.body.bandname,
+//                 email: req.body.email,
+//                 phone: req.body.phone,
+//                 location: req.body.location,
+//                 blurb: req.body.blurb
+//             },
+//             {
+//                 where: {
+//                     oidc: req.params.oidc,
+//                 },
+//             }
+//         );
+//         if (!updatedUser[0]) {
+//             res.status(404).json({ message: 'Something went wrong. No user with this id! Changes could not be made.' });
+//             return;
+//         }
+//         res.json(updatedUser);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
+router.put('/:email', async (req, res) => {
+    const email = req.params.email
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location } = req.body
+try {
+    const updatedUser = await User.update(
+        {
+            nickName: req.body.nickName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            image: req.body.image,
+            intentionStatus: req.body.intentionStatus,
+            bandname: req.body.bandname,
+            email: req.body.email,
+            phone: req.body.phone,
+            location: req.body.location,
+            blurb: req.body.blurb
+        },
+        {
+            where: {
+                email: req.params.email,
             },
-            {
-                where: {
-                    oidc: req.params.oidc,
-                },
-            }
-        );
-        if (!updatedUser[0]) {
-            res.status(404).json({ message: 'Something went wrong. No user with this id! Changes could not be made.' });
-            return;
         }
-        res.json(updatedUser);
-    } catch (err) {
-        res.status(500).json(err);
+    );
+    if (!updatedUser[0]) {
+        res.status(404).json({ message: 'Something went wrong. No user with this EMAIL! Changes could not be made.' });
+        return;
     }
+    res.json(updatedUser);
+} catch (err) {
+    res.status(500).json(err);
+}
 });
 
 // If button allows User to delete their own profile

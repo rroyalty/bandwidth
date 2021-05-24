@@ -9,15 +9,19 @@ import { useAuth0, User } from "@auth0/auth0-react";
 // Redux black magic
 // ===================================================================================
 
-const user = useAuth0();
 
 // const oidc = user.user.sub
 
 
+    // const user = useAuth0();
+    // const email = user.user?.email
+    // console.log(email)
+
+
 export const editProfileThunk = createAsyncThunk('profile/userProfileUpate',
 
+
     async (profilePayload:any, thunkAPI) => {
-        // add ${oidc} to below on axios.put
         const response = await axios.put(`/api/users/`, profilePayload)
         return response.data
     })
@@ -76,6 +80,7 @@ export const profileSlice = createSlice({
         })
     }
 })
+
 
 export const { profileAdded } = profileSlice.actions
 export const selectProfile = (state: RootState) => state.profile

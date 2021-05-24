@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import { userProfileThunk } from './createProfileSlice';
+import { editProfileThunk } from './editProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-// import './style.css'
+import axios from 'axios'
 import { useAuth0, User } from "@auth0/auth0-react";
 
 // ================================================
@@ -15,9 +15,9 @@ export const EditProfile = () => {
     // update this to have firstname / lastname fields in form / state
     // const { profileID } = match.params
 
-    const user: any = useAuth0();
+   const user: any = useAuth0();
 
-    console.log(user.user.sub)
+    console.log(user.user.email)
 
     const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
@@ -45,8 +45,8 @@ export const EditProfile = () => {
     // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
-        if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            // dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+        if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
+            dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
@@ -62,6 +62,7 @@ export const EditProfile = () => {
             setBlurb(blurb)
             // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
             history.push(`/tempprofile/`)
+            // axios.put(`/api/users/${user.user.email}`)
         }
     }
     const onClearClicked = () => {
