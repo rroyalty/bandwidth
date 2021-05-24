@@ -5,7 +5,8 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
-            // include: ['genres', 'instruments'],
+            // Do these work?
+            include: ['genres', 'instruments'],
         });
         if (!users) {
             res.status(404).json({ message: 'No users found!' });
@@ -122,6 +123,37 @@ router.get('/:oidc', async (req, res) => {
     }
 });
 
+// attempt to CREATE a new user with different route, followed by adding more to it.
+router.post('/test', async(req, res) => {
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres } = req.body
+    console.log(req.body)
+    console.log("=============")
+    console.log(req.body.genres)
+
+    try {
+        const user = await User.create({ nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location })
+        if (!user) {
+            res.status(404).json({ message: 'Something went wrong!' });
+            return;
+        }
+        const userFind = await User.findOne({
+            where: { oidc },
+            include: ['genres', 'instruments'],
+        })
+        console.log(userFind.genres);
+
+        // const genre = await Genre.create({
+        //     name: userFind.genres, userOidc: userFind.oidc
+        // })
+        console.log(userFind);
+        // console.log(userFind.genres);
+        return res.json(userFind)
+    } catch(err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
+
 // CREATE a new user
 router.post('/', async(req, res) => {
     const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, blurb } = req.body
@@ -139,7 +171,8 @@ router.post('/', async(req, res) => {
     }
 })
 
-
+// probably needs a safety net for if a put request is made but no updates are actually made
+// currently I believe if you save changes but nothing is changed it will return the error message.
 
 // needs work, EDIT a current user - Toni will work on this tomorrow 
 // router.put('/:oidc', async (req, res) => {
@@ -226,77 +259,5 @@ router.delete('/:oidc', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// GENRES
-router.post('/genres', async (req, res) => {
-    const { userOidc, name } = req.body
-    try {
-        const user = await User.findOne({
-            where: { oidc: userOidc }
-        })
-
-        const genre = await Genre.create({
-            name, userOidc: user.oidc
-        })
-
-        return res.json(genre)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// doesn't work
-router.get('/genres', async (req, res) => {
-    // const { userOidc, name } = req.body
-    try {
-        const genres = await Genre.findAll({
-            // if you need multiple associations
-            // you pass an array and then you pass user and the other ones
-            include: ['user']
-        })
-
-        return res.json(genres)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// INSTRUMENTS
-router.post('/instruments', async (req, res) => {
-    const { userOidc, name } = req.body
-    try {
-        const user = await User.findOne({
-            where: { oidc: userOidc }
-        })
-
-        const instruments = await Instrument.create({
-            name, userOidc: user.oidc
-        })
-
-        return res.json(instruments)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-// doesn't work
-router.get('/instruments', async (req, res) => {
-    // const { userOidc, name } = req.body
-    try {
-        const instruments = await Instrument.findAll({
-            // if you need multiple associations
-            // you pass an array and then you pass user and the other ones
-            include: ['user']
-        })
-
-        return res.json(instruments)
-    } catch(err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
 
 module.exports = router;
