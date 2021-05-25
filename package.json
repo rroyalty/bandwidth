@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
-  },
+  }
 }
 
 
