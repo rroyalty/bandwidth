@@ -17,6 +17,6 @@ res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
 
 app.listen(`${PORT}`, () => {
- sequelize.authenticate({})
+    sequelize.authenticate({})
     console.log('Database Connected!') 
 })
