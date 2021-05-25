@@ -12,9 +12,9 @@ console.log(config);
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  sequelize = new Sequelize(process.env[config.production.use_env_variable], config.production);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(config.production.database, config.production.username, config.production.password, config.production);
 }
 
 fs
