@@ -8,11 +8,12 @@ const PORT = process.env.PORT || 3020;
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+app.use(routes);
+
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
-
-app.use(routes);
 
 app.listen(`${PORT}`, async () => {
     console.log('Server up on http://localhost:3020')
