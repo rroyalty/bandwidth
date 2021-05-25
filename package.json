@@ -9,6 +9,7 @@
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "heroku-postinstall": "cd client && npm run build",
+    "heroku-postbuild": "npm run start:prod",
     "seed": "cd server && sequelize db:seed:all"
   },
   "engines": {
