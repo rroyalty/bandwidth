@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editProfileThunk } from './editProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-import axios from 'axios'
-import { useAuth0, User } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for EDITING a current profile 
@@ -112,14 +110,14 @@ export const EditProfile = () => {
             <h2>Edit Profile</h2>
 
             <form noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Display Name" value={user.user.nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" value={user.user.firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" value={user.user.lastName} onChange={onLastNameChanged} />
+                <TextField id="standard-basic" label="Display Name" defaultValue={user.user.nickName} onChange={onNickNameChanged} />
+                <TextField id="standard-basic" label="First Name" defaultValue={user.user.firstName} onChange={onFirstNameChanged} />
+                <TextField id="standard-basic" label="Last Name" defaultValue={user.user.lastName} onChange={onLastNameChanged} />
                 <TextField
                     id="status"
                     select
                     label="Select Status"
-                    value={intentionStatus}
+                    defaultValue={intentionStatus}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
                     variant="filled"
@@ -130,16 +128,16 @@ export const EditProfile = () => {
                         </MenuItem>
                     ))}
                 </TextField>
-                <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
-                <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
-                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
-                <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
+                <TextField id="standard-basic" label="Band Name" variant="standard" defaultValue={bandName} onChange={onBandNameChanged} />
+                <TextField id="standard-basic" label="Phone" variant="standard" defaultValue={phone} onChange={onPhoneChanged} />
+                <TextField disabled id="filled-basic" label="email" variant="filled" defaultValue={user.user.email} />
+                <TextField id="standard-basic" label="City, State" variant="standard" defaultValue={location} onChange={onLocationChanged} />
                 <TextField
                     id="outlined-multiline-static"
                     label="Bio"
                     multiline
                     rows={4}
-                    defaultValue="Write a little bit about yourself here"
+                    // defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}

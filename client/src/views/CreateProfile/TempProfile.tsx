@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Button } from '@material-ui/core';
 import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-import './style.css';
 import { useSelector } from "react-redux";
 import axios from 'axios'
 import { RootState } from "../../redux/store";

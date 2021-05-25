@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
 import API from '../../utils/API'
 import { useState } from 'react';
-import { useTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+
 
 export interface UserI {
     nickName: string,
