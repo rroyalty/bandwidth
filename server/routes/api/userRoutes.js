@@ -5,6 +5,7 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             // Do these work?
             include: ['genres', 'instruments'],
         });
@@ -24,6 +25,7 @@ router.get('/', async (req, res) => {
 router.get('/:email', (req, res) => {
     const { email } = req.params; 
     User.findOne({where:{email}}).then((userData) => {
+        subQuery: false,
         res.json(userData);
     });
 });
@@ -33,6 +35,7 @@ router.get('/:email', (req, res) => {
 router.get('/bands-seeking', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             where: {
                 // Only get users seeking a musician
                 intentionStatus: 'Looking for a Musician'
@@ -58,6 +61,7 @@ router.get('/bands-seeking', async (req, res) => {
 router.get('/musicians-seeking', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             // Order by title in ascending order
             order: ['firstName'],
             where: {
@@ -83,6 +87,7 @@ router.get('/musicians-seeking', async (req, res) => {
 router.get('/networking', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             // Order by title in ascending order
             order: ['firstName'],
             where: {
@@ -110,6 +115,7 @@ router.get('/:oidc', async (req, res) => {
     const oidc = req.params.oidc;
     try {
         const users = await User.findOne({
+            subQuery: false,
             where: { oidc },
             include: ['genres', 'instruments'],
         })
@@ -137,6 +143,7 @@ router.post('/test', async(req, res) => {
             return;
         }
         const userFind = await User.findOne({
+            subQuery: false,
             where: { oidc },
             include: ['genres', 'instruments'],
         })
@@ -216,7 +223,10 @@ router.put('/:oidc', async (req, res) => {
 router.delete('/:oidc', async (req, res) => {
     const oidc = req.params.oidc
     try {
-        const user = await User.findOne({ where: { oidc } })
+        const user = await User.findOne({ 
+            subQuery: false,
+            where: { oidc } 
+        })
 
         await user.destroy()
         if (!user) {
