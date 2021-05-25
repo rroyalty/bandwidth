@@ -16,12 +16,7 @@ app.get('*', (req, res) => {
 res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
 
-app.listen(`${PORT}`, async () => {
-  try {
-    console.log(`Server up on ${port}`)
-    await sequelize.authenticate({})
+app.listen(`${PORT}`, () => {
+ sequelize.authenticate({})
     console.log('Database Connected!') 
-  } catch (err) {
-    'Bad promise while connecting to server!!'
-  }
 })
