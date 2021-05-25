@@ -9,7 +9,7 @@
 /.pnp
 .pnp.js
 **build**
-.sequelizerc
+
 # testing
 /coverage
 
