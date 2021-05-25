@@ -7,7 +7,7 @@
     "start": "cd server && npm start && npm run seed",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "heroku-postbuild": "cd client && npm run build",
-    "postinstall": "(cd client && npm install) & (cd server && npm install)"
+    "postinstall": "cd client && npm install && cd server && npm install"
   },
   "engines": {
     "node": "12.x",
