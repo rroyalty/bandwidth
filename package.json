@@ -5,10 +5,10 @@
   "main": "./server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm start",
+    "start": "cd server && npm start && npm seed",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "heroku-postbuild": "cd client && npm run build",
-    "seed": "cd server && sequelize db:seed:all",
+    "seed": "cd server && sequelize db:create sequelize db:migrate sequelize db:seed:all",
     "postinstall": "cd client && npm install && cd ../server && npm install"
   },
   "engines": {
