@@ -4,10 +4,12 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "./server/server.js",
   "scripts": {
-    "start": "cd server && npm install && npm start",
-    "heroku-postbuild": "cd client && npm run build",
-    "seed": "cd server && sequelize db:create && sequelize db:migrate && npm seed",
-    "postinstall": "cd client && npm install"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
+
+    "seed": "cd server && sequelize db:create sequelize db:migrate sequelize db:seed:all",
+    "postinstall": "cd client && npm install && cd ../server && npm install"
   },
   "engines": {
     "node": "12.x",
@@ -29,7 +31,6 @@
     "typescript": "^4.2.4"
   },
   "devDependencies": {
-    "concurrently": "^6.1.0",
-    "sequelize-cli": "^6.2.0"
+    "concurrently": "^6.1.0"
   }
 }
