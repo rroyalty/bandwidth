@@ -32,5 +32,10 @@
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
+  },
+  "cutandpaste": {
+    "heroku-postbuild": "cd client && npm run build"
   }
 }
+
+
