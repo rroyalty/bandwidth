@@ -24,8 +24,10 @@ router.get('/', async (req, res) => {
 // GET user by email (Toni needs this)
 router.get('/:email', (req, res) => {
     const { email } = req.params; 
-    User.findOne({where:{email}}).then((userData) => {
+    User.findOne({
+        where:{email},
         subQuery: false,
+    }).then((userData) => {
         res.json(userData);
     });
 });
