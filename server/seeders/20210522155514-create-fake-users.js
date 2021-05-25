@@ -23,7 +23,7 @@ module.exports = {
       email: 'jack@gmail.com',
       phone: '9786664201',
       location: 'Hollywood CA',
-      blurb: 'Im Jack Black. I play guitar and stuff.'
+      // blurb: 'Im Jack Black. I play guitar and stuff.'
     }, {
       uuid: '0sk2x36qvkckubn5xjhofuvl',
       nickName: 'Crunch Cone',
@@ -36,7 +36,7 @@ module.exports = {
       email: 'kyle@gmail.com',
       phone: '9786664201',
       location: 'Hollywood CA',
-      blurb: 'Jack Blacks bestest buddy'
+      // blurb: 'Jack Blacks bestest buddy'
     }], {});
   },
 
