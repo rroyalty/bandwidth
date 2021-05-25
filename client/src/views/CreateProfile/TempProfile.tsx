@@ -37,14 +37,14 @@ const fetchItem = async() => {
   console.log(profile.profile)
 
 
-<<<<<<< HEAD:client/src/views/Profile/Profile.tsx
-<<<<<<< HEAD
+// <<<<<<< HEAD:client/src/views/Profile/Profile.tsx
+// <<<<<<< HEAD
 
-=======
->>>>>>> ea748df42dbe0d383ee63d5f6736a16cf2a5ee06
+// =======
+// >>>>>>> ea748df42dbe0d383ee63d5f6736a16cf2a5ee06
 
-=======
->>>>>>> ff8c8d5ebf3e1c975273319d3fd55e597090d046:client/src/views/CreateProfile/Profile.tsx
+// =======
+// >>>>>>> ff8c8d5ebf3e1c975273319d3fd55e597090d046:client/src/views/CreateProfile/Profile.tsx
   return (
     <div>
       <Container className="bg">
