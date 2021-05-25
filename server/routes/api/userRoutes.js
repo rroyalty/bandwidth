@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
             // Do these work?
-            // include: ['genres', 'instruments'],
+            include: ['genres', 'instruments'],
         });
         if (!users) {
             res.status(404).json({ message: 'No users found!' });
@@ -125,7 +125,7 @@ router.get('/:oidc', async (req, res) => {
 
 // attempt to CREATE a new user with different route, followed by adding more to it.
 router.post('/test', async(req, res) => {
-    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres } = req.body
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres, blurb } = req.body
     console.log(req.body)
     console.log("=============")
     console.log(req.body.genres)
@@ -209,7 +209,7 @@ router.post('/', async(req, res) => {
 // });
 router.put('/:email', async (req, res) => {
     const email = req.params.email
-    const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location } = req.body
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location, blurb } = req.body
 try {
     const updatedUser = await User.update(
         {

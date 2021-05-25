@@ -62,6 +62,11 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: true,
         unique: false,
+      },
+      blurb: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: false,
       }
     });
   },
