@@ -8,7 +8,7 @@
     "start": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
 
-    "seed": "cd server && sequelize db:create sequelize db:migrate sequelize db:seed:all",
+    "seed": "cd server && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
     "postinstall": "cd client && npm install && cd ../server && npm install"
   },
   "engines": {
