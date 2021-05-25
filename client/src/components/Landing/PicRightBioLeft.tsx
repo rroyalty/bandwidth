@@ -34,10 +34,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderStyle: `solid`,
         borderColor: theme.palette.primary.main
     },
-    font: {
-        fontSize: "24px",
-        color: '#181D27'
-    },
     paper: {
         height: "14vh",
         backgroundColor: theme.palette.primary.main,
@@ -50,10 +46,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         padding: `15px`,
         color: `white`,
         [theme.breakpoints.down('md')]: {
-            fontSize: `.6rem`
+            fontSize: `.5rem`
         },
         [theme.breakpoints.down('lg')]: {
-            fontSize: `.8rem`
+            fontSize: `.7rem`
+        },
+        [theme.breakpoints.down('xl')]: {
+            fontSize: `.9rem`
         }
     },
     gridBits: {
