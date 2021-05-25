@@ -47,7 +47,6 @@ const SearchStatus = () => {
     select
     label="Select Status"
     className="paddingfix"
-    // value={intentionStatus}
     onChange={handleChange}
     helperText="Select Status to Search"
     variant="filled"

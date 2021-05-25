@@ -11,12 +11,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 // ================================================
 
 export const EditProfile = () => {
-    // update this to have firstname / lastname fields in form / state
-    // const { profileID } = match.params
-    
-    const user: any = useAuth0();
 
-    // console.log(user.user.email)
+    const user: any = useAuth0();
 
     const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
@@ -41,12 +37,10 @@ export const EditProfile = () => {
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
 
-    // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
             dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
             console.log(oidc)
@@ -59,12 +53,10 @@ export const EditProfile = () => {
             setEmail(email)
             setLocation(location)
             setBlurb(blurb)
-            // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
             history.push(`/prevprofile/`)
-            // axios.put(`/api/users/${user.user.email}`)
         }
     }
-    const onClearClicked = () => {
+    const onClearForm = () => {
         setNickName("")
             setFirstName("")
             setLastName("")
@@ -109,10 +101,10 @@ export const EditProfile = () => {
         <Container className={classes.root}>
             <h2>Edit Profile</h2>
 
-            <form noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Display Name" defaultValue={user.user.nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" defaultValue={user.user.firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" defaultValue={user.user.lastName} onChange={onLastNameChanged} />
+            <form noValidate autoComplete="on">
+                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
+                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
                 <TextField
                     id="status"
                     select
@@ -120,7 +112,7 @@ export const EditProfile = () => {
                     defaultValue={intentionStatus}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
-                    variant="filled"
+                    variant="standard"
                 >
                     {statuses.map((status) => (
                         <MenuItem key={status.value} value={status.value}>
@@ -128,10 +120,10 @@ export const EditProfile = () => {
                         </MenuItem>
                     ))}
                 </TextField>
-                <TextField id="standard-basic" label="Band Name" variant="standard" defaultValue={bandName} onChange={onBandNameChanged} />
-                <TextField id="standard-basic" label="Phone" variant="standard" defaultValue={phone} onChange={onPhoneChanged} />
-                <TextField disabled id="filled-basic" label="email" variant="filled" defaultValue={user.user.email} />
-                <TextField id="standard-basic" label="City, State" variant="standard" defaultValue={location} onChange={onLocationChanged} />
+                <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
+                <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
+                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
                 <TextField
                     id="outlined-multiline-static"
                     label="Bio"
@@ -146,7 +138,7 @@ export const EditProfile = () => {
 
 
             <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
-            <Button color="secondary" onClick={onClearClicked}>Clear</Button>
+            <Button color="secondary" onClick={onClearForm}>Clear</Button>
 
         </Container>
     )
