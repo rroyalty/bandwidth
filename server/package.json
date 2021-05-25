@@ -27,7 +27,6 @@
     "jwks-rsa": "^1.9.0",
     "moment": "^2.20.0",
     "mysql2": "^2.2.5",
-    "react-scripts": "4.0.3",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.6.2",
     "uuid4": "^2.0.2"
