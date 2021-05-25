@@ -112,9 +112,9 @@ export const EditProfile = () => {
             <h2>Edit Profile</h2>
 
             <form noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
+                <TextField id="standard-basic" label="Display Name" value={user.user.nickName} onChange={onNickNameChanged} />
+                <TextField id="standard-basic" label="First Name" value={user.user.firstName} onChange={onFirstNameChanged} />
+                <TextField id="standard-basic" label="Last Name" value={user.user.lastName} onChange={onLastNameChanged} />
                 <TextField
                     id="status"
                     select

@@ -218,7 +218,7 @@ try {
             lastName: req.body.lastName,
             image: req.body.image,
             intentionStatus: req.body.intentionStatus,
-            bandname: req.body.bandname,
+            bandName: req.body.bandName,
             email: req.body.email,
             phone: req.body.phone,
             location: req.body.location,

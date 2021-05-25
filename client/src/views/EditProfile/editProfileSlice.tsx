@@ -60,12 +60,12 @@ interface IPrepare {
     }
 
 
-export const profileSlice = createSlice({
+export const editProfileSlice = createSlice({
     //   profileUpdated get's called here 
     name: 'profile',
     initialState,
     reducers: {
-        profileAdded: (state, action: PayloadAction<IPrepare>) => {
+        profileUpdated: (state, action: PayloadAction<IPrepare>) => {
             // state = action.payload 
                 state.profile = action.payload
             },
@@ -89,6 +89,6 @@ export const profileSlice = createSlice({
 })
 
 
-export const { profileAdded } = profileSlice.actions
+export const { profileUpdated } = editProfileSlice.actions
 export const selectProfile = (state: RootState) => state.profile
-export default profileSlice.reducer
+export default editProfileSlice.reducer
