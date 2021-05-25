@@ -91,7 +91,7 @@ export const CreateProfile = () => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 1000,
+                paddingTop: 100,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
