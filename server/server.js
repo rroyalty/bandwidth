@@ -18,6 +18,6 @@ res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 
 app.listen(`${PORT}`, async () => {
     console.log('Server up on http://localhost:3020')
-    await sequelize.authenticate()
+    await sequelize.authenticate({ force: true })
     console.log('Database Connected!')
 })
