@@ -22,6 +22,7 @@ const SearchStatus = () => {
         })
     },[])
     console.log(results)
+    console.log(status)
 
     const statuses = [
         {

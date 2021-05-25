@@ -28,13 +28,13 @@ const fetchItem = async() => {
 }
 
   const profile = useSelector((state: RootState) => state.profile)
-  console.log(profile.profile)
-
+  console.log(profile)
+  // console.log(profile.profile.nickName)
 
   return (
     <div>
       <Container className="bg">
-        <div className="col-md-2 mb-3">
+        {/* <div className="col-md-2 mb-3">
           <img
             src={user.user.picture}
             alt="Profile"
@@ -48,7 +48,10 @@ const fetchItem = async() => {
           <p>Phone: {profile.profile.phone}</p>
           <p>Location {profile.profile.location}</p>
           <p>About: {profile.profile.blurb}</p>
-        </div>
+        </div> */}
+        <p>
+          Profile Edited!
+          </p>
         <Button>
         <Link to="/find">Find other users!</Link>
 
