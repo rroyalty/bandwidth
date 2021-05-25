@@ -4,9 +4,8 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "./server/server.js",
   "scripts": {
-    "start": "cd server && npm start",
+    "start": "(cd server && npm start) & npm run seed",
     "heroku-postbuild": "cd client && npm run build",
-    "seed": "cd server && npm run seed",
     "postinstall": "(cd client && npm install) & (cd server && npm install)"
   },
   "engines": {
