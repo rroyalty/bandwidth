@@ -129,7 +129,6 @@ export const EditProfile = () => {
                     label="Bio"
                     multiline
                     rows={4}
-                    // defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}
