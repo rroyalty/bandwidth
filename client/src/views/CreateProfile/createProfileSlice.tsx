@@ -16,7 +16,7 @@ export const userProfileThunk = createAsyncThunk('profile/userProfileUpate',
         return response.data
     })
 
-interface IProfileState { oidc: any, nickName: string, firstName: string, lastName: string, intentionStatus: string, bandName: any, phone: any, email: any, location: any, blurb: any};
+interface IProfileState { oidc: any, image: string, nickName: string, firstName: string, lastName: string, intentionStatus: string, bandName: any, phone: any, email: any, location: any, blurb: any};
 interface IProfileSliceState {
     profile: IProfileState;
     isSubmitting: boolean
@@ -25,13 +25,14 @@ interface IProfileSliceState {
 
 
 export const initialState: IProfileSliceState = {
-    profile: { oidc: '1', nickName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA', blurb: 'I play a mean double bass... and like 3 chords on guitar.'},
+    profile: { oidc: '1', image: 'https://s.gravatar.com/avatar/12acf84782b7587a12f01f5d6b87f8ff?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fto.png', nickName: 'Toni Powell', firstName: 'Toni', lastName: 'Powell', intentionStatus: 'unavailable', bandName: 'The Breakdown Baes', phone: '8888888888', email: 'email@email.com', location: 'Boston, MA', blurb: 'I play a mean double bass... and like 3 chords on guitar.'},
     isSubmitting: false,
 }
 
 interface IPrepare {
         oidc: string;
         nickName: string;
+        image: string;
         firstName: string;
         lastName: string
         intentionStatus: string;

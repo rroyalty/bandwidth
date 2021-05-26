@@ -7,6 +7,7 @@ import { Theme } from '@material-ui/core/styles';
 
 export interface UserI {
     nickName: string,
+    image: string,
     firstName: string,
     lastName: string,
     intentionStatus: string,
@@ -28,6 +29,7 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         const userUser: UserI[] = data.map((dbUser) => {
             return {
                 nickName: dbUser.nickName,
+                image: dbUser.image,
                 firstName: dbUser.firstName,
                 lastName: dbUser.lastName,
                 intentionStatus: dbUser.intentionStatus,
@@ -70,6 +72,10 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                 justifyContent: `center`,
                 alignItems: `center`,
             },
+            img: {
+                maxWidth: 120,
+                maxHeight: 120
+            }
         }),
     );
     const classes = useStyles();
@@ -84,11 +90,16 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
             <div className={classes.root}>
                 <h1 className={classes.header}>Find Other Musicians</h1>
                 {/* refactor - users.reduce here */}
-                {users.filter((user: {intentionStatus: string}) => !props.status || user.intentionStatus === props.status).map((user) => {
+                {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
                     return (
                         <Container className={classes.root} maxWidth="lg" >
                             <Grid container spacing={3}>
                                 <Grid className={classes.root} item xs={12}>
+                                    <img
+                                    className={classes.img}
+                                        src={user.image}
+                                        alt="user photo"
+                                    />
                                     <h1 key={user.nickName}>{user.nickName}</h1>
                                     <h2 key={user.bandName}>{user.bandName}</h2>
                                     <p key={user.firstName}>{user.firstName} {user.lastName}</p>

@@ -16,6 +16,7 @@ export const CreateProfile = () => {
     const user: any = useAuth0();
 
     const [oidc, setOIDC] = useState(user.user.sub)
+    const [image, setImage] = useState(user.user.picture)
     const [nickName, setNickName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -41,8 +42,9 @@ export const CreateProfile = () => {
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
+            dispatch(userProfileThunk({ oidc: user.user.sub, image, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             setOIDC(oidc)
+            setImage(image)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)

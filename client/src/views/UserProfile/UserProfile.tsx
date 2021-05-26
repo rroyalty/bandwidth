@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 // ===============================================================================================================
 export interface IUser {
   nickName: string,
+  picture: string,
   firstName: string,
   lastName: string,
   intentionStatus: string,
@@ -24,7 +25,7 @@ export interface IUser {
 
 const UserProfile = () => {
   const userProfile: any = useAuth0();
-
+// console.log(userProfile.user)
   const [user, setUser] = useState<IUser | null>(null)
 
 
@@ -41,8 +42,12 @@ const UserProfile = () => {
      return (
    <div>
           <Container maxWidth="lg" >
+            {/* <h1 >{user.nickName}</h1> */}
+            <img
+            src={userProfile.user.picture}
+            alt="user photo"
+            />
             <h1>Welcome {user.nickName}!</h1>
-            <h1 >{user.nickName}</h1>
             <h2>{user.bandName}</h2>
             <p >{user.firstName} {user.lastName}</p>
             <p >{user.intentionStatus}</p>
