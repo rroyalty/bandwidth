@@ -1,7 +1,9 @@
 
 import React from 'react';
-import { Grid, Paper, Avatar, Typography } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import Blurb from './Blurb'
+import Avatar from './AvatarComp'
 
 interface IProps {
     props: {
@@ -13,51 +15,12 @@ interface IProps {
 }
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-    root: {
-        justifyContent: `center`,
-        alignItems: `center`,
-        margin: `0`,
-    },
-    container: {
-        justifyContent: `center`,
-        alignItems: `center`,
-        height: `100vh`,
-    },
     grid: {
-        height: "16vh",
-        margin: `10px`
-    },
-    avatar: {
-        height: "14vh",
-        width: "14vh",
-        border: `3px`,
-        borderStyle: `solid`,
-        borderColor: theme.palette.primary.main
-    },
-    paper: {
-        height: "14vh",
-        backgroundColor: theme.palette.primary.main,
-        border: `3px`,
-        borderStyle: `solid`,
-        borderColor: `white`,
-        width: `100%`
-    },
-    typography: {
-        padding: `15px`,
-        color: `white`,
-        [theme.breakpoints.down('md')]: {
-            fontSize: `.5rem`
-        },
-        [theme.breakpoints.down('lg')]: {
-            fontSize: `.7rem`
-        },
-        [theme.breakpoints.down('xl')]: {
-            fontSize: `.9rem`
-        }
-    },
-    gridBits: {
+        position: `relative`,
         justifyContent: `center`,
         alignItems: `center`,
+        height: `16vh`,
+        margin: `10px`,
         display: `flex`
     }
 }));
@@ -67,16 +30,8 @@ const PicRightBioLeft: React.FC<IProps> = (props): JSX.Element => {
 
     return (
         <Grid className={classes.grid} container item xs={12} spacing={3}>
-            <Grid className={classes.gridBits} item xs={9}>
-                <Paper className={classes.paper}>
-                    <Typography className={classes.typography}>
-                        {`${props.props.name}: ${props.props.bio}`}
-                    </Typography>
-                </Paper>
-            </Grid>
-            <Grid className={classes.gridBits} item xs={3}>
-                <Avatar className={classes.avatar} alt={props.props.name} src={props.props.img} />
-            </Grid>
+            <Blurb props={props.props} />
+            <Avatar props={props.props} />
         </Grid>
     )
 };
