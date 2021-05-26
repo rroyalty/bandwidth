@@ -23,7 +23,7 @@ export interface IUser {
   blurb: string,
 }
 
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
   const userProfile: any = useAuth0();
 // console.log(userProfile.user)
   const [user, setUser] = useState<IUser | null>(null)
@@ -33,10 +33,12 @@ const UserProfile = () => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
       setUser(findUser)
+      localStorage.setItem('location', JSON.stringify(findUser.location));
+      // console.log('local storage set')
     })
   }, [])
 
-   const userExists = () => {
+   const userExists: React.FC = (): JSX.Element => {
      if (!user) return <> </>
 
      return (
@@ -62,7 +64,7 @@ const UserProfile = () => {
      )
    } 
 
-   const noUserExists = () => {
+   const noUserExists: React.FC = (): JSX.Element => {
      return(
        <Container>
        <div>
@@ -77,9 +79,10 @@ const UserProfile = () => {
        </Container>
      )
    }
+
   return (
     <div className="paddingfix">
-      {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
+      {(!userProfile || userProfile == null || !user) ?  noUserExists : userExists}
     </div>
   );
 };

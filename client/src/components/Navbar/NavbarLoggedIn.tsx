@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
-import AuthNav from "../../components/Login/Auth-nav";
+import AuthNav from "../Login/Auth-nav";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
@@ -64,13 +63,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 
 const navLinks: { title: string, path: string }[] = [
-    { title: `Home`, path: `landing` },
-    { title: `About`, path: `about` },
-    { title: `The Team`, path: `theteam` },
-    { title: `Support`, path: `support`}
+    { title: `Home`, path: `/landing` },
+    { title: `Profile`, path: `/userprofile` },
+    { title: `Find`, path: `/find` }
 ]
 
-const NavbarLoggedOut: React.FC = (): JSX.Element => {
+const NavbarLoggedIn: React.FC = (): JSX.Element => {
     const [state, setState] = useState({
         mobileView: false,
         drawerOpen: false
@@ -119,10 +117,9 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                     }}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
                         <MenuItem className={classes.mobileNav}>
-                            <ScrollLink to="landing">Home</ScrollLink>
-                            <ScrollLink to="about">about</ScrollLink>
-                            <ScrollLink to="theteam">The Team</ScrollLink>
-                            <ScrollLink to="support">Support</ScrollLink>
+                            <Link to="/landing">Home</Link>
+                            <Link to="/userprofile">Profile</Link>
+                            <Link to="/find">Find</Link>
                         </MenuItem>
                     </List>
                     <AuthNav />
@@ -137,11 +134,11 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                 <section className={classes.rightAppBar}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
                         {navLinks.map(({ title, path }) => (
-                            <ScrollLink smooth={true} duration={500} to={path} key={title} className={classes.linkText}>
+                            <Link to={path} key={title} className={classes.linkText}>
                                 <ListItem button>
                                     <ListItemText primary={title} />
                                 </ListItem>
-                            </ScrollLink>
+                            </Link>
                         ))}
                     </List>
                     <AuthNav />
@@ -154,9 +151,8 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
     return (
         <div>
             {mobileView ? displayMobile() : displayDesktop()}
-
         </div>
     )
 }
 
-export default withRouter(NavbarLoggedOut)
+export default withRouter(NavbarLoggedIn)

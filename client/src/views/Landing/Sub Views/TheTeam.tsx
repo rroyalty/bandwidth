@@ -2,8 +2,8 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box, Container } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import TeamBioDesktop from './TeamBioDesktop'
-import TeamBioMobile from './TeamBioMobile'
+import TeamBioDesktop from '../../../components/TheTeam/TeamBioDesktop'
+import TeamBioMobile from '../../../components/TheTeam/TeamBioMobile'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({

@@ -2,9 +2,9 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import teamJSON from './devTeam.json'
+import teamJSON from '../../static/devTeam.json'
 import Carousel from 'react-material-ui-carousel'
-import CarouselItem from './CarouselItem'
+import CarouselItem from '../../components/TheTeam/CarouselItem'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
