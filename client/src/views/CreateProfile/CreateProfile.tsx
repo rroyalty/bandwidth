@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
-export const CreateProfile = () => {
+export const CreateProfile: React.FC = (): JSX.Element =>  {
 
     const user: any = useAuth0();
 

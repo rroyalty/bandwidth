@@ -70,7 +70,7 @@ const Footer: React.FC = (): JSX.Element => {
             >
                 <Grid item xs={12} sm={6} direction="column" justify="space-evenly" alignItems="flex-start">
                     <Typography className={classes.typography} style={{ fontSize: ".6rem" }}>
-                        Bandwidth brought to you by Bjorn Yourney, Cathy Marchese, Toni Powell, Jonathon Hammond, and Ryan Royalty.  &copy;2021
+                        Bandwidth brought to you by Bjorn Yourney, Cathy Marchese, Toni Powell, Jonathan Hammond, and Ryan Royalty.  &copy;2021
                     </Typography>
                 </Grid>
                 <Grid item xs={12} sm={2}>
