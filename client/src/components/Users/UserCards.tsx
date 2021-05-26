@@ -3,6 +3,7 @@ import { Container, createStyles, Grid, makeStyles, Paper } from '@material-ui/c
 import API from '../../utils/API'
 import { useState } from 'react';
 import { Theme } from '@material-ui/core/styles';
+import { ClassSharp } from '@material-ui/icons';
 
 
 export interface UserI {
@@ -58,21 +59,54 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                 textAlign: 'center',
             },
             paper: {
-                padding: theme.spacing(2),
+                padding: 2,
+                color: theme.palette.primary.main,
+                margin: 5,
                 textAlign: 'center',
-                color: theme.palette.text.secondary,
+                // color: theme.palette.text.secondary,
             },
             grid: {
                 backgroundColor: `rgba(255, 255, 255, 0.4)`,
                 justifyContent: `center`,
                 alignItems: `center`,
             },
+            // root: {
+            //     display: `flex`,
+            //     backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            //     justifyContent: `center`,
+            //     alignItems: `center`,
+            //     height: `100vh`,
+            //     width: `80%`,
+            //     margin: `0`,
+            //     maxWidth: `80%`,
+            //     [theme.breakpoints.down('xs')]: {
+            //         width: `100%`,
+            //         maxWidth: `100%`,
+            //     }
+            // },
+            // grid: {
+            //     height: `auto`,
+            //     justifyContent: `center`,
+            //     alignItems: `center`,
+            //     display: `flex`,
+            // },
+            // paper: {
+            //     display: `flex`,
+            //     flexDirection: `column`,
+            //     height: "auto",
+            //     width: `90%`,
+            //     backgroundColor: `rgba(255, 255, 255, 0.5)`,
+            //     border: `3px`,
+            //     borderStyle: `solid`,
+            //     borderColor: theme.palette.primary.main,
+            // },
             header: {
                 backgroundColor: `rgba(255, 255, 255, 0.4)`,
-                paddingTop: 100,
-                paddingLeft: 50,
+                // paddingTop: 100,
+                // paddingLeft: 50,
                 justifyContent: `center`,
                 alignItems: `center`,
+                textAlign: `center`,
             },
             img: {
                 maxWidth: 120,
@@ -88,9 +122,12 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         //     justify="center"
         //     alignItems="center"
         // >
+        <div>
+
+            <h1 className={classes.header}>Find Other Musicians</h1>
+        
 
         <div className={classes.root}>
-            <h1 className={classes.header}>Find Other Musicians</h1>
             {/* refactor - users.reduce here */}
             {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
                 return (
@@ -102,7 +139,7 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                             justify="center"
                             alignItems="center"
                         >
-                            <Paper>
+                            <Paper className={classes.paper}>
                                 <img
                                     className={classes.img}
                                     src={user.image}
@@ -122,6 +159,7 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                     </Grid>
                 )
             })}
+        </div>
         </div>
         // </Grid>
     )
