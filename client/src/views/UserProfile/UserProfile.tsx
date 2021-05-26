@@ -42,7 +42,7 @@ const UserProfile = () => {
      return (
    <div>
           <Container maxWidth="lg" >
-            <h1>User Profile Page</h1>
+            <h1>Welcome {user.nickName}!</h1>
             <h1 >{user.nickName}</h1>
             <h2>{user.bandName}</h2>
             <p >{user.firstName} {user.lastName}</p>
