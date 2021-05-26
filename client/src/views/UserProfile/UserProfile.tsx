@@ -31,8 +31,10 @@ const UserProfile = () => {
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      console.log(findUser)
+      // console.log(findUser)
       setUser(findUser)
+      localStorage.setItem('location', JSON.stringify(findUser.location));
+      // console.log('local storage set')
     })
   }, [])
 

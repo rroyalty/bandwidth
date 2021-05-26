@@ -34,8 +34,9 @@ router.get('/:email', (req, res) => {
 
 
 // GET all users 'Looking for Musicians'
-router.get('/bands-seeking', async (req, res) => {
+router.get('/bands-seeking', geoloc, async (req, res) => {
     try {
+
         const users = await User.findAll({
             subQuery: false,
             where: {
@@ -60,8 +61,9 @@ router.get('/bands-seeking', async (req, res) => {
 });
 
 // GET all users 'Looking for a Band'
-router.get('/musicians-seeking', async (req, res) => {
+router.get('/musicians-seeking', geoloc, async (req, res) => {
     try {
+        console.log(res.locals.location)
         const users = await User.findAll({
             subQuery: false,
             // Order by title in ascending order
