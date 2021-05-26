@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for EDITING a current profile 
 // ================================================
 
-export const EditProfile = () => {
+export const EditProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
 

@@ -151,7 +151,6 @@ const NavbarLoggedIn: React.FC = (): JSX.Element => {
     return (
         <div>
             {mobileView ? displayMobile() : displayDesktop()}
-
         </div>
     )
 }

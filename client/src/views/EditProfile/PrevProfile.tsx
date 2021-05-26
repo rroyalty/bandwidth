@@ -10,22 +10,22 @@ import { RootState } from "../../redux/store";
 const PrevProfile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
 
- 
+
   // return response.data
   // const userInfo = useSelector(state => selectProfile)
 
-  let userInfo:any;
-const fetchItem = async() => {
-  try{
-   const response = await axios('/api/users');
-    console.log(response.data);
-    userInfo = response.data
-    return userInfo
-  } catch{
-    if (!userInfo)
-    return
+  let userInfo: any;
+  const fetchItem = async () => {
+    try {
+      const response = await axios('/api/users');
+      console.log(response.data);
+      userInfo = response.data
+      return userInfo
+    } catch {
+      if (!userInfo)
+        return
+    }
   }
-}
 
   const profile = useSelector((state: RootState) => state.profile)
   console.log(profile)
@@ -49,16 +49,16 @@ const fetchItem = async() => {
           <p>Location {profile.profile.location}</p>
           <p>About: {profile.profile.blurb}</p>
         </div> */}
-      
-          <h2>Profile Edited!</h2>
-          <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar"/>
-          <div>
 
-        <Button>
-        <Link to="/find">Find other users!</Link>
+        <h2>Profile Edited!</h2>
+        <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar" />
+        <div>
 
-        </Button>
-          </div>
+          <Button>
+            <Link to="/find">Find other users!</Link>
+
+          </Button>
+        </div>
       </Container>
     </div>
   );
