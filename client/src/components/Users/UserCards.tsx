@@ -63,7 +63,6 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                 color: theme.palette.primary.main,
                 margin: 5,
                 textAlign: 'center',
-                // color: theme.palette.text.secondary,
             },
             grid: {
                 backgroundColor: `rgba(255, 255, 255, 0.4)`,
@@ -124,7 +123,7 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         // >
         <div>
 
-            <h1 className={classes.header}>Find Other Musicians</h1>
+            {/* <h1 className={classes.header}>Find Other Musicians</h1> */}
         
 
         <div className={classes.root}>
