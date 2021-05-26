@@ -34,7 +34,7 @@ router.get('/:email', (req, res) => {
 
 
 // GET all users 'Looking for Musicians'
-router.get('/bands-seeking', geoloc, async (req, res) => {
+router.get('/bands-seeking', async (req, res) => {
     try {
 
         const users = await User.findAll({
@@ -61,7 +61,7 @@ router.get('/bands-seeking', geoloc, async (req, res) => {
 });
 
 // GET all users 'Looking for a Band'
-router.get('/musicians-seeking', geoloc, async (req, res) => {
+router.get('/musicians-seeking', async (req, res) => {
     try {
         console.log(res.locals.location)
         const users = await User.findAll({
@@ -218,6 +218,7 @@ router.post('/', async(req, res) => {
 //         res.status(500).json(err);
 //     }
 // });
+
 router.put('/:email', async (req, res) => {
     const email = req.params.email
     const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location, blurb } = req.body
