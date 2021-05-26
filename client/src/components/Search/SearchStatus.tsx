@@ -1,39 +1,47 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
-import {  TextField, MenuItem } from '@material-ui/core';
-import './style.css'
+import { TextField, MenuItem, Button } from '@material-ui/core';
+import './style.css';
 
-const SearchStatus = () => {
-    const [status, setSearchStatus ] = useState()
-    const [results, setFilteredResults] = useState()
+export interface ISearchStatus {
+    status:string, 
+    setSearchStatus:Function
+}
 
-    const handleChange = (event: { target: { value: any; }; }) => {
+const SearchStatus: React.FC <ISearchStatus> = (props) => {
+
+    // const [results, setFilteredResults] = useState([])
+    const [users, setUsers] = useState([])
+    console.log(users)
+
+    const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
-        // setSearchStatus(statusSearch);
-        const filteredResults = statusSearch.filter((result: { intentionStatus: string; }) => result.intentionStatus === status)
-        console.log(filteredResults)
-        // console.log(search)
+        // const filteredResults = users.filter((user: {intentionStatus: string}) => user.intentionStatus === statusSearch)
+        // setSearchStatus(statusSearch)
+        props.setSearchStatus(statusSearch)
     }
+
 
     useEffect(() => {
         API.getAllUsers().then(res => {
-            const results = res.data;
-            // const filteredResults = results.filter((result: { intentionStatus: string; }) => result.intentionStatus === status)
-            // console.log(filteredResults)
-            // if (!results) return <> </>
-        //    setFilteredResults (filteredResults)
+            console.log(res.data)
+            setUsers(res.data)
         })
-    },[])
-    console.log(results)
+    }, [])
 
+    
     const statuses = [
+        {
+            value: '',
+            label: 'All Users',
+        },
         {
             value: 'Looking to join a band',
             label: 'Looking to join a band',
         },
         {
-            value: 'Looking for a Musician',
-            label: 'Looking for a Musician',
+            value: 'Looking to fill a spot in a band',
+            label: 'Looking to fill a spot in a band',
         },
         {
             value: 'Looking to Network',
@@ -42,35 +50,31 @@ const SearchStatus = () => {
     ];
 
 
-    return(
+    return (
         <div>
 
-    <TextField
-    id="status"
-    select
-    label="Select Status"
-    className="paddingfix"
-    // value={intentionStatus}
-    onChange={handleChange}
-    helperText="Select Status to Search"
-    variant="filled"
->
-    {statuses.map((status) => (
-        <MenuItem key={status.value} value={status.value}>
-            {status.label}
-        </MenuItem>
-    ))}
-</TextField>
-        {/* {results.map((result: any) => {
-            return (
-                <div>
-                    <li>{results}</li>
-                </div>
-            )
-        })} */}
-    </div>
+            <TextField
+                id="status"
+                select
+                label="Select Status"
+                className="paddingfix"
+                helperText="Select Status to Search"
+                variant="filled"
+            onChange={handleChange}
+            >
+                {statuses.map((status) => (
+                    <MenuItem key={status.value} value={status.value}>
+                        {status.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <div>
+
+            </div>
+        </div>
 
     )
 }
 
 export default SearchStatus
+

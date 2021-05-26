@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
 import './style.css'
-import { useAuth0, User } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
 export const CreateProfile = () => {
-    // update this to have firstname / lastname fields in form / state
-    // const { profileID } = match.params
 
     const user: any = useAuth0();
 
@@ -40,12 +38,10 @@ export const CreateProfile = () => {
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
 
-    // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
             dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log("PROFILE UPDATED ")
             console.log(history)
             setOIDC(oidc)
             console.log(oidc)
@@ -58,7 +54,6 @@ export const CreateProfile = () => {
             setEmail(email)
             setLocation(location)
             setBlurb(blurb)
-            // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
             history.push(`/tempprofile/`)
         }
     }
@@ -91,7 +86,7 @@ export const CreateProfile = () => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 1000,
+                paddingTop: 100,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
@@ -107,7 +102,7 @@ export const CreateProfile = () => {
         <Container className={classes.root}>
             <h2>Finish Your BandWidth Profile</h2>
 
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="on">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                 <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                 <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
@@ -115,10 +110,10 @@ export const CreateProfile = () => {
                     id="status"
                     select
                     label="Select Status"
-                    value={intentionStatus}
+                    defaultValue={intentionStatus}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
-                    variant="filled"
+                    variant="standard"
                 >
                     {statuses.map((status) => (
                         <MenuItem key={status.value} value={status.value}>
@@ -135,7 +130,7 @@ export const CreateProfile = () => {
                     label="Bio"
                     multiline
                     rows={4}
-                    defaultValue="Write a little bit about yourself here"
+                    // defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}

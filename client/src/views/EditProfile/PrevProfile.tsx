@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Button } from '@material-ui/core';
-import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -8,7 +7,7 @@ import axios from 'axios'
 import { RootState } from "../../redux/store";
 
 
-const TempProfile: React.FC = (): JSX.Element => {
+const PrevProfile: React.FC = (): JSX.Element => {
   const user: any = useAuth0();
 
  
@@ -29,13 +28,13 @@ const fetchItem = async() => {
 }
 
   const profile = useSelector((state: RootState) => state.profile)
-  console.log(profile.profile)
-
+  console.log(profile)
+  // console.log(profile.profile.nickName)
 
   return (
     <div>
       <Container className="bg">
-        <div className="col-md-2 mb-3">
+        {/* <div className="col-md-2 mb-3">
           <img
             src={user.user.picture}
             alt="Profile"
@@ -43,23 +42,26 @@ const fetchItem = async() => {
         </div>
         <div>
           <h2>{profile.profile.nickName}</h2>
-          <p>{userInfo}</p>
-          {/* <p>{profile.profile.displayName}</p> */}
           <p>Status: {profile.profile.intentionStatus}</p>
           <p>Band Name: {profile.profile.bandName}</p>
           <p>Email: {profile.profile.email}</p>
           <p>Phone: {profile.profile.phone}</p>
           <p>Location {profile.profile.location}</p>
           <p>About: {profile.profile.blurb}</p>
-        </div>
+        </div> */}
+      
+          <h2>Profile Edited!</h2>
+          <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar"/>
+          <div>
+
         <Button>
         <Link to="/find">Find other users!</Link>
 
         </Button>
+          </div>
       </Container>
     </div>
   );
 };
 
-export default TempProfile;
-
+export default PrevProfile;

@@ -15,6 +15,7 @@ export interface IUser {
   firstName: string,
   lastName: string,
   intentionStatus: string,
+  bandName: string,
   location: string,
   email: string,
   phone: string,
@@ -25,24 +26,6 @@ const UserProfile = () => {
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
-
-  // const writeProfile = (findUser: any) => {
-  //   const users: IUser[] = user.map((user) => {
-  //     return {
-  //       nickName: user.nickName,
-  //       firstName: user.firstName,
-  //       lastName: user.lastName,
-  //       intentionStatus: user.intentionStatus,
-  //       location: user.location,
-  //       email: user.email,
-  //       phone: user.phone,
-  //       blurb: user.blurb
-  //     }
-  //   })
-  //   console.log(users)
-  //   setUser(users)
-  //   userExists()
-  // }
 
 
   useEffect(() => {
@@ -57,10 +40,11 @@ const UserProfile = () => {
      if (!user) return <> </>
 
      return (
-   <div className="userexists">
+   <div>
           <Container maxWidth="lg" >
             <h1>User Profile Page</h1>
             <h1 >{user.nickName}</h1>
+            <h2>{user.bandName}</h2>
             <p >{user.firstName} {user.lastName}</p>
             <p >{user.intentionStatus}</p>
             <p >{user.location}</p>
@@ -77,7 +61,7 @@ const UserProfile = () => {
    const noUserExists = () => {
      return(
        <Container>
-       <div className="no user exists">
+       <div>
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
        <p>Please click the link below to finish creating your profile.</p>
@@ -90,10 +74,7 @@ const UserProfile = () => {
      )
    }
   return (
-    <div className="paddingfix test test">
-     {/* {console.log({userProfile})}
-     {console.log({user})} */}
-
+    <div className="paddingfix">
       {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
     </div>
   );

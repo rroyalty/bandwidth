@@ -2,22 +2,24 @@ import React, { useEffect } from 'react';
 import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
 import API from '../../utils/API'
 import { useState } from 'react';
-import { useTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+
 
 export interface UserI {
     nickName: string,
     firstName: string,
     lastName: string,
     intentionStatus: string,
+    bandName: string,
     location: string,
     email: string,
     phone: string,
     blurb: string,
 }
-
-const UserCard = () => {
+export interface IUserCardProps {
+    status: string,
+}
+const UserCard: React.FC<IUserCardProps> = (props) => {
 
     const [users, setUsers] = useState<UserI[]>([])
 
@@ -29,6 +31,7 @@ const UserCard = () => {
                 firstName: dbUser.firstName,
                 lastName: dbUser.lastName,
                 intentionStatus: dbUser.intentionStatus,
+                bandName: dbUser.bandName,
                 location: dbUser.location,
                 email: dbUser.email,
                 phone: dbUser.phone,
@@ -40,7 +43,6 @@ const UserCard = () => {
 
     useEffect(() => {
         API.getAllUsers().then(res => {
-            // console.log(res.data)
             dbUsers(res.data);
         })
     }, [])
@@ -78,29 +80,31 @@ const UserCard = () => {
             justify="center"
             alignItems="center"
         >
-
-        <div className={classes.root}>
-                    <h1 className={classes.header}>Find Other Musicians</h1>
-            {users.map((user) => {
-                return (
-                    <Container className={classes.root} maxWidth="lg" >
-                          <Grid container spacing={3}>
-                        <Grid className={classes.root} item xs={12}>
-                            <h1 key={user.nickName}>{user.nickName}</h1>
-                            <p key={user.firstName}>{user.firstName} {user.lastName}</p>
-                            <p key={user.intentionStatus}>{user.intentionStatus}</p>
-                            <p key={user.location}>{user.location}</p>
-                            <p key={user.email}>{user.email}</p>
-                            <p key={user.phone}>{user.phone}</p>
-                            <p key={user.blurb}>{user.blurb}</p>
-                            <p>---------------------</p>
-                        </Grid>
-                        </Grid>
-                    </Container>
-                )
-            })}
+            {/* {props.children} */}
+            <div className={classes.root}>
+                <h1 className={classes.header}>Find Other Musicians</h1>
+                {/* refactor - users.reduce here */}
+                {users.filter((user: {intentionStatus: string}) => !props.status || user.intentionStatus === props.status).map((user) => {
+                    return (
+                        <Container className={classes.root} maxWidth="lg" >
+                            <Grid container spacing={3}>
+                                <Grid className={classes.root} item xs={12}>
+                                    <h1 key={user.nickName}>{user.nickName}</h1>
+                                    <h2 key={user.bandName}>{user.bandName}</h2>
+                                    <p key={user.firstName}>{user.firstName} {user.lastName}</p>
+                                    <p key={user.intentionStatus}>{user.intentionStatus}</p>
+                                    <p key={user.location}>{user.location}</p>
+                                    <p key={user.email}>{user.email}</p>
+                                    <p key={user.phone}>{user.phone}</p>
+                                    <p key={user.blurb}>{user.blurb}</p>
+                                    <p>---------------------</p>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    )
+                })}
             </div>
-         </Grid>
+        </Grid>
     )
 }
 
