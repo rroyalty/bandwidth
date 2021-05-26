@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import { userProfileThunk } from './createProfileSlice';
+import { editProfileThunk } from './editProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-// import './style.css'
-import { useAuth0, User } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for EDITING a current profile 
 // ================================================
+
 export const EditProfile = () => {
-    // update this to have firstname / lastname fields in form / state
-    // const { profileID } = match.params
 
     const user: any = useAuth0();
-
-    console.log(user.user.sub)
 
     const [oidc, setOIDC] = useState(user.user.sub)
     const [nickName, setNickName] = useState('')
@@ -42,15 +37,11 @@ export const EditProfile = () => {
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
 
-    // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
-        if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            // dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log("PROFILE UPDATED ")
-            console.log(history)
+        if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
+            dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             setOIDC(oidc)
-            console.log(oidc)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)
@@ -60,11 +51,10 @@ export const EditProfile = () => {
             setEmail(email)
             setLocation(location)
             setBlurb(blurb)
-            // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
-            history.push(`/tempprofile/`)
+            history.push(`/prevprofile/`)
         }
     }
-    const onClearClicked = () => {
+    const onClearForm = () => {
         setNickName("")
             setFirstName("")
             setLastName("")
@@ -93,7 +83,7 @@ export const EditProfile = () => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 1000,
+                paddingTop: 100,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
@@ -109,7 +99,7 @@ export const EditProfile = () => {
         <Container className={classes.root}>
             <h2>Edit Profile</h2>
 
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="on">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                 <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                 <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
@@ -117,10 +107,10 @@ export const EditProfile = () => {
                     id="status"
                     select
                     label="Select Status"
-                    value={intentionStatus}
+                    value={intentionStatus || ""}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
-                    variant="filled"
+                    variant="standard"
                 >
                     {statuses.map((status) => (
                         <MenuItem key={status.value} value={status.value}>
@@ -137,7 +127,6 @@ export const EditProfile = () => {
                     label="Bio"
                     multiline
                     rows={4}
-                    defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}
@@ -146,7 +135,7 @@ export const EditProfile = () => {
 
 
             <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
-            <Button color="secondary" onClick={onClearClicked}>Clear</Button>
+            <Button color="secondary" onClick={onClearForm}>Clear</Button>
 
         </Container>
     )
