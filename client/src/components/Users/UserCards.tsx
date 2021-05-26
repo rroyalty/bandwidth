@@ -83,6 +83,7 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
             {/* {props.children} */}
             <div className={classes.root}>
                 <h1 className={classes.header}>Find Other Musicians</h1>
+                {/* refactor - users.reduce here */}
                 {users.filter((user: {intentionStatus: string}) => !props.status || user.intentionStatus === props.status).map((user) => {
                     return (
                         <Container className={classes.root} maxWidth="lg" >
