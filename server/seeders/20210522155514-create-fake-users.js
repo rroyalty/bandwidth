@@ -31,12 +31,12 @@ module.exports = {
       lastName: 'Gass',
       image: 'https://steveclayton.com/blog/wp-content/uploads/2013/10/kylegass.jpg',
       intentionStatus: 'Looking to Network',
-      bandName: '',
+      bandName: 'Tenacious D',
       oidc: '0sk2x36qvkckubn5xjhofuvl',
       email: 'kyle@gmail.com',
       phone: '9786664201',
       location: 'Hollywood CA',
-      blurb: 'Jack Blacks bestest buddy'
+      blurb: 'Jack Blacks bestest buddy. I too, play guitar.. and stuff.'
     }], {});
   },
 
