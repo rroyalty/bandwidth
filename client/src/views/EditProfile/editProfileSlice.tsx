@@ -3,24 +3,9 @@ import type { RootState } from '../../redux/store'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 
-
-
-// might need an axios.put(/api/users, profilePayload)
 // ===================================================================================
 // Redux black magic
 // ===================================================================================
-
-
-    // const [user, setUser] = useState()
-    // const userProfile: any = useAuth0();
-    
-    // useEffect(() => {
-    //     API.getUser(userProfile.user.email).then(res => {
-    //         const findUser = res.data;
-    //         console.log(findUser)
-    //         setUser(findUser)
-    //     })
-    // }, [])
 
 
 export const editProfileThunk = createAsyncThunk('profile/userProfileUpate', 
@@ -64,7 +49,7 @@ export const editProfileSlice = createSlice({
     initialState,
     reducers: {
         profileUpdated: (state, action: PayloadAction<IPrepare>) => {
-            // state = action.payload 
+
                 state.profile = action.payload
             },
     },
@@ -74,7 +59,6 @@ export const editProfileSlice = createSlice({
             state.isSubmitting = false
    
         });
-        // change this one to .pending, no overload matches error
         builder.addCase(editProfileThunk.pending, (state) => {
            state.isSubmitting = true; 
         })
