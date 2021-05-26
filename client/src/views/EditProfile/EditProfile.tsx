@@ -107,7 +107,7 @@ export const EditProfile = () => {
                     id="status"
                     select
                     label="Select Status"
-                    defaultValue={intentionStatus}
+                    value={intentionStatus || ""}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
                     variant="standard"

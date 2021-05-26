@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, createStyles, Grid, makeStyles } from '@material-ui/core';
+import { Container, createStyles, Grid, makeStyles, Paper } from '@material-ui/core';
 import API from '../../utils/API'
 import { useState } from 'react';
 import { Theme } from '@material-ui/core/styles';
@@ -54,6 +54,8 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
             root: {
                 backgroundColor: `rgba(255, 255, 255, 0.4)`,
                 flexGrow: 1,
+                justifyContent: 'center',
+                textAlign: 'center',
             },
             paper: {
                 padding: theme.spacing(2),
@@ -80,42 +82,48 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
     );
     const classes = useStyles();
     return (
-        <Grid
-            container
-            spacing={3}
-            justify="center"
-            alignItems="center"
-        >
-            {/* {props.children} */}
-            <div className={classes.root}>
-                <h1 className={classes.header}>Find Other Musicians</h1>
-                {/* refactor - users.reduce here */}
-                {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
-                    return (
-                        <Container className={classes.root} maxWidth="lg" >
-                            <Grid container spacing={3}>
-                                <Grid className={classes.root} item xs={12}>
-                                    <img
+        // <Grid
+        //     container
+        //     spacing={3}
+        //     justify="center"
+        //     alignItems="center"
+        // >
+
+        <div className={classes.root}>
+            <h1 className={classes.header}>Find Other Musicians</h1>
+            {/* refactor - users.reduce here */}
+            {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
+                return (
+                
+                    <Grid container direction="column"
+                        justify="center"
+                        alignItems="center" >
+                        <Grid className={classes.root} item xs={12} sm={6}
+                            justify="center"
+                            alignItems="center"
+                        >
+                            <Paper>
+                                <img
                                     className={classes.img}
-                                        src={user.image}
-                                        alt="user photo"
-                                    />
-                                    <h1 key={user.nickName}>{user.nickName}</h1>
-                                    <h2 key={user.bandName}>{user.bandName}</h2>
-                                    <p key={user.firstName}>{user.firstName} {user.lastName}</p>
-                                    <p key={user.intentionStatus}>{user.intentionStatus}</p>
-                                    <p key={user.location}>{user.location}</p>
-                                    <p key={user.email}>{user.email}</p>
-                                    <p key={user.phone}>{user.phone}</p>
-                                    <p key={user.blurb}>{user.blurb}</p>
-                                    <p>---------------------</p>
-                                </Grid>
-                            </Grid>
-                        </Container>
-                    )
-                })}
-            </div>
-        </Grid>
+                                    src={user.image}
+                                    alt="user photo"
+                                />
+                                <h2 key={user.nickName}>{user.nickName}</h2>
+                                <h2 key={user.bandName}>{user.bandName}</h2>
+                                <p key={user.firstName}>{user.firstName} {user.lastName}</p>
+                                <p key={user.intentionStatus}>{user.intentionStatus}</p>
+                                <p key={user.location}>{user.location}</p>
+                                <p key={user.email}>{user.email}</p>
+                                <p key={user.phone}>{user.phone}</p>
+                                <p key={user.blurb}>{user.blurb}</p>
+                                {/* <p>---------------------</p> */}
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                )
+            })}
+        </div>
+        // </Grid>
     )
 }
 
