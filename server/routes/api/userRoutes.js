@@ -5,6 +5,7 @@ const { sequelize, User, Genre, Instrument } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             // Do these work?
             include: ['genres', 'instruments'],
         });
@@ -23,16 +24,21 @@ router.get('/', async (req, res) => {
 // GET user by email (Toni needs this)
 router.get('/:email', (req, res) => {
     const { email } = req.params; 
-    User.findOne({where:{email}}).then((userData) => {
+    User.findOne({
+        where:{email},
+        subQuery: false,
+    }).then((userData) => {
         res.json(userData);
     });
 });
 
 
 // GET all users 'Looking for Musicians'
-router.get('/bands-seeking', async (req, res) => {
+router.get('/bands-seeking', geoloc, async (req, res) => {
     try {
+
         const users = await User.findAll({
+            subQuery: false,
             where: {
                 // Only get users seeking a musician
                 intentionStatus: 'Looking for a Musician'
@@ -55,9 +61,11 @@ router.get('/bands-seeking', async (req, res) => {
 });
 
 // GET all users 'Looking for a Band'
-router.get('/musicians-seeking', async (req, res) => {
+router.get('/musicians-seeking', geoloc, async (req, res) => {
     try {
+        console.log(res.locals.location)
         const users = await User.findAll({
+            subQuery: false,
             // Order by title in ascending order
             order: ['firstName'],
             where: {
@@ -83,6 +91,7 @@ router.get('/musicians-seeking', async (req, res) => {
 router.get('/networking', async (req, res) => {
     try {
         const users = await User.findAll({
+            subQuery: false,
             // Order by title in ascending order
             order: ['firstName'],
             where: {
@@ -110,6 +119,7 @@ router.get('/:oidc', async (req, res) => {
     const oidc = req.params.oidc;
     try {
         const users = await User.findOne({
+            subQuery: false,
             where: { oidc },
             include: ['genres', 'instruments'],
         })
@@ -125,7 +135,7 @@ router.get('/:oidc', async (req, res) => {
 
 // attempt to CREATE a new user with different route, followed by adding more to it.
 router.post('/test', async(req, res) => {
-    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres } = req.body
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, oidc, email, phone, location, genres, blurb } = req.body
     console.log(req.body)
     console.log("=============")
     console.log(req.body.genres)
@@ -137,6 +147,7 @@ router.post('/test', async(req, res) => {
             return;
         }
         const userFind = await User.findOne({
+            subQuery: false,
             where: { oidc },
             include: ['genres', 'instruments'],
         })
@@ -175,39 +186,69 @@ router.post('/', async(req, res) => {
 // currently I believe if you save changes but nothing is changed it will return the error message.
 
 // needs work, EDIT a current user - Toni will work on this tomorrow 
-router.put('/:oidc', async (req, res) => {
-        const oidc = req.params.oidc
-        console.log(oidc);
-        const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
-        // currently if no changes are made, this will error.
-        try {
-        const updatedUser = await User.update(
-            {
-                nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location 
-                // nickName: req.body.nickName,
-                // firstName: req.body.firstName,
-                // lastName: req.body.lastName,
-                // image: req.body.image,
-                // intentionStatus: req.body.intentionStatus,
-                // bandname: req.body.bandname,
-                // email: req.body.email,
-                // phone: req.body.phone,
-                // location: req.body.location
+// router.put('/:oidc', async (req, res) => {
+//         const oidc = req.params.oidc
+//         const { nickName, firstName, lastName, image, intentionStatus, bandName, email, phone, location } = req.body
+//     try {
+//         const updatedUser = await User.update(
+//             {
+//                 nickName: req.body.nickName,
+//                 firstName: req.body.firstName,
+//                 lastName: req.body.lastName,
+//                 image: req.body.image,
+//                 intentionStatus: req.body.intentionStatus,
+//                 bandname: req.body.bandname,
+//                 email: req.body.email,
+//                 phone: req.body.phone,
+//                 location: req.body.location,
+//                 blurb: req.body.blurb
+//             },
+//             {
+//                 where: {
+//                     oidc: req.params.oidc,
+//                 },
+//             }
+//         );
+//         if (!updatedUser[0]) {
+//             res.status(404).json({ message: 'Something went wrong. No user with this id! Changes could not be made.' });
+//             return;
+//         }
+//         res.json(updatedUser);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
+router.put('/:email', async (req, res) => {
+    const email = req.params.email
+    const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location, blurb } = req.body
+try {
+    const updatedUser = await User.update(
+        {
+            nickName: req.body.nickName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            image: req.body.image,
+            intentionStatus: req.body.intentionStatus,
+            bandName: req.body.bandName,
+            email: req.body.email,
+            phone: req.body.phone,
+            location: req.body.location,
+            blurb: req.body.blurb
+        },
+        {
+            where: {
+                email: req.params.email,
             },
-            {
-                where: {
-                    oidc,
-                },
-            }
-        );
-        if (!updatedUser[0]) {
-            res.status(404).json({ message: 'Something went wrong. No user with this id! Changes could not be made.' });
-            return;
         }
-        res.json(updatedUser);
-    } catch (err) {
-        res.status(500).json(err);
+    );
+    if (!updatedUser[0]) {
+        res.status(404).json({ message: 'Something went wrong. No user with this EMAIL! Changes could not be made.' });
+        return;
     }
+    res.json(updatedUser);
+} catch (err) {
+    res.status(500).json(err);
+}
 });
 
 // If button allows User to delete their own profile
@@ -216,7 +257,10 @@ router.put('/:oidc', async (req, res) => {
 router.delete('/:oidc', async (req, res) => {
     const oidc = req.params.oidc
     try {
-        const user = await User.findOne({ where: { oidc } })
+        const user = await User.findOne({ 
+            subQuery: false,
+            where: { oidc } 
+        })
 
         await user.destroy()
         if (!user) {

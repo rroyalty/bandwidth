@@ -6,6 +6,7 @@ router.post('/', async (req, res) => {
     const { userOidc, name } = req.body
     try {
         const user = await User.findOne({
+            subQuery: false,
             where: { oidc: userOidc }
         })
 
@@ -26,6 +27,7 @@ router.get('/', async (req, res) => {
     // console.log(req.body);
     try {
         const genres = await Genre.findAll({
+            subQuery: false,
             // if you need multiple associations
             // you pass an array and then you pass user and the other ones
             include: ['user']

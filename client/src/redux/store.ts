@@ -1,11 +1,13 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import profileReducer from '../views/CreateProfile/createProfileSlice'
+import editProfileReducer from '../views/EditProfile/editProfileSlice'
 
 export const store = configureStore({
   // switch statements will go in reducer file
   reducer: {
-    profile: profileReducer
+    profile: profileReducer,
+    editprofile: editProfileReducer
   },
 })
 // Infer the `RootState` and `AppDispatch` types from the store itself

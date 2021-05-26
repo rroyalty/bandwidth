@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Landing from '../../components/Landing/landing';
-import About from '../../components/Landing/About';
-import TheTeam from '../../components/Landing/TheTeam';
-import Footer from '../../components/Footer/Footer';
+import { BrowserRouter as Router } from "react-router-dom";
+import Landing from './Sub Views/Home';
+import About from './Sub Views/About';
+import TheTeam from './Sub Views/TheTeam';
+import Footer from './Sub Views/Footer';
 import { Container } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 

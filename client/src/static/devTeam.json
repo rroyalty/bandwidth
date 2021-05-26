@@ -9,7 +9,7 @@
         "id": 2,
         "name": "Toni Powell",
         "img": "/theteam/toni-pic.jpg",
-        "bio": "In hac habitasse platea dictumst. Sed posuere lobortis purus. Ut condimentum odio eget mauris ullamcorper, ut posuere nibh aliquam. Integer ut tortor vel libero tincidunt imperdiet at at nunc. Integer vitae ante at ante molestie tincidunt. Cras blandit magna sit amet tempor auctor. Curabitur finibus metus sed lorem maximus facilisis. Aenean maximus est nec malesuada pulvinar. Donec in ullamcorper odio. Nullam non augue vitae dui egestas finibus et et velit. Nunc suscipit velit in diam dapibus interdum."
+        "bio": "Toni is a full stack web developer currently living in Weare, NH. She likes dabbling in both the front and back end. She mostly enjoys the logic and planning the backend requires, but also enjoys the freedom and creativity allowed in coding on the front end. When Toni is not coding you can usually find her outside riding her four-wheeler, snowmobiling with her husband, or hiking with her dogs. Toni could at one point play a mean guitar, violin, and piano. Currently she is learning to play the drums (can play a mean double bass, still can’t hold a beat). Feel free to get in touch, she would love to chat about music, coding, or whatever else!"
     },
     {
         "id": 3,
@@ -19,9 +19,9 @@
     },
     {
         "id": 4,
-        "name": "Bjorn Yourney",
+        "name": "Bjorn Yourey",
         "img": "/theteam/ryan-pic.jpg",
-        "bio": "Phasellus sit amet fermentum lectus. Suspendisse varius dui eget dui fermentum gravida. Maecenas nec pulvinar urna. Curabitur mi est, mattis eget hendrerit vitae, consectetur in nisi. Sed eleifend dui sed est faucibus accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus quis suscipit orci. Cras quis accumsan libero, sit amet vestibulum lectus. Ut tortor tortor, venenatis sed nulla commodo, fermentum ullamcorper dui. Sed fringilla ex libero, et condimentum dolor mollis ut. Cras dignissim at tellus eget tincidunt. Proin rutrum congue dui, at tempus lectus venenatis vitae. Nunc vehicula vitae diam a vestibulum."
+        "bio": "Bjorn recently graduated as a full stack web developer and lives in Bow, NH. He loves exploring various fields in the coding world and willing to push himself to learn more. He is an SEO Analyst and enjoys building websites for his clients. He loves listening to different genres of music, is a die hard Manchester United soccer fan and watching thriller and psychological movies."
     },
     {
         "id": 5,

@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
 import './style.css'
-import { useAuth0, User } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
-export const CreateProfile = () => {
-    // update this to have firstname / lastname fields in form / state
-    // const { profileID } = match.params
+export const CreateProfile: React.FC = (): JSX.Element =>  {
 
     const user: any = useAuth0();
 
     const [oidc, setOIDC] = useState(user.user.sub)
+    const [image, setImage] = useState(user.user.picture)
     const [nickName, setNickName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -40,15 +39,12 @@ export const CreateProfile = () => {
     const onLocationChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setLocation(e.target.value)
     const onBlurbChanged = (e: { target: { value: React.SetStateAction<string>; }; }) => setBlurb(e.target.value)
 
-    // const onEmailChanged = () => setEmail(user.user.email)
 
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
-            dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log("PROFILE UPDATED ")
-            console.log(history)
+            dispatch(userProfileThunk({ oidc: user.user.sub, image, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
             setOIDC(oidc)
-            console.log(oidc)
+            setImage(image)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)
@@ -58,7 +54,6 @@ export const CreateProfile = () => {
             setEmail(email)
             setLocation(location)
             setBlurb(blurb)
-            // whatever argument is in .push is what the page redirects to, state updates but is not rendering on page 
             history.push(`/tempprofile/`)
         }
     }
@@ -91,7 +86,7 @@ export const CreateProfile = () => {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
-                paddingTop: 1000,
+                paddingTop: 100,
                 margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
@@ -100,14 +95,57 @@ export const CreateProfile = () => {
             },
         }),
     );
+    // const useStyles = makeStyles((theme: Theme) => createStyles({
+    //     root: {
+    //         display: `flex`,
+    //         backgroundColor: `rgba(255, 255, 255, 0.4)`,
+    //         justifyContent: `center`,
+    //         alignItems: `center`,
+    //         height: `100vh`,
+    //         width: `80%`,
+    //         margin: `0`,
+    //         maxWidth: `80%`,
+    //         [theme.breakpoints.down('xs')]: {
+    //             width: `100%`,
+    //             maxWidth: `100%`,
+    //         }
+    //     },
+    //     grid: {
+    //         height: `auto`,
+    //         justifyContent: `center`,
+    //         alignItems: `center`,
+    //         display: `flex`,
+    //     },
+    //     paper: {
+    //         display: `flex`,
+    //         flexDirection: `column`,
+    //         height: "auto",
+    //         width: `90%`,
+    //         backgroundColor: `rgba(255, 255, 255, 0.5)`,
+    //         border: `3px`,
+    //         borderStyle: `solid`,
+    //         borderColor: theme.palette.primary.main,
+    //     },
+    //     typography: {
+    //         display: `flex`,
+    //         // padding: `15px`,
+    //         color: theme.palette.primary.main,
+    //         [theme.breakpoints.down('lg')]: {
+    //             fontSize: `1rem`
+    //         },
+    //         [theme.breakpoints.down('sm')]: {
+    //             fontSize: `.75rem`
+    //         }
+    //     }
+    // }));
     const classes = useStyles();
 
     return (
 
         <Container className={classes.root}>
-            <h2>Finish Your BandWidth Profile</h2>
+            <h2>Finish Creating Your BandWidth Profile</h2>
 
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="on">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                 <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                 <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
@@ -115,10 +153,11 @@ export const CreateProfile = () => {
                     id="status"
                     select
                     label="Select Status"
-                    value={intentionStatus}
+                //    value={intentionStatus ? "" }
+                   value={intentionStatus || ""}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
-                    variant="filled"
+                    variant="standard"
                 >
                     {statuses.map((status) => (
                         <MenuItem key={status.value} value={status.value}>
@@ -135,7 +174,7 @@ export const CreateProfile = () => {
                     label="Bio"
                     multiline
                     rows={4}
-                    defaultValue="Write a little bit about yourself here"
+                    // defaultValue="Write a little bit about yourself here"
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}

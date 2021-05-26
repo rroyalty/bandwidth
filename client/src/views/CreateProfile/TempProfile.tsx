@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Button } from '@material-ui/core';
 import './style.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-import './style.css';
 import { useSelector } from "react-redux";
 import axios from 'axios'
 import { RootState } from "../../redux/store";
@@ -20,7 +19,6 @@ const TempProfile: React.FC = (): JSX.Element => {
 const fetchItem = async() => {
   try{
    const response = await axios('/api/users');
-    console.log(response.data);
     userInfo = response.data
     return userInfo
   } catch{
@@ -28,15 +26,18 @@ const fetchItem = async() => {
     return
   }
 }
-// fetchItem();
-// console.log(userInfo)
- 
-
 
   const profile = useSelector((state: RootState) => state.profile)
-  console.log(profile.profile)
 
 
+// <<<<<<< HEAD:client/src/views/Profile/Profile.tsx
+// <<<<<<< HEAD
+
+// =======
+// >>>>>>> ea748df42dbe0d383ee63d5f6736a16cf2a5ee06
+
+// =======
+// >>>>>>> ff8c8d5ebf3e1c975273319d3fd55e597090d046:client/src/views/CreateProfile/Profile.tsx
   return (
     <div>
       <Container className="bg">
