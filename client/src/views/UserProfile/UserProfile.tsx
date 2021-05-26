@@ -22,7 +22,7 @@ export interface IUser {
   blurb: string,
 }
 
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
@@ -38,7 +38,7 @@ const UserProfile = () => {
     })
   }, [])
 
-   const userExists = () => {
+   const userExists: React.FC = (): JSX.Element => {
      if (!user) return <> </>
 
      return (
@@ -60,7 +60,7 @@ const UserProfile = () => {
      )
    } 
 
-   const noUserExists = () => {
+   const noUserExists: React.FC = (): JSX.Element => {
      return(
        <Container>
        <div>
@@ -75,9 +75,10 @@ const UserProfile = () => {
        </Container>
      )
    }
+
   return (
     <div className="paddingfix">
-      {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
+      {(!userProfile || userProfile == null || !user) ?  noUserExists : userExists}
     </div>
   );
 };
