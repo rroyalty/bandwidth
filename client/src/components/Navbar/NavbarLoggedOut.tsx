@@ -4,7 +4,7 @@ import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
-import AuthNav from "../../components/Login/Auth-nav";
+import AuthNav from "../Login/Auth-nav";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
