@@ -42,9 +42,7 @@ export const CreateProfile = () => {
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || email || location || blurb) {
             dispatch(userProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log(history)
             setOIDC(oidc)
-            console.log(oidc)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)
@@ -100,7 +98,7 @@ export const CreateProfile = () => {
     return (
 
         <Container className={classes.root}>
-            <h2>Finish Your BandWidth Profile</h2>
+            <h2>Finish Craeting Your BandWidth Profile</h2>
 
             <form noValidate autoComplete="on">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />

@@ -14,7 +14,7 @@ const [status, setSearchStatus] = useState("")
         <div className="paddingfix" >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             <UserCard status={status}>
-                {/* <h2>I'm a child!</h2> */}
+                {/* <h2>Can also render children components here</h2> */}
             </UserCard>
         
         </div>

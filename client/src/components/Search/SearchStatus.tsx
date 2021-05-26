@@ -12,7 +12,7 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
     // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
-    console.log(users)
+
 
     const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
@@ -24,7 +24,6 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
     useEffect(() => {
         API.getAllUsers().then(res => {
-            console.log(res.data)
             setUsers(res.data)
         })
     }, [])
