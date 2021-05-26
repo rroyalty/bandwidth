@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 // ===============================================================================================================
 export interface IUser {
   nickName: string,
+  picture: string,
   firstName: string,
   lastName: string,
   intentionStatus: string,
@@ -24,14 +25,13 @@ export interface IUser {
 
 const UserProfile: React.FC = (): JSX.Element => {
   const userProfile: any = useAuth0();
-
+// console.log(userProfile.user)
   const [user, setUser] = useState<IUser | null>(null)
 
 
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      // console.log(findUser)
       setUser(findUser)
       localStorage.setItem('location', JSON.stringify(findUser.location));
       // console.log('local storage set')
@@ -44,8 +44,12 @@ const UserProfile: React.FC = (): JSX.Element => {
      return (
    <div>
           <Container maxWidth="lg" >
-            <h1>User Profile Page</h1>
-            <h1 >{user.nickName}</h1>
+            {/* <h1 >{user.nickName}</h1> */}
+            <img
+            src={userProfile.user.picture}
+            alt="user photo"
+            />
+            <h1>Welcome {user.nickName}!</h1>
             <h2>{user.bandName}</h2>
             <p >{user.firstName} {user.lastName}</p>
             <p >{user.intentionStatus}</p>

@@ -19,7 +19,6 @@ const TempProfile: React.FC = (): JSX.Element => {
 const fetchItem = async() => {
   try{
    const response = await axios('/api/users');
-    console.log(response.data);
     userInfo = response.data
     return userInfo
   } catch{
@@ -29,7 +28,6 @@ const fetchItem = async() => {
 }
 
   const profile = useSelector((state: RootState) => state.profile)
-  console.log(profile.profile)
 
 
   return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { createStyles, makeStyles, Theme} from '@material-ui/core';
 import API from "../../utils/API";
 import { TextField, MenuItem, Button } from '@material-ui/core';
 import './style.css';
@@ -12,7 +13,7 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
     // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
-    console.log(users)
+
 
     const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
@@ -24,7 +25,6 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
     useEffect(() => {
         API.getAllUsers().then(res => {
-            console.log(res.data)
             setUsers(res.data)
         })
     }, [])
@@ -49,16 +49,29 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
         },
     ];
 
-
+    const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        header: {
+            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            // paddingTop: 100,
+            // paddingLeft: 50,
+            justifyContent: `center`,
+            alignItems: `center`,
+            textAlign: `center`,
+        },
+    })
+    )
+    const classes = useStyles();
     return (
-        <div>
+        <div className={classes.header}>
+            <h1>Find Other Musicians</h1>
 
             <TextField
                 id="status"
                 select
                 label="Select Status"
                 className="paddingfix"
-                helperText="Select Status to Search"
+                helperText="Select a Status to Search"
                 variant="filled"
             onChange={handleChange}
             >

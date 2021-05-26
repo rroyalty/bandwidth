@@ -41,9 +41,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
     const onUpdateProfileClicked = () => {
         if (nickName || firstName || lastName || intentionStatus || bandName || phone || location || blurb) {
             dispatch(editProfileThunk({ oidc: user.user.sub, firstName, lastName, nickName, intentionStatus, bandName, phone, email, location, blurb }))
-            console.log(history)
             setOIDC(oidc)
-            console.log(oidc)
             setNickName(nickName)
             setFirstName(firstName)
             setLastName(lastName)
@@ -109,7 +107,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
                     id="status"
                     select
                     label="Select Status"
-                    defaultValue={intentionStatus}
+                    value={intentionStatus || ""}
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
                     variant="standard"

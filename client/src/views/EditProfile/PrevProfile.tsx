@@ -8,60 +8,20 @@ import { RootState } from "../../redux/store";
 
 
 const PrevProfile: React.FC = (): JSX.Element => {
-  const user: any = useAuth0();
 
+    return (
+      <div>
+        <Container className="bg">
+          <h2>Profile Edited!</h2>
+          <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar" />
+          <div>
+            <Button>
+              <Link to="/find">Find other users!</Link>
+            </Button>
+          </div>
+        </Container>
+      </div>
+    );
+  };
 
-  // return response.data
-  // const userInfo = useSelector(state => selectProfile)
-
-  let userInfo: any;
-  const fetchItem = async () => {
-    try {
-      const response = await axios('/api/users');
-      console.log(response.data);
-      userInfo = response.data
-      return userInfo
-    } catch {
-      if (!userInfo)
-        return
-    }
-  }
-
-  const profile = useSelector((state: RootState) => state.profile)
-  console.log(profile)
-  // console.log(profile.profile.nickName)
-
-  return (
-    <div>
-      <Container className="bg">
-        {/* <div className="col-md-2 mb-3">
-          <img
-            src={user.user.picture}
-            alt="Profile"
-          />
-        </div>
-        <div>
-          <h2>{profile.profile.nickName}</h2>
-          <p>Status: {profile.profile.intentionStatus}</p>
-          <p>Band Name: {profile.profile.bandName}</p>
-          <p>Email: {profile.profile.email}</p>
-          <p>Phone: {profile.profile.phone}</p>
-          <p>Location {profile.profile.location}</p>
-          <p>About: {profile.profile.blurb}</p>
-        </div> */}
-
-        <h2>Profile Edited!</h2>
-        <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar" />
-        <div>
-
-          <Button>
-            <Link to="/find">Find other users!</Link>
-
-          </Button>
-        </div>
-      </Container>
-    </div>
-  );
-};
-
-export default PrevProfile;
+  export default PrevProfile;
