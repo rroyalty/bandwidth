@@ -18,7 +18,25 @@ export interface IUser {
   blurb: string,
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+    header: {
+        backgroundColor: `rgba(255, 255, 255, 0.4)`,
+        paddingTop: 100,
+        // paddingLeft: 50,
+        justifyContent: `center`,
+        alignItems: `center`,
+        textAlign: `center`,
+    },
+    center: {
+      textAlign: `center`,
+      alignItems: `center`,
+      justifyContent: `center`,
+    }
+})
+)
 const UserProfile = () => {
+  const classes = useStyles();
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
@@ -30,24 +48,6 @@ const UserProfile = () => {
     })
   }, [])
 
-  const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-      header: {
-          backgroundColor: `rgba(255, 255, 255, 0.4)`,
-          paddingTop: 100,
-          // paddingLeft: 50,
-          justifyContent: `center`,
-          alignItems: `center`,
-          textAlign: `center`,
-      },
-      center: {
-        textAlign: `center`,
-        alignItems: `center`,
-        justifyContent: `center`,
-      }
-  })
-  )
-  const classes = useStyles();
 
    const userExists = () => {
      if (!user) return <> </>
