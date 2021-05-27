@@ -17,8 +17,10 @@ export interface IUser {
   phone: string,
   blurb: string,
 }
+
 const UserProfile = () => {
   const userProfile: any = useAuth0();
+
   const [user, setUser] = useState<IUser | null>(null)
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
@@ -32,8 +34,11 @@ const UserProfile = () => {
      return (
    <div className="userexists">
           <Container maxWidth="lg" >
-            <h1>User Profile Page</h1>
-            <h1 >{user.nickName}</h1>
+            <img
+            src={userProfile.user.picture}
+            alt="user photo"
+            />
+            <h1>Welcome {user.nickName}!</h1>   
             <p >{user.firstName} {user.lastName}</p>
             <p >{user.intentionStatus}</p>
             <p >{user.location}</p>
@@ -42,9 +47,11 @@ const UserProfile = () => {
             <p >{user.blurb}</p>
           </Container>
         <Link to="/editprofile">Edit Profile</Link>
+   
     </div>
      )
-   }
+   } 
+
    const noUserExists = () => {
      return(
        <Container>
