@@ -5,7 +5,6 @@ import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-import './style.css'
 import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
