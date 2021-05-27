@@ -28,7 +28,6 @@ createStyles({
     backgroundPosition: 'center',
     height: "100vh",
     justifyContent: `center`,
-
   },
     header: {
         backgroundColor: `rgba(255, 255, 255, 0.8)`,
@@ -39,8 +38,7 @@ createStyles({
         width: `80vw`,
         height: `90vh`
 
-    },
-
+    }
 })
 )
 
@@ -106,8 +104,9 @@ const UserProfile = () => {
 
    const noUserExists = () => {
      return(
-       <Container>
-       <div>
+
+       <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+       <Container maxWidth="xl" className={classes.header}>
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
        <p>Please click the link below to finish creating your profile.</p>
@@ -115,8 +114,8 @@ const UserProfile = () => {
        <Button>
        <Link to="createprofile">Create Profile Now</Link>
        </Button>
-       </div>
        </Container>
+       </div>
      )
    }
   return (
