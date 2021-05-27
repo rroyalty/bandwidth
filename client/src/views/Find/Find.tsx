@@ -32,6 +32,15 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             maxWidth: `90vw`,
         },
+        img: {
+            display: `flex`,
+            backgroundSize: "cover",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            height: 'auto',
+            minHeight: '100vh',
+            justifyContent: `center`,
+        }
 
     }),
 );
@@ -87,12 +96,15 @@ const Find: React.FC = (): JSX.Element => {
     }, [])
 
     return (
+        <div className={classes.img} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+
         <Container className={classes.root} >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             <GridList cellHeight={160} cols={5} spacing={4}>
                 {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </Container>
+        </div>
     )
 }
 
