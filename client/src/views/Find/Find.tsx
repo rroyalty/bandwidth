@@ -60,7 +60,7 @@ const Find: React.FC = (): JSX.Element => {
         <div className="paddingfix" >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             <GridList cellHeight={160} cols={3}>
-                {users.map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
+                {users.filter((user: UserI) => user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </div>
     )
