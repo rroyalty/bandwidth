@@ -60,7 +60,7 @@ const UserProfile = () => {
    const noUserExists = () => {
      return(
        <Container>
-       <div className="no user exists">
+       <div className="">
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
        <p>Please click the link below to finish creating your profile.</p>
