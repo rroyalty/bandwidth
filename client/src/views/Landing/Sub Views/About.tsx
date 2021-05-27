@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-
+// Make more Fluid
 const About: React.FC = (): JSX.Element => {
     const classes = useStyles();
     return (

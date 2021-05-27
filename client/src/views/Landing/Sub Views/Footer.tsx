@@ -58,7 +58,7 @@ const Footer: React.FC = (): JSX.Element => {
         { title: `Privacy`, path: `https://www.youtube.com/watch?v=YddwkMJG1Jo` },
     ]
 
-
+// Make more fluid.
     return (
         <BottomNavigation className={classes.root} style={{ padding: "25px" }}>
             <Grid
