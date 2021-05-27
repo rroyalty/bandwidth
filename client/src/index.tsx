@@ -43,7 +43,7 @@ let theme: Theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Router>
@@ -53,7 +53,8 @@ ReactDOM.render(
         </Router>
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
+  ,
   document.getElementById("root")
 );
 // If you want to start measuring performance in your app, pass a function

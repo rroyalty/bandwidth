@@ -59,7 +59,7 @@ const Find: React.FC = (): JSX.Element => {
     return (
         <Container className="paddingfix" >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
-            <GridList cellHeight={160} cols={1}>
+            <GridList cellHeight={160} cols={3} spacing={4}>
                 {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </Container>
