@@ -21,23 +21,50 @@ export interface IUser {
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
+  root: {
+    display: `flex`,
+    backgroundSize: "cover",
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    height: "100vh",
+    justifyContent: `center`,
+
+  },
     header: {
-        backgroundColor: `rgba(255, 255, 255, 0.4)`,
+        backgroundColor: `rgba(255, 255, 255, 0.8)`,
         paddingTop: 100,
-        // paddingLeft: 50,
         justifyContent: `center`,
         alignItems: `center`,
         textAlign: `center`,
+        width: `80vw`,
+        height: `80vh`
+
     },
-    center: {
-      textAlign: `center`,
-      alignItems: `center`,
-      justifyContent: `center`,
-    }
+
 })
 )
+
 const UserProfile = () => {
+
+  let bgArray: Array<number> = [1, 2, 3, 4]
+
+  const arrayShuf = (array: Array<number>): Array<number> => {
+    let j: number = 0;
+    let temp: number;
+
+    for (let i = array.length - 1; i >= array.length - 3; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+
+    return array;
+  }
+
+  const shufArray: Array<number> = arrayShuf(bgArray);
   const classes = useStyles();
+  
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
@@ -57,8 +84,8 @@ const UserProfile = () => {
 
 
      return (
-   <div className={classes.center}>
-          <Container maxWidth="lg" className={classes.header}>
+   <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+          <Container maxWidth="xl" className={classes.header}>
             <img
             src={userProfile.user.picture}
             alt="user photo"
@@ -70,8 +97,8 @@ const UserProfile = () => {
             <p >{user.email}</p>
             <p >{user.phone}</p>
             <p >{user.blurb}</p>
-          </Container>
         <Link  to="/editprofile">Edit Profile</Link>
+          </Container>
 
     </div>
      )
@@ -80,7 +107,7 @@ const UserProfile = () => {
    const noUserExists = () => {
      return(
        <Container>
-       <div className="">
+       <div>
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
        <p>Please click the link below to finish creating your profile.</p>

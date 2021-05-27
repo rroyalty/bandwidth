@@ -52,12 +52,15 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
     const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             // paddingTop: 100,
             // paddingLeft: 50,
             justifyContent: `center`,
             alignItems: `center`,
             textAlign: `center`,
+            // width: `40vw`,
+            // paddingRight: 150
+            // height: `30vh`
         },
     })
     )
@@ -70,10 +73,10 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
                 id="status"
                 select
                 label="Select Status"
-                className="paddingfix"
                 helperText="Select a Status to Search"
                 variant="filled"
             onChange={handleChange}
+            // className={classes.header}
             >
                 {statuses.map((status) => (
                     <MenuItem key={status.value} value={status.value}>

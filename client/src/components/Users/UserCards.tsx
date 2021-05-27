@@ -24,25 +24,26 @@ export interface IUserCardProps {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             justifyContent: 'center',
             alignItems: `center`,
             textAlign: 'center',
         },
         paper: {
+            backgroundColor: `rgba(255, 255, 255, 0.4)`,
             padding: 2,
             color: theme.palette.primary.main,
             margin: 5,
             textAlign: 'center',
         },
         grid: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             justifyContent: `center`,
             alignItems: `center`,
         },
 
         header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             justifyContent: `center`,
             alignItems: `center`,
             textAlign: `center`,
@@ -54,7 +55,11 @@ const useStyles = makeStyles((theme: Theme) =>
         gridList: {
             width: `90vw`,
             height: `90vh`,
-
+            justifyContent: 'center',
+            alignItems: `center`,
+            textAlign: 'center',
+            paddingLeft: 80,
+            // paddingTop: 50
         },
     }),
 );
@@ -93,14 +98,14 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         // // direction="column"
         //                 justify="center"
         //                 alignItems="center"
-
+        //                 // className={classes.root}
         //             >
         //     {/* refactor - users.reduce here */}
         //     {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
         //         return (
 
 
-        //                 <Grid className={classes.root} item xs={12} sm={6} xl={2}
+        //                 <Grid item xs={12} sm={6} xl={2}
         //                     justify="center"
         //                     alignItems="center"
         //                     key={user.email}
@@ -124,11 +129,12 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         //         )
         //     })}
         //     </Grid>
-        <GridList cellHeight={500} className={`${classes.gridList} ${classes.root}`} cols={3}>
+        // removed this class from below, might need it className={classes.gridList} 
+        <GridList cellHeight={500} className={classes.gridList} cols={3}>
             {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
                 return (
                     <GridListTile key={user.email} >
-                        <Paper>
+                        <Paper className={classes.root}>
                             <img className={classes.img} src={user.image} alt={user.nickName} />
                             <h2 >{user.nickName}</h2>
                             <h2 >{user.bandName}</h2>
