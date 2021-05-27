@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from '@material-ui/core';
+import { Container, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
@@ -29,11 +29,33 @@ const UserProfile = () => {
       setUser(findUser)
     })
   }, [])
+
+  const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+      header: {
+          backgroundColor: `rgba(255, 255, 255, 0.4)`,
+          paddingTop: 100,
+          // paddingLeft: 50,
+          justifyContent: `center`,
+          alignItems: `center`,
+          textAlign: `center`,
+      },
+      center: {
+        textAlign: `center`,
+        alignItems: `center`,
+        justifyContent: `center`,
+      }
+  })
+  )
+  const classes = useStyles();
+
    const userExists = () => {
      if (!user) return <> </>
+
+
      return (
-   <div className="userexists">
-          <Container maxWidth="lg" >
+   <div className={classes.center}>
+          <Container maxWidth="lg" className={classes.header}>
             <img
             src={userProfile.user.picture}
             alt="user photo"
@@ -46,8 +68,8 @@ const UserProfile = () => {
             <p >{user.phone}</p>
             <p >{user.blurb}</p>
           </Container>
-        <Link to="/editprofile">Edit Profile</Link>
-   
+        <Link  to="/editprofile">Edit Profile</Link>
+
     </div>
      )
    } 
@@ -55,7 +77,7 @@ const UserProfile = () => {
    const noUserExists = () => {
      return(
        <Container>
-       <div className="no user exists">
+       <div className="">
        <h1>Welcome to BandWidth!</h1>
        <p>Thanks for joining BandWidth.</p>
        <p>Please click the link below to finish creating your profile.</p>

@@ -9,16 +9,15 @@ import EditProfile from '../EditProfile/EditProfile'
 import PrevProfile from '../EditProfile/PrevProfile'
 
 const LoggedInLanding: React.FC = (): JSX.Element => {
-
-    // window.location.href = "/userprofile"
     return (
         <>
+        
             <Switch>
                 <ProtectedRoute exact path="/tempprofile" component={TempProfile} />
                 <ProtectedRoute exact path="/prevprofile" component={PrevProfile} />
                 <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
                 <ProtectedRoute exact path="/editprofile" component={EditProfile} />
-                <ProtectedRoute exact path="/userProfile" component={UserProfile} />
+                <ProtectedRoute exact path="/" component={UserProfile} />
                 <ProtectedRoute exact path="/find" component={Find} />
             </Switch>
         </>
