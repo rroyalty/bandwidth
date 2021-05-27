@@ -42,21 +42,6 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     const classes = useStyles();
 
-    // const getGridListCols = () => {
-    //     if (isWidthUp('xl', props.width)) {
-    //       return 4;
-    //     }
-    
-    //     if (isWidthUp('lg', props.width)) {
-    //       return 3;
-    //     }
-    
-    //     if (isWidthUp('md', props.width)) {
-    //       return 2;
-    //     }
-    
-    //     return 1;
-    //   }
     return (
         <GridListTile key={props.props.email} cols={1}>
             <Card className={classes.root} >

@@ -11,14 +11,11 @@ export interface ISearchStatus {
 
 const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
-    // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
 
 
     const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
-        // const filteredResults = users.filter((user: {intentionStatus: string}) => user.intentionStatus === statusSearch)
-        // setSearchStatus(statusSearch)
         props.setSearchStatus(statusSearch)
     }
 
@@ -53,14 +50,9 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
     createStyles({
         header: {
             backgroundColor: `rgba(255, 255, 255, 0.8)`,
-            // paddingTop: 100,
-            // paddingLeft: 50,
             justifyContent: `center`,
             alignItems: `center`,
             textAlign: `center`,
-            // width: `40vw`,
-            // paddingRight: 150
-            // height: `30vh`
         },
     })
     )
@@ -76,7 +68,6 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
                 helperText="Select a Status to Search"
                 variant="filled"
             onChange={handleChange}
-            // className={classes.header}
             >
                 {statuses.map((status) => (
                     <MenuItem key={status.value} value={status.value}>

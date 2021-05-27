@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-// import AuthNav from "../../components/Login/Auth-nav";
-// import SignupButton from "../../components/Login/Signup-button"
 import AuthSignup from "../../../components/Login/Auth-signup"
 
 import { Box, Container } from "@material-ui/core"
