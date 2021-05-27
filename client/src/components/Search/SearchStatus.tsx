@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme} from '@material-ui/core';
 import API from "../../utils/API";
-import { TextField, MenuItem, Button } from '@material-ui/core';
-import './style.css';
+import { TextField, MenuItem } from '@material-ui/core';
+
 
 export interface ISearchStatus {
     status:string, 

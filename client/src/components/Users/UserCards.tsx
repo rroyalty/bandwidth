@@ -40,11 +40,9 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: `center`,
             alignItems: `center`,
         },
-       
+
         header: {
             backgroundColor: `rgba(255, 255, 255, 0.4)`,
-            // paddingTop: 100,
-            // paddingLeft: 50,
             justifyContent: `center`,
             alignItems: `center`,
             textAlign: `center`,
@@ -56,10 +54,11 @@ const useStyles = makeStyles((theme: Theme) =>
         gridList: {
             width: `90vw`,
             height: `90vh`,
-  
-          },
+
+        },
     }),
 );
+
 const UserCard: React.FC<IUserCardProps> = (props) => {
     const classes = useStyles()
     const [users, setUsers] = useState<UserI[]>([])
@@ -90,63 +89,60 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
     }, [])
 
     return (
-            // <Grid container 
-            // // direction="column"
-            //                 justify="center"
-            //                 alignItems="center"
+        // <Grid container 
+        // // direction="column"
+        //                 justify="center"
+        //                 alignItems="center"
 
-            //             >
-            //     {/* refactor - users.reduce here */}
-            //     {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
-            //         return (
+        //             >
+        //     {/* refactor - users.reduce here */}
+        //     {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
+        //         return (
 
-                       
-            //                 <Grid className={classes.root} item xs={12} sm={6} xl={2}
-            //                     justify="center"
-            //                     alignItems="center"
-            //                     key={user.email}
-            //                 >
-            //                     <Paper className={classes.paper}>
-            //                         <img
-            //                             className={classes.img}
-            //                             src={user.image}
-            //                             alt="user photo"
-            //                         />
-            //                         <h2 >{user.nickName}</h2>
-            //                         <h2 >{user.bandName}</h2>
-            //                         <p>{user.firstName} {user.lastName}</p>
-            //                         <p>{user.intentionStatus}</p>
-            //                         <p>{user.location}</p>
-            //                         <p>{user.email}</p>
-            //                         <p>{user.phone}</p>
-            //                         <p>{user.blurb}</p>
-            //                     </Paper>
-            //                 </Grid>
-            //         )
-            //     })}
-            //     </Grid>
-       <GridList cellHeight={500} className={`${classes.gridList} ${classes.root}`} cols={4}>
-       {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
-           return (
-               <GridListTile key={user.email} >
-                   <Paper>
 
-           <img className={classes.img} src={user.image} alt={user.nickName} />
-           <h2 >{user.nickName}</h2>
-             <h2 >{user.bandName}</h2>
-             <p>{user.firstName} {user.lastName}</p>
-             <p>{user.intentionStatus}</p>
-             <p>{user.location}</p>
-             <p>{user.email}</p>
-             <p>{user.phone}</p>
-             <p>{user.blurb}</p>
-                   </Paper>
-         </GridListTile>
-             )
-       })}
-     </GridList>
-       
-        // </Grid>
+        //                 <Grid className={classes.root} item xs={12} sm={6} xl={2}
+        //                     justify="center"
+        //                     alignItems="center"
+        //                     key={user.email}
+        //                 >
+        //                     <Paper className={classes.paper}>
+        //                         <img
+        //                             className={classes.img}
+        //                             src={user.image}
+        //                             alt="user photo"
+        //                         />
+        //                         <h2 >{user.nickName}</h2>
+        //                         <h2 >{user.bandName}</h2>
+        //                         <p>{user.firstName} {user.lastName}</p>
+        //                         <p>{user.intentionStatus}</p>
+        //                         <p>{user.location}</p>
+        //                         <p>{user.email}</p>
+        //                         <p>{user.phone}</p>
+        //                         <p>{user.blurb}</p>
+        //                     </Paper>
+        //                 </Grid>
+        //         )
+        //     })}
+        //     </Grid>
+        <GridList cellHeight={500} className={`${classes.gridList} ${classes.root}`} cols={3}>
+            {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
+                return (
+                    <GridListTile key={user.email} >
+                        <Paper>
+                            <img className={classes.img} src={user.image} alt={user.nickName} />
+                            <h2 >{user.nickName}</h2>
+                            <h2 >{user.bandName}</h2>
+                            <p>{user.firstName} {user.lastName}</p>
+                            <p>{user.intentionStatus}</p>
+                            <p>{user.location}</p>
+                            <p>{user.email}</p>
+                            <p>{user.phone}</p>
+                            <p>{user.blurb}</p>
+                        </Paper>
+                    </GridListTile>
+                )
+            })}
+        </GridList>
     )
 }
 

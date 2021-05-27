@@ -84,11 +84,9 @@ export const EditProfile: React.FC = (): JSX.Element => {
         createStyles({
             root: {
                 paddingTop: 100,
-                margin: theme.spacing(1),
                 width: '25ch',
                 textAlign: `center`,
                 justifyContent: `center`
-
             },
         }),
     );
