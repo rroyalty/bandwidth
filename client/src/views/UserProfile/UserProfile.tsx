@@ -4,7 +4,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
 import { Button } from "@material-ui/core";
-
 // ==============================================================================================================
 // User Profile page - this pulls info from the DB, and compares a users logged in email, with info we have stored
 // ===============================================================================================================
@@ -66,8 +65,6 @@ const UserProfile = () => {
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
-
-
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
@@ -124,5 +121,4 @@ const UserProfile = () => {
     </div>
   );
 };
-
 export default UserProfile;

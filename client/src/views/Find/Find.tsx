@@ -1,34 +1,40 @@
 import { withRouter } from 'react-router';
-import React, {useState} from 'react';
-
+import React, { useState, useEffect } from 'react';
+import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
 import './style.css';
-import { makeStyles, Theme, createStyles } from '@material-ui/core';
+import { createStyles, makeStyles, Theme, GridList, Container } from '@material-ui/core';
+
+export interface UserI {
+    props: {
+        nickName: string,
+        image: string,
+        firstName: string,
+        lastName: string,
+        intentionStatus: string,
+        bandName: string,
+        location: string,
+        email: string,
+        phone: string,
+        blurb: string,
+    }
+}
+
+export interface IUserCardProps {
+    status: string,
+}
 
 const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-  root: {
-    display: `flex`,
-    backgroundSize: "cover",
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: "100vh",
-    justifyContent: `center`,
+    createStyles({
+        root: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            maxWidth: `90vw`,
+        },
 
-  },
-    header: {
-        // backgroundColor: `rgba(255, 255, 255, 0.8)`,
-        paddingTop: 50,
-        justifyContent: `center`,
-        alignItems: `center`,
-        textAlign: `center`,
-        padding: 10,
-
-    },
-
-})
-)
+    }),
+);
 
 const Find: React.FC = (): JSX.Element => {
     let bgArray: Array<number> = [1, 2, 3, 4]
@@ -48,20 +54,45 @@ const Find: React.FC = (): JSX.Element => {
     }
   
     const shufArray: Array<number> = arrayShuf(bgArray);
-    const classes = useStyles();
+   
 
-const [status, setSearchStatus] = useState("");
+    const classes = useStyles();
+    const [status, setSearchStatus] = useState("");
+    const [users, setUsers] = useState<UserI[]>([])
+
+    const dbUsers = (data: any[]) => {
+        const userUser: UserI[] = data.map((dbUser) => {
+            return {
+                props: {
+                    nickName: dbUser.nickName,
+                    image: dbUser.image,
+                    firstName: dbUser.firstName,
+                    lastName: dbUser.lastName,
+                    intentionStatus: dbUser.intentionStatus,
+                    bandName: dbUser.bandName,
+                    location: dbUser.location,
+                    email: dbUser.email,
+                    phone: dbUser.phone,
+                    blurb: dbUser.blurb
+                }
+            }
+        })
+        setUsers(userUser)
+    }
+
+    useEffect(() => {
+        API.getAllUsers().then(res => {
+            dbUsers(res.data);
+        })
+    }, [])
 
     return (
-            <div className={classes.header} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+        <Container className={classes.root} >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
-            {/* <div> */}
-
-            <UserCard status={status}>
-                {/* <h2>Can also render children components here</h2> */}
-            </UserCard>
-                 {/* </div> */}
-            </div>
+            <GridList cellHeight={160} cols={5} spacing={4}>
+                {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
+            </GridList>
+        </Container>
     )
 }
 

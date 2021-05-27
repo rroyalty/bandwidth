@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`,
-        justifyContent: `center`
+        justifyContent: `center`,
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
+        
     },
     navbar: {
         backgroundColor: `#181D27`,
