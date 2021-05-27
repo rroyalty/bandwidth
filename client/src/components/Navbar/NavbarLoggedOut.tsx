@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -7,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton'
 import AuthNav from "../Login/Auth-nav";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
+import { Drawer, List, ListItem, ListItemText, Container } from "@material-ui/core"
 
 import { AppBar, MenuItem } from "@material-ui/core"
 
@@ -26,6 +25,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         }
     },
     navbar: {
+        display: `flex`,
+        flexDirection: `column-reverse`,
         backgroundColor: `#181D27`,
         borderBottomWidth: `2px`,
         borderLeftWidth: `2px`,
@@ -54,14 +55,34 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         justifyContent: `center`
     },
     mobileNav: {
-        // backgroundColor: `#181D27`,
         display: `flex`,
         flexDirection: `column`,
         textDecoration: `none`,
         textTransform: `uppercase`,
-        // color: `#fff !important`,
         justifyContent: `flex-end`,
-        // justifyContent: `center`
+    },
+    links: {
+        margin: `5px`,
+        padding: `5px`,
+        color: theme.palette.primary.main,
+        backgroundColor: `rgba(255,255,255,0.6)`,
+        width: `100%`,
+        fontSize: `1.2rem`,
+        alignContent: `center`
+    },
+    menu: {
+        display: `flex`,
+        flexDirection: `column`,
+        alignItems: `center`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        height: "100vh",
+        backgroundImage: `url(/menuImage.jpg)`,
+        border: `0px`,
+        borderLeft: `2px`,
+        borderStyle: `solid`,
+        borderColor: `white`,
+        width: `50vw`,
     }
 }));
 
@@ -70,7 +91,7 @@ const navLinks: { title: string, path: string }[] = [
     { title: `Home`, path: `landing` },
     { title: `About`, path: `about` },
     { title: `The Team`, path: `theteam` },
-    { title: `Support`, path: `support`}
+    { title: `Support`, path: `support` }
 ]
 
 const NavbarLoggedOut: React.FC = (): JSX.Element => {
@@ -118,17 +139,16 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                         anchor: 'right',
                         open: drawerOpen,
                         onClose: handleDrawerClose,
-                        // className: classes.mobileNav
                     }}>
-                    <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
+                    <List component="nav" aria-labelledby="main navigation" className={` ${classes.menu}`}>
+                        <AuthNav />
                         <MenuItem className={classes.mobileNav}>
-                            <ScrollLink to="landing">Home</ScrollLink>
-                            <ScrollLink to="about">about</ScrollLink>
-                            <ScrollLink to="theteam">The Team</ScrollLink>
-                            <ScrollLink to="support">Support</ScrollLink>
+                            <ScrollLink className={classes.links} to="landing">Home</ScrollLink>
+                            <ScrollLink className={classes.links} to="about">about</ScrollLink>
+                            <ScrollLink className={classes.links} to="theteam">The Team</ScrollLink>
+                            <ScrollLink className={classes.links} to="support">Support</ScrollLink>
                         </MenuItem>
                     </List>
-                    <AuthNav />
                 </Drawer>
             </AppBar>
         )
