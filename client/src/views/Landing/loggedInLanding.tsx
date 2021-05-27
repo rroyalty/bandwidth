@@ -7,23 +7,8 @@ import CreateProfile from '../CreateProfile/CreateProfile';
 import ProtectedRoute from '../../auth/protected-route';
 import EditProfile from '../EditProfile/EditProfile'
 import PrevProfile from '../EditProfile/PrevProfile'
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
 const LoggedInLanding: React.FC = (): JSX.Element => {
-
-    const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
-            paddingTop: 100,
-            // paddingLeft: 50,
-            justifyContent: `center`,
-            alignItems: `center`,
-            textAlign: `center`,
-        },
-    })
-    )
-    const classes = useStyles();
     return (
         <>
         
