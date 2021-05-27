@@ -4,7 +4,7 @@ import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
 import './style.css';
-import { createStyles, makeStyles, GridList } from '@material-ui/core';
+import { GridList, Container } from '@material-ui/core';
 
 export interface UserI {
     props: {
@@ -57,12 +57,12 @@ const Find: React.FC = (): JSX.Element => {
     }, [])
 
     return (
-        <div className="paddingfix" >
+        <Container className="paddingfix" >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             <GridList cellHeight={160} cols={3}>
                 {users.filter((user: UserI) => user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
-        </div>
+        </Container>
     )
 }
 

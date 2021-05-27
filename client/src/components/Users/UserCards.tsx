@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles, GridListTile } from '@material-ui/core';
+import { createStyles, makeStyles, GridListTile, Avatar } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 
 
@@ -58,7 +58,7 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     return (
         <GridListTile key={props.props.nickName} cols={1}>
-            <img src={props.props.image} alt={props.props.nickName} />
+            <Avatar src={props.props.image} alt={props.props.nickName} />
             <p>{`${props.props.firstName} ${props.props.lastName}`}</p>
             <p>{props.props.intentionStatus}</p>
             <p>{props.props.bandName}</p>
