@@ -37,7 +37,7 @@ createStyles({
         alignItems: `center`,
         textAlign: `center`,
         width: `80vw`,
-        height: `80vh`
+        height: `90vh`
 
     },
 
@@ -91,12 +91,12 @@ const UserProfile = () => {
             alt="user photo"
             />
             <h1>Welcome {user.nickName}!</h1>   
-            <p >{user.firstName} {user.lastName}</p>
-            <p >{user.intentionStatus}</p>
-            <p >{user.location}</p>
-            <p >{user.email}</p>
-            <p >{user.phone}</p>
-            <p >{user.blurb}</p>
+            <p>{user.firstName} {user.lastName}</p>
+            <p>{user.intentionStatus}</p>
+            <p>{user.location}</p>
+            <p>{user.email}</p>
+            <p>{user.phone}</p>
+            <p>{user.blurb}</p>
         <Link  to="/editprofile">Edit Profile</Link>
           </Container>
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, createStyles, Grid, GridList, GridListTile, makeStyles, Paper } from '@material-ui/core';
+import { Container, createStyles, Grid, GridList, GridListTile, isWidthUp, makeStyles, Paper } from '@material-ui/core';
 import API from '../../utils/API'
 import { useState } from 'react';
 import { Theme } from '@material-ui/core/styles';
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'center',
             alignItems: `center`,
             textAlign: 'center',
+            // flexGrow: 1,
         },
         paper: {
             backgroundColor: `rgba(255, 255, 255, 0.4)`,
@@ -58,8 +59,8 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'center',
             alignItems: `center`,
             textAlign: 'center',
-            paddingLeft: 80,
-            // paddingTop: 50
+            // paddingLeft: 80,
+            paddingTop: 30
         },
     }),
 );
@@ -93,6 +94,21 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         })
     }, [])
 
+    // const getGridListCols = () => {
+    //     if (isWidthUp('xl', props.width)) {
+    //       return 4;
+    //     }
+    
+    //     if (isWidthUp('lg', props.width)) {
+    //       return 3;
+    //     }
+    
+    //     if (isWidthUp('md', props.width)) {
+    //       return 2;
+    //     }
+    
+    //     return 1;
+    //   }
     return (
         // <Grid container 
         // // direction="column"
@@ -129,8 +145,8 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
         //         )
         //     })}
         //     </Grid>
-        // removed this class from below, might need it className={classes.gridList} 
-        <GridList cellHeight={500} className={classes.gridList} cols={3}>
+        // original cell height was 500
+        <GridList cellHeight="auto" className={classes.gridList} cols={2}>
             {users.filter((user: { intentionStatus: string }) => !props.status || user.intentionStatus === props.status).map((user) => {
                 return (
                     <GridListTile key={user.email} >
