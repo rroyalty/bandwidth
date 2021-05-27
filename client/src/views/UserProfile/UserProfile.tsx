@@ -35,7 +35,7 @@ createStyles({
     }
 })
 )
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
   const classes = useStyles();
   const userProfile: any = useAuth0();
 
