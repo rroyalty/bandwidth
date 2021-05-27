@@ -18,7 +18,7 @@ createStyles({
 
   },
     header: {
-        backgroundColor: `rgba(255, 255, 255, 0.8)`,
+        // backgroundColor: `rgba(255, 255, 255, 0.8)`,
         paddingTop: 50,
         justifyContent: `center`,
         alignItems: `center`,
@@ -53,7 +53,7 @@ const Find: React.FC = (): JSX.Element => {
 const [status, setSearchStatus] = useState("");
 
     return (
-            <div className={classes.header}style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+            <div className={classes.header} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             {/* <div> */}
 
