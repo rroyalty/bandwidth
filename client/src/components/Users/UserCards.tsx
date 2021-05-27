@@ -41,11 +41,12 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     const classes = useStyles();
 
+    
     return (
         <GridListTile key={props.props.nickName} cols={1}>
             <Card className={classes.root} >
                 <Avatar src={props.props.image} alt={props.props.nickName} />
-                <Typography>{`${props.props.firstName} ${props.props.lastName}`}</Typography>
+                <Typography>{`${props.props.firstName} "${props.props.nickName}" ${props.props.lastName}`}</Typography>
                 <Typography>{props.props.intentionStatus}</Typography>
                 <Typography>{props.props.bandName}</Typography>
                 <Typography>{props.props.location}</Typography>
