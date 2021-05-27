@@ -7,20 +7,37 @@ import { withRouter } from "react-router-dom"
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     backgroundColor: `#181D27`,
-    width: `300px`,
-    margin: `.05rem`
+    width: `auto`,
+    margin: `5px`,
+    marginBottom: `10px`,
+    padding: `10px`,
+    border: `2px`,
+    borderStyle: `solid`,
+    borderColor: `white`
   }
 }));
 
-const LoginButton:React.FC = (): JSX.Element => {
+const LoginButton: React.FC = (): JSX.Element => {
   const classes = useStyles();
+
+  const buttonText: Array<string> =[
+    `Start Rockin'`,
+    `Bring the Noise`,
+    `Shred the Gnar`,
+    `Spread the Jam`,
+    `Find your Rhythm`,
+    `Sing Loud, Sing Proud`
+  ]
+  const random = Math.floor(Math.random() * buttonText.length);
+  
+
   const { loginWithRedirect } = useAuth0();
   return (
     <Button className={classes.root}
       variant="contained" color="secondary"
       onClick={() => loginWithRedirect()}
     >
-      Log In
+      {buttonText[random]}
     </Button>
   );
 };
