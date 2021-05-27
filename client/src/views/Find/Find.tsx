@@ -4,7 +4,7 @@ import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
 import './style.css';
-import { GridList, Container } from '@material-ui/core';
+import { createStyles, makeStyles, Theme, GridList, Container } from '@material-ui/core';
 
 export interface UserI {
     props: {
@@ -25,8 +25,20 @@ export interface IUserCardProps {
     status: string,
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            maxWidth: `90vw`,
+        },
+
+    }),
+);
+
 const Find: React.FC = (): JSX.Element => {
 
+    const classes = useStyles();
     const [status, setSearchStatus] = useState("");
     const [users, setUsers] = useState<UserI[]>([])
 
@@ -57,9 +69,9 @@ const Find: React.FC = (): JSX.Element => {
     }, [])
 
     return (
-        <Container className="paddingfix" >
+        <Container className={classes.root} >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
-            <GridList cellHeight={160} cols={3} spacing={4}>
+            <GridList cellHeight={160} cols={5} spacing={4}>
                 {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </Container>

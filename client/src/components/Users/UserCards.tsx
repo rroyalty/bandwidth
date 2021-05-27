@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles, GridListTile, Avatar, Card } from '@material-ui/core';
+import { createStyles, makeStyles, GridListTile, Avatar, Card, Typography } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 
 
@@ -24,29 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundColor: `rgba(255, 255, 255, 0.4)`,
             justifyContent: 'center',
             textAlign: 'center',
+            width: `auto`,
+            margin: `10px`,
+            padding: `25px`,
+            display: `flex`,
+            flexDirection: `column`
         },
-        paper: {
-            padding: 2,
-            color: theme.palette.primary.main,
-            margin: 5,
-            textAlign: 'center',
-        },
-        grid: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
-            justifyContent: `center`,
-            alignItems: `center`,
-        },
-
-        header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
-
-            justifyContent: `center`,
-            alignItems: `center`,
-            textAlign: `center`,
-        },
-        img: {
-            maxWidth: 120,
-            maxHeight: 120
+        blurb: {
+            maxWidth: '20vw'
         }
     }),
 );
@@ -58,14 +43,14 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     return (
         <GridListTile key={props.props.nickName} cols={1}>
-            <Card>
-            <Avatar src={props.props.image} alt={props.props.nickName} />
-            <p>{`${props.props.firstName} ${props.props.lastName}`}</p>
-            <p>{props.props.intentionStatus}</p>
-            <p>{props.props.bandName}</p>
-            <p>{props.props.location}</p>
-            <p>{props.props.phone}</p>
-            <p>{props.props.blurb}</p>
+            <Card className={classes.root} >
+                <Avatar src={props.props.image} alt={props.props.nickName} />
+                <Typography>{`${props.props.firstName} ${props.props.lastName}`}</Typography>
+                <Typography>{props.props.intentionStatus}</Typography>
+                <Typography>{props.props.bandName}</Typography>
+                <Typography>{props.props.location}</Typography>
+                <Typography>{props.props.phone}</Typography>
+                <Typography className={classes.blurb}>{props.props.blurb}</Typography>
             </Card>
         </GridListTile>
     )
