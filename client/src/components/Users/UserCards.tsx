@@ -3,7 +3,6 @@ import { Container, createStyles, Grid, makeStyles, Paper } from '@material-ui/c
 import API from '../../utils/API'
 import { useState } from 'react';
 import { Theme } from '@material-ui/core/styles';
-import { ClassSharp } from '@material-ui/icons';
 
 
 export interface UserI {
@@ -133,8 +132,10 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                 
                     <Grid container direction="column"
                         justify="center"
-                        alignItems="center" >
-                        <Grid className={classes.root} item xs={12} sm={6}
+                        alignItems="center"
+                        key={user.email}
+                       >
+                        <Grid className={classes.root} item  xs={12} sm={6} xl={2}
                             justify="center"
                             alignItems="center"
                         >
@@ -144,15 +145,14 @@ const UserCard: React.FC<IUserCardProps> = (props) => {
                                     src={user.image}
                                     alt="user photo"
                                 />
-                                <h2 key={user.nickName}>{user.nickName}</h2>
-                                <h2 key={user.bandName}>{user.bandName}</h2>
-                                <p key={user.firstName}>{user.firstName} {user.lastName}</p>
-                                <p key={user.intentionStatus}>{user.intentionStatus}</p>
-                                <p key={user.location}>{user.location}</p>
-                                <p key={user.email}>{user.email}</p>
-                                <p key={user.phone}>{user.phone}</p>
-                                <p key={user.blurb}>{user.blurb}</p>
-                                {/* <p>---------------------</p> */}
+                                <h2 >{user.nickName}</h2>
+                                <h2 >{user.bandName}</h2>
+                                <p>{user.firstName} {user.lastName}</p>
+                                <p>{user.intentionStatus}</p>
+                                <p>{user.location}</p>
+                                <p>{user.email}</p>
+                                <p>{user.phone}</p>
+                                <p>{user.blurb}</p>
                             </Paper>
                         </Grid>
                     </Grid>
