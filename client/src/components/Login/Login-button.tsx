@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
-    backgroundColor: `#181D27`,
+    backgroundColor: theme.palette.primary.main,
     width: `auto`,
     margin: `5px`,
     marginBottom: `10px`,

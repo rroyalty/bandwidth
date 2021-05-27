@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
-import './style.css';
 import { createStyles, makeStyles, Theme, GridList, Container } from '@material-ui/core';
 
 export interface UserI {

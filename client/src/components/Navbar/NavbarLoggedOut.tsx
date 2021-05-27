@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton'
 import AuthNav from "../Login/Auth-nav";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-import { Drawer, List, ListItem, ListItemText, Container } from "@material-ui/core"
+import { Drawer, List, ListItem, ListItemText } from "@material-ui/core"
 
 import { AppBar, MenuItem } from "@material-ui/core"
 
@@ -35,24 +35,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
-        // maxWidth: '95vw',
-        // marginLeft: -24
-    },
-    iconLinks: {
-        display: `inline-flex`,
-        height: `48px`,
-        width: `48px`,
-
     },
     rightAppBar: {
         marginLeft: `auto`,
         marginRight: 10
 
-    },
-    justifyContent: {
-        display: `flex`,
-        // flexDirection: `column`,
-        justifyContent: `center`
     },
     mobileNav: {
         display: `flex`,

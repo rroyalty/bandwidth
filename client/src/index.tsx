@@ -1,6 +1,5 @@
-import React from "react";
+
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,7 +8,7 @@ import { ThemeProvider } from "@material-ui/core";
 import { store } from "./redux/store"
 import { Provider } from "react-redux"
 import { createMuiTheme, responsiveFontSizes, Theme } from "@material-ui/core/styles";
-import red from "@material-ui/core/colors/red";
+
 
 // declare module "@material-ui/core/styles/createMuiTheme" {
 //   interface Theme {

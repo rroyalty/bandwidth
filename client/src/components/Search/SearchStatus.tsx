@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme} from '@material-ui/core';
 import API from "../../utils/API";
-import { TextField, MenuItem, Button } from '@material-ui/core';
-import './style.css';
+import { TextField, MenuItem } from '@material-ui/core';
 
 export interface ISearchStatus {
     status:string, 
     setSearchStatus:Function
 }
 
-const SearchStatus: React.FC <ISearchStatus> = (props) => {
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+    header: {
+        backgroundColor: `rgba(255, 255, 255, 0.4)`,
+        justifyContent: `center`,
+        alignItems: `center`,
+        textAlign: `center`,
+    },
+    paddingfix: {
+        paddingTop: `100px`,
+    }
+})
+)
+
+const SearchStatus: React.FC <ISearchStatus> = (props): JSX.Element => {
 
     // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
@@ -49,18 +62,6 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
-            // paddingTop: 100,
-            // paddingLeft: 50,
-            justifyContent: `center`,
-            alignItems: `center`,
-            textAlign: `center`,
-        },
-    })
-    )
     const classes = useStyles();
     return (
         <div className={classes.header}>
@@ -70,7 +71,7 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
                 id="status"
                 select
                 label="Select Status"
-                className="paddingfix"
+                className={classes.paddingfix}
                 helperText="Select a Status to Search"
                 variant="filled"
             onChange={handleChange}

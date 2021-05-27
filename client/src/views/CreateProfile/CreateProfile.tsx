@@ -5,12 +5,26 @@ import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-import './style.css'
 import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
+
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+    root: {
+        paddingTop: 100,
+        margin: theme.spacing(1),
+        width: '25ch',
+        textAlign: `center`,
+        justifyContent: `center`
+
+    },
+}),
+);
+
+
 export const CreateProfile: React.FC = (): JSX.Element =>  {
 
     const user: any = useAuth0();
@@ -83,61 +97,6 @@ export const CreateProfile: React.FC = (): JSX.Element =>  {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                paddingTop: 100,
-                margin: theme.spacing(1),
-                width: '25ch',
-                textAlign: `center`,
-                justifyContent: `center`
-
-            },
-        }),
-    );
-    // const useStyles = makeStyles((theme: Theme) => createStyles({
-    //     root: {
-    //         display: `flex`,
-    //         backgroundColor: `rgba(255, 255, 255, 0.4)`,
-    //         justifyContent: `center`,
-    //         alignItems: `center`,
-    //         height: `100vh`,
-    //         width: `80%`,
-    //         margin: `0`,
-    //         maxWidth: `80%`,
-    //         [theme.breakpoints.down('xs')]: {
-    //             width: `100%`,
-    //             maxWidth: `100%`,
-    //         }
-    //     },
-    //     grid: {
-    //         height: `auto`,
-    //         justifyContent: `center`,
-    //         alignItems: `center`,
-    //         display: `flex`,
-    //     },
-    //     paper: {
-    //         display: `flex`,
-    //         flexDirection: `column`,
-    //         height: "auto",
-    //         width: `90%`,
-    //         backgroundColor: `rgba(255, 255, 255, 0.5)`,
-    //         border: `3px`,
-    //         borderStyle: `solid`,
-    //         borderColor: theme.palette.primary.main,
-    //     },
-    //     typography: {
-    //         display: `flex`,
-    //         // padding: `15px`,
-    //         color: theme.palette.primary.main,
-    //         [theme.breakpoints.down('lg')]: {
-    //             fontSize: `1rem`
-    //         },
-    //         [theme.breakpoints.down('sm')]: {
-    //             fontSize: `.75rem`
-    //         }
-    //     }
-    // }));
     const classes = useStyles();
 
     return (

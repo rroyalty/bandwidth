@@ -10,6 +10,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for EDITING a current profile 
 // ================================================
 
+
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+    root: {
+        paddingTop: 100,
+        margin: theme.spacing(1),
+        width: '25ch',
+        textAlign: `center`,
+        justifyContent: `center`
+
+    },
+}),
+);
+
 export const EditProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
@@ -80,18 +94,6 @@ export const EditProfile: React.FC = (): JSX.Element => {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                paddingTop: 100,
-                margin: theme.spacing(1),
-                width: '25ch',
-                textAlign: `center`,
-                justifyContent: `center`
-
-            },
-        }),
-    );
     const classes = useStyles();
 
     return (

@@ -18,23 +18,23 @@ export interface IUser {
   blurb: string,
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-    header: {
-        backgroundColor: `rgba(255, 255, 255, 0.4)`,
-        paddingTop: 100,
-        // paddingLeft: 50,
-        justifyContent: `center`,
-        alignItems: `center`,
-        textAlign: `center`,
-    },
-    center: {
-      textAlign: `center`,
-      alignItems: `center`,
-      justifyContent: `center`,
-    }
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  header: {
+    backgroundColor: `rgba(255, 255, 255, 0.4)`,
+    paddingTop: 100,
+    // paddingLeft: 50,
+    justifyContent: `center`,
+    alignItems: `center`,
+    textAlign: `center`,
+  },
+  center: {
+    textAlign: `center`,
+    alignItems: `center`,
+    justifyContent: `center`,
+  }
 })
 )
+
 const UserProfile: React.FC = (): JSX.Element => {
   const classes = useStyles();
   const userProfile: any = useAuth0();
@@ -49,49 +49,49 @@ const UserProfile: React.FC = (): JSX.Element => {
   }, [])
 
 
-   const userExists = () => {
-     if (!user) return <> </>
+  const userExists = () => {
+    if (!user) return <> </>
 
 
-     return (
-   <div className={classes.center}>
-          <Container maxWidth="lg" className={classes.header}>
-            <img
+    return (
+      <div className={classes.center}>
+        <Container maxWidth="lg" className={classes.header}>
+          <img
             src={userProfile.user.picture}
             alt="user photo"
-            />
-            <h1>Welcome {user.nickName}!</h1>   
-            <p >{user.firstName} {user.lastName}</p>
-            <p >{user.intentionStatus}</p>
-            <p >{user.location}</p>
-            <p >{user.email}</p>
-            <p >{user.phone}</p>
-            <p >{user.blurb}</p>
-          </Container>
-        <Link  to="/editprofile">Edit Profile</Link>
+          />
+          <h1>Welcome {user.nickName}!</h1>
+          <p >{user.firstName} {user.lastName}</p>
+          <p >{user.intentionStatus}</p>
+          <p >{user.location}</p>
+          <p >{user.email}</p>
+          <p >{user.phone}</p>
+          <p >{user.blurb}</p>
+        </Container>
+        <Link to="/editprofile">Edit Profile</Link>
 
-    </div>
-     )
-   } 
+      </div>
+    )
+  }
 
-   const noUserExists = () => {
-     return(
-       <Container>
-       <div className="">
-       <h1>Welcome to BandWidth!</h1>
-       <p>Thanks for joining BandWidth.</p>
-       <p>Please click the link below to finish creating your profile.</p>
-       <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
-       <Button>
-       <Link to="createprofile">Create Profile Now</Link>
-       </Button>
-       </div>
-       </Container>
-     )
-   }
+  const noUserExists = () => {
+    return (
+      <Container>
+        <div className="">
+          <h1>Welcome to BandWidth!</h1>
+          <p>Thanks for joining BandWidth.</p>
+          <p>Please click the link below to finish creating your profile.</p>
+          <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
+          <Button>
+            <Link to="createprofile">Create Profile Now</Link>
+          </Button>
+        </div>
+      </Container>
+    )
+  }
   return (
     <div>
-      {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
+      {(!userProfile || userProfile == null || !user) ? noUserExists() : userExists()}
     </div>
   );
 };

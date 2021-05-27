@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createStyles, makeStyles, GridListTile, Avatar, Card, Typography } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 

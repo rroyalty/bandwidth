@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     typography: {
         display: `flex`,
-        // padding: `15px`,
         color: theme.palette.primary.main,
         [theme.breakpoints.down('lg')]: {
             fontSize: `1rem`
