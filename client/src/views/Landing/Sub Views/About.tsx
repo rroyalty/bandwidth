@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Container, Paper, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, Hidden } from "@material-ui/core"
+import { Container, Paper, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, Hidden } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 

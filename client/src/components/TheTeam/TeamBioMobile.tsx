@@ -1,12 +1,11 @@
 import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
 import { Box } from "@material-ui/core"
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, createStyles  } from "@material-ui/core/styles";
 import teamJSON from '../../static/devTeam.json'
 import Carousel from 'react-material-ui-carousel'
 import CarouselItem from '../../components/TheTeam/CarouselItem'
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
+const useStyles = makeStyles(() => createStyles({
     root: {
         display: `flex`,
         justifyContent: `center`,
@@ -15,7 +14,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const TeamBioMobile: React.FC = (): JSX.Element => {
-    const theme = useTheme();
     const classes = useStyles();
 
     const arrayShuf = (array: Array<any>): Array<any> => {
