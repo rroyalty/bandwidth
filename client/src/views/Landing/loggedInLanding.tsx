@@ -35,9 +35,6 @@ const LoggedInLanding: React.FC = (): JSX.Element => {
                 <ProtectedRoute exact path="/" component={UserProfile} />
                 <ProtectedRoute exact path="/find" component={Find} />
             </Switch>
-           <div className={classes.header}>
-               {/* <UserProfile /> */}
-           </div>
         </>
     );
 }
