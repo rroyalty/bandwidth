@@ -26,8 +26,8 @@ const useStyles = makeStyles(() => createStyles({
 const LoggedInLanding: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
-    const bgArray: Array<number> = [1, 2, 3, 4];
-    const random = bgArray[Math.floor(Math.random() * bgArray.length)];
+    //5 Backgrounds
+    const random = Math.floor(Math.random() * 5) + 1;
 
     return (
         <Switch>
