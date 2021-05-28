@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Box } from "@material-ui/core"
 import { makeStyles, createStyles  } from "@material-ui/core/styles";
 import teamJSON from '../../static/devTeam.json'
@@ -15,6 +15,12 @@ const useStyles = makeStyles(() => createStyles({
 
 const TeamBioMobile: React.FC = (): JSX.Element => {
     const classes = useStyles();
+
+    useEffect(() => {
+        return () => {
+         console.log(`component unmounted`)
+        };
+      }, []); 
 
     const arrayShuf = (array: Array<any>): Array<any> => {
         let j: number = 0;
