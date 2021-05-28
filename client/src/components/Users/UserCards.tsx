@@ -1,6 +1,11 @@
-import React from 'react';
-import { createStyles, makeStyles, GridListTile, Avatar, Card, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { createStyles, makeStyles, GridListTile, Avatar, Card, CardHeader, CardContent, Typography, List, ListItem, ListItemIcon, ListItemText, Divider, IconButton, CardActions, Collapse } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
 
 
 export interface IUserCardProps {
@@ -33,7 +38,17 @@ const useStyles = makeStyles((theme: Theme) =>
         blurb: {
             // changed this from 20 to 40, 20 got wonky on mobile
             maxWidth: '40vw'
-        }
+        },
+        expand: {
+            transform: 'rotate(0deg)',
+            marginLeft: 'auto',
+            transition: theme.transitions.create('transform', {
+                duration: theme.transitions.duration.shortest,
+            }),
+        },
+        expandOpen: {
+            transform: 'rotate(180deg)',
+        },
     }),
 );
 
@@ -41,20 +56,66 @@ const useStyles = makeStyles((theme: Theme) =>
 const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     const classes = useStyles();
+    const [expanded, setExpanded] = useState(false);
 
-    
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
     return (
-        <GridListTile key={props.props.email} cols={1}>
-            <Card className={classes.root} >
-                <Avatar src={props.props.image} alt={props.props.nickName} />
-                <Typography>{`${props.props.firstName} "${props.props.nickName}" ${props.props.lastName}`}</Typography>
-                <Typography>{props.props.intentionStatus}</Typography>
-                <Typography>{props.props.bandName}</Typography>
-                <Typography>{props.props.location}</Typography>
-                <Typography>{props.props.phone}</Typography>
-                <Typography className={classes.blurb}>{props.props.blurb}</Typography>
-            </Card>
-        </GridListTile>
+            <GridListTile key={props.props.email} cols={4}>
+                <Card className={classes.root} >
+                    <CardHeader
+                        avatar={<Avatar src={props.props.image} alt={props.props.nickName} />}
+                        title={<Typography>{`${props.props.firstName} "${props.props.nickName}" ${props.props.lastName}`}</Typography>}
+                        subheader={<Typography>{props.props.bandName}</Typography>}
+                    />
+                    <Divider />
+                    <CardContent>
+                        {/* <Typography className={classes.blurb}>{props.props.blurb}</Typography> */}
+                        <List dense={true}>
+                            <ListItem>
+                                <ListItemIcon>
+                                    <LocationOnIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={props.props.location} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemIcon>
+                                    <EmailIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={props.props.email} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemIcon>
+                                    <PhoneIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={props.props.phone} />
+                            </ListItem>
+                        </List>
+                    </CardContent>
+                    <CardActions disableSpacing>
+                        <Typography>{props.props.intentionStatus}</Typography>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </CardActions>
+
+                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>{props.props.blurb}</Typography>
+                        </CardContent>
+                    </Collapse>
+
+                </Card>
+            </GridListTile>
     )
 }
 

@@ -29,6 +29,7 @@ const useStyles = makeStyles(() =>
             justifyContent: 'center',
             alignItems: 'center',
             maxWidth: `90vw`,
+
         },
         img: {
             display: `flex`,
@@ -38,6 +39,14 @@ const useStyles = makeStyles(() =>
             height: 'auto',
             minHeight: '100vh',
             justifyContent: `center`,
+        },
+        gridList: {
+            paddingTop: `20px`,
+            display: `flex`,
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflowX: 'hidden',
+            maxHeight: `70vh`
         }
 
     }),
@@ -76,9 +85,9 @@ const Find: React.FC = (): JSX.Element => {
     }, [])
 
     return (
-        <Container className={classes.root} >
+        <Container maxWidth="xl" className={classes.root} >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
-            <GridList cellHeight={160} cols={5} spacing={4}>
+            <GridList className={classes.gridList} cellHeight={160} >
                 {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </Container>
