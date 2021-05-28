@@ -41,7 +41,7 @@ createStyles({
 })
 )
 
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
 
   let bgArray: Array<number> = [1, 2, 3, 4]
 
@@ -49,7 +49,7 @@ const UserProfile = () => {
     let j: number = 0;
     let temp: number;
 
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
       temp = array[i];
       array[i] = array[j];

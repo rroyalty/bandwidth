@@ -5,46 +5,35 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
+interface IProps {
+  bg: any
+}
+
 const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-  root: {
-    display: `flex`,
-    backgroundSize: "cover",
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: "100vh",
-    justifyContent: `center`,
-  },
+  createStyles({
+    root: {
+      display: `flex`,
+      backgroundSize: "cover",
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      height: "100vh",
+      justifyContent: `center`,
+    },
     header: {
-        backgroundColor: `rgba(255, 255, 255, 0.8)`,
-        paddingTop: 100,
-        justifyContent: `center`,
-        alignItems: `center`,
-        textAlign: `center`,
-        width: `40vw`,
-        height: `90vh`
+      backgroundColor: `rgba(255, 255, 255, 0.8)`,
+      paddingTop: 100,
+      justifyContent: `center`,
+      alignItems: `center`,
+      textAlign: `center`,
+      width: `40vw`,
+      height: `90vh`
 
     }
-})
+  })
 )
-const TempProfile: React.FC = (): JSX.Element => {
-  let bgArray: Array<number> = [1, 2, 3, 4]
 
-  const arrayShuf = (array: Array<number>): Array<number> => {
-    let j: number = 0;
-    let temp: number;
-
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-
-    return array;
-  }
-
-  const shufArray: Array<number> = arrayShuf(bgArray);
+const TempProfile: React.FC<IProps> = (bg): JSX.Element => {
+  
   const classes = useStyles();
 
   const user: any = useAuth0();
@@ -54,7 +43,7 @@ const TempProfile: React.FC = (): JSX.Element => {
 
 
   return (
-    <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+    <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${bg}.jpg)` }}>
       <Container className={classes.header}>
         <div className="col-md-2 mb-3">
           <img
@@ -72,7 +61,7 @@ const TempProfile: React.FC = (): JSX.Element => {
           <p>About: {profile.profile.blurb}</p>
         </div>
         <Button>
-        <Link to="/find">Find other users!</Link>
+          <Link to="/find">Find other users!</Link>
 
         </Button>
       </Container>
