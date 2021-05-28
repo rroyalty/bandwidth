@@ -10,6 +10,29 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for EDITING a current profile 
 // ================================================
 
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+    root: {
+        display: `flex`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: "100vh",
+        justifyContent: `center`,
+    },
+    center: {
+        backgroundColor: `rgba(255, 255, 255, 0.8)`,
+        paddingTop: 100,
+        width: '25ch',
+        textAlign: `center`,
+        justifyContent: `center`,
+        // width: `50vw`,
+        // height: `90vh`
+    },
+}),
+);
+
+
 export const EditProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
@@ -65,14 +88,15 @@ export const EditProfile: React.FC = (): JSX.Element => {
             setBlurb("")
     }
 
+
     const statuses = [
         {
-            value: 'Looking to join a band',
-            label: 'Looking to join a band',
+            value: 'Musician looking for a Band',
+            label: 'Musician looking for a Band',
         },
         {
-            value: 'Looking to fill a spot in a band',
-            label: 'Looking to fill a spot in a band',
+            value: 'Band looking for Musician',
+            label: 'Band looking for Musician',
         },
         {
             value: 'Looking to Network',
@@ -80,23 +104,12 @@ export const EditProfile: React.FC = (): JSX.Element => {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                paddingTop: 100,
-                margin: theme.spacing(1),
-                width: '25ch',
-                textAlign: `center`,
-                justifyContent: `center`
-
-            },
-        }),
-    );
     const classes = useStyles();
 
     return (
+        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg5.jpg)` }}>
 
-        <Container className={classes.root}>
+        <Container className={classes.center}>
             <h2>Edit Profile</h2>
 
             <form noValidate autoComplete="on">
@@ -111,7 +124,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
                     onChange={onIntentionStatusChanged}
                     helperText="Please select your status"
                     variant="standard"
-                >
+                    >
                     {statuses.map((status) => (
                         <MenuItem key={status.value} value={status.value}>
                             {status.label}
@@ -130,7 +143,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
                     variant="outlined"
                     value={blurb}
                     onChange={onBlurbChanged}
-                />
+                    />
             </form>
 
 
@@ -138,6 +151,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
             <Button color="secondary" onClick={onClearForm}>Clear</Button>
 
         </Container>
+                    </div>
     )
 
 }

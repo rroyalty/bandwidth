@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as Scroll } from "react-scroll";
 import { withRouter } from 'react-router';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,7 +19,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`,
-        justifyContent: `center`
+        justifyContent: `center`,
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
     },
     navbar: {
         backgroundColor: `#181D27`,

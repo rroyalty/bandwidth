@@ -5,13 +5,35 @@ import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import { MenuItem, Container, Button, TextField } from '@material-ui/core';
-import './style.css'
 import { useAuth0 } from "@auth0/auth0-react";
 
 // ================================================
 // Form for CREATING a new profile 
 // ================================================
-export const CreateProfile: React.FC = (): JSX.Element =>  {
+
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            display: `flex`,
+            backgroundSize: "cover",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            height: "100vh",
+            justifyContent: `center`,
+        },
+        center: {
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
+            paddingTop: 100,
+            width: '25ch',
+            textAlign: `center`,
+            justifyContent: `center`,
+            // width: `50vw`,
+            // height: `90vh`
+        },
+    }),
+);
+export const CreateProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
 
@@ -59,23 +81,23 @@ export const CreateProfile: React.FC = (): JSX.Element =>  {
     }
     const onClearClicked = () => {
         setNickName("")
-            setFirstName("")
-            setLastName("")
-            setIntentionStatus("")
-            setBandName("")
-            setPhone("")
-            setLocation("")
-            setBlurb("")
+        setFirstName("")
+        setLastName("")
+        setIntentionStatus("")
+        setBandName("")
+        setPhone("")
+        setLocation("")
+        setBlurb("")
     }
 
     const statuses = [
         {
-            value: 'Looking to join a band',
-            label: 'Looking to join a band',
+            value: 'Musician looking for a Band',
+            label: 'Musician looking for a Band',
         },
         {
-            value: 'Looking to fill a spot in a band',
-            label: 'Looking to fill a spot in a band',
+            value: 'Band looking for Musician',
+            label: 'Band looking for Musician',
         },
         {
             value: 'Looking to Network',
@@ -83,109 +105,55 @@ export const CreateProfile: React.FC = (): JSX.Element =>  {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                paddingTop: 100,
-                margin: theme.spacing(1),
-                width: '25ch',
-                textAlign: `center`,
-                justifyContent: `center`
-
-            },
-        }),
-    );
-    // const useStyles = makeStyles((theme: Theme) => createStyles({
-    //     root: {
-    //         display: `flex`,
-    //         backgroundColor: `rgba(255, 255, 255, 0.4)`,
-    //         justifyContent: `center`,
-    //         alignItems: `center`,
-    //         height: `100vh`,
-    //         width: `80%`,
-    //         margin: `0`,
-    //         maxWidth: `80%`,
-    //         [theme.breakpoints.down('xs')]: {
-    //             width: `100%`,
-    //             maxWidth: `100%`,
-    //         }
-    //     },
-    //     grid: {
-    //         height: `auto`,
-    //         justifyContent: `center`,
-    //         alignItems: `center`,
-    //         display: `flex`,
-    //     },
-    //     paper: {
-    //         display: `flex`,
-    //         flexDirection: `column`,
-    //         height: "auto",
-    //         width: `90%`,
-    //         backgroundColor: `rgba(255, 255, 255, 0.5)`,
-    //         border: `3px`,
-    //         borderStyle: `solid`,
-    //         borderColor: theme.palette.primary.main,
-    //     },
-    //     typography: {
-    //         display: `flex`,
-    //         // padding: `15px`,
-    //         color: theme.palette.primary.main,
-    //         [theme.breakpoints.down('lg')]: {
-    //             fontSize: `1rem`
-    //         },
-    //         [theme.breakpoints.down('sm')]: {
-    //             fontSize: `.75rem`
-    //         }
-    //     }
-    // }));
     const classes = useStyles();
 
     return (
+        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg5.jpg)` }}>
+            <Container className={classes.center}>
+                <h2>Finish Creating Your BandWidth Profile</h2>
 
-        <Container className={classes.root}>
-            <h2>Finish Creating Your BandWidth Profile</h2>
-
-            <form noValidate autoComplete="on">
-                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
-                <TextField
-                    id="status"
-                    select
-                    label="Select Status"
-                //    value={intentionStatus ? "" }
-                   value={intentionStatus || ""}
-                    onChange={onIntentionStatusChanged}
-                    helperText="Please select your status"
-                    variant="standard"
-                >
-                    {statuses.map((status) => (
-                        <MenuItem key={status.value} value={status.value}>
-                            {status.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
-                <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
-                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
-                <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Bio"
-                    multiline
-                    rows={4}
-                    // defaultValue="Write a little bit about yourself here"
-                    variant="outlined"
-                    value={blurb}
-                    onChange={onBlurbChanged}
-                />
-            </form>
+                <form noValidate autoComplete="on">
+                    <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
+                    <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                    <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
+                    <TextField
+                        id="status"
+                        select
+                        label="Select Status"
+                        //    value={intentionStatus ? "" }
+                        value={intentionStatus || ""}
+                        onChange={onIntentionStatusChanged}
+                        helperText="Please select your status"
+                        variant="standard"
+                    >
+                        {statuses.map((status) => (
+                            <MenuItem key={status.value} value={status.value}>
+                                {status.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
+                    <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
+                    <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                    <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Bio"
+                        multiline
+                        rows={4}
+                        // defaultValue="Write a little bit about yourself here"
+                        variant="outlined"
+                        value={blurb}
+                        onChange={onBlurbChanged}
+                    />
+                </form>
 
 
-            <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
-            <Button color="secondary" onClick={onClearClicked}>Clear</Button>
+                <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
+                <Button color="secondary" onClick={onClearClicked}>Clear</Button>
 
-        </Container>
+            </Container>
+        </div>
     )
 
 }

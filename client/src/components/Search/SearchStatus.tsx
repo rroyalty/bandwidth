@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme} from '@material-ui/core';
 import API from "../../utils/API";
-import { TextField, MenuItem, Button } from '@material-ui/core';
-import './style.css';
+import { TextField, MenuItem } from '@material-ui/core';
+
 
 export interface ISearchStatus {
     status:string, 
@@ -11,14 +11,11 @@ export interface ISearchStatus {
 
 const SearchStatus: React.FC <ISearchStatus> = (props) => {
 
-    // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
 
 
     const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
-        // const filteredResults = users.filter((user: {intentionStatus: string}) => user.intentionStatus === statusSearch)
-        // setSearchStatus(statusSearch)
         props.setSearchStatus(statusSearch)
     }
 
@@ -36,12 +33,12 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
             label: 'All Users',
         },
         {
-            value: 'Looking to join a band',
-            label: 'Looking to join a band',
+            value: 'Musician looking for a Band',
+            label: 'Musician looking for a Band',
         },
         {
-            value: 'Looking to fill a spot in a band',
-            label: 'Looking to fill a spot in a band',
+            value: 'Band looking for Musician',
+            label: 'Band looking for Musician',
         },
         {
             value: 'Looking to Network',
@@ -52,9 +49,7 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
     const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         header: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
-            // paddingTop: 100,
-            // paddingLeft: 50,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             justifyContent: `center`,
             alignItems: `center`,
             textAlign: `center`,
@@ -70,7 +65,6 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
                 id="status"
                 select
                 label="Select Status"
-                className="paddingfix"
                 helperText="Select a Status to Search"
                 variant="filled"
             onChange={handleChange}

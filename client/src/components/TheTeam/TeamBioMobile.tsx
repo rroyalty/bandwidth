@@ -35,7 +35,7 @@ const TeamBioMobile: React.FC = (): JSX.Element => {
     const shufArray: Array<any> = arrayShuf(teamJSON);
 
     return (
-        <Carousel animation={"slide"}>
+        <Carousel animation={"slide"} interval={10000}>
             { shufArray.map((item) =>
                 <Box className={classes.root} key={item.id}>
                     <CarouselItem props={item} />
