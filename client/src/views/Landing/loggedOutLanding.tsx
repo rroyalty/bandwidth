@@ -24,9 +24,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 
-const LoggedOutLanding: React.FC = (props: any): JSX.Element => {
+const LoggedOutLanding: React.FC = (): JSX.Element => {
   
-  let bgArray: Array<number> = [1, 2, 3, 4, 6, 7, 8]
+  // 8 Backgrounds
+  let bgArray: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8]
 
   const arrayShuf = (array: Array<number>): Array<number> => {
     let j: number = 0;

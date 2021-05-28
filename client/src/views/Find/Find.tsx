@@ -45,24 +45,6 @@ const useStyles = makeStyles(() =>
 
 const Find: React.FC = (): JSX.Element => {
 
-    let bgArray: Array<number> = [1, 2, 3, 4]
-
-    const arrayShuf = (array: Array<number>): Array<number> => {
-      let j: number = 0;
-      let temp: number;
-  
-      for (let i = array.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-  
-      return array;
-    }
-  
-    const shufArray: Array<number> = arrayShuf(bgArray);
-
     const classes = useStyles();
     const [status, setSearchStatus] = useState("");
     const [users, setUsers] = useState<UserI[]>([])
@@ -94,15 +76,13 @@ const Find: React.FC = (): JSX.Element => {
     }, [])
 
     return (
-        <div className={classes.img} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
-
         <Container className={classes.root} >
             <SearchStatus status={status} setSearchStatus={setSearchStatus} />
             <GridList cellHeight={160} cols={5} spacing={4}>
                 {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
             </GridList>
         </Container>
-        </div>
+
     )
 }
 

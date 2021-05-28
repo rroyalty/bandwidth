@@ -5,20 +5,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
-interface IProps {
-  bg: any
-}
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      display: `flex`,
-      backgroundSize: "cover",
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      height: "100vh",
-      justifyContent: `center`,
-    },
     header: {
       backgroundColor: `rgba(255, 255, 255, 0.8)`,
       paddingTop: 100,
@@ -32,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const TempProfile: React.FC<IProps> = (bg): JSX.Element => {
+const TempProfile: React.FC = (): JSX.Element => {
   
   const classes = useStyles();
 
@@ -43,7 +31,6 @@ const TempProfile: React.FC<IProps> = (bg): JSX.Element => {
 
 
   return (
-    <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${bg}.jpg)` }}>
       <Container className={classes.header}>
         <div className="col-md-2 mb-3">
           <img
@@ -65,7 +52,6 @@ const TempProfile: React.FC<IProps> = (bg): JSX.Element => {
 
         </Button>
       </Container>
-    </div>
   );
 };
 

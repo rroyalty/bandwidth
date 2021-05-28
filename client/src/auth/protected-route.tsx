@@ -12,7 +12,6 @@ interface IRouteProps {
   exact?: any;
   sensitive?: any;
   strict?: any;
-  bg: any;
 }
 
 const ProtectedRoute: React.FC<IRouteProps> = ({ component, ...args }) => (
