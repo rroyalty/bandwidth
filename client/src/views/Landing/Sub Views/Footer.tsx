@@ -1,5 +1,3 @@
-
-import { Link } from "react-router-dom";
 import { List, ListItem, ListItemText, BottomNavigation, Grid, Typography } from '@material-ui/core'
 import React from 'react';
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -68,7 +66,7 @@ const Footer: React.FC = (): JSX.Element => {
                 alignItems="flex-start"
                 spacing={10}
             >
-                <Grid item xs={12} sm={6} direction="column" justify="space-evenly" alignItems="flex-start">
+                <Grid item xs={12} sm={6}>
                     <Typography className={classes.typography} style={{ fontSize: ".6rem" }}>
                         Bandwidth brought to you by Bjorn Yourey, Cathy Marchese, Toni Powell, Jonathan Hammond, and Ryan Royalty.  &copy;2021
                     </Typography>
@@ -79,7 +77,7 @@ const Footer: React.FC = (): JSX.Element => {
                     </Typography>
                     <List component="nav" aria-labelledby="main navigation" >
                         {companyLinks.map(({ title, path }) => (
-                            <ListItem button>
+                            <ListItem button key={title}>
                                 <a href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>
@@ -93,7 +91,7 @@ const Footer: React.FC = (): JSX.Element => {
                     </Typography>
                     <List component="nav" aria-labelledby="main navigation" >
                         {communityLinks.map(({ title, path }) => (
-                            <ListItem button>
+                            <ListItem button key={title}>
                                 <a href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>
@@ -107,7 +105,7 @@ const Footer: React.FC = (): JSX.Element => {
                     </Typography>
                     <List component="nav" aria-labelledby="main navigation" >
                         {usefulLinks.map(({ title, path }) => (
-                            <ListItem button>
+                            <ListItem button key={title}>
                                 <a href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>

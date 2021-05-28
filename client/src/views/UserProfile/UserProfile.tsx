@@ -41,7 +41,7 @@ createStyles({
 })
 )
 
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
 
   let bgArray: Array<number> = [1, 2, 3, 4]
 
@@ -49,7 +49,7 @@ const UserProfile = () => {
     let j: number = 0;
     let temp: number;
 
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
       temp = array[i];
       array[i] = array[j];
@@ -68,14 +68,13 @@ const UserProfile = () => {
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      console.log(findUser)
       setUser(findUser)
     })
   }, [])
 
 
-   const userExists = () => {
-     if (!user) return <> </>
+  const userExists = () => {
+    if (!user) return <> </>
 
 
      return (
@@ -95,9 +94,9 @@ const UserProfile = () => {
         <Link  to="/editprofile">Edit Profile</Link>
           </Container>
 
-    </div>
-     )
-   } 
+      </div>
+    )
+  }
 
    const noUserExists = () => {
      return(
@@ -117,7 +116,7 @@ const UserProfile = () => {
    }
   return (
     <div>
-      {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
+      {(!userProfile || userProfile == null || !user) ? noUserExists() : userExists()}
     </div>
   );
 };

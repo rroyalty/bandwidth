@@ -9,6 +9,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 // ================================================
 // Form for EDITING a current profile 
 // ================================================
+interface IProps {
+    bg: any
+  }
+
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
@@ -32,8 +36,7 @@ createStyles({
 }),
 );
 
-
-export const EditProfile: React.FC = (): JSX.Element => {
+export const EditProfile: React.FC<IProps> = (bg): JSX.Element => {
 
     const user: any = useAuth0();
 
@@ -107,7 +110,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg5.jpg)` }}>
+        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${bg}.jpg)` }}>
 
         <Container className={classes.center}>
             <h2>Edit Profile</h2>

@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Button, makeStyles, Theme, createStyles, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-
+interface IProps {
+  bg: any
+}
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
@@ -26,29 +28,12 @@ createStyles({
     }
 })
 )
-const PrevProfile: React.FC = (): JSX.Element => {
+const PrevProfile: React.FC<IProps> = (bg): JSX.Element => {
 
-  let bgArray: Array<number> = [1, 2, 3, 4]
-
-  const arrayShuf = (array: Array<number>): Array<number> => {
-    let j: number = 0;
-    let temp: number;
-
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-
-    return array;
-  }
-
-  const shufArray: Array<number> = arrayShuf(bgArray);
   const classes = useStyles();
 
     return (
-      <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+      <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${bg}.jpg)` }}>
         <Container className={classes.header}>
           <div>
           <Typography>Profile Edited!</Typography>

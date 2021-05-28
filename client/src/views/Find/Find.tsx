@@ -1,10 +1,8 @@
-import { withRouter } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
-import './style.css';
-import { createStyles, makeStyles, Theme, GridList, Container } from '@material-ui/core';
+import { createStyles, makeStyles, GridList, Container } from '@material-ui/core';
 
 export interface UserI {
     props: {
@@ -25,7 +23,7 @@ export interface IUserCardProps {
     status: string,
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         root: {
             justifyContent: 'center',
@@ -46,13 +44,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Find: React.FC = (): JSX.Element => {
+
     let bgArray: Array<number> = [1, 2, 3, 4]
 
     const arrayShuf = (array: Array<number>): Array<number> => {
       let j: number = 0;
       let temp: number;
   
-      for (let i = array.length - 1; i >= array.length - 3; i--) {
+      for (let i = array.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));
         temp = array[i];
         array[i] = array[j];
@@ -63,7 +62,6 @@ const Find: React.FC = (): JSX.Element => {
     }
   
     const shufArray: Array<number> = arrayShuf(bgArray);
-   
 
     const classes = useStyles();
     const [status, setSearchStatus] = useState("");
@@ -108,4 +106,4 @@ const Find: React.FC = (): JSX.Element => {
     )
 }
 
-export default withRouter(Find);
+export default Find;

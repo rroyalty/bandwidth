@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import AuthSignup from "../../../components/Login/Auth-signup"
+import AuthNav from "../../../components/Login/Auth-nav"
 
 import { Box, Container } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -42,7 +42,7 @@ const Landing: React.FC = (): JSX.Element => {
             <Container >
                 <img className={classes.logo} src={matches ? "/fullLogo.png" : "/logo512.png"} alt="logo" />
             </Container>
-            <AuthSignup />
+            <AuthNav />
         </Box>
     )
 }
