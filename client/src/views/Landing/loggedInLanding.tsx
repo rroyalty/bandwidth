@@ -11,7 +11,6 @@ import PrevProfile from '../EditProfile/PrevProfile'
 const LoggedInLanding: React.FC = (): JSX.Element => {
     return (
         <>
-        
             <Switch>
                 <ProtectedRoute exact path="/tempprofile" component={TempProfile} />
                 <ProtectedRoute exact path="/prevprofile" component={PrevProfile} />

@@ -24,14 +24,11 @@ createStyles({
 
 const SearchStatus: React.FC <ISearchStatus> = (props): JSX.Element => {
 
-    // const [results, setFilteredResults] = useState([])
     const [users, setUsers] = useState([])
 
 
     const handleChange = (event: React.ChangeEvent <HTMLInputElement>) => {
         let statusSearch = event.target.value;
-        // const filteredResults = users.filter((user: {intentionStatus: string}) => user.intentionStatus === statusSearch)
-        // setSearchStatus(statusSearch)
         props.setSearchStatus(statusSearch)
     }
 
@@ -49,12 +46,12 @@ const SearchStatus: React.FC <ISearchStatus> = (props): JSX.Element => {
             label: 'All Users',
         },
         {
-            value: 'Looking to join a band',
-            label: 'Looking to join a band',
+            value: 'Musician looking for a Band',
+            label: 'Musician looking for a Band',
         },
         {
-            value: 'Looking to fill a spot in a band',
-            label: 'Looking to fill a spot in a band',
+            value: 'Band looking for Musician',
+            label: 'Band looking for Musician',
         },
         {
             value: 'Looking to Network',

@@ -21,7 +21,7 @@ export interface IUserCardProps {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
             justifyContent: 'center',
             textAlign: 'center',
             width: `auto`,
@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: `column`
         },
         blurb: {
-            maxWidth: '20vw'
+            // changed this from 20 to 40, 20 got wonky on mobile
+            maxWidth: '40vw'
         }
     }),
 );
@@ -43,7 +44,7 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
     
     return (
-        <GridListTile key={props.props.nickName} cols={1}>
+        <GridListTile key={props.props.email} cols={1}>
             <Card className={classes.root} >
                 <Avatar src={props.props.image} alt={props.props.nickName} />
                 <Typography>{`${props.props.firstName} "${props.props.nickName}" ${props.props.lastName}`}</Typography>
