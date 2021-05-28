@@ -5,40 +5,41 @@ import TempProfile from '../CreateProfile/TempProfile';
 import UserProfile from '../UserProfile/UserProfile'
 import CreateProfile from '../CreateProfile/CreateProfile';
 import ProtectedRoute from '../../auth/protected-route';
-import EditProfile from '../EditProfile/EditProfile'
-import PrevProfile from '../EditProfile/PrevProfile'
+import EditProfile from '../EditProfile/EditProfile';
+import PrevProfile from '../EditProfile/PrevProfile';
+import { Container } from "@material-ui/core";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => createStyles({
+    root: {
+        display: `flex`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: "100vw",
+        height: "100vh",
+        justifyContent: `center`,
+
+    }
+}));
 
 const LoggedInLanding: React.FC = (): JSX.Element => {
-    
-    let bgArray: Array<number> = [1, 2, 3, 4]
+    const classes = useStyles();
 
-    const arrayShuf = (array: Array<number>): Array<number> => {
-      let j: number = 0;
-      let temp: number;
-  
-      for (let i = array.length - 1; i >= array.length - 3; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-  
-      return array;
-    }
-  
-    const shufArray: Array<number> = arrayShuf(bgArray);
+    const bgArray: Array<number> = [1, 2, 3, 4];
+    const random = bgArray[Math.floor(Math.random() * bgArray.length)];
 
     return (
-        <>
-            <Switch>
-                <ProtectedRoute exact path="/tempprofile" component={TempProfile} bg={shufArray[0]} />
-                <ProtectedRoute exact path="/prevprofile" component={PrevProfile} bg={shufArray[1]} />
-                <ProtectedRoute exact path="/createprofile" component={CreateProfile} bg={shufArray[2]} />
-                <ProtectedRoute exact path="/editprofile" component={EditProfile} bg={shufArray[3]} />
-                <ProtectedRoute exact path="/" component={UserProfile} bg={shufArray[0]} />
-                <ProtectedRoute exact path="/find" component={Find} bg={shufArray[1]} />
-            </Switch>
-        </>
+        <Switch>
+            <Container maxWidth='xl' className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${random}.jpg)` }}>
+                <ProtectedRoute exact path="/tempprofile" component={TempProfile} />
+                <ProtectedRoute exact path="/prevprofile" component={PrevProfile} />
+                <ProtectedRoute exact path="/createprofile" component={CreateProfile} />
+                <ProtectedRoute exact path="/editprofile" component={EditProfile} />
+                <ProtectedRoute exact path="/" component={UserProfile} />
+                <ProtectedRoute exact path="/find" component={Find} />
+            </Container>
+        </Switch>
     );
 }
 

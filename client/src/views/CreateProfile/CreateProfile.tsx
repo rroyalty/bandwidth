@@ -11,20 +11,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for CREATING a new profile 
 // ================================================
 
-interface IProps {
-    bg: any
-  }
-
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            display: `flex`,
-            backgroundSize: "cover",
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            height: "100vh",
-            justifyContent: `center`,
-        },
         center: {
             backgroundColor: `rgba(255, 255, 255, 0.8)`,
             paddingTop: 100,
@@ -36,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export const CreateProfile: React.FC<IProps> = (bg): JSX.Element => {
+export const CreateProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
 
@@ -111,7 +99,7 @@ export const CreateProfile: React.FC<IProps> = (bg): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${bg}.jpg)` }}>
+
             <Container className={classes.center}>
                 <h2>Finish Creating Your BandWidth Profile</h2>
 
@@ -156,7 +144,7 @@ export const CreateProfile: React.FC<IProps> = (bg): JSX.Element => {
                 <Button color="secondary" onClick={onClearClicked}>Clear</Button>
 
             </Container>
-        </div>
+
     )
 
 }
