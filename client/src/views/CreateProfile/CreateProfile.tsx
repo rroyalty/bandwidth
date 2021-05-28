@@ -11,21 +11,29 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for CREATING a new profile 
 // ================================================
 
+
 const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-    root: {
-        paddingTop: 100,
-        margin: theme.spacing(1),
-        width: '25ch',
-        textAlign: `center`,
-        justifyContent: `center`
-
-    },
-}),
+    createStyles({
+        root: {
+            display: `flex`,
+            backgroundSize: "cover",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            height: "100vh",
+            justifyContent: `center`,
+        },
+        center: {
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
+            paddingTop: 100,
+            width: '25ch',
+            textAlign: `center`,
+            justifyContent: `center`,
+            // width: `50vw`,
+            // height: `90vh`
+        },
+    }),
 );
-
-
-export const CreateProfile: React.FC = (): JSX.Element =>  {
+export const CreateProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
 
