@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     backgroundSize: "cover",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: "100vh",
+    width: "100vw",
     justifyContent: `center`,
 
   },
