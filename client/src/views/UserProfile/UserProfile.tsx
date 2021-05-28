@@ -68,7 +68,6 @@ const UserProfile: React.FC = (): JSX.Element => {
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      console.log(findUser)
       setUser(findUser)
     })
   }, [])
