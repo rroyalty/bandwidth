@@ -11,17 +11,24 @@ export interface ISearchStatus {
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
         header: {
+            color: `white`,
             marginTop: `70px`,
             height: `70px`,
             display: `flex`,
             flexDirection: `row`,
-            backgroundColor: `rgba(255, 255, 255, 0.4)`,
+            backgroundColor: `rgba(24, 29, 39, .8)`,
             justifyContent: `center`,
             alignItems: `center`,
-            width: `100%`
+            width: `100%`,
+            border: `0px`,
+            borderBottom: `2px`,
+            borderStyle: `solid`,
+            borderColor: `white`
+
         },
         textField: {
-            width: `300px`
+            width: `300px`,
+            color: `white`,
         },
         typography: {
             paddingRight: `25px`
@@ -69,15 +76,16 @@ const SearchStatus: React.FC <ISearchStatus> = (props): JSX.Element => {
     const classes = useStyles();
     return (
         <Container maxWidth={`xl`} className={classes.header}>
-            <Typography className={classes.typography}>Find Other Musicians</Typography>
+            <Typography className={classes.typography}>Filter by Intention Status: </Typography>
 
             <TextField
                 className={classes.textField}
+                InputProps={{className: classes.textField}}
                 id="status"
                 select
-                label="Select Status"
-                variant="filled"
-            onChange={handleChange}
+                variant="outlined"
+                onChange={handleChange}
+                color="secondary"
             >
                 {statuses.map((status) => (
                     <MenuItem key={status.value} value={status.value}>

@@ -58,10 +58,6 @@ const useStyles = makeStyles(() =>
         gridItem: {
             width: `100%`
         },
-        lastUserCard: {
-            marginBottom: `500px`
-        }
-
     }),
 );
 

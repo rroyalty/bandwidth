@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
             transform: 'rotate(180deg)',
         },
         lastTile: {
-            marginBottom: `500px`,
+            marginBottom: `200px`,
             maxWidth: `95%`
         },
         allTiles: {
@@ -80,7 +80,6 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
                     />
                     <Divider />
                     <CardContent>
-                        {/* <Typography className={classes.blurb}>{props.props.blurb}</Typography> */}
                         <List dense={true}>
                             <ListItem>
                                 <ListItemIcon>
