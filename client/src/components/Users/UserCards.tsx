@@ -20,7 +20,9 @@ export interface IUserCardProps {
         email: string,
         phone: string,
         blurb: string,
-    }
+    },
+    arrLength: number,
+    eleIndex: number
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -49,6 +51,16 @@ const useStyles = makeStyles((theme: Theme) =>
         expandOpen: {
             transform: 'rotate(180deg)',
         },
+        lastTile: {
+            marginBottom: `500px`,
+            maxWidth: `95%`
+        },
+        allTiles: {
+            maxWidth: `95%`
+        },
+        typography: {
+            maxWidth: `270px`
+        }
     }),
 );
 
@@ -63,7 +75,7 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
     };
 
     return (
-            <GridListTile key={props.props.email} cols={4}>
+            <GridListTile className={props.eleIndex === props.arrLength ? classes.lastTile : classes.allTiles } key={props.props.email} cols={4}>
                 <Card className={classes.root} >
                     <CardHeader
                         avatar={<Avatar src={props.props.image} alt={props.props.nickName} />}
@@ -110,7 +122,7 @@ const UserCard: React.FC<IUserCardProps> = (props): JSX.Element => {
 
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
-                            <Typography paragraph>{props.props.blurb}</Typography>
+                            <Typography className={classes.typography} paragraph>{props.props.blurb}</Typography>
                         </CardContent>
                     </Collapse>
 
