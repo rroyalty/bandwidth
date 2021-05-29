@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
+        height: `75px`
     },
     rightAppBar: {
         marginLeft: `auto`,
