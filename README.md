@@ -27,7 +27,7 @@ When I am logged in,
 Then I want to be able to search for others in my area, or by instruments played, genre, etc.
 ```
 ## Technologies
-[NPM](https://www.npmjs.com/) | [Express](https://www.npmjs.com/package/express) | [React JS](https://reactjs.org/) | [MySQL2](https://www.npmjs.com/package/mysql2) | [Sequelize](https://www.npmjs.com/package/sequelize) | [Dotenv](https://www.npmjs.com/package/dotenv) | [Auth0](https://auth0.com/#!) | [TypeScript](https://www.typescriptlang.org/)
+[NPM](https://www.npmjs.com/) | [Express](https://www.npmjs.com/package/express) | [React JS](https://reactjs.org/) | [MySQL2](https://www.npmjs.com/package/mysql2) | [Sequelize](https://www.npmjs.com/package/sequelize) | [Dotenv](https://www.npmjs.com/package/dotenv) | [Auth0](https://auth0.com/#!) | [TypeScript](https://www.typescriptlang.org/) | [Redux](https://redux.js.org/)
 
 ## How It Works
 * Clone the repo
@@ -38,7 +38,7 @@ Then I want to be able to search for others in my area, or by instruments played
 * Type npm run start from the client file to start the React application.
 
 ## Questions
-Please contact the builders of this application if you have any quesitons, concerns or issues running the app on your local machine (contact info below).
+Please contact the builders of this application if you have any questions, concerns or issues running the app on your local machine (contact info below).
 
 ## Future Development
 * Add different color modes for users. This could include the nowadays standard dark mode (toggle), perhaps a more creative toggle color such as Pride mode, or maybe even a color picker associated with CSS variables that would change certain sets of colors based off User preference.
