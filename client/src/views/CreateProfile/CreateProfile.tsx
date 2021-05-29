@@ -28,6 +28,7 @@ createStyles({
         [theme.breakpoints.down('xs')]: {
             width: `100%`,
             maxWidth: `100%`,
+            paddingTop: `13rem`
         }
     },
     center: {
