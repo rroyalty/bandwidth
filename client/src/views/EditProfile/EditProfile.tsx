@@ -19,7 +19,7 @@ createStyles({
         backgroundPosition: 'center',
         height: "100vh",
         justifyContent: `center`,
-        flexDirection: `column`
+        flexDirection: `column`,
     },
     center: {
         display: `flex`,
