@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { Box, Container } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import TeamBioDesktop from '../../../components/TheTeam/TeamBioDesktop'
 import TeamBioMobile from '../../../components/TheTeam/TeamBioMobile'

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Container, Paper, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, Hidden } from "@material-ui/core"
+import { Container, Paper, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, Hidden } from "@material-ui/core"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     typography: {
         display: `flex`,
-        // padding: `15px`,
         color: theme.palette.primary.main,
         [theme.breakpoints.down('lg')]: {
             fontSize: `1rem`
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-
+// Make more Fluid
 const About: React.FC = (): JSX.Element => {
     const classes = useStyles();
     return (

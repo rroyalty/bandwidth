@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     backgroundSize: "cover",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: "100vh",
+    width: "100vw",
     justifyContent: `center`,
 
   },
@@ -24,15 +24,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 
-const LoggedOutLanding: React.FC = (props: any): JSX.Element => {
+const LoggedOutLanding: React.FC = (): JSX.Element => {
   
-  let bgArray: Array<number> = [1, 2, 3, 4]
+  // 8 Backgrounds
+  let bgArray: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8]
 
   const arrayShuf = (array: Array<number>): Array<number> => {
     let j: number = 0;
     let temp: number;
 
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
       temp = array[i];
       array[i] = array[j];

@@ -1,27 +1,36 @@
 import React from "react";
-import { Container, Button } from '@material-ui/core';
-import { useAuth0 } from "@auth0/auth0-react";
+import { Container, Button, makeStyles, Theme, createStyles, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import axios from 'axios'
-import { RootState } from "../../redux/store";
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    header: {
+      backgroundColor: `rgba(255, 255, 255, 0.8)`,
+      paddingTop: 100,
+      justifyContent: `center`,
+      alignItems: `center`,
+      textAlign: `center`,
+      width: `40vw`,
+      height: `90vh`
 
+    }
+  })
+)
 const PrevProfile: React.FC = (): JSX.Element => {
 
-    return (
-      <div>
-        <Container className="bg">
-          <h2>Profile Edited!</h2>
-          <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar" />
-          <div>
-            <Button>
-              <Link to="/find">Find other users!</Link>
-            </Button>
-          </div>
-        </Container>
-      </div>
-    );
-  };
+  const classes = useStyles();
 
-  export default PrevProfile;
+  return (
+      <Container className={classes.header}>
+        <Typography>Profile Edited!</Typography>
+        <img src="https://media.giphy.com/media/hogi8ozWopwA3vzJS0/giphy.gif" alt="guitar" />
+
+          <Button>
+            <Link to="/find">Find other users!</Link>
+          </Button>
+
+      </Container>
+  );
+};
+
+export default PrevProfile;

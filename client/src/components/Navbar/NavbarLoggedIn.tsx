@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         color: `white`,
-        justifyContent: `center`
+        justifyContent: `center`,
+        "&:hover": {
+            color: theme.palette.secondary.main
+        }
+        
     },
     navbar: {
         backgroundColor: `#181D27`,
@@ -30,41 +34,25 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
-        // maxWidth: '95vw',
-        // marginLeft: -24
-    },
-    iconLinks: {
-        display: `inline-flex`,
-        height: `48px`,
-        width: `48px`,
-
     },
     rightAppBar: {
         marginLeft: `auto`,
         marginRight: 10
 
     },
-    justifyContent: {
-        display: `flex`,
-        // flexDirection: `column`,
-        justifyContent: `center`
-    },
     mobileNav: {
-        // backgroundColor: `#181D27`,
         display: `flex`,
         flexDirection: `column`,
         textDecoration: `none`,
         textTransform: `uppercase`,
-        // color: `#fff !important`,
         justifyContent: `flex-end`,
-        // justifyContent: `center`
+
     }
 }));
 
 
 const navLinks: { title: string, path: string }[] = [
-    { title: `Home`, path: `/landing` },
-    { title: `Profile`, path: `/userprofile` },
+    { title: `Profile`, path: `/` },
     { title: `Find`, path: `/find` }
 ]
 
@@ -117,8 +105,7 @@ const NavbarLoggedIn: React.FC = (): JSX.Element => {
                     }}>
                     <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
                         <MenuItem className={classes.mobileNav}>
-                            <Link to="/landing">Home</Link>
-                            <Link to="/userprofile">Profile</Link>
+                            <Link to="/">Profile</Link>
                             <Link to="/find">Find</Link>
                         </MenuItem>
                     </List>

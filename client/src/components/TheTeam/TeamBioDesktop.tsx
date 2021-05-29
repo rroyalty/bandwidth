@@ -45,7 +45,7 @@ const TeamBioDesktop: React.FC = (): JSX.Element => {
                 </Grid>
                 {
                     shufArray.map(item => (
-                        shufArray.indexOf(item) % 2 == 0 ? < PicLeftBioRight key={item.id} props={item} /> : < PicRightBioLeft key={item.id} props={item} />
+                        shufArray.indexOf(item) % 2 === 0 ? < PicLeftBioRight key={item.id} props={item} /> : < PicRightBioLeft key={item.id} props={item} />
                     ))
                 }
             </Grid>

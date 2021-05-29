@@ -10,6 +10,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for EDITING a current profile 
 // ================================================
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        center: {
+            backgroundColor: `rgba(255, 255, 255, 0.8)`,
+            paddingTop: 100,
+            width: '25ch',
+            textAlign: `center`,
+            justifyContent: `center`,
+        },
+    }),
+);
+
 export const EditProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
@@ -56,23 +68,24 @@ export const EditProfile: React.FC = (): JSX.Element => {
     }
     const onClearForm = () => {
         setNickName("")
-            setFirstName("")
-            setLastName("")
-            setIntentionStatus("")
-            setBandName("")
-            setPhone("")
-            setLocation("")
-            setBlurb("")
+        setFirstName("")
+        setLastName("")
+        setIntentionStatus("")
+        setBandName("")
+        setPhone("")
+        setLocation("")
+        setBlurb("")
     }
+
 
     const statuses = [
         {
-            value: 'Looking to join a band',
-            label: 'Looking to join a band',
+            value: 'Musician looking for a Band',
+            label: 'Musician looking for a Band',
         },
         {
-            value: 'Looking to fill a spot in a band',
-            label: 'Looking to fill a spot in a band',
+            value: 'Band looking for Musician',
+            label: 'Band looking for Musician',
         },
         {
             value: 'Looking to Network',
@@ -80,64 +93,51 @@ export const EditProfile: React.FC = (): JSX.Element => {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                paddingTop: 100,
-                margin: theme.spacing(1),
-                width: '25ch',
-                textAlign: `center`,
-                justifyContent: `center`
-
-            },
-        }),
-    );
     const classes = useStyles();
 
     return (
+            <Container className={classes.center}>
+                <h2>Edit Profile</h2>
 
-        <Container className={classes.root}>
-            <h2>Edit Profile</h2>
-
-            <form noValidate autoComplete="on">
-                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
-                <TextField
-                    id="status"
-                    select
-                    label="Select Status"
-                    value={intentionStatus || ""}
-                    onChange={onIntentionStatusChanged}
-                    helperText="Please select your status"
-                    variant="standard"
-                >
-                    {statuses.map((status) => (
-                        <MenuItem key={status.value} value={status.value}>
-                            {status.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
-                <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
-                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
-                <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Bio"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    value={blurb}
-                    onChange={onBlurbChanged}
-                />
-            </form>
+                <form noValidate autoComplete="on">
+                    <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
+                    <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                    <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
+                    <TextField
+                        id="status"
+                        select
+                        label="Select Status"
+                        value={intentionStatus || ""}
+                        onChange={onIntentionStatusChanged}
+                        helperText="Please select your status"
+                        variant="standard"
+                    >
+                        {statuses.map((status) => (
+                            <MenuItem key={status.value} value={status.value}>
+                                {status.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
+                    <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
+                    <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                    <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Bio"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        value={blurb}
+                        onChange={onBlurbChanged}
+                    />
+                </form>
 
 
-            <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
-            <Button color="secondary" onClick={onClearForm}>Clear</Button>
+                <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
+                <Button color="secondary" onClick={onClearForm}>Clear</Button>
 
-        </Container>
+            </Container>
     )
 
 }

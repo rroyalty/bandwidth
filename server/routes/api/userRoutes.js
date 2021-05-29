@@ -218,6 +218,7 @@ router.post('/', async(req, res) => {
 //         res.status(500).json(err);
 //     }
 // });
+
 router.put('/:email', async (req, res) => {
     const email = req.params.email
     const { nickName, firstName, lastName, image, intentionStatus, bandName, phone, location, blurb } = req.body
