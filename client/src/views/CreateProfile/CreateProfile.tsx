@@ -12,17 +12,33 @@ import { useAuth0 } from "@auth0/auth0-react";
 // ================================================
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        center: {
-            backgroundColor: `rgba(255, 255, 255, 0.8)`,
-            paddingTop: 100,
-            width: '25ch',
-            textAlign: `center`,
-            justifyContent: `center`,
-            // width: `50vw`,
-            // height: `90vh`
-        },
-    }),
+createStyles({
+    root: {
+        display: `flex`,
+        backgroundSize: `cover`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: `100vh`,
+        justifyContent: `center`,
+        flexDirection: `column`,
+        backgroundColor: `rgba(255, 255, 255, 0.8)`,
+        alignItems: `center`,
+        textAlign: `center`,
+        width: `50vw`,
+        [theme.breakpoints.down('xs')]: {
+            width: `100%`,
+            maxWidth: `100%`,
+        }
+    },
+    center: {
+        display: `flex`,
+        width: '40vw',
+        alignItems: `center`,
+        textAlign: `center`,
+        justifyContent: `center`,
+        flexDirection: `column`
+    }
+}),
 );
 export const CreateProfile: React.FC = (): JSX.Element => {
 
@@ -100,10 +116,10 @@ export const CreateProfile: React.FC = (): JSX.Element => {
 
     return (
 
-            <Container className={classes.center}>
+            <Container className={classes.root}>
                 <h2>Finish Creating Your BandWidth Profile</h2>
 
-                <form noValidate autoComplete="on">
+                <form noValidate className={classes.center} autoComplete="on">
                     <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                     <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                     <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
@@ -111,7 +127,6 @@ export const CreateProfile: React.FC = (): JSX.Element => {
                         id="status"
                         select
                         label="Select Status"
-                        //    value={intentionStatus ? "" }
                         value={intentionStatus || ""}
                         onChange={onIntentionStatusChanged}
                         helperText="Please select your status"
