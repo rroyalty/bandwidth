@@ -1,5 +1,8 @@
 <h1 align="center">Bandwidth</h1> 
 <p align="center">The Network for Musicians</p>
+<p align="center">
+<img width="200" src="https://raw.githubusercontent.com/rroyalty/bandwidth/main/client/public/favicon.ico">
+</p>
 
 ## Deployment
 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">View Our Deployed application here</a>
