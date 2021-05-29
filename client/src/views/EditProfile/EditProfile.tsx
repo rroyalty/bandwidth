@@ -14,25 +14,29 @@ const useStyles = makeStyles((theme: Theme) =>
 createStyles({
     root: {
         display: `flex`,
-        backgroundSize: "cover",
+        backgroundSize: `cover`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        height: "100vh",
+        height: `100vh`,
         justifyContent: `center`,
         flexDirection: `column`,
+        backgroundColor: `rgba(255, 255, 255, 0.8)`,
+        alignItems: `center`,
+        textAlign: `center`,
+        width: `50vw`,
+        [theme.breakpoints.down('xs')]: {
+            width: `100%`,
+            maxWidth: `100%`,
+        }
     },
     center: {
         display: `flex`,
-        backgroundColor: `rgba(255, 255, 255, 0.8)`,
-        // paddingTop: 100,
         width: '40vw',
         alignItems: `center`,
         textAlign: `center`,
         justifyContent: `center`,
         flexDirection: `column`
-        // width: `50vw`,
-        // height: `90vh`
-    },
+    }
 }),
 );
 
@@ -110,10 +114,10 @@ export const EditProfile: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-            <Container className={classes.center}>
+            <Container className={classes.root}>
                 <h2>Edit Profile</h2>
 
-                <form noValidate autoComplete="on">
+                <form className={classes.center} noValidate autoComplete="on">
                     <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                     <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                     <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
