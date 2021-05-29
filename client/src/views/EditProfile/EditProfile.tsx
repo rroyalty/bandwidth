@@ -36,7 +36,6 @@ createStyles({
 }),
 );
 
-
 export const EditProfile: React.FC = (): JSX.Element => {
 
     const user: any = useAuth0();
@@ -83,13 +82,13 @@ export const EditProfile: React.FC = (): JSX.Element => {
     }
     const onClearForm = () => {
         setNickName("")
-            setFirstName("")
-            setLastName("")
-            setIntentionStatus("")
-            setBandName("")
-            setPhone("")
-            setLocation("")
-            setBlurb("")
+        setFirstName("")
+        setLastName("")
+        setIntentionStatus("")
+        setBandName("")
+        setPhone("")
+        setLocation("")
+        setBlurb("")
     }
 
 
@@ -111,53 +110,48 @@ export const EditProfile: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg5.jpg)` }}>
+            <Container className={classes.center}>
+                <h2>Edit Profile</h2>
 
-        <Container className={classes.center}>
-            <h2>Edit Profile</h2>
-
-            <form noValidate className={classes.center} autoComplete="on">
-                <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
-                <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
-                <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
-                <TextField
-            
-                    id="status"
-                    select
-                    label="Select Status"
-                    value={intentionStatus || ""}
-                    onChange={onIntentionStatusChanged}
-                    helperText="Please select your status"
-                    variant="standard"
+                <form noValidate autoComplete="on">
+                    <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
+                    <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
+                    <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
+                    <TextField
+                        id="status"
+                        select
+                        label="Select Status"
+                        value={intentionStatus || ""}
+                        onChange={onIntentionStatusChanged}
+                        helperText="Please select your status"
+                        variant="standard"
                     >
-                    {statuses.map((status) => (
-                        <MenuItem key={status.value} value={status.value}>
-                            {status.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
-                <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
-                <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
-                <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
-                <TextField
-            
-                    id="outlined-multiline-static"
-                    label="Bio"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    value={blurb}
-                    onChange={onBlurbChanged}
+                        {statuses.map((status) => (
+                            <MenuItem key={status.value} value={status.value}>
+                                {status.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField id="standard-basic" label="Band Name" variant="standard" value={bandName} onChange={onBandNameChanged} />
+                    <TextField id="standard-basic" label="Phone" variant="standard" value={phone} onChange={onPhoneChanged} />
+                    <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
+                    <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Bio"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        value={blurb}
+                        onChange={onBlurbChanged}
                     />
-            </form>
+                </form>
 
 
-            <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
-            <Button color="secondary" onClick={onClearForm}>Clear</Button>
+                <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
+                <Button color="secondary" onClick={onClearForm}>Clear</Button>
 
-        </Container>
-                    </div>
+            </Container>
     )
 
 }

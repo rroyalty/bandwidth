@@ -19,49 +19,24 @@ export interface IUser {
 }
 
 const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-  root: {
-    display: `flex`,
-    backgroundSize: "cover",
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: "100vh",
-    justifyContent: `center`,
-  },
+  createStyles({
     header: {
-        backgroundColor: `rgba(255, 255, 255, 0.8)`,
-        paddingTop: 100,
-        justifyContent: `center`,
-        alignItems: `center`,
-        textAlign: `center`,
-        width: `80vw`,
-        height: `90vh`
+      backgroundColor: `rgba(255, 255, 255, 0.8)`,
+      paddingTop: 100,
+      justifyContent: `center`,
+      alignItems: `center`,
+      textAlign: `center`,
+      width: `80vw`,
+      height: `90vh`
 
     }
-})
+  })
 )
 
-const UserProfile = () => {
+const UserProfile: React.FC = (): JSX.Element => {
 
-  let bgArray: Array<number> = [1, 2, 3, 4]
-
-  const arrayShuf = (array: Array<number>): Array<number> => {
-    let j: number = 0;
-    let temp: number;
-
-    for (let i = array.length - 1; i >= array.length - 3; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-
-    return array;
-  }
-
-  const shufArray: Array<number> = arrayShuf(bgArray);
   const classes = useStyles();
-  
+
   const userProfile: any = useAuth0();
 
   const [user, setUser] = useState<IUser | null>(null)
@@ -73,50 +48,49 @@ const UserProfile = () => {
   }, [])
 
 
-   const userExists = () => {
-     if (!user) return <> </>
+  const userExists = () => {
+    if (!user) return <> </>
 
 
-     return (
-   <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
-          <Container maxWidth="xl" className={classes.header}>
-            <img
-            src={userProfile.user.picture}
-            alt="user photo"
-            />
-            <h1>Welcome {user.nickName}!</h1>   
-            <p>{user.firstName} {user.lastName}</p>
-            <p>{user.intentionStatus}</p>
-            <p>{user.location}</p>
-            <p>{user.email}</p>
-            <p>{user.phone}</p>
-            <p>{user.blurb}</p>
-        <Link  to="/editprofile">Edit Profile</Link>
-          </Container>
+    return (
 
-    </div>
-     )
-   } 
+      <Container maxWidth="xl" className={classes.header}>
+        <img
+          src={userProfile.user.picture}
+          alt="user photo"
+        />
+        <h1>Welcome {user.nickName}!</h1>
+        <p>{user.firstName} {user.lastName}</p>
+        <p>{user.intentionStatus}</p>
+        <p>{user.location}</p>
+        <p>{user.email}</p>
+        <p>{user.phone}</p>
+        <p>{user.blurb}</p>
+        <Link to="/editprofile">Edit Profile</Link>
+      </Container>
 
-   const noUserExists = () => {
-     return(
+    )
+  }
 
-       <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
-       <Container maxWidth="xl" className={classes.header}>
-       <h1>Welcome to BandWidth!</h1>
-       <p>Thanks for joining BandWidth.</p>
-       <p>Please click the link below to finish creating your profile.</p>
-       <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
-       <Button>
-       <Link to="createprofile">Create Profile Now</Link>
-       </Button>
-       </Container>
-       </div>
-     )
-   }
+  const noUserExists = () => {
+    return (
+
+
+      <Container maxWidth="xl" className={classes.header}>
+        <h1>Welcome to BandWidth!</h1>
+        <p>Thanks for joining BandWidth.</p>
+        <p>Please click the link below to finish creating your profile.</p>
+        <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
+        <Button>
+          <Link to="createprofile">Create Profile Now</Link>
+        </Button>
+      </Container>
+
+    )
+  }
   return (
     <div>
-      {(!userProfile || userProfile == null || !user) ?  noUserExists() : userExists()}
+      {(!userProfile || userProfile == null || !user) ? noUserExists() : userExists()}
     </div>
   );
 };

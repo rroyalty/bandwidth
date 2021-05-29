@@ -1,10 +1,8 @@
-import { withRouter } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
 import UserCard from '../../components/Users/UserCards';
 import SearchStatus from '../../components/Search/SearchStatus';
-import './style.css';
-import { createStyles, makeStyles, Theme, GridList, Container } from '@material-ui/core';
+import { createStyles, makeStyles, GridList, Container, Grid } from '@material-ui/core';
 
 export interface UserI {
     props: {
@@ -25,12 +23,18 @@ export interface IUserCardProps {
     status: string,
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         root: {
+            overflow: `hidden`,
             justifyContent: 'center',
             alignItems: 'center',
-            maxWidth: `90vw`,
+            maxWidth: `95vw`,
+            border: `2px`,
+            borderStyle: `solid`,
+            borderColor: `white`,
+            padding: `0px`,
+            maxHeight: `100vh`
         },
         img: {
             display: `flex`,
@@ -40,30 +44,24 @@ const useStyles = makeStyles((theme: Theme) =>
             height: 'auto',
             minHeight: '100vh',
             justifyContent: `center`,
-        }
-
+        },
+        gridList: {
+            paddingTop: `20px`,
+            display: `flex`,
+            justifyContent: 'center',
+            alignItems: 'top',
+            overflowX: 'hidden',
+            maxHeight: `100vh`,
+            overflow: `auto`,
+            width: `100%`
+        },
+        gridItem: {
+            width: `100%`
+        },
     }),
 );
 
 const Find: React.FC = (): JSX.Element => {
-    let bgArray: Array<number> = [1, 2, 3, 4]
-
-    const arrayShuf = (array: Array<number>): Array<number> => {
-      let j: number = 0;
-      let temp: number;
-  
-      for (let i = array.length - 1; i >= array.length - 3; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-  
-      return array;
-    }
-  
-    const shufArray: Array<number> = arrayShuf(bgArray);
-   
 
     const classes = useStyles();
     const [status, setSearchStatus] = useState("");
@@ -95,17 +93,23 @@ const Find: React.FC = (): JSX.Element => {
         })
     }, [])
 
-    return (
-        <div className={classes.img} style={{ backgroundImage: `url(/backgrounds/loggedinbg${shufArray[0]}.jpg)` }}>
+    const length: number = users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).length - 1
 
-        <Container className={classes.root} >
-            <SearchStatus status={status} setSearchStatus={setSearchStatus} />
-            <GridList cellHeight={160} cols={5} spacing={4}>
-                {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile) => <UserCard key={tile.props.email} props={tile.props} />)}
-            </GridList>
+    return (
+        <Container maxWidth="xl" className={classes.root} >
+            <Grid container spacing={1}>
+                <Grid className={classes.gridItem} item xl={12}>
+                    <SearchStatus status={status} setSearchStatus={setSearchStatus} />
+                </Grid>
+                <Grid className={classes.gridItem} item container xl={12}>
+                    <GridList className={classes.gridList} cellHeight={160} >
+                        {users.filter((user: UserI) => !status ? user : user.props.intentionStatus === status).map((tile, index: number) => <UserCard key={tile.props.email} props={tile.props} eleIndex={index} arrLength={length} />)}
+                    </GridList>
+                </Grid>
+            </Grid>
         </Container>
-        </div>
+
     )
 }
 
-export default withRouter(Find);
+export default Find;

@@ -11,7 +11,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Form for CREATING a new profile 
 // ================================================
 
-
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
     root: {
@@ -112,7 +111,7 @@ export const CreateProfile: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root} style={{ backgroundImage: `url(/backgrounds/loggedinbg5.jpg)` }}>
+
             <Container className={classes.center}>
                 <h2>Finish Creating Your BandWidth Profile</h2>
 
@@ -157,7 +156,7 @@ export const CreateProfile: React.FC = (): JSX.Element => {
                 <Button color="secondary" onClick={onClearClicked}>Clear</Button>
 
             </Container>
-        </div>
+
     )
 
 }

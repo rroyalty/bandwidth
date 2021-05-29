@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const API = {
     getUser: function(email:string) {
         return axios.get(`/api/users/${email}`);
     },
@@ -11,3 +11,5 @@ export default {
         return axios.get('/api/users/networking')
     }
 }
+
+export default API;

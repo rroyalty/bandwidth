@@ -1,15 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme} from '@material-ui/core';
 import API from "../../utils/API";
-import { TextField, MenuItem } from '@material-ui/core';
-
+import { TextField, MenuItem, Container, Typography } from '@material-ui/core';
 
 export interface ISearchStatus {
     status:string, 
     setSearchStatus:Function
 }
 
-const SearchStatus: React.FC <ISearchStatus> = (props) => {
+const useStyles = makeStyles((theme: Theme) =>
+createStyles({
+        header: {
+            color: `white`,
+            marginTop: `70px`,
+            height: `70px`,
+            display: `flex`,
+            flexDirection: `row`,
+            backgroundColor: `rgba(24, 29, 39, .8)`,
+            justifyContent: `center`,
+            alignItems: `center`,
+            width: `100%`,
+            border: `0px`,
+            borderBottom: `2px`,
+            borderStyle: `solid`,
+            borderColor: `white`
+
+        },
+        textField: {
+            width: `300px`,
+            color: `white`,
+        },
+        typography: {
+            paddingRight: `25px`
+        }
+    })
+)
+
+const SearchStatus: React.FC <ISearchStatus> = (props): JSX.Element => {
 
     const [users, setUsers] = useState([])
 
@@ -46,28 +73,19 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
         },
     ];
 
-    const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        header: {
-            backgroundColor: `rgba(255, 255, 255, 0.8)`,
-            justifyContent: `center`,
-            alignItems: `center`,
-            textAlign: `center`,
-        },
-    })
-    )
     const classes = useStyles();
     return (
-        <div className={classes.header}>
-            <h1>Find Other Musicians</h1>
+        <Container maxWidth={`xl`} className={classes.header}>
+            <Typography className={classes.typography}>Filter by Intention Status: </Typography>
 
             <TextField
+                className={classes.textField}
+                InputProps={{className: classes.textField}}
                 id="status"
                 select
-                label="Select Status"
-                helperText="Select a Status to Search"
-                variant="filled"
-            onChange={handleChange}
+                variant="outlined"
+                onChange={handleChange}
+                color="secondary"
             >
                 {statuses.map((status) => (
                     <MenuItem key={status.value} value={status.value}>
@@ -75,10 +93,7 @@ const SearchStatus: React.FC <ISearchStatus> = (props) => {
                     </MenuItem>
                 ))}
             </TextField>
-            <div>
-
-            </div>
-        </div>
+        </Container>
 
     )
 }

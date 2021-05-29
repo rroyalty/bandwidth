@@ -1,12 +1,13 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import AuthenticationButton from "./Authentication-button";
-import "./styles.css"
+import { withRouter } from "react-router-dom"
+import LoginButton from "./Login-button";
+import LogoutButton from "./Logout-button";
 
-const AuthNav: React.FC = ():JSX.Element => (
-  <div className="login login-button">
-    <AuthenticationButton />
-  </div>
-);
+import { useAuth0 } from "@auth0/auth0-react";
+
+const AuthNav: React.FC = ():JSX.Element => {
+  const { isAuthenticated } = useAuth0();
+  return isAuthenticated ? <LogoutButton /> : <LoginButton />;
+};
 
 export default withRouter(AuthNav);
