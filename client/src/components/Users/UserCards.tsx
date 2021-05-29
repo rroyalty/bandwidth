@@ -37,10 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
             display: `flex`,
             flexDirection: `column`
         },
-        blurb: {
-            // changed this from 20 to 40, 20 got wonky on mobile
-            maxWidth: '40vw'
-        },
         expand: {
             transform: 'rotate(0deg)',
             marginLeft: 'auto',
