@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { userProfileThunk } from './createProfileSlice';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
@@ -157,7 +157,7 @@ export const CreateProfile: React.FC = (): JSX.Element => {
 
                 <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
                 <Button color="secondary" onClick={onClearClicked}>Clear</Button>
-
+                <Button color="secondary"><Link style={{color: '#AA2E25'}} to="/">Go Back</Link></Button>
             </Container>
 
     )
