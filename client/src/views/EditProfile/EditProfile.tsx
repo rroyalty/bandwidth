@@ -19,13 +19,17 @@ createStyles({
         backgroundPosition: 'center',
         height: "100vh",
         justifyContent: `center`,
+        flexDirection: `column`
     },
     center: {
+        display: `flex`,
         backgroundColor: `rgba(255, 255, 255, 0.8)`,
-        paddingTop: 100,
-        width: '25ch',
+        // paddingTop: 100,
+        width: '40vw',
+        alignItems: `center`,
         textAlign: `center`,
         justifyContent: `center`,
+        flexDirection: `column`
         // width: `50vw`,
         // height: `90vh`
     },
@@ -112,11 +116,12 @@ export const EditProfile: React.FC = (): JSX.Element => {
         <Container className={classes.center}>
             <h2>Edit Profile</h2>
 
-            <form noValidate autoComplete="on">
+            <form noValidate className={classes.center} autoComplete="on">
                 <TextField id="standard-basic" label="Display Name" value={nickName} onChange={onNickNameChanged} />
                 <TextField id="standard-basic" label="First Name" value={firstName} onChange={onFirstNameChanged} />
                 <TextField id="standard-basic" label="Last Name" value={lastName} onChange={onLastNameChanged} />
                 <TextField
+            
                     id="status"
                     select
                     label="Select Status"
@@ -136,6 +141,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
                 <TextField disabled id="filled-basic" label="email" variant="filled" value={user.user.email} />
                 <TextField id="standard-basic" label="City, State" variant="standard" value={location} onChange={onLocationChanged} />
                 <TextField
+            
                     id="outlined-multiline-static"
                     label="Bio"
                     multiline

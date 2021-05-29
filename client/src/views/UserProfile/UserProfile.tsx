@@ -68,7 +68,6 @@ const UserProfile = () => {
   useEffect(() => {
     API.getUser(userProfile.user.email).then(res => {
       const findUser = res.data;
-      console.log(findUser)
       setUser(findUser)
     })
   }, [])
