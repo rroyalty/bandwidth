@@ -154,7 +154,7 @@ export const EditProfile: React.FC = (): JSX.Element => {
 
                 <Button onClick={onUpdateProfileClicked}>Save Changes</Button>
                 <Button color="secondary" onClick={onClearForm}>Clear</Button>
-                <Button color="secondary"><Link to="/">Go Back</Link></Button>
+                <Button color="secondary"><Link style={{color: '#AA2E25'}} to="/">Go Back</Link></Button>
             </Container>
     )
 
