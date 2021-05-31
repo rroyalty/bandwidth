@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down('xs')]: {
         marginTop: `-150px`
       },
+    },
+    typography: {
+      margin: `5px`
     }
   })
 )
@@ -92,12 +95,12 @@ const UserProfile: React.FC = (): JSX.Element => {
             />
           </Grid>
           <Grid item className={classes.gridBits}>
-            <Typography>Welcome {user.nickName}!</Typography>
-            <Typography>{user.firstName} {user.lastName}</Typography>
-            <Typography>{user.intentionStatus}</Typography>
-            <Typography>{user.location}</Typography>
-            <Typography>{user.email}</Typography>
-            <Typography>{user.phone}</Typography>
+            <Typography className={classes.typography}>Welcome {user.nickName}!</Typography>
+            <Typography className={classes.typography}>{user.firstName} {user.lastName}</Typography>
+            <Typography className={classes.typography}>{user.intentionStatus}</Typography>
+            <Typography className={classes.typography}>{user.location}</Typography>
+            <Typography className={classes.typography}>{user.email}</Typography>
+            <Typography className={classes.typography}>{user.phone}</Typography>
             <Typography className={classes.blurb}>{user.blurb}</Typography>
             <Link to="/editprofile">Edit Profile</Link>
           </Grid>
