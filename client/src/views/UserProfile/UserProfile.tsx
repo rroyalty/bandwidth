@@ -50,7 +50,11 @@ const useStyles = makeStyles((theme: Theme) =>
       height: `100%`
     },
     blurb: {
-      maxWidth: `500px`
+      maxWidth: `500px`,
+      margin: `5px`,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: `.8rem`
+      },
     },
     gridBits: {
       [theme.breakpoints.down('xs')]: {
@@ -58,7 +62,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     typography: {
-      margin: `5px`
+      margin: `5px`,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: `.8rem`
+      },
     }
   })
 )
