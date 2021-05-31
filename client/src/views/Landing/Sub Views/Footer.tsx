@@ -78,7 +78,7 @@ const Footer: React.FC = (): JSX.Element => {
                     <List component="nav" aria-labelledby="main navigation" >
                         {companyLinks.map(({ title, path }) => (
                             <ListItem button key={title}>
-                                <a href={path} key={title} className={classes.typography}>
+                                <a target="_blank" rel="noopener noreferrer" href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>
                             </ListItem>
@@ -92,7 +92,7 @@ const Footer: React.FC = (): JSX.Element => {
                     <List component="nav" aria-labelledby="main navigation" >
                         {communityLinks.map(({ title, path }) => (
                             <ListItem button key={title}>
-                                <a href={path} key={title} className={classes.typography}>
+                                <a target="_blank" rel="noopener noreferrer" href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>
                             </ListItem>
@@ -106,7 +106,7 @@ const Footer: React.FC = (): JSX.Element => {
                     <List component="nav" aria-labelledby="main navigation" >
                         {usefulLinks.map(({ title, path }) => (
                             <ListItem button key={title}>
-                                <a href={path} key={title} className={classes.typography}>
+                                <a target="_blank" rel="noopener noreferrer" href={path} key={title} className={classes.typography}>
                                     <ListItemText primary={title} />
                                 </a>
                             </ListItem>
