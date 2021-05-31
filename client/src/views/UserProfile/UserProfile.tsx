@@ -88,8 +88,6 @@ const UserProfile: React.FC = (): JSX.Element => {
   const userExists = () => {
     if (!user) return <> </>
 
-    console.log(user)
-
     return (
 
       <Container maxWidth="xl" className={classes.header}>
