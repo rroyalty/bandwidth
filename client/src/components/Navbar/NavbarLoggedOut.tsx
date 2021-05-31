@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
-        height: `75px`
+        height: `75px`,
+        justifyContent: `center`
     },
     rightAppBar: {
         marginLeft: `auto`,
@@ -132,8 +133,14 @@ const NavbarLoggedOut: React.FC = (): JSX.Element => {
                         <AuthNav />
                         <MenuItem className={classes.mobileNav}>
                             <ScrollLink className={classes.links} to="landing">Home</ScrollLink>
+                        </MenuItem>
+                        <MenuItem className={classes.mobileNav}>
                             <ScrollLink className={classes.links} to="about">about</ScrollLink>
+                        </MenuItem>
+                        <MenuItem className={classes.mobileNav}>
                             <ScrollLink className={classes.links} to="theteam">The Team</ScrollLink>
+                        </MenuItem>
+                        <MenuItem className={classes.mobileNav}>
                             <ScrollLink className={classes.links} to="support">Support</ScrollLink>
                         </MenuItem>
                     </List>
