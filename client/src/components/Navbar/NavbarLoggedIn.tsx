@@ -47,6 +47,29 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textTransform: `uppercase`,
         justifyContent: `flex-end`,
 
+    },
+    links: {
+        margin: `5px`,
+        padding: `5px`,
+        color: theme.palette.primary.main,
+        backgroundColor: `rgba(255,255,255,0.6)`,
+        width: `100%`,
+        fontSize: `1.2rem`,
+        alignContent: `center`
+    },
+    menu: {
+        display: `flex`,
+        flexDirection: `column`,
+        alignItems: `center`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        height: "100vh",
+        backgroundImage: `url(/menuImage.jpg)`,
+        border: `0px`,
+        borderLeft: `2px`,
+        borderStyle: `solid`,
+        borderColor: `white`,
+        width: `50vw`,
     }
 }));
 
@@ -103,13 +126,13 @@ const NavbarLoggedIn: React.FC = (): JSX.Element => {
                         onClose: handleDrawerClose,
                         // className: classes.mobileNav
                     }}>
-                    <List component="nav" aria-labelledby="main navigation" className={classes.mobileNav}>
+                    <List className={classes.menu} component="nav" aria-labelledby="main navigation" >
                         <MenuItem className={classes.mobileNav}>
-                            <Link to="/">Profile</Link>
-                            <Link to="/find">Find</Link>
+                            <Link className={classes.links} to="/">Profile</Link>
+                            <Link className={classes.links} to="/find">Find</Link>
                         </MenuItem>
-                    </List>
                     <AuthNav />
+                    </List>
                 </Drawer>
             </AppBar>
         )
