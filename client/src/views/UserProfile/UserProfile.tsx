@@ -34,13 +34,15 @@ const useStyles = makeStyles((theme: Theme) =>
       width: `500px`,
       height: `500px`,
       [theme.breakpoints.down('xs')]: {
-        width: `300px`,
-        height: `300px`,
+        width: `150px`,
+        height: `150px`,
+        marginTop: `-50px`
       },
       border: `2px`,
       borderStyle: `solid`,
       borderColor: theme.palette.primary.main,
-      margin: `50px`
+      marginRight: `50px`,
+      marginLeft: `50px`
     },
     grid: {
       justifyContent: `center`,
@@ -49,6 +51,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     blurb: {
       maxWidth: `500px`
+    },
+    gridBits: {
+      [theme.breakpoints.down('xs')]: {
+        marginTop: `-150px`
+      },
     }
   })
 )
@@ -84,7 +91,7 @@ const UserProfile: React.FC = (): JSX.Element => {
               className={classes.avatar}
             />
           </Grid>
-          <Grid item>
+          <Grid item className={classes.gridBits}>
             <Typography>Welcome {user.nickName}!</Typography>
             <Typography>{user.firstName} {user.lastName}</Typography>
             <Typography>{user.intentionStatus}</Typography>
