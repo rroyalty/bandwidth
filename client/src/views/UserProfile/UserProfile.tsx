@@ -39,12 +39,16 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       border: `2px`,
       borderStyle: `solid`,
-      borderColor: theme.palette.primary.main
+      borderColor: theme.palette.primary.main,
+      margin: `50px`
     },
     grid: {
       justifyContent: `center`,
       alignItems: `center`,
       height: `100%`
+    },
+    blurb: {
+      maxWidth: `500px`
     }
   })
 )
@@ -81,13 +85,13 @@ const UserProfile: React.FC = (): JSX.Element => {
             />
           </Grid>
           <Grid item>
-            <h1>Welcome {user.nickName}!</h1>
-            <p>{user.firstName} {user.lastName}</p>
-            <p>{user.intentionStatus}</p>
-            <p>{user.location}</p>
-            <p>{user.email}</p>
-            <p>{user.phone}</p>
-            <p>{user.blurb}</p>
+            <Typography>Welcome {user.nickName}!</Typography>
+            <Typography>{user.firstName} {user.lastName}</Typography>
+            <Typography>{user.intentionStatus}</Typography>
+            <Typography>{user.location}</Typography>
+            <Typography>{user.email}</Typography>
+            <Typography>{user.phone}</Typography>
+            <Typography className={classes.blurb}>{user.blurb}</Typography>
             <Link to="/editprofile">Edit Profile</Link>
           </Grid>
         </Grid>
@@ -101,10 +105,10 @@ const UserProfile: React.FC = (): JSX.Element => {
 
 
       <Container maxWidth="xl" className={classes.header}>
-        <h1>Welcome to BandWidth!</h1>
-        <p>Thanks for joining BandWidth.</p>
-        <p>Please click the link below to finish creating your profile.</p>
-        <p>Once you have created a profile other users will be able to contact you and get in touch.</p>
+        <Typography>Welcome to BandWidth!</Typography>
+        <Typography>Thanks for joining BandWidth.</Typography>
+        <Typography>Please click the link below to finish creating your profile.</Typography>
+        <Typography>Once you have created a profile other users will be able to contact you and get in touch.</Typography>
         <Button>
           <Link to="createprofile">Create Profile Now</Link>
         </Button>
