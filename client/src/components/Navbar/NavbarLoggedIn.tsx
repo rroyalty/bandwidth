@@ -47,7 +47,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         justifyContent: `flex-end`,
-
+    },
+    menu: {
+        display: `flex`,
+        flexDirection: `column`,
+        alignItems: `center`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        height: "100vh",
+        backgroundImage: `url(/menuImage.jpg)`,
+        border: `0px`,
+        borderLeft: `2px`,
+        borderStyle: `solid`,
+        borderColor: `white`,
+        width: `50vw`,
     }
 }));
 

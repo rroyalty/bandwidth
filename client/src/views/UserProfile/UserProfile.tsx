@@ -3,12 +3,13 @@ import { Container, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
-import { Button } from "@material-ui/core";
+import { Button, Avatar, Typography, Grid } from "@material-ui/core";
 // ==============================================================================================================
 // User Profile page - this pulls info from the DB, and compares a users logged in email, with info we have stored
 // ===============================================================================================================
 export interface IUser {
   nickName: string,
+  image: string,
   firstName: string,
   lastName: string,
   intentionStatus: string,
@@ -21,14 +22,29 @@ export interface IUser {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     header: {
-      backgroundColor: `rgba(255, 255, 255, 0.8)`,
+      backgroundColor: `rgba(255, 255, 255, 0.6)`,
       paddingTop: 100,
       justifyContent: `center`,
       alignItems: `center`,
       textAlign: `center`,
       width: `80vw`,
-      height: `90vh`
-
+      height: `100vh`
+    },
+    avatar: {
+      width: `500px`,
+      height: `500px`,
+      [theme.breakpoints.down('xs')]: {
+        width: `300px`,
+        height: `300px`,
+      },
+      border: `2px`,
+      borderStyle: `solid`,
+      borderColor: theme.palette.primary.main
+    },
+    grid: {
+      justifyContent: `center`,
+      alignItems: `center`,
+      height: `100%`
     }
   })
 )
@@ -51,22 +67,30 @@ const UserProfile: React.FC = (): JSX.Element => {
   const userExists = () => {
     if (!user) return <> </>
 
+    console.log(user)
 
     return (
 
       <Container maxWidth="xl" className={classes.header}>
-        <img
-          src={userProfile.user.picture}
-          alt="user photo"
-        />
-        <h1>Welcome {user.nickName}!</h1>
-        <p>{user.firstName} {user.lastName}</p>
-        <p>{user.intentionStatus}</p>
-        <p>{user.location}</p>
-        <p>{user.email}</p>
-        <p>{user.phone}</p>
-        <p>{user.blurb}</p>
-        <Link to="/editprofile">Edit Profile</Link>
+        <Grid container className={classes.grid} >
+          <Grid item>
+            <Avatar
+              src={user.image}
+              alt="user photo"
+              className={classes.avatar}
+            />
+          </Grid>
+          <Grid item>
+            <h1>Welcome {user.nickName}!</h1>
+            <p>{user.firstName} {user.lastName}</p>
+            <p>{user.intentionStatus}</p>
+            <p>{user.location}</p>
+            <p>{user.email}</p>
+            <p>{user.phone}</p>
+            <p>{user.blurb}</p>
+            <Link to="/editprofile">Edit Profile</Link>
+          </Grid>
+        </Grid>
       </Container>
 
     )

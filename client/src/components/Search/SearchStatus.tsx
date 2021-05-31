@@ -29,9 +29,21 @@ createStyles({
         textField: {
             width: `300px`,
             color: `white`,
+            border: `1px`,
+            borderStyle: `solid`,
+            borderColor: `white`,
+            borderRadius: theme.shape.borderRadius,
+            height: `40px`,
+            [theme.breakpoints.down('sm')]: {
+                width: `240px`,
+                fontSize: `.7rem`
+            },
         },
         typography: {
-            paddingRight: `25px`
+            paddingRight: `25px`,
+            [theme.breakpoints.down('sm')]: {
+                fontSize: `.7rem`,
+            },
         }
     })
 )
