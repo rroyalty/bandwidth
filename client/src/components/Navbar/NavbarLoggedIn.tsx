@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         "&:hover": {
             color: theme.palette.secondary.main
         }
-        
+
     },
     navbar: {
         backgroundColor: `#181D27`,
@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         borderBottomLeftRadius: 16,
         borderBottomRightRadius: 16,
         border: `solid`,
+        height: `75px`,
+        justifyContent: `center`
     },
     rightAppBar: {
         marginLeft: `auto`,
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textDecoration: `none`,
         textTransform: `uppercase`,
         justifyContent: `flex-end`,
+
 
     },
     links: {
@@ -127,11 +130,13 @@ const NavbarLoggedIn: React.FC = (): JSX.Element => {
                         // className: classes.mobileNav
                     }}>
                     <List className={classes.menu} component="nav" aria-labelledby="main navigation" >
+                        <AuthNav />
                         <MenuItem className={classes.mobileNav}>
                             <Link className={classes.links} to="/">Profile</Link>
+                        </MenuItem>
+                        <MenuItem className={classes.mobileNav}>
                             <Link className={classes.links} to="/find">Find</Link>
                         </MenuItem>
-                    <AuthNav />
                     </List>
                 </Drawer>
             </AppBar>
