@@ -82,6 +82,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       unique: false,
     }
+    // genre: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   unique: false,
+    // },
+    // instrument: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   unique: false,
+    // },
+
   }, {
     sequelize,
     freezeTableName: true,
