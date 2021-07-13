@@ -5,7 +5,7 @@
 </p>
 
 ## Deployment
-<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">View Our Deployed application here</a>
+<a href="https://bandwi-d-th.herokuapp.com/">View Our Deployed application here</a>
 
 ## Description
  Are you a Band looking for a Musician? A Musician looking for a Band? Which Instruments do you play? Are you looking to network with other bands based on Genre? Enter Bandwidth, a networking platform for musicians nationwide to find new members in their area, as well as for bands looking to work with other bands to tour or create shows of their own. We supply the network. You supply the music. It's that easy.
